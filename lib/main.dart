@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import './homepage.dart';
 import './leftside.dart';
+import './GridViewPage.dart';
+import './neworder.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.pink,
         backgroundColor: Colors.pink[100],
       ) ,
-      home: HomePage(), 
+      home: neworder(), 
     );
   }
   

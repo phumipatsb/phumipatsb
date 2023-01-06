@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class homepage extends StatefulWidget {
-  homepage({Key? key}) : super(key: key);
+class GridViewPage extends StatefulWidget {
+  GridViewPage({Key? key}) : super(key: key);
 
   @override
   _GridViewPageState createState() => _GridViewPageState();
 }
 
-class _GridViewPageState extends State<homepage> {
+class _GridViewPageState extends State<GridViewPage> {
   final ScrollController _controller = ScrollController();
   final List<Map<String, dynamic>> gridMap = [
     {
@@ -125,7 +125,7 @@ class _GridViewPageState extends State<homepage> {
           
         shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
+        crossAxisCount: 2,
         crossAxisSpacing: 12.0,
         mainAxisSpacing: 12.0,
         mainAxisExtent: 237,
