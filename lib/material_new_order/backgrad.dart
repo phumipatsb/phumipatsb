@@ -14,6 +14,7 @@ class backgrad extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
         child: Container(
           color: Color.fromARGB(255, 255, 219, 219),
+          
         ),
       ),
     );
