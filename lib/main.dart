@@ -3,6 +3,7 @@ import './homepage.dart';
 import './leftside.dart';
 import './GridViewPage.dart';
 import './neworder.dart';
+import 'sumneworder.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.pink,
         backgroundColor: Colors.pink[100],
       ) ,
-      home: neworder(), 
+      home: sumneworder(), 
     );
   }
   

@@ -1,54 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class list_view_order extends StatelessWidget {
+
+
+
+class list_view_order extends StatefulWidget {
+  const list_view_order({Key? key}) : super(key: key);
+
+  @override
+  State<list_view_order> createState() => _list_view_order();
+}
+
+class _list_view_order extends State<list_view_order> {
+  final myProducts = List<String>.generate(10, (i) => 'ITEM NAME $i');
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.zero,
       child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-        return SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Container(
-              height: 506.0,
-              child: Stack(children: [
-                Container(
-                    width: constraints.maxWidth,
-                    child: Container(
-                      width: 308.0,
-                      height: 186.0,
-                      child: Stack(
-                          fit: StackFit.expand,
-                          alignment: Alignment.center,
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return Container(
+           child: Container(
+             child: ListView.builder(
+               itemCount: myProducts.length,
+                 itemBuilder: (context, index) {
+                   return Card(
+                     key: ValueKey(myProducts[index]),
+                     margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                   child: Padding(
+                       padding: const EdgeInsets.all(10),
+                       child: Text(myProducts[index])
+                   ),
+                   );
+                 }
+             ),
+           ),
+          );
+        }
+      ),
 
-                          children: [
-                            Positioned(
-                              left: 0.0,
-                              top: 0.0,
-                              right: null,
-                              bottom: null,
-                              width: 308.0,
-                              height: 74.0,
-                              child: Text(
-  'Clear All',
-  style:  GoogleFonts.lato (
-    
-    fontSize:  13,
-    fontWeight:  FontWeight.w400,
-    height:  1.2125,
-    decoration:  TextDecoration.underline,
-    color:  Color(0xffff6e6e),
-    decorationColor:  Color(0xffff6e6e),
-  ),
-),
-                            ),
-                            
-                          ]),
-                    ))
-              ])),
-        );
-      }),
     );
   }
 }

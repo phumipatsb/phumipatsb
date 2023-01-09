@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import './orderlist.dart';
+
 import '/material_new_order/backgrad.dart';
 import '/material_new_order/layout1.dart';
 import '/material_new_order/neworderwidget.dart';
@@ -14,6 +14,8 @@ import '/material_new_order/display_total.dart';
 import '/material_new_order/display_price.dart';
 import '/material_new_order/text_order.dart';
 import '/material_new_order/displayTable.dart';
+import '/material_new_order/list_view_order.dart';
+import '/material_new_order/layout_item.dart';
 
 
 
@@ -21,7 +23,7 @@ class neworder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 660.0,
+      width: 680.0,
       height: 285.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
@@ -40,7 +42,7 @@ class neworder extends StatelessWidget {
               top: 0.0,
               right: null,
               bottom: null,
-              width: 660.0,
+              width: 680.0,
               height: 289.0,
               child: backgrad(),
             ),
@@ -134,15 +136,15 @@ class neworder extends StatelessWidget {
               height: 29.0,
               child: text_order(),
             ),
-            // Positioned(
-            //   left: 12.0,
-            //   top: 89.0,
-            //   right: null,
-            //   bottom: null,
-            //   width: 308.0,
-            //   height: 186.0,
-            //   child: GeneratedFrame4Widget(), gigview
-            // ),
+            Positioned(
+              left: 12.0,
+              top: 89.0,
+              right: null,
+              bottom: null,
+              width: 308.0,
+              height: 186.0,
+              child: layoutWidget(), //gigview
+            ),
             Positioned(
               left: 578.0,
               top: 9.0,
