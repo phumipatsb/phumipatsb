@@ -25,13 +25,12 @@ class _layoutWidgetState extends State<layoutWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
       child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
         return ListView.builder(
           itemCount: menu.length,
-          itemBuilder: (context,int index) {
-            orderlist food=menu[index];
+          itemBuilder: (context, int index) {
+            orderlist food = menu[index];
             return Container(
                 height: 90.0,
                 child: Stack(children: [
@@ -80,21 +79,20 @@ class _layoutWidgetState extends State<layoutWidget> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
-                                    
                                     child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(16.0),
-                      topRight: Radius.circular(16.0),
-                      bottomLeft: Radius.circular(0),
-                      bottomRight: Radius.circular(0),
-                    ),
-                    child: Image.network(
-                      food.pix,
-                      height: 170,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(16.0),
+                                        topRight: Radius.circular(16.0),
+                                        bottomLeft: Radius.circular(0),
+                                        bottomRight: Radius.circular(0),
+                                      ),
+                                      child: Image.network(
+                                        food.pix,
+                                        height: 170,
+                                        width: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 Positioned(
@@ -283,7 +281,6 @@ class _layoutWidgetState extends State<layoutWidget> {
                                     double scaleY = (constraints.maxHeight *
                                             percentHeight) /
                                         16.0;
-
                                     return Stack(children: [
                                       TransformHelper.translateAndScale(
                                           translateX: constraints.maxWidth *

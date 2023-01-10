@@ -23,10 +23,9 @@ class neworder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 680.0,
-      height: 285.0,
+      
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(0),
         border: Border.all(
           width: 1.0,
           color: Color.fromARGB(255, 0, 0, 0),

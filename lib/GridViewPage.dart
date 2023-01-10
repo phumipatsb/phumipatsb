@@ -9,7 +9,7 @@ class GridViewPage extends StatefulWidget {
 
 class _GridViewPageState extends State<GridViewPage> {
   final ScrollController _controller = ScrollController();
-  final List<Map<String, dynamic>> gridMap = [
+   List<Map<String, dynamic>> gridMap = [
     {
       "title": "ITEM NAME",
       "price": "\$255",

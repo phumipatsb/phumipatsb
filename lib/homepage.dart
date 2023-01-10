@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'RAW/coloer/hex.dart';
 
 class homepage extends StatefulWidget {
   homepage({Key? key}) : super(key: key);
@@ -9,10 +11,10 @@ class homepage extends StatefulWidget {
 
 class _GridViewPageState extends State<homepage> {
   final ScrollController _controller = ScrollController();
-  final List<Map<String, dynamic>> gridMap = [
+  List<Map<String, dynamic>> gridMap = [
     {
       "title": "ITEM NAME",
-      "price": "\$255",
+      "price": "\$255000000",
       "images":
           "https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg",
     },
@@ -109,41 +111,47 @@ class _GridViewPageState extends State<homepage> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.pink[100],
-        body: Scrollbar(
-          
+    return
+
+        // backgroundColor: HexColor(backgroundColor),
+        Scrollbar(
       controller: _controller,
-      
-      isAlwaysShown: true,
       child: Padding(
-
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(10),
         child: GridView.builder(
-
           controller: _controller,
-          
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        crossAxisSpacing: 12.0,
-        mainAxisSpacing: 12.0,
-        mainAxisExtent: 237,
-        
-      ),
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            crossAxisSpacing: 12.0,
+            mainAxisSpacing: 15,
+            mainAxisExtent: 237,
+          ),
           itemCount: gridMap.length,
-          
-         
           itemBuilder: (BuildContext context, int index) {
             return Container(
-               decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(
-              16.0,
-            ),
-            color: Colors.white,
-          ),
-
-                child: Column(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    16.0,
+                  ),
+                  color: Colors.white,
+                ),
+                child: Wrap(children: [
+                  GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      gridMap.add({
+                        "title": "${gridMap.elementAt(index)['title']}",
+                        "price": "${gridMap.elementAt(index)['price']}",
+                        "images":
+                            "${gridMap.elementAt(index)['images']}",
+                      });
+                      print(gridMap);
+                      print('set');
+                      
+                    });
+                  },
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                   ClipRRect(
@@ -207,10 +215,16 @@ class _GridViewPageState extends State<homepage> {
 
 
                   )
+
+
+
+                  
+                ]),
+                ),
                 ]));
           },
         ),
       ),
-    ));
+    );
   }
 }
