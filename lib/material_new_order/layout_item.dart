@@ -11,15 +11,22 @@ class layoutWidget extends StatefulWidget {
 }
 
 class _layoutWidgetState extends State<layoutWidget> {
-  List<orderlist> menu = [
-    orderlist(
-        "https://s359.thaibuffer.com/pagebuilder/8fc42843-588a-4dad-82bb-dc8102097ba3.jpg",
-        "item",
-        "500"),
-    orderlist(
-        "https://s359.thaibuffer.com/pagebuilder/b8414c05-6bb1-4d38-afe6-ee0e7077a080.jpg",
-        "item",
-        "500"),
+  
+  List<Map<String, dynamic>> gridMap = [
+    {
+      "title": "ITEM NAME",
+      "price": "255",
+      "images":
+          "https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg"
+          ,
+    },
+    {
+      "title": "ITEM NAME",
+      "price": "245",
+      "images":
+          "https://s359.thaibuffer.com/pagebuilder/b8414c05-6bb1-4d38-afe6-ee0e7077a080.jpg",
+    },
+    
   ];
   var counter = 1;
   @override
@@ -28,9 +35,9 @@ class _layoutWidgetState extends State<layoutWidget> {
       child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
         return ListView.builder(
-          itemCount: menu.length,
+          itemCount: gridMap.length,
           itemBuilder: (context, int index) {
-            orderlist food = menu[index];
+            
             return Container(
                 height: 90.0,
                 child: Stack(children: [
@@ -87,7 +94,7 @@ class _layoutWidgetState extends State<layoutWidget> {
                                         bottomRight: Radius.circular(0),
                                       ),
                                       child: Image.network(
-                                        food.pix,
+                                        "${gridMap.elementAt(index)['images']}",
                                         height: 170,
                                         width: double.infinity,
                                         fit: BoxFit.cover,
@@ -95,48 +102,46 @@ class _layoutWidgetState extends State<layoutWidget> {
                                     ),
                                   ),
                                 ),
-                                Positioned(
-                                  left: 75.0,
-                                  top: 17.0,
-                                  right: null,
-                                  bottom: null,
-                                  width: 75.0,
-                                  height: 39.0,
-                                  child: RichText(
-                                      overflow: TextOverflow.visible,
-                                      textAlign: TextAlign.left,
-                                      text: const TextSpan(
-                                        style: TextStyle(
-                                          height: 1.2102272327129657,
-                                          fontSize: 13.0,
-                                          fontFamily: 'Inter',
-                                          fontWeight: FontWeight.w400,
-                                          color: Color.fromARGB(255, 0, 0, 0),
+                                Padding(
+                                   padding: const EdgeInsets.fromLTRB(70, 10,0, 0),
+                    child: Column(
+                      
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                         
+                      children: [
+                       
+                    Text(
+                      
+                      "${gridMap.elementAt(index)['title']}",
+                      style: Theme.of(context).textTheme.subtitle1!.merge(
+                            const TextStyle(
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "${gridMap.elementAt(index)['price']}"+"-.",
+                      style: Theme.of(context).textTheme.subtitle2!.merge(
+                            TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Colors.pink[200],
+                              
+                            ),
+                          ),
+                          
+                    ),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    
+                  ],
+                    )
 
-                                          /* letterSpacing: 0.0, */
-                                        ),
-                                        children: [
-                                          TextSpan(
-                                            text: '''ITEM NAME
-''',
-                                            style: TextStyle(
 
-                                                /* letterSpacing: null, */
-                                                ),
-                                          ),
-                                          TextSpan(
-                                            text: '''100-.''',
-                                            style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontWeight: FontWeight.w500,
-                                              color: Color.fromARGB(
-                                                  255, 255, 110, 110),
 
-                                              /* letterSpacing: null, */
-                                            ),
-                                          )
-                                        ],
-                                      )),
                                 ),
                                 Positioned(
                                   left: 212.0,

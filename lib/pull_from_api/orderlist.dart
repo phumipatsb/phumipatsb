@@ -1,3 +1,5 @@
+import 'dart:async';
+
 class orderlist{
   String pix;
  String item;
@@ -8,9 +10,38 @@ class orderlist{
  orderlist(this.pix,this.item,this.price);
 
 
-List<Map<String, dynamic>> gridMap = [
-  ];
+
 
 
 }
+
+class Mapmanu{
+ late final int? id;
+ final String title;
+ final int? price;
+ final String images;
+
+
+ 
+
+  
+ 
+ Mapmanu ({
+  required this.id,
+  required this.title,
+  required this.price,
+  required this.images});
+
+ 
+
+ 
+ Mapmanu.fromMap(Map<dynamic, dynamic>res)
+  :id =res ['id'],
+  title =res ['title'],
+  price =res ['price'],
+  images =res ['images'];
+
+
+}
+
 

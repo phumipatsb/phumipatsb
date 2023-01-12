@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class display_price extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

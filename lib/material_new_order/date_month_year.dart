@@ -5,7 +5,7 @@ class date_month_year extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      '''20 December 2022''',
+      '20 December 2022',
       overflow: TextOverflow.visible,
       textAlign: TextAlign.left,
       style: TextStyle(
