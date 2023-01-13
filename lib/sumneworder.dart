@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'material_new_order/menu_list.dart';
+import 'package:sqflite/utils/utils.dart';
+
 import 'material_new_order/leftside.dart';
 import 'RAW/coloer/hex.dart';
 import 'material_new_order/neworder.dart';
-
+import 'material_new_order/new_meun_list.dart';
+import 'package:provider/provider.dart';
 
 class sumneworder extends StatefulWidget {
   @override
@@ -32,6 +34,7 @@ class _sumneworder extends State<sumneworder> {
                 flex: 1,
                 fit: FlexFit.tight,
                 child: Row(
+                  // ignore: sort_child_properties_last
                   children: [
                     Flexible(
                       flex: 1,
@@ -95,7 +98,8 @@ class _sumneworder extends State<sumneworder> {
                                     borderRadius: BorderRadius.circular(20),
                                     color: HexColor(backgroundColor),
                                   ),
-                                  child: homepage(),
+                                  child: homepage(),//link to neworder() 
+                                 
                                 ),
                               )
                             ],
