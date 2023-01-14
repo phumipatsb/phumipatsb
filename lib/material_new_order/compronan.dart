@@ -21,7 +21,7 @@ class Productprice {
 
 class ProductSelect {
   String name = '';
-  String price = '';
+  int? price  ;
   String image = '';
   int amount = 1;
 
@@ -62,7 +62,19 @@ class DynamicList {
 }
 
 
+class tasks1{
 
+String name;
+int price;
+String images;
+int amount = 1;
+tasks1 ({
+  
+  required this.name,
+  required this.price,
+  required this.images});
+
+}
 
 
 

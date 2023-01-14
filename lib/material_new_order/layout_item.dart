@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:test1/material_new_order/compronan.dart';
 import 'package:test1/pull_from_api/orderlist.dart';
 import 'package:test1/RAW/SVG/svg.dart';
 import 'package:test1/RAW/transform/transform.dart';
+
+import '../models/provider_app.dart';
 
 class layoutWidget extends StatefulWidget {
   const layoutWidget({Key? key}) : super(key: key);
@@ -13,29 +17,35 @@ class layoutWidget extends StatefulWidget {
 class _layoutWidgetState extends State<layoutWidget> {
   
   List<Map<String, dynamic>> gridMap = [
-    {
-      "title": "ITEM NAME",
-      "price": "255",
-      "images":
-          "https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg"
-          ,
-    },
-    {
-      "title": "ITEM NAME",
-      "price": "245",
-      "images":
-          "https://s359.thaibuffer.com/pagebuilder/b8414c05-6bb1-4d38-afe6-ee0e7077a080.jpg",
-    },
+    // {
+    //   "title": "ITEM NAME",
+    //   "price": "255",
+    //   "images":
+    //       "https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg"
+    //       ,
+    // },
+    // {
+    //   "title": "ITEM NAME",
+    //   "price": "245",
+    //   "images":
+    //       "https://s359.thaibuffer.com/pagebuilder/b8414c05-6bb1-4d38-afe6-ee0e7077a080.jpg",
+    // },
     
   ];
   var counter = 1;
   @override
   Widget build(BuildContext context) {
+    var tasks = context.read<provider_app>().tasks;
+    print(tasks);
     return Container(
       child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
-        return ListView.builder(
-          itemCount: gridMap.length,
+            
+        return 
+        tasks.length<=0?
+        Container(child: Text('NO DATA'),):
+        ListView.builder(
+          itemCount: tasks.length,
           itemBuilder: (context, int index) {
             
             return Container(
@@ -94,7 +104,7 @@ class _layoutWidgetState extends State<layoutWidget> {
                                         bottomRight: Radius.circular(0),
                                       ),
                                       child: Image.network(
-                                        "${gridMap.elementAt(index)['images']}",
+                                        tasks[index].images,
                                         height: 170,
                                         width: double.infinity,
                                         fit: BoxFit.cover,

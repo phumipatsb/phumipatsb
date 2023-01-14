@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
 import 'package:test1/RAW/coloer/hex.dart';
+import '../models/provider_app.dart';
 import 'compronan.dart';
 
 
@@ -13,6 +15,7 @@ class homepage extends StatefulWidget {
 
 class _GridViewPageState extends State<homepage> {
   final ScrollController _controller = ScrollController();
+  
   int counter = 0;
    List<ProductSelect> Mapmanu = [];
 
@@ -62,9 +65,10 @@ class _GridViewPageState extends State<homepage> {
   final List<String> entries = <String>['A', 'B', 'C'];
   final List<int> colorCodes = <int>[600, 500, 100];
   @override
+  
   Widget build(BuildContext context) {
     return
-
+    
         // backgroundColor: HexColor(backgroundColor),
         Scrollbar(
       child: Padding(
@@ -80,6 +84,7 @@ class _GridViewPageState extends State<homepage> {
           ),
           itemCount: item.length,
           itemBuilder: (BuildContext context, int index) {
+            var tasks = context.watch<provider_app>().tasks;
             return Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(
@@ -91,7 +96,7 @@ class _GridViewPageState extends State<homepage> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        int y = 10;
+                        int y = 1;
                         if (y == 10) {
                            dialoger(BuildContext context) {
                             showDialog(
@@ -112,15 +117,15 @@ class _GridViewPageState extends State<homepage> {
                                 });
                           }
                         } else {
-                          Mapmanu.add(ProductSelect(
+                          context.read<provider_app>().add(tasks1(
                             name: "${item[index].productname}",
-                            price: "${item[index].price}",
-                            image: "${item[index].image}",
+                            price: item[index].price,
+                            images: "${item[index].image}",
                           ));
                         }
 
-                        print('name' + "${item[index].productname}");
-                        print(Mapmanu);
+                        //print('name' + "${item[index].productname}");
+                        //print(Mapmanu);
                       });
                     },
                     child: Column(
