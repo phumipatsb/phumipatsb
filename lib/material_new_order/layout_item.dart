@@ -9,7 +9,7 @@ import '../models/provider_app.dart';
 
 class layoutWidget extends StatefulWidget {
   const layoutWidget({Key? key}) : super(key: key);
-
+  
   @override
   State<layoutWidget> createState() => _layoutWidgetState();
 }
@@ -35,7 +35,7 @@ class _layoutWidgetState extends State<layoutWidget> {
   var counter = 1;
   @override
   Widget build(BuildContext context) {
-    var tasks = context.read<provider_app>().tasks;
+    var tasks = context.watch<provider_app>().tasks;
     print(tasks);
     return Container(
       child: LayoutBuilder(
