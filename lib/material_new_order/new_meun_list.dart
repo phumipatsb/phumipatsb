@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:test1/RAW/coloer/hex.dart';
 import '../models/provider_app.dart';
 import 'compronan.dart';
+import 'package:get/get.dart';
+import 'package:test1/getx/tandata_meun.dart';
 
 
 class homepage extends StatefulWidget {
@@ -15,7 +17,7 @@ class homepage extends StatefulWidget {
 
 class _GridViewPageState extends State<homepage> {
   final ScrollController _controller = ScrollController();
-  
+  final tandata = Get.put(Tandata()); 
   int counter = 0;
    List<ProductSelect> Mapmanu = [];
 
@@ -62,8 +64,8 @@ class _GridViewPageState extends State<homepage> {
             'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
         price: 130),
   ];
-  final List<String> entries = <String>['A', 'B', 'C'];
-  final List<int> colorCodes = <int>[600, 500, 100];
+  // เก็บค่าทั้งหมดลงใน products
+  
   @override
   
   Widget build(BuildContext context) {
@@ -96,7 +98,7 @@ class _GridViewPageState extends State<homepage> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        int y = 1;
+                        int y = 10;
                         if (y == 10) {
                            dialoger(BuildContext context) {
                             showDialog(
@@ -109,7 +111,8 @@ class _GridViewPageState extends State<homepage> {
                                       child: ListView.builder(
                                         itemCount: 50,
                                         itemBuilder: (_, i) {
-                                          return Text("Item $i");
+                                          return 
+                                          tandata.addToCart(item[index]);
                                         },
                                       ),
                                     ),
@@ -117,13 +120,12 @@ class _GridViewPageState extends State<homepage> {
                                 });
                           }
                         } else {
-                          context.read<provider_app>().add(tasks1(
-                            name: "${item[index].productname}",
-                            price: item[index].price,
-                            images: "${item[index].image}",
-                          ));
+                         
+
+
+                          
                         }
-                        
+                        print(item[index]);
                         //print('name' + "${item[index].productname}");
                         //print(Mapmanu);
                       });

@@ -4,7 +4,9 @@ import 'package:test1/material_new_order/compronan.dart';
 import 'package:test1/pull_from_api/orderlist.dart';
 import 'package:test1/RAW/SVG/svg.dart';
 import 'package:test1/RAW/transform/transform.dart';
-
+import 'compronan.dart';
+import 'package:get/get.dart';
+import 'package:test1/getx/tandata_meun.dart';
 import '../models/provider_app.dart';
 
 class layoutWidget extends StatefulWidget {
@@ -37,10 +39,13 @@ class _layoutWidgetState extends State<layoutWidget> {
   Widget build(BuildContext context) {
     var tasks = context.watch<provider_app>().tasks;
     print(tasks);
-    return Container(
+    return
+     GetX<Tandata>(builder: (controller1){
+      return
+    Container(
       child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
-            
+            print(controller1);
         return 
         tasks.length<=0?
         Container(child: Text('NO DATA'),):
@@ -326,5 +331,7 @@ class _layoutWidgetState extends State<layoutWidget> {
         );
       }),
     );
+  }
+);
   }
 }

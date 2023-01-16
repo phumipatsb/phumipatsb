@@ -20,12 +20,12 @@ class Productprice {
 
 
 class ProductSelect {
-  String name = '';
-  int? price  ;
-  String image = '';
-  int amount = 1;
-
-  ProductSelect({required this.name, required this.price, required this.image});
+  String? categoriesproduct;
+  String? productname;
+  String? image;
+  int? price;
+  ProductSelect(
+      {required categoriesproduct ,required this.productname, required this.image, required this.price});
 }
 
 
