@@ -31,36 +31,36 @@ class _GridViewPageState extends State<homepage> {
   ];
 
   final item = <dynamic>[
-    Productprice(
-        categoriesproduct: 'Food',
-        productname: 'Pad Thai',
-        image:
-            'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
-        price: 255),
-    Productprice(
-        categoriesproduct: 'Food',
-        productname: 'PSpicy fried chicken',
-        image:
-            'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
-        price: 220),
-    Productprice(
-        categoriesproduct: 'Curries',
-        productname: 'Sun-dried shrimp salad',
-        image:
-            'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
-        price: 75),
-    Productprice(
-        categoriesproduct: 'Salad',
-        productname: ' Chicken Green Curry',
-        image:
-            'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
-        price: 100),
-    Productprice(
-        categoriesproduct: 'Soup',
-        productname: ' Chicken Green Curry',
-        image:
-            'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
-        price: 130),
+    // Productprice(
+    //     categoriesproduct: 'Food',
+    //     productname: 'Pad Thai',
+    //     image:
+    //         'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
+    //     price: 255),
+    // Productprice(
+    //     categoriesproduct: 'Food',
+    //     productname: 'PSpicy fried chicken',
+    //     image:
+    //         'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
+    //     price: 220),
+    // Productprice(
+    //     categoriesproduct: 'Curries',
+    //     productname: 'Sun-dried shrimp salad',
+    //     image:
+    //         'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
+    //     price: 75),
+    // Productprice(
+    //     categoriesproduct: 'Salad',
+    //     productname: ' Chicken Green Curry',
+    //     image:
+    //         'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
+    //     price: 100),
+    // Productprice(
+    //     categoriesproduct: 'Soup',
+    //     productname: ' Chicken Green Curry',
+    //     image:
+    //         'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
+    //     price: 130),
   ];
   final List<String> entries = <String>['A', 'B', 'C'];
   final List<int> colorCodes = <int>[600, 500, 100];
