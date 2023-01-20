@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'material_new_order/leftside.dart';
 import 'material_new_order/layout_item.dart';
-
+import 'package:test1/table/table.dart';
 import 'sumneworder.dart';
 import 'models/provider_app.dart';
 
@@ -21,14 +21,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-                ChangeNotifierProvider(create: (_) => provider_app()),
-                
+                ChangeNotifierProvider(create: (_) => provider_app()), 
+                ChangeNotifierProvider(create: (_) => zoneName()),
             ],
       child: MaterialApp(
         
         
         
-        home: sumneworder(), 
+        home: table(), 
       ),
     );
   }

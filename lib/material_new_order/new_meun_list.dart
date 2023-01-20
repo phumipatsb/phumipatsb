@@ -84,7 +84,7 @@ class _GridViewPageState extends State<homepage> {
           ),
           itemCount: item.length,
           itemBuilder: (BuildContext context, int index) {
-            var tasks = context.watch<provider_app>().tasks;
+            var tasks = context.read<provider_app>().tasks;
             return Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(
@@ -100,6 +100,7 @@ class _GridViewPageState extends State<homepage> {
                         if (y == 10) {
                            dialoger(BuildContext context) {
                             showDialog(
+                              
                                 context: context,
                                 builder: (_) {
                                   return AlertDialog(

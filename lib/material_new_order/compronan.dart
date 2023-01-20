@@ -77,4 +77,36 @@ tasks1 ({
 }
 
 
+class tasks{
 
+String name;
+int price;
+String images;
+int amount = 1;
+tasks ({
+  
+  required this.name,
+  required this.price,
+  required this.images});
+
+}
+
+
+class zone {
+  final String ZoneName;
+  final List<SubZoneDetail> SubZone;
+
+  zone({required this.ZoneName,required this.SubZone});
+}
+class SubZoneDetail{
+  String SubZoneName;
+  String Status;
+
+  SubZoneDetail({required this.SubZoneName,required this.Status});
+}
+class selectzone{
+  final String ZoneName;
+  final String SubZone;
+
+  selectzone({required this.ZoneName,required this.SubZone});
+}
