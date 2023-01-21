@@ -5,7 +5,6 @@ import 'package:test1/RAW/coloer/hex.dart';
 import '../models/provider_app.dart';
 import 'compronan.dart';
 
-
 class homepage extends StatefulWidget {
   homepage({Key? key}) : super(key: key);
 
@@ -15,9 +14,9 @@ class homepage extends StatefulWidget {
 
 class _GridViewPageState extends State<homepage> {
   final ScrollController _controller = ScrollController();
-  
+
   int counter = 0;
-   List<ProductSelect> Mapmanu = [];
+  List<ProductSelect> Mapmanu = [];
 
   List<Map<String, dynamic>> addno = [
     {
@@ -41,34 +40,32 @@ class _GridViewPageState extends State<homepage> {
         categoriesproduct: 'Food',
         productname: 'PSpicy fried chicken',
         image:
-            'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
+            'https://s359.thaibuffer.com/pagebuilder/b8414c05-6bb1-4d38-afe6-ee0e7077a080.jpg',
         price: 220),
     Productprice(
         categoriesproduct: 'Curries',
         productname: 'Sun-dried shrimp salad',
         image:
-            'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
+            'https://www.easycookingmenu.com/media/k2/items/cache/905cf51f8ae04225d8794e7707be5d97_XL.jpg',
         price: 75),
     Productprice(
         categoriesproduct: 'Salad',
         productname: ' Chicken Green Curry',
         image:
-            'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
+            'https://www.easycookingmenu.com/media/k2/items/cache/be2c0e4bc68e97336862a76636fd8047_XL.jpg',
         price: 100),
     Productprice(
         categoriesproduct: 'Soup',
         productname: ' Chicken Green Curry',
         image:
-            'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
+            'https://www.easycookingmenu.com/media/k2/items/cache/600085de8ec319c3ad7a50be991624bf_XL.jpg',
         price: 130),
   ];
-  final List<String> entries = <String>['A', 'B', 'C'];
-  final List<int> colorCodes = <int>[600, 500, 100];
+
   @override
-  
   Widget build(BuildContext context) {
     return
-    
+
         // backgroundColor: HexColor(backgroundColor),
         Scrollbar(
       child: Padding(
@@ -95,12 +92,12 @@ class _GridViewPageState extends State<homepage> {
                 child: Wrap(children: [
                   GestureDetector(
                     onTap: () {
+                      print(index);
                       setState(() {
                         int y = 1;
                         if (y == 10) {
-                           dialoger(BuildContext context) {
+                          dialoger(BuildContext context) {
                             showDialog(
-                              
                                 context: context,
                                 builder: (_) {
                                   return AlertDialog(
@@ -119,12 +116,12 @@ class _GridViewPageState extends State<homepage> {
                           }
                         } else {
                           context.read<provider_app>().add(tasks1(
-                            name: "${item[index].productname}",
-                            price: item[index].price,
-                            images: "${item[index].image}",
-                          ));
+                                name: "${item[index].productname}",
+                                price: item[index].price,
+                                images: "${item[index].image}",
+                              ));
                         }
-                        
+
                         //print('name' + "${item[index].productname}");
                         //print(Mapmanu);
                       });
