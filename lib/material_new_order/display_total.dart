@@ -1,42 +1,105 @@
 import 'package:flutter/material.dart';
-
-
+import 'package:provider/provider.dart';
+import '../models/provider_app.dart';
 class display_total extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return RichText(
-        overflow: TextOverflow.visible,
-        textAlign: TextAlign.left,
-        text: const TextSpan(
-          style: TextStyle(
-            height: 1.2102272327129657,
-            fontSize: 13.0,
-            fontFamily: 'Inter',
-            fontWeight: FontWeight.w400,
-            color: Color.fromARGB(255, 0, 0, 0),
+    var tasks = context.watch<provider_app>().tasks;
+    double vat = 7;
+    double service_charge = 10;
+    
+    double toto = 0.0;
+    for (var i=0;i<tasks.length;i++) {
 
-            /* letterSpacing: 0.0, */
-          ),
-          children: [
-            TextSpan(
-              text: '''Subtotal
-Service Charge
-VAT
-''',
-              style: TextStyle(
+      toto +=tasks[i].price*tasks[i].amount;
+      
+      
+      
+    }
 
-                  /* letterSpacing: null, */
-                  ),
-            ),
-            TextSpan(
-              text: '''Grand Total''',
-              style: TextStyle(
-                fontSize: 20.0,
-
-                /* letterSpacing: null, */
+    double totvat= toto*(vat /100);
+    
+    double totoserviceCharge =toto*(service_charge /100);
+    double Grand_Total =toto+totvat+totoserviceCharge;
+    
+    
+    
+    return Container(
+      child: Column(
+          children: <Widget>[
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                    Text('Suntotal',style: TextStyle(fontSize: 14,fontFamily: 'Inter',fontWeight:
+                                                            FontWeight.w500,color: Colors.black),),
+                    Text('$toto'+'.-',style: TextStyle(fontSize: 14,fontFamily: 'Inter',fontWeight:
+                                                            FontWeight.w500,color: Colors.black),),
+                ],
               ),
-            )
+              
+            ),
+            SizedBox(height: 7),
+
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                    Text('Service Charge',style: TextStyle(fontSize: 14,fontFamily: 'Inter',fontWeight:
+                                                            FontWeight.w500,color: Colors.black),),
+                    Text('$totoserviceCharge'+'.-',style: TextStyle(fontSize: 14,fontFamily: 'Inter',fontWeight:
+                                                            FontWeight.w500,color: Colors.black),),
+                ],
+              ),
+              
+            ),
+            SizedBox(height: 7),
+
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                    Text('VAT',style: TextStyle(fontSize: 14,fontFamily: 'Inter',fontWeight:
+                                                            FontWeight.w500,color: Colors.black),),
+                    Text('${totvat.toStringAsFixed(1)}'+'.-',style: TextStyle(fontSize: 14,fontFamily: 'Inter',fontWeight:
+                                                            FontWeight.w500,color: Colors.black),),
+                ],
+              ),
+              
+            ),
+            SizedBox(height: 9),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                    Text('Grand Total',style: Theme.of(context)
+                                                    .textTheme
+                                                    .subtitle1!
+                                                    .merge(
+                                                      const TextStyle(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),),
+                    Text('$Grand_Total'+'.-',style: Theme.of(context)
+                                                    .textTheme
+                                                    .subtitle1!
+                                                    .merge(
+                                                      const TextStyle(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),),
+                ],
+              ),
+              
+            ),
           ],
-        ));
+        ),
+    );
+        
   }
+  
 }

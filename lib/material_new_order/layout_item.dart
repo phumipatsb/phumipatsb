@@ -8,8 +8,8 @@ import 'package:test1/RAW/transform/transform.dart';
 import '../models/provider_app.dart';
 
 class layoutWidget extends StatefulWidget {
-  layoutWidget({Key? key, required this.boss}) : super(key: key);
-  List boss;
+  layoutWidget({Key? key,}) : super(key: key);
+  
   @override
   State<layoutWidget> createState() => _layoutWidgetState();
 }
@@ -23,7 +23,7 @@ class _layoutWidgetState extends State<layoutWidget> {
     // print('do2' + widget.boss[0].name.toString());
 
     //print('do' +tasks.elementAt(1)['price'].toString());
-
+  
     return Container(
       child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
@@ -115,13 +115,15 @@ class _layoutWidgetState extends State<layoutWidget> {
                                       ),
                                       Padding(
                                           padding: const EdgeInsets.fromLTRB(
-                                              70, 10, 0, 0),
+                                              70, 10, 95, 0),
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 "${tasks[index].name}",
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 1,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .subtitle1!
@@ -216,8 +218,8 @@ class _layoutWidgetState extends State<layoutWidget> {
                                         ),
                                       ),
                                       Positioned(
-                                        left: 219.0,
-                                        top: 9.0,
+                                        left: 214,
+                                        top: 7.5,
                                         right: null,
                                         bottom: null,
                                         width: 19.0,
@@ -226,28 +228,19 @@ class _layoutWidgetState extends State<layoutWidget> {
                                           onTap: () {
                                             context
                                                 .read<provider_app>()
-                                                .orderPlus(index);
+                                                .minusOrder(index);
                                           },
-                                          child: Text(
-                                            '''+''',
-                                            overflow: TextOverflow.visible,
-                                            textAlign: TextAlign.left,
-                                            style: TextStyle(
-                                              height: 1.2102272033691406,
-                                              fontSize: 20.0,
-                                              fontFamily: 'Inter',
-                                              fontWeight: FontWeight.w400,
-                                              color: Color.fromARGB(
-                                                  255, 255, 255, 255),
-
-                                              /* letterSpacing: 0.0, */
-                                            ),
+                                          child: Container(
+                                            child: Icon(
+                                            Icons.remove,
+                                            color: Colors.white,
+                                          ),
                                           ),
                                         ),
                                       ),
                                       Positioned(
-                                        left: 283.0,
-                                        top: 9.0,
+                                        left: 275,
+                                        top: 7.5,
                                         right: null,
                                         bottom: null,
                                         width: 15.0,
@@ -256,22 +249,13 @@ class _layoutWidgetState extends State<layoutWidget> {
                                           onTap: () {
                                             context
                                                 .read<provider_app>()
-                                                .minusOrder(index);
+                                                .orderPlus(index);
                                           },
-                                          child: Text(
-                                            '''-''',
-                                            overflow: TextOverflow.visible,
-                                            textAlign: TextAlign.left,
-                                            style: TextStyle(
-                                              height: 1.2102272033691406,
-                                              fontSize: 20.0,
-                                              fontFamily: 'Inter',
-                                              fontWeight: FontWeight.w400,
-                                              color: Color.fromARGB(
-                                                  255, 255, 255, 255),
-
-                                              /* letterSpacing: 0.0, */
-                                            ),
+                                          child: Container(
+                                            child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
                                           ),
                                         ),
                                       ),
