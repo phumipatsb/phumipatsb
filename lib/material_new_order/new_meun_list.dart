@@ -14,19 +14,17 @@ class homepage extends StatefulWidget {
 
 class _GridViewPageState extends State<homepage> {
   final ScrollController _controller = ScrollController();
-
+  final _formKey = GlobalKey<FormState>();
   int counter = 0;
   List<ProductSelect> Mapmanu = [];
 
-  List<Map<String, dynamic>> addno = [
-    {
-      "title": "ITEM NAME",
-      "price": "255",
-    },
-    {
-      "title": "ITEM NAME",
-      "price": "255",
-    },
+  final item1 = <dynamic>[
+    Productprice(
+        categoriesproduct: 'Food',
+        productname: 'Pad Thai',
+        image:
+            'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
+        price: 255),
   ];
 
   final item = <dynamic>[
@@ -82,6 +80,7 @@ class _GridViewPageState extends State<homepage> {
           itemCount: item.length,
           itemBuilder: (BuildContext context, int index) {
             var tasks = context.read<provider_app>().tasks;
+            var addOnlist = Provider.of<addOn>(context);
             return Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(
@@ -94,26 +93,96 @@ class _GridViewPageState extends State<homepage> {
                     onTap: () {
                       print(index);
                       setState(() {
-                        int y = 1;
+                        int y = 10;
                         if (y == 10) {
-                          dialoger(BuildContext context) {
-                            showDialog(
-                                context: context,
-                                builder: (_) {
-                                  return AlertDialog(
-                                    title: Text("Listview"),
-                                    content: SizedBox(
-                                      width: double.maxFinite,
-                                      child: ListView.builder(
-                                        itemCount: 50,
-                                        itemBuilder: (_, i) {
-                                          return Text("Item $i");
-                                        },
-                                      ),
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  content: Container(
+                                    height: 300.0,
+                                    width: 300.0,
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: addOnlist.addno1.length,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return Container(
+                                          child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Container(
+                                                    child: Text(
+                                                      "${addOnlist.addno1[index].nameaddon}",
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .subtitle1!
+                                                          .merge(
+                                                            const TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
+                                                            ),
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                    child: ListView.builder(
+                                                        shrinkWrap: true,
+                                                        itemCount: addOnlist
+                                                            .addno1[index]
+                                                            .Subaddon
+                                                            .length,
+                                                        itemBuilder:
+                                                            (BuildContext
+                                                                    context,
+                                                                int index2) {
+                                                          return Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Text(
+                                                                "${addOnlist.addno1[index].Subaddon[index2].subNameAddOn}",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        14,
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                              Text(
+                                                                '${addOnlist.addno1[index].Subaddon[index2].priceAddOn}',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        14,
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        })),
+                                              ]),
+                                        );
+                                      },
                                     ),
-                                  );
-                                });
-                          }
+                                  ),
+                                );
+                              });
                         } else {
                           context.read<provider_app>().add(tasks1(
                                 name: "${item[index].productname}",

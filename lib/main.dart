@@ -8,11 +8,7 @@ import 'models/provider_app.dart';
 
 import 'testlayout.dart';
 
-
-
 void main() => runApp(MyApp());
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -21,17 +17,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-                ChangeNotifierProvider(create: (_) => provider_app()), 
-                ChangeNotifierProvider(create: (_) => zoneName()),
-            ],
+        ChangeNotifierProvider(create: (_) => provider_app()),
+        ChangeNotifierProvider(create: (_) => zoneName()),
+        ChangeNotifierProvider(create: (_) => addOn()),
+      ],
       child: MaterialApp(
-        
-        
-        
-        home: table(), 
+        home: table(),
       ),
     );
   }
-  
 }
-

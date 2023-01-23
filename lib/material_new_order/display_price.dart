@@ -1,34 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
-
 import 'package:provider/provider.dart';
+
 import '../models/provider_app.dart';
 
-class display_price extends StatefulWidget {
-  
+class display_price extends StatelessWidget {
   @override
-  State<display_price> createState() => _display_priceState();
-}
-
-class _display_priceState extends State<display_price> {
-  
-  @override
-  
-  
-
-  
-
   Widget build(BuildContext context) {
     var tasks = context.watch<provider_app>().tasks;
     double toto = 0.0;
-    for (var i=0;i<tasks.length;i++) {
 
-      toto +=tasks[i].price*tasks[i].amount;
-      
-      
-      
-    }
-    String totprice =('boss'+toto.toString());
     return RichText(
         overflow: TextOverflow.visible,
         textAlign: TextAlign.right,
@@ -44,7 +24,7 @@ class _display_priceState extends State<display_price> {
           ),
           children: [
             TextSpan(
-              text: '''500-.
+              text: '''600-.
 60-.
 46.2-.
 ''',
@@ -59,5 +39,11 @@ class _display_priceState extends State<display_price> {
             )
           ],
         ));
+  }
+
+  double totop() {
+    double toto = 0.0;
+
+    return toto;
   }
 }
