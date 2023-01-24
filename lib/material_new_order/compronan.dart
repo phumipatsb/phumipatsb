@@ -92,6 +92,9 @@ class addon {
 class SubAddOnDetail {
   String subNameAddOn;
   double priceAddOn;
+  String check_status;
 
-  SubAddOnDetail({required this.subNameAddOn, required this.priceAddOn});
+  SubAddOnDetail({required this.subNameAddOn, required this.priceAddOn, required this.check_status});
 }
+
+

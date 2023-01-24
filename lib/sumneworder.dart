@@ -7,6 +7,7 @@ import 'RAW/coloer/hex.dart';
 import 'material_new_order/neworder.dart';
 import 'material_new_order/new_meun_list.dart';
 import 'package:provider/provider.dart';
+import 'material_new_order/CategoryMenu.dart';
 
 class sumneworder extends StatefulWidget {
   @override
@@ -77,21 +78,21 @@ class _sumneworder extends State<sumneworder> {
                                 
                               ),
                               Flexible(
-                                flex: 3,
+                                flex: 2,
                                 fit: FlexFit.tight,
                                 child: Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(20),
                                       color: HexColor(backgroundColor),
                                     ),
-                                    //child: CategoryMenu(),
+                                    child: CategoryMenu(),
                                   ),
                                 ),
                               ),
                               Flexible(
-                                flex: 6,
+                                flex: 7,
                                 fit: FlexFit.tight,
                                 child: Container(
                                   decoration: BoxDecoration(

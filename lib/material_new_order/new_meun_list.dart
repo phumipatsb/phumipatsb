@@ -16,6 +16,7 @@ class _GridViewPageState extends State<homepage> {
   final ScrollController _controller = ScrollController();
   final _formKey = GlobalKey<FormState>();
   int counter = 0;
+  late bool st;
   List<ProductSelect> Mapmanu = [];
 
   final item1 = <dynamic>[
@@ -79,6 +80,7 @@ class _GridViewPageState extends State<homepage> {
           ),
           itemCount: item.length,
           itemBuilder: (BuildContext context, int index) {
+            bool st;
             var tasks = context.read<provider_app>().tasks;
             var addOnlist = Provider.of<addOn>(context);
             return Container(
@@ -114,7 +116,8 @@ class _GridViewPageState extends State<homepage> {
                                               children: <Widget>[
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.all(8.0),
+                                                      const EdgeInsets.fromLTRB(
+                                                          0, 10, 0, 0),
                                                   child: Container(
                                                     child: Text(
                                                       "${addOnlist.addno1[index].nameaddon}",
@@ -131,51 +134,85 @@ class _GridViewPageState extends State<homepage> {
                                                     ),
                                                   ),
                                                 ),
-                                                Container(
-                                                    child: ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: addOnlist
-                                                            .addno1[index]
-                                                            .Subaddon
-                                                            .length,
-                                                        itemBuilder:
-                                                            (BuildContext
-                                                                    context,
-                                                                int index2) {
-                                                          return Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            children: [
-                                                              Text(
-                                                                "${addOnlist.addno1[index].Subaddon[index2].subNameAddOn}",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        14,
-                                                                    fontFamily:
-                                                                        'Inter',
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                    color: Colors
-                                                                        .black),
-                                                              ),
-                                                              Text(
-                                                                '${addOnlist.addno1[index].Subaddon[index2].priceAddOn}',
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        14,
-                                                                    fontFamily:
-                                                                        'Inter',
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                    color: Colors
-                                                                        .black),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        })),
+                                                const Divider(
+                                                  
+                                                  height: 10,
+                                                  thickness: 2,
+                                                  indent: 0,
+                                                  endIndent: 0,
+                                                  color: Color.fromARGB(
+                                                      255, 255, 110, 110),
+                                                ),
+                                                const SizedBox(
+                    width: 10,
+                  ),
+                                                Padding(
+                                                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                                  child: Container(
+                                                      child: ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: addOnlist
+                                                              .addno1[index]
+                                                              .Subaddon
+                                                              .length,
+                                                          itemBuilder:
+                                                              (BuildContext
+                                                                      context,
+                                                                  int index2) {
+                                                            return Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                                      
+                                                              children: [
+                                                                Padding(
+                                                                  
+                                                                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 2),
+                                                                  child:Checkbox(
+                                                                    
+                                                                    value:st=chackboxst(addOnlist.addno1[index].Subaddon[index2].check_status), 
+                                                                    onChanged: (value) {
+                                                                      setState(() {
+                                                                        
+                                                                      });
+                                                                    },
+                                                                    
+                                                                    
+                                                                  )
+                                                                ),
+                                                                Padding(
+                                                                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 2),
+                                                                  child: Text(
+                                                                    "${addOnlist.addno1[index].Subaddon[index2].subNameAddOn}",
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            14,
+                                                                        fontFamily:
+                                                                            'Inter',
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w500,
+                                                                        color: Colors
+                                                                            .black),
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  '${addOnlist.addno1[index].Subaddon[index2].priceAddOn}',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          14,
+                                                                      fontFamily:
+                                                                          'Inter',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      color: Colors
+                                                                          .black),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          })),
+                                                ),
                                               ]),
                                         );
                                       },
@@ -255,5 +292,20 @@ class _GridViewPageState extends State<homepage> {
         ),
       ),
     );
+  }
+  chackboxst(String status ){
+    switch(status) {
+      case 'true':
+        // print('Ordering');
+        return true;
+        break; // The switch statement must be told to exit, or it will execute every case.
+      case'false':
+        // print('Pay');
+        return false;
+        break;
+      default:
+        // print('');
+        return ;
+    }
   }
 }
