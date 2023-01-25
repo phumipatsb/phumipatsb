@@ -6,8 +6,8 @@ import '../models/provider_app.dart';
 import 'compronan.dart';
 
 class homepage extends StatefulWidget {
-  homepage({Key? key}) : super(key: key);
-
+  //homepage(Key? key) : super(key: key);
+ 
   @override
   _GridViewPageState createState() => _GridViewPageState();
 }
@@ -17,6 +17,7 @@ class _GridViewPageState extends State<homepage> {
   final _formKey = GlobalKey<FormState>();
   int counter = 0;
   late bool st;
+  int y = 10;
   List<ProductSelect> Mapmanu = [];
 
   final item1 = <dynamic>[
@@ -94,16 +95,16 @@ class _GridViewPageState extends State<homepage> {
                   GestureDetector(
                     onTap: () {
                       print(index);
-                      setState(() {
-                        int y = 10;
+                      
+                        
                         if (y == 10) {
                           showDialog(
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                   content: Container(
-                                    height: 300.0,
-                                    width: 300.0,
+                                    height: 500,
+                                    width: 500,
                                     child: ListView.builder(
                                       shrinkWrap: true,
                                       itemCount: addOnlist.addno1.length,
@@ -168,12 +169,13 @@ class _GridViewPageState extends State<homepage> {
                                                                 Padding(
                                                                   //bossth
                                                                   padding: const EdgeInsets.fromLTRB(0, 5, 0, 2),
+                                                                  
                                                                   child:Checkbox(
                                                                     
-                                                                    value:st=chackboxst(addOnlist.addno1[index].Subaddon[index2].check_status), 
-                                                                    onChanged: (value) {
+                                                                    value:addOnlist.addno1[index].Subaddon[index2].check_status, 
+                                                                    onChanged: (bool? value) {
                                                                       setState(() {
-                                                                        
+                                                                        addOnlist.addno1[index].Subaddon[index2].check_status = value!;
                                                                       });
                                                                     },
                                                                     
@@ -221,16 +223,19 @@ class _GridViewPageState extends State<homepage> {
                                 );
                               });
                         } else {
-                          context.read<provider_app>().add(tasks1(
+                          
+                          setState(() {
+                            context.read<provider_app>().add(tasks1(
                                 name: "${item[index].productname}",
                                 price: item[index].price,
                                 images: "${item[index].image}",
                               ));
+                          });
                         }
 
                         //print('name' + "${item[index].productname}");
                         //print(Mapmanu);
-                      });
+                      
                     },
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -293,19 +298,19 @@ class _GridViewPageState extends State<homepage> {
       ),
     );
   }
-  chackboxst(String status ){
-    switch(status) {
-      case 'true':
-        // print('Ordering');
-        return true;
-        break; // The switch statement must be told to exit, or it will execute every case.
-      case'false':
-        // print('Pay');
-        return false;
-        break;
-      default:
-        // print('');
-        return ;
-    }
-  }
+  // chackboxst(String status ){
+  //   switch(status) {
+  //     case 'true':
+  //       // print('Ordering');
+  //       return true;
+  //       break; // The switch statement must be told to exit, or it will execute every case.
+  //     case'false':
+  //       // print('Pay');
+  //       return false;
+  //       break;
+  //     default:
+  //       // print('');
+  //       return ;
+  //   }
+  // }
 }
