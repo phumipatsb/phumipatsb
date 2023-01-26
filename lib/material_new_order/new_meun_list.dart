@@ -6,7 +6,7 @@ import '../models/provider_app.dart';
 import 'compronan.dart';
 
 class homepage extends StatefulWidget {
-  //homepage(Key? key) : super(key: key);
+  homepage({Key? key}) : super(key: key);
 
   @override
   _GridViewPageState createState() => _GridViewPageState();
@@ -16,8 +16,7 @@ class _GridViewPageState extends State<homepage> {
   final ScrollController _controller = ScrollController();
   final _formKey = GlobalKey<FormState>();
   int counter = 0;
-  bool checkboxValue = false;
-  int y = 10;
+  late bool st;
   List<ProductSelect> Mapmanu = [];
 
   final item1 = <dynamic>[
@@ -95,186 +94,175 @@ class _GridViewPageState extends State<homepage> {
                   GestureDetector(
                     onTap: () {
                       print(index);
-
-                      if (y == 10) {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                content: Container(
-                                  height: 600,
-                                  width: 500,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        alignment: Alignment.topRight,
-                                        child: IconButton(
-                                          icon: Icon(
-                                            Icons.close,
-                                            color: Colors.black54,
-                                            size: 45,
+                      setState(() {
+                        int y = 10;
+                        if (y == 10) {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  content: SizedBox(
+                                      width: double.maxFinite,
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            alignment: Alignment.topRight,
+                                            child: IconButton(
+                                              icon: Icon(
+                                                Icons.close,
+                                                color: Colors.black54,
+                                                size: 45,
+                                              ),
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                            ),
                                           ),
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 300,
-                                        width: 500,
-                                        child: ListView.builder(
-                                          shrinkWrap: true,
-                                          itemCount: addOnlist.addno1.length,
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            return Container(
-                                              child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        "${addOnlist.addno1[index].nameaddon}",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .subtitle1!
-                                                            .merge(
-                                                              const TextStyle(
-                                                                fontSize: 35,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                              ),
-                                                            ),
-                                                      ),
-                                                    ),
-                                                    const Divider(
-                                                      height: 10,
-                                                      thickness: 2,
-                                                      indent: 0,
-                                                      endIndent: 0,
-                                                      color: Color.fromARGB(
-                                                          255, 255, 110, 110),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 10,
-                                                    ),
-                                                    Container(
-                                                      height: 100,
-                                                      width: 500,
-                                                      child: ListView.builder(
-                                                          shrinkWrap: true,
-                                                          itemCount: addOnlist
-                                                              .addno1[index]
-                                                              .Subaddon
-                                                              .length,
-                                                          itemBuilder:
-                                                              (BuildContext
-                                                                      context,
-                                                                  int index2) {
-                                                            return Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      0.4, 0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              10,
-                                                                              0),
-                                                                      child:
-                                                                          Container(
-                                                                        width:
-                                                                            50,
-                                                                        child: FormField<
-                                                                            bool>(
-                                                                          builder:
-                                                                              (state) {
-                                                                            return Column(
-                                                                              children: <Widget>[
-                                                                                Row(
-                                                                                  children: <Widget>[
-                                                                                    Checkbox(
-                                                                                        value: addOnlist.addno1[index].Subaddon[index2].check_status,
-                                                                                        onChanged: (value) {
-                                                                                          setState(() {
-                                                                                            addOnlist.addno1[index].Subaddon[index2].check_status = value!;
-                                                                                            state.didChange(value);
-                                                                                          });
-                                                                                        }),
-                                                                                  ],
-                                                                                ),
-                                                                              ],
-                                                                            );
-                                                                          },
-                                                                        ),
-                                                                      )),
-                                                                  Container(
-                                                                    width: 425,
-                                                                    decoration:
-                                                                        BoxDecoration(),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .spaceBetween,
-                                                                      children: [
-                                                                        Text(
-                                                                            "${addOnlist.addno1[index].Subaddon[index2].subNameAddOn}",
-                                                                            style: TextStyle(
-                                                                                fontSize: 20,
-                                                                                fontFamily: 'Inter',
-                                                                                fontWeight: FontWeight.w500,
-                                                                                color: Colors.black)),
-                                                                        Text(
-                                                                            "${addOnlist.addno1[index].Subaddon[index2].priceAddOn}",
-                                                                            style: TextStyle(
-                                                                                fontSize: 20,
-                                                                                fontFamily: 'Inter',
-                                                                                fontWeight: FontWeight.w500,
-                                                                                color: Colors.black)),
-                                                                      ],
+                                          Container(
+                                            child: ListView.builder(
+                                              shrinkWrap: true,
+                                              itemCount:
+                                                  addOnlist.addno1.length,
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index) {
+                                                return Container(
+                                                  child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .fromLTRB(
+                                                                  0, 0, 0, 0),
+                                                          child: Container(
+                                                            child: Text(
+                                                              "${addOnlist.addno1[index].nameaddon}",
+                                                              style: Theme.of(
+                                                                      context)
+                                                                  .textTheme
+                                                                  .subtitle1!
+                                                                  .merge(
+                                                                    const TextStyle(
+                                                                      fontSize:
+                                                                          30,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
                                                                     ),
                                                                   ),
-                                                                ],
-                                                              ),
-                                                            );
-                                                          }),
-                                                    ),
-                                                  ]),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            });
-                      } else {
-                        setState(() {
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        const Divider(
+                                                          height: 10,
+                                                          thickness: 2,
+                                                          indent: 0,
+                                                          endIndent: 0,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              255,
+                                                              110,
+                                                              110),
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 10,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .fromLTRB(
+                                                                  0, 0, 0, 0),
+                                                          child: Container(
+                                                              child: ListView
+                                                                  .builder(
+                                                                      shrinkWrap:
+                                                                          true,
+                                                                      itemCount: addOnlist
+                                                                          .addno1[
+                                                                              index]
+                                                                          .Subaddon
+                                                                          .length,
+                                                                      itemBuilder:
+                                                                          (BuildContext context,
+                                                                              int index2) {
+                                                                        return Row(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.start,
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment.center,
+                                                                          children: [
+                                                                            Padding(
+                                                                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                                                              child: FormField<bool>(
+                                                                                builder: (state) {
+                                                                                  return Container(
+                                                                                    child: Row(
+                                                                                      children: <Widget>[
+                                                                                        Checkbox(
+                                                                                            value: addOnlist.addno1[index].Subaddon[index2].check_status,
+                                                                                            onChanged: (value) {
+                                                                                              setState(() {
+                                                                                                addOnlist.addno1[index].Subaddon[index2].check_status = value!;
+                                                                                                state.didChange(value);
+                                                                                              });
+                                                                                            }),
+                                                                                      ],
+                                                                                    ),
+                                                                                  );
+                                                                                },
+                                                                              ),
+                                                                            ),
+                                                                            Container(
+                                                                              width: 340,
+                                                                              height: 25,
+                                                                              decoration: BoxDecoration(),
+                                                                              child: Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                children: [
+                                                                                  Text(
+                                                                                    "${addOnlist.addno1[index].Subaddon[index2].subNameAddOn}",
+                                                                                    style: TextStyle(fontSize: 20, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black),
+                                                                                  ),
+                                                                                  Text(
+                                                                                    "${addOnlist.addno1[index].Subaddon[index2].priceAddOn}",
+                                                                                    style: TextStyle(fontSize: 20, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        );
+                                                                      })),
+                                                        ),
+                                                      ]),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                          Container(
+                                            width: 200,
+                                            height: 100,
+                                            color: Colors.black,
+                                          ),
+                                        ],
+                                      )),
+                                );
+                              });
+                        } else {
                           context.read<provider_app>().add(tasks1(
                                 name: "${item[index].productname}",
                                 price: item[index].price,
                                 images: "${item[index].image}",
                               ));
-                        });
-                      }
+                        }
 
-                      //print('name' + "${item[index].productname}");
-                      //print(Mapmanu);
+                        //print('name' + "${item[index].productname}");
+                        //print(Mapmanu);
+                      });
                     },
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -337,19 +325,20 @@ class _GridViewPageState extends State<homepage> {
       ),
     );
   }
-  // chackboxst(String status ){
-  //   switch(status) {
-  //     case 'true':
-  //       // print('Ordering');
-  //       return true;
-  //       break; // The switch statement must be told to exit, or it will execute every case.
-  //     case'false':
-  //       // print('Pay');
-  //       return false;
-  //       break;
-  //     default:
-  //       // print('');
-  //       return ;
-  //   }
-  // }
+
+  chackboxst(String status) {
+    switch (status) {
+      case 'true':
+        // print('Ordering');
+        return true;
+        break; // The switch statement must be told to exit, or it will execute every case.
+      case 'false':
+        // print('Pay');
+        return false;
+        break;
+      default:
+        // print('');
+        return;
+    }
+  }
 }
