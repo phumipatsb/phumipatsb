@@ -119,134 +119,144 @@ class _GridViewPageState extends State<homepage> {
                                           },
                                         ),
                                       ),
-                                      ListView.builder(
-                                        shrinkWrap: true,
-                                        itemCount: addOnlist.addno1.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          return Container(
-                                            child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: <Widget>[
-                                                  Container(
-                                                    child: Text(
-                                                      "${addOnlist.addno1[index].nameaddon}",
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .subtitle1!
-                                                          .merge(
-                                                            const TextStyle(
-                                                              fontSize: 35,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700,
+                                      Container(
+                                        height: 300,
+                                        width: 500,
+                                        child: ListView.builder(
+                                          shrinkWrap: true,
+                                          itemCount: addOnlist.addno1.length,
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return Container(
+                                              child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: <Widget>[
+                                                    Container(
+                                                      child: Text(
+                                                        "${addOnlist.addno1[index].nameaddon}",
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .subtitle1!
+                                                            .merge(
+                                                              const TextStyle(
+                                                                fontSize: 35,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700,
+                                                              ),
                                                             ),
-                                                          ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                  const Divider(
-                                                    height: 10,
-                                                    thickness: 2,
-                                                    indent: 0,
-                                                    endIndent: 0,
-                                                    color: Color.fromARGB(
-                                                        255, 255, 110, 110),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 10,
-                                                  ),
-                                                  Container(
-                                                    height: 100,
-                                                    width: 500,
-                                                    child: ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: addOnlist
-                                                                .addno1[index]
-                                                                .Subaddon
-                                                                .length,
-                                                        itemBuilder:
-                                                            (BuildContext context,int index2) {
-                                                          return Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0.4, 0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .start,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Align(
-                                                                    alignment:
-                                                                        AlignmentDirectional(
-                                                                            10,
-                                                                            0),
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          50,
-                                                                       
-                                                                      child: FormField<
-                                                                          bool>(
-                                                                        builder:
-                                                                            (state) {
-                                                                          return Column(
-                                                                            children: <Widget>[
-                                                                              Row(
-                                                                                children: <Widget>[
-                                                                                  Checkbox(
-                                                                                      value: addOnlist.addno1[index].Subaddon[index2].check_status,
-                                                                                      onChanged: (value) {
-                                                                                        setState(() {
-                                                                                          addOnlist.addno1[index].Subaddon[index2].check_status = value!;
-                                                                                          state.didChange(value);
-                                                                                        });
-                                                                                      }),
-                                                                                ],
-                                                                              ),
-                                                                            ],
-                                                                          );
-                                                                        },
-                                                                      ),
-                                                                    )),
-                                                                Container(
-                                                                  width: 425,
-                                                                  
-                                                                  decoration:
-                                                                      BoxDecoration(),
-                                                                  child: Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceBetween,
-                                                                    children: [
-                                                                      Text(
-                                                                        "${addOnlist.addno1[index].Subaddon[index2].subNameAddOn}",
-                                                                        style: TextStyle(fontSize: 20, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black)
-                                                                      ),
-                                                                      Text(
-                                                                        "${addOnlist.addno1[index].Subaddon[index2].priceAddOn}",
-                                                                        style: TextStyle(fontSize: 20, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black)
-                                                                      ),
-                                                                    ],
+                                                    const Divider(
+                                                      height: 10,
+                                                      thickness: 2,
+                                                      indent: 0,
+                                                      endIndent: 0,
+                                                      color: Color.fromARGB(
+                                                          255, 255, 110, 110),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                    Container(
+                                                      height: 100,
+                                                      width: 500,
+                                                      child: ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: addOnlist
+                                                              .addno1[index]
+                                                              .Subaddon
+                                                              .length,
+                                                          itemBuilder:
+                                                              (BuildContext
+                                                                      context,
+                                                                  int index2) {
+                                                            return Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.4, 0),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Align(
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              10,
+                                                                              0),
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            50,
+                                                                        child: FormField<
+                                                                            bool>(
+                                                                          builder:
+                                                                              (state) {
+                                                                            return Column(
+                                                                              children: <Widget>[
+                                                                                Row(
+                                                                                  children: <Widget>[
+                                                                                    Checkbox(
+                                                                                        value: addOnlist.addno1[index].Subaddon[index2].check_status,
+                                                                                        onChanged: (value) {
+                                                                                          setState(() {
+                                                                                            addOnlist.addno1[index].Subaddon[index2].check_status = value!;
+                                                                                            state.didChange(value);
+                                                                                          });
+                                                                                        }),
+                                                                                  ],
+                                                                                ),
+                                                                              ],
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      )),
+                                                                  Container(
+                                                                    width: 425,
+                                                                    decoration:
+                                                                        BoxDecoration(),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                            "${addOnlist.addno1[index].Subaddon[index2].subNameAddOn}",
+                                                                            style: TextStyle(
+                                                                                fontSize: 20,
+                                                                                fontFamily: 'Inter',
+                                                                                fontWeight: FontWeight.w500,
+                                                                                color: Colors.black)),
+                                                                        Text(
+                                                                            "${addOnlist.addno1[index].Subaddon[index2].priceAddOn}",
+                                                                            style: TextStyle(
+                                                                                fontSize: 20,
+                                                                                fontFamily: 'Inter',
+                                                                                fontWeight: FontWeight.w500,
+                                                                                color: Colors.black)),
+                                                                      ],
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          );
-                                                        }),
-                                                  ),
-                                                ]),
-                                          );
-                                        },
+                                                                ],
+                                                              ),
+                                                            );
+                                                          }),
+                                                    ),
+                                                  ]),
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ],
                                   ),

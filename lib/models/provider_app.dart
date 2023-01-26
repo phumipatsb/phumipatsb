@@ -96,13 +96,34 @@ class zoneName with ChangeNotifier {
 class addOn with ChangeNotifier {
   final List<addon> _addon = [
     addon(nameaddon: 'Size', Subaddon: [
-      SubAddOnDetail(subNameAddOn: 'XL', priceAddOn: 20,check_status:true),
-      SubAddOnDetail(subNameAddOn: 'L', priceAddOn: 15,check_status:false),
-      SubAddOnDetail(subNameAddOn: 'M', priceAddOn: 10,check_status:true)
+      SubAddOnDetail(subNameAddOn: 'XL', priceAddOn: 20, check_status: true),
+      SubAddOnDetail(subNameAddOn: 'L', priceAddOn: 15, check_status: false),
+      SubAddOnDetail(subNameAddOn: 'M', priceAddOn: 10, check_status: true),
+      SubAddOnDetail(subNameAddOn: 'S', priceAddOn: 15, check_status: false),
     ]),
     addon(nameaddon: 'Add On', Subaddon: [
-      SubAddOnDetail(subNameAddOn: 'ไข่ดาว', priceAddOn: 10,check_status:false),
-      SubAddOnDetail(subNameAddOn: 'ไข่เจียว', priceAddOn: 15,check_status:true)
+      SubAddOnDetail(
+          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
+      SubAddOnDetail(
+          subNameAddOn: 'ไข่เจียว', priceAddOn: 15, check_status: true),
+      SubAddOnDetail(
+          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
+    ]),
+    addon(nameaddon: 'Add On', Subaddon: [
+      SubAddOnDetail(
+          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
+      SubAddOnDetail(
+          subNameAddOn: 'ไข่เจียว', priceAddOn: 15, check_status: true),
+      SubAddOnDetail(
+          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
+    ]),
+    addon(nameaddon: 'Add On', Subaddon: [
+      SubAddOnDetail(
+          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
+      SubAddOnDetail(
+          subNameAddOn: 'ไข่เจียว', priceAddOn: 15, check_status: true),
+      SubAddOnDetail(
+          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
     ]),
   ];
 
