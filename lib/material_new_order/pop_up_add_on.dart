@@ -1,0 +1,193 @@
+import 'package:flutter/material.dart';
+import 'package:test1/RAW/coloer/hex.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'neworderwidget.dart';
+import 'displayTable.dart';
+import 'date_month_year.dart';
+import 'clear_all.dart';
+import 'layout_item.dart';
+import 'display_total.dart';
+class testneworder extends StatefulWidget {
+  @override
+  _testneworder createState() => _testneworder();
+}
+
+class _testneworder extends State<testneworder> {
+ 
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+          child: Column(
+            children: [
+              Flexible(
+                flex: 1,
+                fit: FlexFit.tight,
+                child: Column(
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: HexColor(backgroundColor),
+                        ),
+                        //child: leftside(),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 10, 20, 0),
+                          child: Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  child: NewOrderWidget(),
+                                ),
+                                Container(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        child: displayTable(),
+                                      ),
+                                      SizedBox(height:5 ,),
+                                      Container(
+                                        child: date_month_year(),
+                                      ),
+                                      
+                                    ],
+
+                                  ),
+
+                                )
+
+
+                              ],
+                            ),
+
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child:const Divider(
+                                                      height: 10,
+                                                      thickness: 2,
+                                                      indent: 0,
+                                                      endIndent: 0,
+                                                      color: Color.fromARGB(
+                                                          255, 255, 110, 110),
+                                                    ) ,
+                    ),
+                    Flexible(
+                      flex: 4,
+                      fit: FlexFit.tight,
+                      child: Container(
+                        child:Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Flexible(
+                              flex: 1,
+                              fit: FlexFit.tight,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Container(
+                                    child: Clear_All(),
+                                    
+                                  ),
+                                  Container(
+                                    width: 308.0,
+              height: 186.0,
+                                    child: layoutWidget(),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Container(
+                              child: const VerticalDivider(
+                                                      width: 10,
+                                                      thickness: 2,
+                                                      indent: 0,
+                                                      endIndent: 0,
+                                                      color: Color.fromARGB(
+                                                          255, 255, 110, 110),
+                                                    ) ,
+                            ),
+                            Flexible(
+                              flex: 1,
+                              fit: FlexFit.tight,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding:EdgeInsets.fromLTRB(0, 30, 5, 15),
+                                    child: display_total(),
+                                    
+                                    
+                                    ),
+                                    Container(
+                              child: const Divider(
+                                                        height: 10,
+                                                        thickness: 2,
+                                                        indent: 0,
+                                                        endIndent: 0,
+                                                        color: Color.fromARGB(
+                                                            255, 255, 110, 110),
+                                                      ),
+                            ) ,
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                              child: Container(
+                                width: 300,
+                                                height: 50.0,
+                                child: ElevatedButton(
+                                                    onPressed: () {
+                                                      
+                                                    },
+                                                    style:
+                                                        ElevatedButton.styleFrom(
+                                                      primary: Color.fromARGB(
+                                                          255,
+                                                          255,
+                                                          111,
+                                                          111), // background
+                                                    ),
+                                                    child: Text("Confirm",
+                                                        style: TextStyle(
+                                                            fontSize: 20,
+                                                            fontFamily: 'Inter',
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            color:
+                                                                Colors.white))),
+                              ),
+                            )
+                                ],
+                              ),
+
+                            ),
+                            
+                          ],
+                        ) ,
+
+                      ),
+                    ),
+
+
+                  ]),
+              )
+              
+
+            ]
+            ),
+          
+        ),
+      ),
+    );
+
+  }
+  }

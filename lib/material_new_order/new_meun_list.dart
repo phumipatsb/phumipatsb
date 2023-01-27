@@ -97,7 +97,7 @@ class _GridViewPageState extends State<homepage> {
                     onTap: () {
                       print(index);
 
-                      if (y == 10) {
+                      if (y == 11) {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
@@ -121,10 +121,10 @@ class _GridViewPageState extends State<homepage> {
                                         ),
                                       ),
                                       Container(
-                                        height: 300,
+                                        height:370,
                                         width: 500,
                                         child: ListView.builder(
-                                          shrinkWrap: true,
+                                          shrinkWrap: false,
                                           itemCount: addOnlist.addno1.length,
                                           itemBuilder: (BuildContext context,
                                               int index) {
@@ -161,9 +161,9 @@ class _GridViewPageState extends State<homepage> {
                                                       width: 10,
                                                     ),
                                                     Container(
-                                                      height: 150,
-                                                      width: 500,
+                                                      
                                                       child: ListView.builder(
+                                                        physics: NeverScrollableScrollPhysics(),
                                                           shrinkWrap: true,
                                                           itemCount: addOnlist
                                                               .addno1[index]
@@ -222,6 +222,7 @@ class _GridViewPageState extends State<homepage> {
                                                                       )),
                                                                   Container(
                                                                     width: 425,
+                                                                    
                                                                     decoration:
                                                                         BoxDecoration(),
                                                                     child: Row(
@@ -274,11 +275,14 @@ class _GridViewPageState extends State<homepage> {
                                           padding: EdgeInsets.all(0),
                                           child: Column(children: [
                                             TextField(
+                                              controller: textarea,
+                      keyboardType: TextInputType.multiline,
                                                 maxLines: 4,
                                                 autocorrect: true,
                                                 decoration: InputDecoration(
-                                                  hintText: '',
+                                                  
                                                   hintStyle: TextStyle(
+                                                    fontSize: 16,
                                                       color: Colors.grey),
                                                   filled: true,
                                                   fillColor: Colors.white70,
@@ -314,7 +318,7 @@ class _GridViewPageState extends State<homepage> {
                                               child: ElevatedButton(
                                                   onPressed: () {
                                                     print(textarea.text);
-                                                    Navigator.pop(context);
+                                                   Navigator.pop(context);
                                                   },
                                                   style:
                                                       ElevatedButton.styleFrom(
@@ -341,6 +345,7 @@ class _GridViewPageState extends State<homepage> {
                             });
                       } else {
                         setState(() {
+                          print('boss');
                           context.read<provider_app>().add(tasks1(
                                 name: "${item[index].productname}",
                                 price: item[index].price,

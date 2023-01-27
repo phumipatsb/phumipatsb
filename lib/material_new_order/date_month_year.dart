@@ -10,7 +10,7 @@ class date_month_year extends StatelessWidget {
       textAlign: TextAlign.left,
       style: TextStyle(
         height: 1.2102272327129657,
-        fontSize: 13.0,
+        fontSize: 15,
         fontFamily: 'Inter',
         fontWeight: FontWeight.w400,
         color: Color.fromARGB(255, 0, 0, 0),

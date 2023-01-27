@@ -8,7 +8,7 @@ import 'material_new_order/neworder.dart';
 import 'material_new_order/new_meun_list.dart';
 import 'package:provider/provider.dart';
 import 'material_new_order/CategoryMenu.dart';
-
+import 'material_new_order/pop_up_add_on.dart';
 class sumneworder extends StatefulWidget {
   @override
   _sumneworder createState() => _sumneworder();
@@ -29,7 +29,7 @@ class _sumneworder extends State<sumneworder> {
         child: Padding(
           
           padding: const EdgeInsets.fromLTRB(00, 0, 0, 0),
-          child: Row(
+          child: Column(
             children: [
               Flexible(
                 flex: 1,
@@ -67,7 +67,8 @@ class _sumneworder extends State<sumneworder> {
                                 child: Padding(
                                   padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                                   child: Container(
-                                    child: neworder(),
+                                    child: testneworder(),
+                                    //child: neworder(),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(16),
                                       color: HexColor(backgroundColor),

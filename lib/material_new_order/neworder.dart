@@ -11,7 +11,7 @@ import '/material_new_order/dividing_line2.dart';
 import '/material_new_order/dividing_line3.dart';
 import '/material_new_order/clear_all.dart';
 import '/material_new_order/display_total.dart';
-import '/material_new_order/display_price.dart';
+
 import '/material_new_order/text_order.dart';
 import '/material_new_order/displayTable.dart';
 import '/material_new_order/list_view_order.dart';
