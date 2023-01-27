@@ -142,7 +142,7 @@ class _testneworder extends State<testneworder> {
                             Padding(
                               padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                               child: Container(
-                                width: 300,
+                                width: 280,
                                                 height: 50.0,
                                 child: ElevatedButton(
                                                     onPressed: () {

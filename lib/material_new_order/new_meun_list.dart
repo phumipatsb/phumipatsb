@@ -97,7 +97,7 @@ class _GridViewPageState extends State<homepage> {
                     onTap: () {
                       print(index);
 
-                      if (y == 11) {
+                      if (y == 10) {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {

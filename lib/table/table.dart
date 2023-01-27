@@ -109,8 +109,8 @@ class _table extends State<table> {
                                         var AddItem =context.read<zoneName>();
                                             AddItem.zoneNameSelect = zone.Zone[index].ZoneName;
                                             AddItem.subZoneNameSelect = zone.Zone[index].SubZone[index2].SubZoneName;
-                                            //print(AddItem.subZoneNameSelect);
-                                        //print(AddItem.zoneNameSelect);
+                                            print(AddItem.subZoneNameSelect);
+                                        print(AddItem.zoneNameSelect);
                                         setState((){
                                         });
                                       },

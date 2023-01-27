@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-
+import  'package:intl/intl.dart';
 
 class date_month_year extends StatelessWidget {
+  String cdate2 = DateFormat("dd  MMMM yyyy").format(DateTime.now());
   @override
+
   Widget build(BuildContext context) {
     return Text(
-      '20 December 2022',
+      '$cdate2',
       overflow: TextOverflow.visible,
       textAlign: TextAlign.left,
       style: TextStyle(

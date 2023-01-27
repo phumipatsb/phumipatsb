@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
+import '../models/provider_app.dart';
 
 
 class displayTable extends StatelessWidget {
+  
+  //"${tasks[index].name}"
   @override
   Widget build(BuildContext context) {
+    final zone = Provider.of<zoneName>(context);
+    //String = 
     return Text(
-      '''Table 01''',
+      'Table ${zone.subZoneNameSelect}',
+      
       overflow: TextOverflow.visible,
       textAlign: TextAlign.left,
       style: TextStyle(
