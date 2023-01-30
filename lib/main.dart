@@ -7,15 +7,19 @@ import 'sumneworder.dart';
 import 'models/provider_app.dart';
 import 'models/provider_category.dart';
 import 'testlayout.dart';
-
+import 'package:flutter/services.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
+  
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return MultiProvider(
+      
       providers: [
         ChangeNotifierProvider(create: (_) => provider_app()),
         ChangeNotifierProvider(create: (_) => zoneName()),
@@ -23,7 +27,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => Categories()),
       ],
       child: MaterialApp(
-        home: table(),
+        debugShowCheckedModeBanner: false,
+        home:  Scaffold(
+        body:table(),)
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'date_month_year.dart';
 import 'clear_all.dart';
 import 'layout_item.dart';
 import 'display_total.dart';
+import 'package:test1/main_order/main_order.dart';
 class testneworder extends StatefulWidget {
   @override
   _testneworder createState() => _testneworder();
@@ -146,7 +147,7 @@ class _testneworder extends State<testneworder> {
                                                 height: 50.0,
                                 child: ElevatedButton(
                                                     onPressed: () {
-                                                      
+                                                      Navigator.push(context,MaterialPageRoute(builder: (context) => main_order()));
                                                     },
                                                     style:
                                                         ElevatedButton.styleFrom(
