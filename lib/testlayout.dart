@@ -334,3 +334,109 @@ class ProductSelect {
 
   ProductSelect({required this.name, required this.price, required this.image});
 }
+
+
+
+
+class CategoryMenu extends StatefulWidget {
+  @override
+  _CategoryMenuState createState() => _CategoryMenuState();
+}
+
+class _CategoryMenuState extends State<CategoryMenu> {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Flexible(
+          flex: 3,
+          fit: FlexFit.tight,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                // color: HexColor(whiteColor),
+              ),
+              child: ListView.builder(
+                physics: ClampingScrollPhysics(),
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 15,
+                itemBuilder: (BuildContext context, int index) => Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Container(
+                        width: 75,
+                        height: 75,
+                        //BoxDecoration Widget
+                        decoration: BoxDecoration(
+                          image: const DecorationImage(
+                            image: NetworkImage(
+                                'https://fourleaf-datacenter.s3-ap-southeast-1.amazonaws.com/partner1/media/dining_room/1b572ae3-ff81-4fa0-a52c-a0b4ab005783_35SD.jpeg'),
+                            fit: BoxFit.cover,
+                          ), //DecorationImage
+                          border: Border.all(
+                            color: HexColor(lineColor),
+                            width: 3,
+                          ), //Border.all
+                          borderRadius: BorderRadius.circular(180),
+                        ), //BoxDecoration
+                      ),
+                    ),
+                    Container(
+                      child: const Text(
+                        'Category',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+        Divider(
+          color: HexColor(lineColor),
+          thickness: 2,
+        ),
+        Flexible(
+          flex: 1,
+          fit: FlexFit.tight,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                // color: HexColor(whiteColor),
+              ),
+              child: ListView.builder(
+                physics: ClampingScrollPhysics(),
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 15,
+                itemBuilder: (BuildContext context, int index) => Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Container(
+                        child: const Text(
+                          'SubCategory',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}

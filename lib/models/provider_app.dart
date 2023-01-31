@@ -56,6 +56,8 @@ class zoneName with ChangeNotifier {
   final List<zone> _zone = [
     zone(ZoneName: 'Zone A', SubZone: [
       SubZoneDetail(SubZoneName: 'A1', Status: ''),
+      
+
       SubZoneDetail(SubZoneName: 'A2', Status: '')
     ]),
     zone(ZoneName: 'Zone B', SubZone: [
