@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test1/table/new_table.dart';
 import 'material_new_order/leftside.dart';
 import 'material_new_order/layout_item.dart';
 import 'package:test1/table/table.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home:  Scaffold(
-        body:table(),)
+        body:new_table(),)
       ),
     );
   }

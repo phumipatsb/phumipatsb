@@ -336,7 +336,8 @@ class _GridViewPageState extends State<homepage> {
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           color:
-                                                              Colors.white))),
+                                                              Colors.white))
+                                                              ),
                                             )
                                           ])),
                                     ],

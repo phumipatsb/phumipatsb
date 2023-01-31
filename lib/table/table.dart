@@ -16,8 +16,7 @@ class table extends StatefulWidget {
 }
 
 class _table extends State<table> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {

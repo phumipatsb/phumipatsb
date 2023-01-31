@@ -54,15 +54,15 @@ class provider_app with ChangeNotifier {
 
 class zoneName with ChangeNotifier {
   final List<zone> _zone = [
-    zone(ZoneName: 'Queue', SubZone: [
-      SubZoneDetail(SubZoneName: 'Take Away', Status: ''),
-      SubZoneDetail(SubZoneName: 'Q', Status: 'Ordering')
-    ]),
     zone(ZoneName: 'Zone A', SubZone: [
+      SubZoneDetail(SubZoneName: 'A1', Status: ''),
+      SubZoneDetail(SubZoneName: 'A2', Status: '')
+    ]),
+    zone(ZoneName: 'Zone B', SubZone: [
       SubZoneDetail(SubZoneName: 'A1', Status: ''),
       SubZoneDetail(SubZoneName: 'A2', Status: 'Pay')
     ]),
-    zone(ZoneName: 'Zone B', SubZone: [
+    zone(ZoneName: 'Zone C', SubZone: [
       SubZoneDetail(SubZoneName: 'B1', Status: 'Ordering'),
       SubZoneDetail(SubZoneName: 'B2', Status: 'Pay')
     ]),
