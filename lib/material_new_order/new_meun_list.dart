@@ -97,7 +97,7 @@ class _GridViewPageState extends State<homepage> {
                     onTap: () {
                       print(index);
 
-                      if (y == 10) {
+                      if (y == 11) {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
@@ -309,7 +309,7 @@ class _GridViewPageState extends State<homepage> {
                                                         color: Colors.green),
                                                   ),
                                                 )),
-                                            SizedBox(
+                                           const SizedBox(
                                               height: 10,
                                             ),
                                             SizedBox(

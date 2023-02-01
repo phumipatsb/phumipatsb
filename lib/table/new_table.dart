@@ -187,61 +187,67 @@ class _new_table extends State<new_table> {
                                                         maxLines: 1,
                                                       ),
                                                     ),
+
                                                     Wrap(
                                                       children: [
-                                                        Container(
-                                                          width: 400,
-                                                          height: 80,
-                                                          child: ListView.builder(
-                                                   shrinkWrap: true,          
-                                  itemCount: zone.Zone[index].SubZone.length,
-                                  scrollDirection: Axis.horizontal,
-                                  physics: const BouncingScrollPhysics(),
-                                  itemBuilder: (context, index2) {
-                                    return GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(context,MaterialPageRoute(builder: (context) => sumneworder()));
-
-                                        var AddItem =context.read<zoneName>();
-                                            AddItem.zoneNameSelect = zone.Zone[index].ZoneName;
-                                            AddItem.subZoneNameSelect = zone.Zone[index].SubZone[index2].SubZoneName;
-                                            print(AddItem.subZoneNameSelect);
-                                        print(AddItem.zoneNameSelect);
-                                        setState((){
-                                        }
-                                        
-                                        );
-                                        
-                                      },
-                                      child: AnimatedContainer(
-                                        height: 70,
-                                        width: 70,
-                                        duration: const Duration(
-                                            milliseconds: 300),
-                                        margin: const EdgeInsets.all(6),
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(18),
-                                            color:  ChangeColor(zone.Zone[index].SubZone[index2].Status) ),
-                                        child: Center(
-                                          child: Text(
-                                              zone.Zone[index].SubZone[index2].SubZoneName,
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 20,)
-                                          ),
-                                        ),
-                                      ),
-                                      );
-                                      }
-                                      ),
-                                        
-                                                        )
-
-
+                                                        SizedBox(
+                                                         
+                                                          height: MediaQuery.of(context).size.height/4,
+                                                        
+                                                        child: GridView.builder(
+                                                         shrinkWrap: true,
+                                                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                          crossAxisCount: 5,
+                                                          crossAxisSpacing: 12.0,
+                                                          mainAxisSpacing: 10,
+                                                          mainAxisExtent: 100,
+                                                        ),
+                                                          
+                                                          
+                                                          itemCount: zone.Zone[index].SubZone.length,
+                                                          itemBuilder: (context, index2){
+                                                            return GestureDetector(
+                                                              onTap: () {
+                                                                Navigator.push(context,MaterialPageRoute(builder: (context) => sumneworder()));
+                                                    
+                                                                var AddItem =context.read<zoneName>();
+                                                                    AddItem.zoneNameSelect = zone.Zone[index].ZoneName;
+                                                                    AddItem.subZoneNameSelect = zone.Zone[index].SubZone[index2].SubZoneName;
+                                                                    print(AddItem.subZoneNameSelect);
+                                                                print(AddItem.zoneNameSelect);
+                                                                setState((){
+                                                                });
+                                                              },
+                                                              child: AnimatedContainer(
+                                                                                            height: 80,
+                                                                                            width: 80,
+                                                                                            duration: const Duration(
+                                                                                                milliseconds: 300),
+                                                                                            margin: const EdgeInsets.all(6),
+                                                                                            decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(18),
+                                                                                                color:  ChangeColor(zone.Zone[index].SubZone[index2].Status) ),
+                                                                                            child: Center(
+                                                                                              child: Text(
+                                                                                                  zone.Zone[index].SubZone[index2].SubZoneName,
+                                                                                                  style: TextStyle(
+                                                                                                    color: Colors.black,
+                                                                                                    fontSize: 20,)
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                              
+                                                            );
+                                                          }),
+                                                        
+                                                        
+                                                        
+                                                      ),
                                                       ],
-                                                      
-                                                      
+                                                       
                                                     )
+
+                                                    
                                                   ],
                                                 ),
                                               ),

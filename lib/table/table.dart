@@ -132,7 +132,8 @@ class _table extends State<table> {
                                         ),
                                       ),
                                     );
-                                  }))
+                                  })
+                                  )
                         ],
                       ),
                     );
