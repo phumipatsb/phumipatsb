@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-class Itemcategory {
-  String? name;
-  String? icon;
-  List? categories;
+// class Itemcategory {
+//   String? name;
+//   String? icon;
+//   List? categories;
 
-  Itemcategory(
-      {required this.name, required this.icon, required this.categories});
-}
+//   Itemcategory(
+//       {required this.name, required this.icon, required this.categories});
+// }
 
 class Productprice {
+  bool statusaddno;
   String? categoriesproduct;
   String? productname;
   String? image;
@@ -18,48 +19,58 @@ class Productprice {
       {required categoriesproduct,
       required this.productname,
       required this.image,
-      required this.price});
+      required this.price,
+      required this.statusaddno
+      
+      });
 }
 
-class ProductSelect {
-  String name = '';
-  int? price;
-  String image = '';
-  int amount = 1;
+// class ProductSelect {
+//   String name = '';
+//   int? price;
+//   String image = '';
+//   int amount = 1;
 
-  ProductSelect({required this.name, required this.price, required this.image});
-}
+//   ProductSelect({required this.name, required this.price, required this.image});
+// }
 
-class provimenu {
-  final String name;
-  final int? price;
-  final String images;
+// class provimenu {
+//   final String name;
+//   final int? price;
+//   final String images;
 
-  provimenu({required this.name, required this.price, required this.images});
-}
+//   provimenu({required this.name, required this.price, required this.images});
+// }
 
-class DynamicList {
-  List<String> _list = [];
-  DynamicList(this._list);
 
-  List get list => _list;
-}
 
 class tasks1 {
   String name;
   int price;
   String images;
   int amount = 1;
-  tasks1({required this.name, required this.price, required this.images});
+  List <addonofs>SubaddonChoice;
+  tasks1({required this.name, required this.price, required this.images, required this.SubaddonChoice  });
 }
 
-class tasks {
-  String name;
-  int price;
-  String images;
-  int amount = 1;
-  tasks({required this.name, required this.price, required this.images});
+class addonofs{
+  String nameadd ;
+  String subNameAddOn;
+  double price;
+
+  addonofs({required this.nameadd,required this.price,required this.subNameAddOn});
+
 }
+
+// class tasks {
+//   String name;
+//   int price;
+//   String images;
+//   int amount = 1;
+//   List addonst =[];
+//   tasks({required this.name, required this.price, required this.images,required this.addonst});
+// }
+
 
 class zone {
   final String ZoneName;
@@ -84,9 +95,10 @@ class selectzone {
 
 class addon {
   final String nameaddon;
+  final bool checkboxstatus;
   final List<SubAddOnDetail> Subaddon;
 
-  addon({required this.nameaddon, required this.Subaddon});
+  addon({required this.nameaddon, required this.Subaddon,required this.checkboxstatus});
 }
 
 class SubAddOnDetail {

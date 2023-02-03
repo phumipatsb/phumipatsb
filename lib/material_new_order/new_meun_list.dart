@@ -19,43 +19,38 @@ class _GridViewPageState extends State<homepage> {
   bool checkboxValue = false;
   int y = 10;
   TextEditingController textarea = TextEditingController();
-  List<ProductSelect> Mapmanu = [];
-
-  final item1 = <dynamic>[
-    Productprice(
-        categoriesproduct: 'Food',
-        productname: 'Pad Thai',
-        image:
-            'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
-        price: 255),
-  ];
 
   final item = <dynamic>[
     Productprice(
+        statusaddno: true,
         categoriesproduct: 'Food',
         productname: 'Pad Thai',
         image:
             'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
         price: 255),
     Productprice(
+        statusaddno: false,
         categoriesproduct: 'Food',
         productname: 'PSpicy fried chicken',
         image:
             'https://s359.thaibuffer.com/pagebuilder/b8414c05-6bb1-4d38-afe6-ee0e7077a080.jpg',
         price: 220),
     Productprice(
+        statusaddno: true,
         categoriesproduct: 'Curries',
         productname: 'Sun-dried shrimp salad',
         image:
             'https://www.easycookingmenu.com/media/k2/items/cache/905cf51f8ae04225d8794e7707be5d97_XL.jpg',
         price: 75),
     Productprice(
+        statusaddno: false,
         categoriesproduct: 'Salad',
         productname: ' Chicken Green Curry',
         image:
             'https://www.easycookingmenu.com/media/k2/items/cache/be2c0e4bc68e97336862a76636fd8047_XL.jpg',
         price: 100),
     Productprice(
+        statusaddno: true,
         categoriesproduct: 'Soup',
         productname: ' Chicken Green Curry',
         image:
@@ -86,335 +81,351 @@ class _GridViewPageState extends State<homepage> {
             var tasks = context.read<provider_app>().tasks;
             var addOnlist = Provider.of<addOn>(context);
             return Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    16.0,
-                  ),
-                  color: Colors.white,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                  16.0,
                 ),
-                child: Wrap(children: [
+                color: Colors.white,
+              ),
+              child: Wrap(
+                children: [
                   GestureDetector(
                     onTap: () {
                       print(index);
 
-                      if (y == 10) {
+                      if (item[index].statusaddno == true) {
                         showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                content: Container(
-                                  height: 600,
-                                  width: 500,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        alignment: Alignment.topRight,
-                                        child: IconButton(
-                                          icon: Icon(
-                                            Icons.close,
-                                            color: Colors.black54,
-                                            size: 45,
-                                          ),
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              content: Container(
+                                height: 600,
+                                width: 500,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.topRight,
+                                      child: IconButton(
+                                        icon: Icon(
+                                          Icons.close,
+                                          color: Colors.black54,
+                                          size: 45,
                                         ),
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
                                       ),
-                                      Container(
-                                        height:370,
-                                        width: 500,
-                                        child: ListView.builder(
-                                          shrinkWrap: false,
-                                          itemCount: addOnlist.addno1.length,
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            return Container(
-                                              child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        "${addOnlist.addno1[index].nameaddon}",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .subtitle1!
-                                                            .merge(
-                                                              const TextStyle(
-                                                                fontSize: 35,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                              ),
-                                                            ),
-                                                      ),
-                                                    ),
-                                                    const Divider(
-                                                      height: 10,
-                                                      thickness: 2,
-                                                      indent: 0,
-                                                      endIndent: 0,
-                                                      color: Color.fromARGB(
-                                                          255, 255, 110, 110),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 10,
-                                                    ),
-                                                    Container(
-                                                      
-                                                      child: ListView.builder(
-                                                        physics: NeverScrollableScrollPhysics(),
-                                                          shrinkWrap: true,
-                                                          itemCount: addOnlist
-                                                              .addno1[index]
-                                                              .Subaddon
-                                                              .length,
-                                                          itemBuilder:
-                                                              (BuildContext
-                                                                      context,
-                                                                  int index2) {
-                                                            return Align(
+                                    ),
+                                    Container(
+                                      height: 370,
+                                      width: 500,
+                                      child: ListView.builder(
+                                        shrinkWrap: false,
+                                        itemCount: addOnlist.addno1.length,
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          return Container(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Container(
+                                                  child: Text(
+                                                    "${addOnlist.addno1[index].nameaddon}",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .subtitle1!
+                                                        .merge(
+                                                          const TextStyle(
+                                                            fontSize: 35,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                          ),
+                                                        ),
+                                                  ),
+                                                ),
+                                                const Divider(
+                                                  height: 10,
+                                                  thickness: 2,
+                                                  indent: 0,
+                                                  endIndent: 0,
+                                                  color: Color.fromARGB(
+                                                      255, 255, 110, 110),
+                                                ),
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Container(
+                                                  child: ListView.builder(
+                                                    physics:
+                                                        NeverScrollableScrollPhysics(),
+                                                    shrinkWrap: true,
+                                                    itemCount: addOnlist
+                                                        .addno1[index]
+                                                        .Subaddon
+                                                        .length,
+                                                    itemBuilder:
+                                                        (BuildContext context,
+                                                            int index2) {
+                                                      return Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.4, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Align(
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      0.4, 0),
+                                                                      10, 0),
+                                                              child: Container(
+                                                                width: 50,
+                                                                child:
+                                                                    FormField<
+                                                                        bool>(
+                                                                  builder:
+                                                                      (state) {
+                                                                    return Column(
+                                                                      children: <
+                                                                          Widget>[
+                                                                        Row(
+                                                                          children: <
+                                                                              Widget>[
+                                                                            Checkbox(
+                                                                              value: addOnlist.addno1[index].Subaddon[index2].check_status,
+                                                                              onChanged: (value) {
+                                                                                setState(() {
+                                                                                  addOnlist.addno1[index].Subaddon[index2].check_status = value!;
+                                                                                  state.didChange(value);
+                                                                                });
+                                                                              },
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              width: 425,
+                                                              decoration:
+                                                                  BoxDecoration(),
                                                               child: Row(
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
                                                                 mainAxisAlignment:
                                                                     MainAxisAlignment
-                                                                        .start,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .center,
+                                                                        .spaceBetween,
                                                                 children: [
-                                                                  Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              10,
-                                                                              0),
-                                                                      child:
-                                                                          Container(
-                                                                        width:
-                                                                            50,
-                                                                        child: FormField<
-                                                                            bool>(
-                                                                          builder:
-                                                                              (state) {
-                                                                            return Column(
-                                                                              children: <Widget>[
-                                                                                Row(
-                                                                                  children: <Widget>[
-                                                                                    Checkbox(
-                                                                                        value: addOnlist.addno1[index].Subaddon[index2].check_status,
-                                                                                        onChanged: (value) {
-                                                                                          setState(() {
-                                                                                            addOnlist.addno1[index].Subaddon[index2].check_status = value!;
-                                                                                            state.didChange(value);
-                                                                                          });
-                                                                                        }),
-                                                                                  ],
-                                                                                ),
-                                                                              ],
-                                                                            );
-                                                                          },
-                                                                        ),
-                                                                      )),
-                                                                  Container(
-                                                                    width: 425,
-                                                                    
-                                                                    decoration:
-                                                                        BoxDecoration(),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .spaceBetween,
-                                                                      children: [
-                                                                        Text(
-                                                                            "${addOnlist.addno1[index].Subaddon[index2].subNameAddOn}",
-                                                                            style: TextStyle(
-                                                                                fontSize: 20,
-                                                                                fontFamily: 'Inter',
-                                                                                fontWeight: FontWeight.w500,
-                                                                                color: Colors.black)),
-                                                                        Text(
-                                                                            "${addOnlist.addno1[index].Subaddon[index2].priceAddOn}",
-                                                                            style: TextStyle(
-                                                                                fontSize: 20,
-                                                                                fontFamily: 'Inter',
-                                                                                fontWeight: FontWeight.w500,
-                                                                                color: Colors.black)),
-                                                                      ],
-                                                                    ),
-                                                                  ),
+                                                                  Text(
+                                                                      "${addOnlist.addno1[index].Subaddon[index2].subNameAddOn}",
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              20,
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          fontWeight: FontWeight
+                                                                              .w500,
+                                                                          color:
+                                                                              Colors.black)),
+                                                                  Text(
+                                                                      "${addOnlist.addno1[index].Subaddon[index2].priceAddOn}",
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              20,
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          fontWeight: FontWeight
+                                                                              .w500,
+                                                                          color:
+                                                                              Colors.black)),
                                                                 ],
                                                               ),
-                                                            );
-                                                          }),
-                                                    ),
-                                                  ]),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: Alignment.bottomLeft,
-                                        padding: EdgeInsets.all(10),
-                                        child: Text('comment',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontFamily: 'Inter',
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.black)),
-                                      ),
-                                      Container(
-                                          alignment: Alignment.center,
-                                          padding: EdgeInsets.all(0),
-                                          child: Column(children: [
-                                            TextField(
-                                              controller: textarea,
-                      keyboardType: TextInputType.multiline,
-                                                maxLines: 4,
-                                                autocorrect: true,
-                                                decoration: InputDecoration(
-                                                  
-                                                  hintStyle: TextStyle(
-                                                    fontSize: 16,
-                                                      color: Colors.grey),
-                                                  filled: true,
-                                                  fillColor: Colors.white70,
-                                                  contentPadding:
-                                                      EdgeInsets.fromLTRB(
-                                                          10, 0, 0, 0),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                8.0)),
-                                                    borderSide: BorderSide(
-                                                        color: Colors.red,
-                                                        width: 2),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
                                                   ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                8.0)),
-                                                    borderSide: BorderSide(
-                                                        color: Colors.green),
-                                                  ),
-                                                )),
-                                           const SizedBox(
-                                              height: 10,
+                                                ),
+                                              ],
                                             ),
-                                            SizedBox(
-                                              width: 300,
-                                              height: 50.0,
-                                              child: ElevatedButton(
-                                                  onPressed: () {
-                                                    print(textarea.text);
-                                                   Navigator.pop(context);
-                                                   
-                                                  },
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                    primary: Color.fromARGB(
-                                                        255,
-                                                        255,
-                                                        111,
-                                                        111), // background
-                                                  ),
-                                                  child: Text("Confirm",
-                                                      style: TextStyle(
-                                                          fontSize: 20,
-                                                          fontFamily: 'Inter',
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color:
-                                                              Colors.white))
-                                                              ),
-                                            )
-                                          ])),
-                                    ],
-                                  ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.bottomLeft,
+                                      padding: EdgeInsets.all(10),
+                                      child: Text('NOTE',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: 'Inter',
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black)),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      padding: EdgeInsets.all(0),
+                                      child: Column(
+                                        children: [
+                                          TextField(
+                                              controller: textarea,
+                                              keyboardType:
+                                                  TextInputType.multiline,
+                                              maxLines: 4,
+                                              autocorrect: true,
+                                              decoration: InputDecoration(
+                                                hintStyle: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.grey),
+                                                filled: true,
+                                                fillColor: Colors.white70,
+                                                contentPadding:
+                                                    EdgeInsets.fromLTRB(
+                                                        10, 0, 0, 0),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(8.0)),
+                                                  borderSide: BorderSide(
+                                                      color: Colors.red,
+                                                      width: 2),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(8.0)),
+                                                  borderSide: BorderSide(
+                                                      color: Colors.green),
+                                                ),
+                                              )),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          SizedBox(
+                                            width: 300,
+                                            height: 50.0,
+                                            child: ElevatedButton(
+                                                onPressed: () {
+                                                  print(textarea.text);
+                                                  Navigator.pop(context);
+                                                },
+                                                style: ElevatedButton.styleFrom(
+                                                  primary: Color.fromARGB(
+                                                      255,
+                                                      255,
+                                                      111,
+                                                      111), // background
+                                                ),
+                                                child: Text("Confirm",
+                                                    style: TextStyle(
+                                                        fontSize: 20,
+                                                        fontFamily: 'Inter',
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: Colors.white))),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              );
-                            });
+                              ),
+                            );
+                          },
+                        );
                       } else {
-                        setState(() {
-                          print('boss');
-                          context.read<provider_app>().add(tasks1(
-                                name: "${item[index].productname}",
-                                price: item[index].price,
-                                images: "${item[index].image}",
-                              ));
-                        });
+                        setState(
+                          () {
+                            print('boss');
+                            context.read<provider_app>().add(
+                                  tasks1(
+                                    name: "${item[index].productname}",
+                                    price: item[index].price,
+                                    images: "${item[index].image}",
+                                    SubaddonChoice: [],
+                                  ),
+                                );
+                          },
+                        );
                       }
 
                       //print('name' + "${item[index].productname}");
                       //print(Mapmanu);
                     },
                     child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(16.0),
-                              topRight: Radius.circular(16.0),
-                              bottomLeft: Radius.circular(0),
-                              bottomRight: Radius.circular(0),
-                            ),
-                            child: Image.network(
-                              "${item[index].image}",
-                              height: 170,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(16.0),
+                            topRight: Radius.circular(16.0),
+                            bottomLeft: Radius.circular(0),
+                            bottomRight: Radius.circular(0),
                           ),
-                          Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "${item[index].productname}",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subtitle1!
-                                        .merge(
-                                          const TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                  ),
-                                  const SizedBox(
-                                    height: 8.0,
-                                  ),
-                                  Text(
-                                    "${item[index].price}",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subtitle2!
-                                        .merge(
-                                          TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            color: Colors.grey.shade500,
-                                          ),
-                                        ),
-                                  ),
-                                  const SizedBox(
-                                    height: 2,
-                                  ),
-                                ],
-                              ))
-                        ]),
+                          child: Image.network(
+                            "${item[index].image}",
+                            height: 170,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "${item[index].productname}",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle1!
+                                    .merge(
+                                      const TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                              ),
+                              const SizedBox(
+                                height: 8.0,
+                              ),
+                              Text(
+                                "${item[index].price}",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle2!
+                                    .merge(
+                                      TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.grey.shade500,
+                                      ),
+                                    ),
+                              ),
+                              const SizedBox(
+                                height: 2,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ]));
+                ],
+              ),
+            );
           },
         ),
       ),
