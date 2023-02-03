@@ -106,13 +106,14 @@ class zoneName with ChangeNotifier {
 
 class addOn with ChangeNotifier {
   final List<addon> _addon = [
-    addon(nameaddon: 'Size', checkboxstatus: false, Subaddon: [
-      SubAddOnDetail(subNameAddOn: 'XL', priceAddOn: 20, check_status: true),
+    addon(nameaddon: 'Size', checkboxstatus: true, Subaddon: [
+      SubAddOnDetail(subNameAddOn: 'XL', priceAddOn: 20, check_status: false),
       SubAddOnDetail(subNameAddOn: 'L', priceAddOn: 15, check_status: false),
-      SubAddOnDetail(subNameAddOn: 'M', priceAddOn: 10, check_status: true),
+      SubAddOnDetail(subNameAddOn: 'M', priceAddOn: 10, check_status: false),
       SubAddOnDetail(subNameAddOn: 'S', priceAddOn: 15, check_status: false),
+      SubAddOnDetail(subNameAddOn: 'S1', priceAddOn: 15, check_status: false),
     ]),
-    addon(nameaddon: 'Add On',checkboxstatus: true, Subaddon: [
+    addon(nameaddon: 'Add On',checkboxstatus: false, Subaddon: [
       SubAddOnDetail(
           subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
       SubAddOnDetail(
@@ -120,7 +121,7 @@ class addOn with ChangeNotifier {
       SubAddOnDetail(
           subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
     ]),
-    addon(nameaddon: 'Add On',checkboxstatus: true, Subaddon: [
+    addon(nameaddon: 'Add On',checkboxstatus: false, Subaddon: [
       SubAddOnDetail(
           subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
       SubAddOnDetail(
@@ -128,7 +129,7 @@ class addOn with ChangeNotifier {
       SubAddOnDetail(
           subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
     ]),
-    addon(nameaddon: 'Add On',checkboxstatus: true, Subaddon: [
+    addon(nameaddon: 'Add On',checkboxstatus: false, Subaddon: [
       SubAddOnDetail(
           subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
       SubAddOnDetail(

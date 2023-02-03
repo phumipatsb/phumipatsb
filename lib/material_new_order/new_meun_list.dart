@@ -125,6 +125,7 @@ class _GridViewPageState extends State<homepage> {
                                         itemBuilder:
                                             (BuildContext context, int index) {
                                           return Container(
+                                            
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
@@ -155,109 +156,9 @@ class _GridViewPageState extends State<homepage> {
                                                 const SizedBox(
                                                   width: 10,
                                                 ),
-                                                Container(
-                                                  child: ListView.builder(
-                                                    physics:
-                                                        NeverScrollableScrollPhysics(),
-                                                    shrinkWrap: true,
-                                                    itemCount: addOnlist
-                                                        .addno1[index]
-                                                        .Subaddon
-                                                        .length,
-                                                    itemBuilder:
-                                                        (BuildContext context,
-                                                            int index2) {
-                                                      return Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.4, 0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      10, 0),
-                                                              child: Container(
-                                                                width: 50,
-                                                                child:
-                                                                    FormField<
-                                                                        bool>(
-                                                                  builder:
-                                                                      (state) {
-                                                                    return Column(
-                                                                      children: <
-                                                                          Widget>[
-                                                                        Row(
-                                                                          children: <
-                                                                              Widget>[
-                                                                            Checkbox(
-                                                                              value: addOnlist.addno1[index].Subaddon[index2].check_status,
-                                                                              onChanged: (value) {
-                                                                                setState(() {
-                                                                                  addOnlist.addno1[index].Subaddon[index2].check_status = value!;
-                                                                                  state.didChange(value);
-                                                                                });
-                                                                              },
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              width: 425,
-                                                              decoration:
-                                                                  BoxDecoration(),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                children: [
-                                                                  Text(
-                                                                      "${addOnlist.addno1[index].Subaddon[index2].subNameAddOn}",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              20,
-                                                                          fontFamily:
-                                                                              'Inter',
-                                                                          fontWeight: FontWeight
-                                                                              .w500,
-                                                                          color:
-                                                                              Colors.black)),
-                                                                  Text(
-                                                                      "${addOnlist.addno1[index].Subaddon[index2].priceAddOn}",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              20,
-                                                                          fontFamily:
-                                                                              'Inter',
-                                                                          fontWeight: FontWeight
-                                                                              .w500,
-                                                                          color:
-                                                                              Colors.black)),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      );
-                                                    },
-                                                  ),
-                                                ),
+                                                 
+                                                choiceoptions(addOnlist.addno1[index].checkboxstatus,index ),
+                                                
                                               ],
                                             ),
                                           );
@@ -431,19 +332,112 @@ class _GridViewPageState extends State<homepage> {
       ),
     );
   }
-  // chackboxst(String status ){
-  //   switch(status) {
-  //     case 'true':
-  //       // print('Ordering');
-  //       return true;
-  //       break; // The switch statement must be told to exit, or it will execute every case.
-  //     case'false':
-  //       // print('Pay');
-  //       return false;
-  //       break;
-  //     default:
-  //       // print('');
-  //       return ;
-  //   }
-  // }
+  choiceoptions(bool status,int indexs ){
+    if(status == true ){
+      var addOnlist = Provider.of<addOn>(context);
+      return Container(
+                                                  child: ListView.builder(
+                                                    physics:NeverScrollableScrollPhysics(),
+                                                    shrinkWrap: true,
+                                                    itemCount: addOnlist.addno1[indexs].Subaddon.length,
+                                                    itemBuilder:
+                                                        (BuildContext context,int index2) {
+                                                      return Align(
+                                                        alignment:
+                                                            AlignmentDirectional(0.4, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(10, 0),
+                                                              child: Container(
+                                                                width: 50,
+                                                                child:FormField<bool>(
+                                                                  builder:
+                                                                      (state) {
+                                                                    return Column( children: <Widget>[
+                                                                        Row(
+                                                                          children: <
+                                                                              Widget>[
+                                                                            Checkbox(
+                                                                              value: addOnlist.addno1[indexs].Subaddon[index2].check_status,
+                                                                              onChanged: (value) {
+                                                                                setState(
+                                                                                  () {
+                                                                                    addOnlist.addno1[indexs].Subaddon[index2].check_status = value!;
+                                                                                    state.didChange(value);
+                                                                                  },
+                                                                                );
+                                                                              },
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              width: 425,
+                                                              decoration:
+                                                                  BoxDecoration(),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  Text(
+                                                                      "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              20,
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          fontWeight: FontWeight
+                                                                              .w500,
+                                                                          color:
+                                                                              Colors.black)),
+                                                                  Text(
+                                                                      "${addOnlist.addno1[indexs].Subaddon[index2].priceAddOn}",
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              20,
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          fontWeight: FontWeight
+                                                                              .w500,
+                                                                          color:
+                                                                              Colors.black)),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                );
+
+      
+
+    }
+    else{
+      return Container();
+
+    }
+    
+    
+  }
 }
