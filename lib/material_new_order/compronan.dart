@@ -14,7 +14,7 @@ class Productprice {
   String? categoriesproduct;
   String? productname;
   String? image;
-  int? price;
+  double? price;
   Productprice(
       {required categoriesproduct,
       required this.productname,
@@ -46,19 +46,19 @@ class Productprice {
 
 class tasks1 {
   String name;
-  int price;
+  double price;
   String images;
   int amount = 1;
-  List <addonofs>SubaddonChoice;
-  tasks1({required this.name, required this.price, required this.images, required this.SubaddonChoice  });
+  final List<addonofs> addonSelect;
+  tasks1({required this.name, required this.price, required this.images,required this.addonSelect,});
 }
 
 class addonofs{
-  String nameadd ;
+  
   String subNameAddOn;
   double price;
 
-  addonofs({required this.nameadd,required this.price,required this.subNameAddOn});
+  addonofs({required this.price,required this.subNameAddOn});
 
 }
 

@@ -5,6 +5,19 @@ class provider_app with ChangeNotifier {
   List<tasks1> tasks = [];
   List<tasks1> get _tasks => List.unmodifiable(tasks);
 
+  List<addonofs> addonp=[];
+  List<addonofs> get _addonp => List.unmodifiable(addonp);
+  
+  void addAddon(addonofs text) {
+    addonp.add(text);
+    notifyListeners();
+
+    // for(i in tasks){
+    //   print(i);
+    // }
+  }
+
+
   void add(tasks1 text) {
     tasks.add(text);
     notifyListeners();
@@ -114,12 +127,9 @@ class addOn with ChangeNotifier {
       SubAddOnDetail(subNameAddOn: 'S1', priceAddOn: 15, check_status: false),
     ]),
     addon(nameaddon: 'Add On',checkboxstatus: false, Subaddon: [
-      SubAddOnDetail(
-          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
-      SubAddOnDetail(
-          subNameAddOn: 'ไข่เจียว', priceAddOn: 15, check_status: true),
-      SubAddOnDetail(
-          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
+      SubAddOnDetail(subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
+      SubAddOnDetail(subNameAddOn: 'ไข่เจียว', priceAddOn: 15, check_status: true),
+      SubAddOnDetail(subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
     ]),
     addon(nameaddon: 'Add On',checkboxstatus: false, Subaddon: [
       SubAddOnDetail(
@@ -142,4 +152,6 @@ class addOn with ChangeNotifier {
   List<addon> get addno1 {
     return [..._addon];
   }
+
+  
 }

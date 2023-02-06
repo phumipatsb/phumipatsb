@@ -126,10 +126,7 @@ class _layoutWidgetState extends State<layoutWidget> {
                                               Container(
                                                 child: Column(
                                                   children: [
-                                                    Text("data"),
-                                                    Text("data"),
-                                                    Text("data"),
-                                                    Text("data"),
+                                                    Text("data")
                                                   ],
                                                 ),
 
@@ -166,7 +163,7 @@ class _layoutWidgetState extends State<layoutWidget> {
                                     fit: FlexFit.tight,
                                     
                                     child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                      padding: const EdgeInsets.fromLTRB(0, 15, 10, 0),
                                       child: Column(
                                         
                                         crossAxisAlignment: CrossAxisAlignment.end,

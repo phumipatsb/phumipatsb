@@ -16,10 +16,11 @@ class _GridViewPageState extends State<homepage> {
   final ScrollController _controller = ScrollController();
   final _formKey = GlobalKey<FormState>();
   int counter = 0;
+ List<addonofs> chooseAddon=[];
   bool checkboxValue = false;
   int y = 10;
   TextEditingController textarea = TextEditingController();
-
+List<dynamic> AddItem = [];
   final item = <dynamic>[
     Productprice(
         statusaddno: true,
@@ -222,7 +223,24 @@ class _GridViewPageState extends State<homepage> {
                                             child: ElevatedButton(
                                                 onPressed: () {
                                                   print(textarea.text);
-                                                  Navigator.pop(context);
+                                                  setState(() {
+                                                  print('boss1');
+                                                  context.read<provider_app>().add(
+                                                        tasks1(
+                                                          name: "${item[index].productname}",
+                                                          price: item[index].price,
+                                                          images: "${item[index].image}",
+                                                          addonSelect:chooseAddon, 
+                                                        ),
+
+                                                      );
+                                                      
+                                                      
+                                                      
+                                                      
+                                                },
+                                              );
+                                              Navigator.pop(context);
                                                 },
                                                 style: ElevatedButton.styleFrom(
                                                   primary: Color.fromARGB(
@@ -257,7 +275,7 @@ class _GridViewPageState extends State<homepage> {
                                     name: "${item[index].productname}",
                                     price: item[index].price,
                                     images: "${item[index].image}",
-                                    SubaddonChoice: [],
+                                    addonSelect: chooseAddon,
                                   ),
                                 );
                           },
@@ -336,44 +354,50 @@ class _GridViewPageState extends State<homepage> {
     if(status == true ){
       var addOnlist = Provider.of<addOn>(context);
       return Container(
+        
+        
+      );
+
+      
+
+      
+
+    }
+    else{
+      var addOnlist = Provider.of<addOn>(context);
+      return Container(
                                                   child: ListView.builder(
                                                     physics:NeverScrollableScrollPhysics(),
                                                     shrinkWrap: true,
                                                     itemCount: addOnlist.addno1[indexs].Subaddon.length,
-                                                    itemBuilder:
-                                                        (BuildContext context,int index2) {
+                                                    itemBuilder:(BuildContext context,int index2) {
                                                       return Align(
-                                                        alignment:
-                                                            AlignmentDirectional(0.4, 0),
+                                                        alignment:AlignmentDirectional(0.4, 0),
                                                         child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
+                                                          mainAxisSize:MainAxisSize.max,
+                                                          mainAxisAlignment:MainAxisAlignment.start,
+                                                          crossAxisAlignment:CrossAxisAlignment.center,
                                                           children: [
                                                             Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(10, 0),
+                                                              alignment:AlignmentDirectional(10, 0),
                                                               child: Container(
                                                                 width: 50,
                                                                 child:FormField<bool>(
-                                                                  builder:
-                                                                      (state) {
+                                                                  builder:(state) {
                                                                     return Column( children: <Widget>[
                                                                         Row(
-                                                                          children: <
-                                                                              Widget>[
-                                                                            Checkbox(
-                                                                              value: addOnlist.addno1[indexs].Subaddon[index2].check_status,
+                                                                          children: <Widget>[
+                                                                            Checkbox(value: addOnlist.addno1[indexs].Subaddon[index2].check_status,
                                                                               onChanged: (value) {
-                                                                                setState(
-                                                                                  () {
-                                                                                    addOnlist.addno1[indexs].Subaddon[index2].check_status = value!;
-                                                                                    state.didChange(value);
+                                                                                setState(() 
+                                                                                {addOnlist.addno1[indexs].Subaddon[index2].check_status = value!;
+                                                                                  state.didChange(value);
+                                                                                  // print(addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn);
+                                                                                  (chooseAddon.add(addonofs(price: addOnlist.addno1[indexs].Subaddon[index2].priceAddOn, subNameAddOn: "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}")
+                                                                                    
+                                                                                    
+                                                                                  ));
+                                                                                  print(chooseAddon);
                                                                                   },
                                                                                 );
                                                                               },
@@ -388,38 +412,25 @@ class _GridViewPageState extends State<homepage> {
                                                             ),
                                                             Container(
                                                               width: 425,
-                                                              decoration:
-                                                                  BoxDecoration(),
+                                                              
                                                               child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
+                                                                mainAxisSize:MainAxisSize.max,
+                                                                mainAxisAlignment:MainAxisAlignment.spaceBetween,
                                                                 children: [
                                                                   Text(
                                                                       "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
                                                                       style: TextStyle(
-                                                                          fontSize:
-                                                                              20,
-                                                                          fontFamily:
-                                                                              'Inter',
-                                                                          fontWeight: FontWeight
-                                                                              .w500,
-                                                                          color:
-                                                                              Colors.black)),
+                                                                          fontSize:20,
+                                                                          fontFamily:'Inter',
+                                                                          fontWeight: FontWeight.w500,
+                                                                          color: Colors.black)),
                                                                   Text(
                                                                       "${addOnlist.addno1[indexs].Subaddon[index2].priceAddOn}",
                                                                       style: TextStyle(
-                                                                          fontSize:
-                                                                              20,
-                                                                          fontFamily:
-                                                                              'Inter',
-                                                                          fontWeight: FontWeight
-                                                                              .w500,
-                                                                          color:
-                                                                              Colors.black)),
+                                                                          fontSize:20,
+                                                                          fontFamily:'Inter',
+                                                                          fontWeight: FontWeight.w500,
+                                                                          color: Colors.black)),
                                                                 ],
                                                               ),
                                                             ),
@@ -429,12 +440,6 @@ class _GridViewPageState extends State<homepage> {
                                                     },
                                                   ),
                                                 );
-
-      
-
-    }
-    else{
-      return Container();
 
     }
     

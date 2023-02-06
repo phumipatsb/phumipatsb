@@ -9,6 +9,8 @@ import 'models/provider_app.dart';
 import 'models/provider_category.dart';
 import 'testlayout.dart';
 import 'package:flutter/services.dart';
+
+import 'ไฟล์เก่า/test.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -26,11 +28,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => zoneName()),
         ChangeNotifierProvider(create: (_) => addOn()),
         ChangeNotifierProvider(create: (_) => Categories()),
+        
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home:  Scaffold(
-        body:new_table(),)
+        body://ResultScreen(),)
+        new_table(),)
       ),
     );
   }

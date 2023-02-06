@@ -164,7 +164,7 @@ class _newOrder_comfirm_order extends State<newOrder_comfirm_order> {
                               padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                               child: Container(
                                 width: 308,
-                                                height: 48,
+                                                height: 46,
                                 child: ElevatedButton(
                                                     onPressed: () {
                                                       //Navigator.push(context,MaterialPageRoute(builder: (context) => confrim_order()));
