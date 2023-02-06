@@ -16,11 +16,11 @@ class _GridViewPageState extends State<homepage> {
   final ScrollController _controller = ScrollController();
   final _formKey = GlobalKey<FormState>();
   int counter = 0;
- List<addonofs> chooseAddon=[];
+  List<addonofs> chooseAddon=[];
   bool checkboxValue = false;
   int y = 10;
   TextEditingController textarea = TextEditingController();
-List<dynamic> AddItem = [];
+  List<dynamic> AddItem = [];
   final item = <dynamic>[
     Productprice(
         statusaddno: true,
@@ -134,6 +134,7 @@ List<dynamic> AddItem = [];
                                                 Container(
                                                   child: Text(
                                                     "${addOnlist.addno1[index].nameaddon}",
+                                                    
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .subtitle1!
@@ -275,7 +276,7 @@ List<dynamic> AddItem = [];
                                     name: "${item[index].productname}",
                                     price: item[index].price,
                                     images: "${item[index].image}",
-                                    addonSelect: chooseAddon,
+                                    addonSelect: [],
                                   ),
                                 );
                           },
@@ -393,10 +394,23 @@ List<dynamic> AddItem = [];
                                                                                 {addOnlist.addno1[indexs].Subaddon[index2].check_status = value!;
                                                                                   state.didChange(value);
                                                                                   // print(addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn);
-                                                                                  (chooseAddon.add(addonofs(price: addOnlist.addno1[indexs].Subaddon[index2].priceAddOn, subNameAddOn: "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}")
-                                                                                    
-                                                                                    
+
+                                                                                   if (addOnlist.addno1[indexs].Subaddon[index2].check_status == true){
+                                                                                    (chooseAddon.add(addonofs(
+                                                                                    nameaddon: "${addOnlist.addno1[indexs].nameaddon}",
+                                                                                    subNameAddOn: "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
+                                                                                    price: addOnlist.addno1[indexs].Subaddon[index2].priceAddOn,)
                                                                                   ));
+                                                                                  print( "update");
+                                                                                   }
+
+                                                                                   if(addOnlist.addno1[indexs].Subaddon[index2].check_status == false){
+                                                                                    delete(index2);
+                                                                                   }
+                                                                                   else{
+                                                                                    print("not update ");
+                                                                                   }
+                                                                                  
                                                                                   print(chooseAddon);
                                                                                   },
                                                                                 );
@@ -443,6 +457,10 @@ List<dynamic> AddItem = [];
 
     }
     
+    
+  }
+  void delete(int index) {
+    chooseAddon.removeAt(index);
     
   }
 }

@@ -54,11 +54,11 @@ class tasks1 {
 }
 
 class addonofs{
-  
+  String nameaddon;
   String subNameAddOn;
   double price;
 
-  addonofs({required this.price,required this.subNameAddOn});
+  addonofs({required this.price,required this.subNameAddOn,required this.nameaddon});
 
 }
 

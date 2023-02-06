@@ -128,24 +128,18 @@ class addOn with ChangeNotifier {
     ]),
     addon(nameaddon: 'Add On',checkboxstatus: false, Subaddon: [
       SubAddOnDetail(subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
-      SubAddOnDetail(subNameAddOn: 'ไข่เจียว', priceAddOn: 15, check_status: true),
-      SubAddOnDetail(subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
+      SubAddOnDetail(subNameAddOn: 'ไข่เจียว', priceAddOn: 15, check_status: false),
+      SubAddOnDetail(subNameAddOn: 'ไข่ตุ่น', priceAddOn: 10, check_status: false),
     ]),
-    addon(nameaddon: 'Add On',checkboxstatus: false, Subaddon: [
-      SubAddOnDetail(
-          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
-      SubAddOnDetail(
-          subNameAddOn: 'ไข่เจียว', priceAddOn: 15, check_status: true),
-      SubAddOnDetail(
-          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
+    addon(nameaddon: 'เครื่องปรุง',checkboxstatus: false, Subaddon: [
+      SubAddOnDetail(subNameAddOn: 'พริก', priceAddOn: 10, check_status: false),
+      SubAddOnDetail(subNameAddOn: 'น้ำตาล', priceAddOn: 15, check_status: false),
+      SubAddOnDetail(subNameAddOn: 'น้ำปลา', priceAddOn: 10, check_status: false),
     ]),
-    addon(nameaddon: 'Add On',checkboxstatus: false, Subaddon: [
-      SubAddOnDetail(
-          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
-      SubAddOnDetail(
-          subNameAddOn: 'ไข่เจียว', priceAddOn: 15, check_status: true),
-      SubAddOnDetail(
-          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false),
+    addon(nameaddon: 'เครื่องเคียง',checkboxstatus: false, Subaddon: [
+      SubAddOnDetail(subNameAddOn: 'ผัก', priceAddOn: 10, check_status: false),
+      SubAddOnDetail(subNameAddOn: 'กุญเชียง', priceAddOn: 15, check_status: false),
+      SubAddOnDetail(subNameAddOn: 'แมว', priceAddOn: 10, check_status: false),
     ]),
   ];
 
