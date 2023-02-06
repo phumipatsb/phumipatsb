@@ -23,6 +23,7 @@ class _layoutWidgetState extends State<layoutWidget> {
   @override
   Widget build(BuildContext context) {
     var tasks = context.watch<provider_app>().tasks;
+    var addonofss1 =context.watch<provider_app>().addonofss;
 
     return Flexible(
         flex: 1,
@@ -126,7 +127,48 @@ class _layoutWidgetState extends State<layoutWidget> {
                                               Container(
                                                 child: Column(
                                                   children: [
-                                                    Text("data")
+                                                    Container(
+                                                  child: ListView.builder(
+                                                    physics:NeverScrollableScrollPhysics(),
+                                                    shrinkWrap: true,
+                                                    itemCount: tasks[index].addonSelect.length,
+                                                    itemBuilder:(BuildContext context,int index2) {
+                                                      return Align(
+                                                        alignment:AlignmentDirectional(0.4, 0),
+                                                        child: Row(
+                                                          mainAxisSize:MainAxisSize.max,
+                                                          mainAxisAlignment:MainAxisAlignment.start,
+                                                          crossAxisAlignment:CrossAxisAlignment.center,
+                                                          children: [
+
+                                                            // Container(
+                                                            //   child: Column(
+                                                            //     children: [
+                                                            //       Text(
+                                                            //         tasks[index].addonSelect[index2].nameaddon,
+                                                            //         overflow: TextOverflow.ellipsis,
+                                                            //         maxLines: 1,
+                                                            //         style: Theme.of(context)
+                                                            //             .textTheme
+                                                            //             .subtitle1!
+                                                            //             .merge(
+                                                            //               TextStyle(
+                                                            //               fontWeight:
+                                                            //                   FontWeight.w700,
+                                                            //               color: Colors.pink[200],
+                                                            //             ),
+                                                            //             ),
+                                                            //       ),
+                                                            //     ],
+                                                            //   ),
+                                                            // )
+
+                                                          ]
+                                                          )
+                                                          );
+                                                          }
+                                                          )
+                                                          )
                                                   ],
                                                 ),
 

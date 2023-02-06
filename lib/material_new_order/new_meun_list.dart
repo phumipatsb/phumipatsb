@@ -231,7 +231,7 @@ class _GridViewPageState extends State<homepage> {
                                                           name: "${item[index].productname}",
                                                           price: item[index].price,
                                                           images: "${item[index].image}",
-                                                          addonSelect:chooseAddon, 
+                                                          addonSelect:[], 
                                                         ),
 
                                                       );
@@ -276,7 +276,7 @@ class _GridViewPageState extends State<homepage> {
                                     name: "${item[index].productname}",
                                     price: item[index].price,
                                     images: "${item[index].image}",
-                                    addonSelect: [],
+                                    addonSelect: chooseAddon,
                                   ),
                                 );
                           },

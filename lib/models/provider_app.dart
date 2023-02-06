@@ -5,17 +5,25 @@ class provider_app with ChangeNotifier {
   List<tasks1> tasks = [];
   List<tasks1> get _tasks => List.unmodifiable(tasks);
 
-  List<addonofs> addonp=[];
-  List<addonofs> get _addonp => List.unmodifiable(addonp);
-  
-  void addAddon(addonofs text) {
-    addonp.add(text);
-    notifyListeners();
+  List<addonofs> addonofss =[];
+  List<addonofs> get _taddonofs => List.unmodifiable(addonofss);
 
-    // for(i in tasks){
-    //   print(i);
-    // }
+  // List<addonofs> addonp=[];
+  // List<addonofs> get _addonp => List.unmodifiable(addonp);
+  
+  // void addAddon(addonofs text) {
+  //   addonp.add(text);
+  //   notifyListeners();
+
+  //   // for(i in tasks){
+  //   //   print(i);
+  //   // }
+  // }
+
+  List<addonofs> get addno2 {
+    return [..._taddonofs];
   }
+  
 
 
   void add(tasks1 text) {
@@ -146,6 +154,8 @@ class addOn with ChangeNotifier {
   List<addon> get addno1 {
     return [..._addon];
   }
+
+  
 
   
 }
