@@ -30,8 +30,8 @@ class _itemOutmanuState extends State<itemOutmanu> {
         child: Container(
           child: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
-            return tasks.length <= 0
-                ? Center(
+            return tasks.length <= 0? 
+            Center(
                     child: Text(
                       '''NO ITEM''',
                       overflow: TextOverflow.visible,
@@ -109,24 +109,69 @@ class _itemOutmanuState extends State<itemOutmanu> {
                                                           .subtitle1!
                                                           .merge(
                                                             const TextStyle(
+                                                              fontSize: 17,
                                                               fontWeight:
-                                                                  FontWeight.w400,
+                                                                  FontWeight.w700,
                                                             ),
                                                           ),
                                                     ),
                                             ),
 
                                             Container(
-                                              child: Column(
-                                                children: [
-                                                  Text("data"),
-                                                  Text("data"),
-                                                  Text("data"),
-                                                  Text("data"),
-                                                ],
-                                              ),
+                                                width: 120,
+                                                child: ListView.builder(
+                                                    physics:NeverScrollableScrollPhysics(),
+                                                    shrinkWrap: true,
+                                                    itemCount: tasks[index].addonSelect.length,
+                                                    itemBuilder:(BuildContext context,int index2s) {
+                                                      return Column(
+                                                        children: [
+                                                          Container(
+                                                            child: Row(
+                                                              children: [
+                                                                Text(
+                                                                    tasks[index].addonSelect[index2s].nameaddon,
+                                                                    overflow: TextOverflow.ellipsis,
+                                                                    maxLines: 1,
+                                                                    style: Theme.of(context)
+                                                                        .textTheme
+                                                                        .subtitle1!
+                                                                        .merge(
+                                                                          TextStyle(
+                                                                            fontSize: 15,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          color: Colors.black,
+                                                                        ),
+                                                                        ),
+                                                                  ),
+                                                                  Text(','),
+                                                                  Text(
+                                                                    tasks[index].addonSelect[index2s].subNameAddOn,
+                                                                    overflow: TextOverflow.ellipsis,
+                                                                    maxLines: 1,
+                                                                    style: Theme.of(context)
+                                                                        .textTheme
+                                                                        .subtitle1!
+                                                                        .merge(
+                                                                          TextStyle(
+                                                                            fontSize: 17,
+                                                                          fontWeight:
+                                                                          
+                                                                              FontWeight.w500,
+                                                                          color: Colors.black,
+                                                                        ),
+                                                                        ),
+                                                                  ),
+                                                              ],
+                                                            ),
+                                                          )
+                                                        ],
+                                                      );
 
-                                            ),
+                                                    }
+                                                    )
+                                              ),
                                             Padding(
                                               padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                                               child: Text(
