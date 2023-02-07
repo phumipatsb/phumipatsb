@@ -231,7 +231,7 @@ class _GridViewPageState extends State<homepage> {
                                                           name: "${item[index].productname}",
                                                           price: item[index].price,
                                                           images: "${item[index].image}",
-                                                          addonSelect:[], 
+                                                          addonSelect: chooseAddon
                                                         ),
 
                                                       );
@@ -276,7 +276,7 @@ class _GridViewPageState extends State<homepage> {
                                     name: "${item[index].productname}",
                                     price: item[index].price,
                                     images: "${item[index].image}",
-                                    addonSelect: chooseAddon,
+                                    addonSelect: [],
                                   ),
                                 );
                           },
@@ -399,19 +399,26 @@ class _GridViewPageState extends State<homepage> {
                                                                                     (chooseAddon.add(addonofs(
                                                                                     nameaddon: "${addOnlist.addno1[indexs].nameaddon}",
                                                                                     subNameAddOn: "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
-                                                                                    price: addOnlist.addno1[indexs].Subaddon[index2].priceAddOn,)
+                                                                                    price: addOnlist.addno1[indexs].Subaddon[index2].priceAddOn,
+                                                                                    )
                                                                                   ));
                                                                                   print( "update");
                                                                                    }
 
                                                                                    if(addOnlist.addno1[indexs].Subaddon[index2].check_status == false){
-                                                                                    delete(index2);
+                                                                                    context.read<provider_app>().deleteaddon(index2);
+                                                                                   } 
+                                                                                   if( chooseAddon.length == 0 ){
+                                                                                    clearList();
+
+
                                                                                    }
                                                                                    else{
                                                                                     print("not update ");
                                                                                    }
                                                                                   
-                                                                                  print(chooseAddon);
+                                                                                  print('${chooseAddon[index2].subNameAddOn}'+"${chooseAddon[index2].price}",);
+                                                                                  
                                                                                   },
                                                                                 );
                                                                               },
@@ -461,6 +468,12 @@ class _GridViewPageState extends State<homepage> {
   }
   void delete(int index) {
     chooseAddon.removeAt(index);
+    
+  }
+  void clearList() {
+    //tasks.clear;
+    chooseAddon = [];
+    
     
   }
 }

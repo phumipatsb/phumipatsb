@@ -23,7 +23,7 @@ class _layoutWidgetState extends State<layoutWidget> {
   @override
   Widget build(BuildContext context) {
     var tasks = context.watch<provider_app>().tasks;
-    var addonofss1 =context.watch<provider_app>().addonofss;
+    //var addonofss1 =context.watch<provider_app>().addonofss;
 
     return Flexible(
         flex: 1,
@@ -31,8 +31,9 @@ class _layoutWidgetState extends State<layoutWidget> {
         child: Container(
           child: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
-            return tasks.length <= 0
-                ? Center(
+            return 
+            tasks.length <= 0? 
+            Center(
                     child: Text(
                       '''NO ITEM''',
                       overflow: TextOverflow.visible,
@@ -44,7 +45,7 @@ class _layoutWidgetState extends State<layoutWidget> {
                         fontWeight: FontWeight.w400,
                         color: Color.fromARGB(255, 255, 110, 110),
                         decoration: TextDecoration.underline,
-                        /* letterSpacing: 0.0, */
+                       
                       ),
                     ),
                   )
@@ -123,45 +124,64 @@ class _layoutWidgetState extends State<layoutWidget> {
                                                         ),
                                                 ),
                                               ),
-
                                               Container(
                                                 child: Column(
                                                   children: [
                                                     Container(
-                                                  child: ListView.builder(
+                                                   child :  tasks[index].addonSelect.length <=0? 
+                                                       Center(
+                                                          // child: Text(
+                                                          //   '''NO ITEM''',
+                                                          //   overflow: TextOverflow.visible,
+                                                          //   textAlign: TextAlign.left,
+                                                          //   style: TextStyle(
+                                                          //     height: 1.2102272327129657,
+                                                          //     fontSize: 20,
+                                                          //     fontFamily: 'Inter',
+                                                          //     fontWeight: FontWeight.w400,
+                                                          //     color: Color.fromARGB(255, 255, 110, 110),
+                                                          //     //decoration: TextDecoration.underline,
+                                                            
+                                                          //   ),
+                                                          // ),
+                                                        )
+                                                      
+                                                  : ListView.builder(
                                                     physics:NeverScrollableScrollPhysics(),
                                                     shrinkWrap: true,
                                                     itemCount: tasks[index].addonSelect.length,
-                                                    itemBuilder:(BuildContext context,int index2) {
-                                                      return Align(
+                                                    itemBuilder:(BuildContext context,int index2s) {
+                                                    return  
+                                                     
+
+                                                      Align(
                                                         alignment:AlignmentDirectional(0.4, 0),
                                                         child: Row(
-                                                          mainAxisSize:MainAxisSize.max,
+                                                          // mainAxisSize:MainAxisSize.max,
                                                           mainAxisAlignment:MainAxisAlignment.start,
                                                           crossAxisAlignment:CrossAxisAlignment.center,
                                                           children: [
-
-                                                            // Container(
-                                                            //   child: Column(
-                                                            //     children: [
-                                                            //       Text(
-                                                            //         tasks[index].addonSelect[index2].nameaddon,
-                                                            //         overflow: TextOverflow.ellipsis,
-                                                            //         maxLines: 1,
-                                                            //         style: Theme.of(context)
-                                                            //             .textTheme
-                                                            //             .subtitle1!
-                                                            //             .merge(
-                                                            //               TextStyle(
-                                                            //               fontWeight:
-                                                            //                   FontWeight.w700,
-                                                            //               color: Colors.pink[200],
-                                                            //             ),
-                                                            //             ),
-                                                            //       ),
-                                                            //     ],
-                                                            //   ),
-                                                            // )
+                                                            Container(
+                                                              child: Column(
+                                                                children: [
+                                                                  // Text(
+                                                                  //   tasks[index].addonSelect[index2s].nameaddon,
+                                                                  //   overflow: TextOverflow.ellipsis,
+                                                                  //   maxLines: 1,
+                                                                  //   style: Theme.of(context)
+                                                                  //       .textTheme
+                                                                  //       .subtitle1!
+                                                                  //       .merge(
+                                                                  //         TextStyle(
+                                                                  //         fontWeight:
+                                                                  //             FontWeight.w700,
+                                                                  //         color: Colors.pink[200],
+                                                                  //       ),
+                                                                  //       ),
+                                                                  // ),
+                                                                ],
+                                                              ),
+                                                            )
 
                                                           ]
                                                           )
@@ -171,8 +191,13 @@ class _layoutWidgetState extends State<layoutWidget> {
                                                           )
                                                   ],
                                                 ),
-
                                               ),
+                                              
+                                              
+                                               
+
+                                                
+                                              
                                               Padding(
                                                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                                                 child: Text(

@@ -50,14 +50,14 @@ class tasks1 {
   String images;
   int amount = 1;
   final List<addonofs> addonSelect;
-  tasks1({required this.name, required this.price, required this.images,required this.addonSelect,});
+  tasks1({required this.name, required this.price, required this.images, required this.addonSelect});
 }
 
 class addonofs{
   String nameaddon;
   String subNameAddOn;
   double price;
-
+  
   addonofs({required this.price,required this.subNameAddOn,required this.nameaddon});
 
 }

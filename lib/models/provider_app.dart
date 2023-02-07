@@ -5,8 +5,8 @@ class provider_app with ChangeNotifier {
   List<tasks1> tasks = [];
   List<tasks1> get _tasks => List.unmodifiable(tasks);
 
-  List<addonofs> addonofss =[];
-  List<addonofs> get _taddonofs => List.unmodifiable(addonofss);
+  List<addonofs> addonSelect =[];
+  List<addonofs> get _taddonofs => List.unmodifiable(addonSelect);
 
   // List<addonofs> addonp=[];
   // List<addonofs> get _addonp => List.unmodifiable(addonp);
@@ -37,6 +37,11 @@ class provider_app with ChangeNotifier {
 
   void edit(int index, newtext) {
     tasks[index] = newtext;
+    notifyListeners();
+  }
+  void deleteaddon(int index) {
+    addonSelect.removeAt(index);
+    print(addonSelect);
     notifyListeners();
   }
 
