@@ -7,19 +7,27 @@ class display_total extends StatelessWidget {
     var tasks = context.watch<provider_app>().tasks;
     double vat = 7;
     double service_charge = 10;
-    
+    double TotoAddOn =0.0;
     double toto = 0.0;
+    
+    
     for (var i=0;i<tasks.length;i++) {
 
       toto +=tasks[i].price*tasks[i].amount;
+      TotoAddOn +=tasks[i].addonSelect[i].price;
+
       
       
       
     }
 
-    double totvat= toto*(vat /100);
     
-    double totoserviceCharge =toto*(service_charge /100);
+    double TotalPriceBeforeTotal =toto+TotoAddOn;
+    double totoserviceCharge =TotalPriceBeforeTotal*(service_charge /100);
+    double TotalPriceBeforeTotalch =TotalPriceBeforeTotal+totoserviceCharge;
+    double totvat=  TotalPriceBeforeTotalch*(vat /100);
+    
+    
     double Grand_Total =toto+totvat+totoserviceCharge;
     
     
@@ -33,7 +41,7 @@ class display_total extends StatelessWidget {
                 children: [
                     Text('Suntotal',style: TextStyle(fontSize: 14,fontFamily: 'Inter',fontWeight:
                                                             FontWeight.w500,color: Colors.black),),
-                    Text('$toto'+'.-',style: TextStyle(fontSize: 14,fontFamily: 'Inter',fontWeight:
+                    Text('$TotalPriceBeforeTotal'+'.-',style: TextStyle(fontSize: 14,fontFamily: 'Inter',fontWeight:
                                                             FontWeight.w500,color: Colors.black),),
                 ],
               ),

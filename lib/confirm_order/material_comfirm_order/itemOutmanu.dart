@@ -118,7 +118,7 @@ class _itemOutmanuState extends State<itemOutmanu> {
                                             ),
 
                                             Container(
-                                                width: 120,
+                                                width: 150,
                                                 child: ListView.builder(
                                                     physics:NeverScrollableScrollPhysics(),
                                                     shrinkWrap: true,

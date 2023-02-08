@@ -60,6 +60,8 @@ class addonofs{
   
   addonofs({required this.price,required this.subNameAddOn,required this.nameaddon});
 
+  
+
 }
 
 // class tasks {

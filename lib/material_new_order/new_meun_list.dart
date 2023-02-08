@@ -17,10 +17,11 @@ class _GridViewPageState extends State<homepage> {
   final _formKey = GlobalKey<FormState>();
   int counter = 0;
  List<addonofs> chooseAddon=[];
+ List<addonofs> chooseAddon1=[];
   bool checkboxValue = false;
   int y = 10;
   TextEditingController textarea = TextEditingController();
-List<dynamic> AddItem = [];
+//List<dynamic> AddItem = [];
   final item = <dynamic>[
     Productprice(
         statusaddno: true,
@@ -34,7 +35,7 @@ List<dynamic> AddItem = [];
         categoriesproduct: 'Food',
         productname: 'PSpicy fried chicken',
         image:
-            'https://s359.thaibuffer.com/pagebuilder/b8414c05-6bb1-4d38-afe6-ee0e7077a080.jpg',
+            'https://fourleaf-datacenter.s3-ap-southeast-1.amazonaws.com/partner1/media/dining_item/ข้าวกระเพราไก่_VVLSQJ8S3XHM.jpg',
         price: 220),
     Productprice(
         statusaddno: true,
@@ -234,13 +235,15 @@ List<dynamic> AddItem = [];
                                                         ),
 
                                                       );
-                                                      
+                                                    
                                                       
                                                       
                                                       
                                                 },
+                                                 
                                               );
                                               Navigator.pop(context);
+                                              clecaaddon();
                                                 },
                                                 style: ElevatedButton.styleFrom(
                                                   primary: Color.fromARGB(
@@ -270,13 +273,15 @@ List<dynamic> AddItem = [];
                         setState(
                           () {
                             print('boss');
+                            chooseAddon1.add(addonofs(price: 0, subNameAddOn: "",nameaddon: ""));
                             context.read<provider_app>().add(
                                   tasks1(
                                     name: "${item[index].productname}",
                                     price: item[index].price,
                                     images: "${item[index].image}",
-                                    addonSelect: [],
+                                    addonSelect:chooseAddon1,
                                   ),
+                                  
                                 );
                           },
                         );
@@ -459,6 +464,12 @@ List<dynamic> AddItem = [];
   void deleteaddon(int index) {
     chooseAddon.removeAt(index);
     print(chooseAddon);
+   
+  }
+
+  void clecaaddon() {
+    chooseAddon=[];
+    print("clecaaddon");
    
   }
 }

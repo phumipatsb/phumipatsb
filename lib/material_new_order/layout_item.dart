@@ -127,7 +127,27 @@ class _layoutWidgetState extends State<layoutWidget> {
                                               ),
                                               Container(
                                                 width: 120,
-                                                child: ListView.builder(
+                                                child: LayoutBuilder(
+                                                  builder: (BuildContext context, BoxConstraints constraints) {
+                                                      return 
+                                                      tasks[index].addonSelect.length <=0?
+                                                      Center(
+                                                              // child: Text(
+                                                              //   '''NO ITEM''',
+                                                              //   overflow: TextOverflow.visible,
+                                                              //   textAlign: TextAlign.left,
+                                                              //   style: TextStyle(
+                                                              //     height: 1.2102272327129657,
+                                                              //     fontSize: 20,
+                                                              //     fontFamily: 'Inter',
+                                                              //     fontWeight: FontWeight.w400,
+                                                              //     color: Color.fromARGB(255, 255, 110, 110),
+                                                              //     decoration: TextDecoration.underline,
+                                                                
+                                                              //   ),
+                                                              // ),
+                                                            )
+                                                            :ListView.builder(
                                                     physics:NeverScrollableScrollPhysics(),
                                                     shrinkWrap: true,
                                                     itemCount: tasks[index].addonSelect.length,
@@ -176,7 +196,13 @@ class _layoutWidgetState extends State<layoutWidget> {
                                                       );
 
                                                     }
-                                                    )
+                                                    );
+
+                                                          }
+                                                          )
+                                                
+                                              
+                                                
                                               ),
 
                                               
