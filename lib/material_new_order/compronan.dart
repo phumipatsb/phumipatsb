@@ -57,8 +57,8 @@ class addonofs{
   String nameaddon;
   String subNameAddOn;
   double price;
-  
-  addonofs({required this.price,required this.subNameAddOn,required this.nameaddon});
+  int ID;
+  addonofs({required this.price,required this.subNameAddOn,required this.nameaddon,required this.ID});
 
   
 
@@ -107,8 +107,9 @@ class SubAddOnDetail {
   String subNameAddOn;
   double priceAddOn;
   bool check_status;
+  int ID;
 
-  SubAddOnDetail({required this.subNameAddOn, required this.priceAddOn, required this.check_status});
+  SubAddOnDetail({required this.subNameAddOn, required this.priceAddOn, required this.check_status, required this.ID});
 }
 
 

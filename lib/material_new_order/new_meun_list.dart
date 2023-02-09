@@ -26,7 +26,7 @@ class _GridViewPageState extends State<homepage> {
     Productprice(
         statusaddno: true,
         categoriesproduct: 'Food',
-        productname: 'Pad Thai',
+        productname: 'Pad Thai',  
         image:
             'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
         price: 255),
@@ -94,9 +94,12 @@ class _GridViewPageState extends State<homepage> {
                   GestureDetector(
                     onTap: () {
                       print(index);
+                     
+                      
 
                       if (item[index].statusaddno == true) {
                         showDialog(
+                          
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
@@ -115,6 +118,7 @@ class _GridViewPageState extends State<homepage> {
                                         ),
                                         onPressed: () {
                                           Navigator.pop(context);
+                                          clecaaddon();
                                         },
                                       ),
                                     ),
@@ -124,25 +128,18 @@ class _GridViewPageState extends State<homepage> {
                                       child: ListView.builder(
                                         shrinkWrap: false,
                                         itemCount: addOnlist.addno1.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
+                                        itemBuilder:(BuildContext context, int index) {
                                           return Container(
-                                            
                                             child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              crossAxisAlignment:CrossAxisAlignment.start,
                                               children: <Widget>[
                                                 Container(
-                                                  child: Text(
-                                                    "${addOnlist.addno1[index].nameaddon}",
+                                                  child: Text("${addOnlist.addno1[index].nameaddon}",
                                                     style: Theme.of(context)
-                                                        .textTheme
-                                                        .subtitle1!
-                                                        .merge(
+                                                        .textTheme.subtitle1!.merge(
                                                           const TextStyle(
                                                             fontSize: 35,
-                                                            fontWeight:
-                                                                FontWeight.w700,
+                                                            fontWeight:FontWeight.w700,
                                                           ),
                                                         ),
                                                   ),
@@ -158,7 +155,7 @@ class _GridViewPageState extends State<homepage> {
                                                 const SizedBox(
                                                   width: 10,
                                                 ),
-                                                 
+                               
                                                 choiceoptions(addOnlist.addno1[index].checkboxstatus,index ),
                                                 
                                               ],
@@ -225,7 +222,8 @@ class _GridViewPageState extends State<homepage> {
                                                 onPressed: () {
                                                   print(textarea.text);
                                                   setState(() {
-                                                  print('boss1');
+                                                    
+                                                  
                                                   context.read<provider_app>().add(
                                                         tasks1(
                                                           name: "${item[index].productname}",
@@ -243,7 +241,7 @@ class _GridViewPageState extends State<homepage> {
                                                  
                                               );
                                               Navigator.pop(context);
-                                              clecaaddon();
+                                              
                                                 },
                                                 style: ElevatedButton.styleFrom(
                                                   primary: Color.fromARGB(
@@ -272,14 +270,16 @@ class _GridViewPageState extends State<homepage> {
                       } else {
                         setState(
                           () {
+
                             print('boss');
-                            chooseAddon1.add(addonofs(price: 0, subNameAddOn: "",nameaddon: ""));
+                            //chooseAddon1.add(addonofs(price: 0, subNameAddOn: "nan",nameaddon: "nan",ID: 0));
                             context.read<provider_app>().add(
                                   tasks1(
                                     name: "${item[index].productname}",
                                     price: item[index].price,
                                     images: "${item[index].image}",
-                                    addonSelect:chooseAddon1,
+                                    
+                                    addonSelect:[],
                                   ),
                                   
                                 );
@@ -395,20 +395,30 @@ class _GridViewPageState extends State<homepage> {
                                                                             Checkbox(value: addOnlist.addno1[indexs].Subaddon[index2].check_status,
                                                                               onChanged: (value) {
                                                                                 setState(() 
-                                                                                {addOnlist.addno1[indexs].Subaddon[index2].check_status = value!;
+                                                                                {
+                                                                                  
+                                                                                  addOnlist.addno1[indexs].Subaddon[index2].check_status = value!;
                                                                                   state.didChange(value);
                                                                                   // print(addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn);
                                                                                   if(value == true){
                                                                                   (chooseAddon.add(addonofs(price: addOnlist.addno1[indexs].Subaddon[index2].priceAddOn, 
-                                                                                  subNameAddOn: "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}", 
+                                                                                  subNameAddOn: "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
+                                                                                  ID: addOnlist.addno1[indexs].Subaddon[index2].ID,
                                                                                   nameaddon: "${addOnlist.addno1[indexs].nameaddon}")
                                                                                     
                                                                                     
                                                                                   ));
+                                                                                   print("========");
+                                                                                  print("true");
                                                                                   print(chooseAddon);
+                                                                                  
+                                                                                  print(index2);
+                                                                                  print("========");
                                                                                   }
                                                                                   if(value == false){
-                                                                                    deleteaddon( index2);
+                                                                                    
+                                                                                    deleteaddon( addOnlist.addno1[indexs].Subaddon[index2].ID);
+                                                                                    
 
                                                                                   }
                                                                                   else{
@@ -461,15 +471,23 @@ class _GridViewPageState extends State<homepage> {
     
     
   }
-  void deleteaddon(int index) {
-    chooseAddon.removeAt(index);
+  void deleteaddon(int id) {
+    
+    chooseAddon.removeWhere((item) => item.ID == id);
+    
+   
+  }
+
+   clecaaddon() {
+    chooseAddon.clear();
+    print("clecaaddon");
     print(chooseAddon);
    
   }
 
-  void clecaaddon() {
-    chooseAddon=[];
-    print("clecaaddon");
+  void cleccheckbox() {
+    
+    
    
   }
 }

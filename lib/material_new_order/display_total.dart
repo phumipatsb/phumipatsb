@@ -14,7 +14,10 @@ class display_total extends StatelessWidget {
     for (var i=0;i<tasks.length;i++) {
 
       toto +=tasks[i].price*tasks[i].amount;
-      TotoAddOn +=tasks[i].addonSelect[i].price;
+      if(tasks[i].addonSelect.length >0){
+        TotoAddOn +=tasks[i].addonSelect[i].price;
+      }
+      
 
       
       
