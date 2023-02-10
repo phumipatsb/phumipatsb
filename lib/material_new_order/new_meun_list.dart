@@ -1,3 +1,5 @@
+import 'dart:js_util';
+
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -156,7 +158,7 @@ class _GridViewPageState extends State<homepage> {
                                                   width: 10,
                                                 ),
                                
-                                                choiceoptions(addOnlist.addno1[index].checkboxstatus,index ),
+                                                choiceoptions(addOnlist.addno1[index].checkboxstatus,index),
                                                 
                                               ],
                                             ),
@@ -229,7 +231,7 @@ class _GridViewPageState extends State<homepage> {
                                                           name: "${item[index].productname}",
                                                           price: item[index].price,
                                                           images: "${item[index].image}",
-                                                          addonSelect:chooseAddon, 
+                                                          addonSelect: chooseAddon,
                                                         ),
 
                                                       );
@@ -360,6 +362,8 @@ class _GridViewPageState extends State<homepage> {
       var addOnlist = Provider.of<addOn>(context);
       return Container(
         
+
+        
         
       );
 
@@ -401,13 +405,17 @@ class _GridViewPageState extends State<homepage> {
                                                                                   state.didChange(value);
                                                                                   // print(addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn);
                                                                                   if(value == true){
+                                                                                    
+                                                    
+
+                                                                                    
+
+                                                                                    
+
                                                                                   (chooseAddon.add(addonofs(price: addOnlist.addno1[indexs].Subaddon[index2].priceAddOn, 
                                                                                   subNameAddOn: "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
                                                                                   ID: addOnlist.addno1[indexs].Subaddon[index2].ID,
-                                                                                  nameaddon: "${addOnlist.addno1[indexs].nameaddon}")
-                                                                                    
-                                                                                    
-                                                                                  ));
+                                                                                  nameaddon: "${addOnlist.addno1[indexs].nameaddon}")));
                                                                                    print("========");
                                                                                   print("true");
                                                                                   print(chooseAddon);
@@ -417,7 +425,9 @@ class _GridViewPageState extends State<homepage> {
                                                                                   }
                                                                                   if(value == false){
                                                                                     
-                                                                                    deleteaddon( addOnlist.addno1[indexs].Subaddon[index2].ID);
+                                                                                    context
+                                                                                    .read<provider_app>()
+                                                                                    .deleteaddon(addOnlist.addno1[indexs].Subaddon[index2].ID);
                                                                                     
 
                                                                                   }
@@ -489,5 +499,10 @@ class _GridViewPageState extends State<homepage> {
     
     
    
+  }
+
+  void adddata (){
+
+
   }
 }

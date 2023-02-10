@@ -34,13 +34,14 @@ class provider_app with ChangeNotifier {
     //   print(i);
     // }
   }
+  
 
   void edit(int index, newtext) {
     tasks[index] = newtext;
     notifyListeners();
   }
-  void deleteaddon(int index) {
-    addonSelect.removeAt(index);
+  void deleteaddon(int id) {
+    addonSelect.removeWhere((item) => item.ID == id);
     print(addonSelect);
     notifyListeners();
   }
