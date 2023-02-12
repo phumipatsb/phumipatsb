@@ -1,5 +1,3 @@
-import 'dart:js_util';
-
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -17,9 +15,11 @@ class homepage extends StatefulWidget {
 class _GridViewPageState extends State<homepage> {
   final ScrollController _controller = ScrollController();
   final _formKey = GlobalKey<FormState>();
+  int _paymentType = 1;
   int counter = 0;
- List<addonofs> chooseAddon=[];
- List<addonofs> chooseAddon1=[];
+  List test = [];
+  List<addonofs> chooseAddon = [];
+  List<addonofs> chooseAddon1 = [];
   bool checkboxValue = false;
   int y = 10;
   TextEditingController textarea = TextEditingController();
@@ -28,7 +28,7 @@ class _GridViewPageState extends State<homepage> {
     Productprice(
         statusaddno: true,
         categoriesproduct: 'Food',
-        productname: 'Pad Thai',  
+        productname: 'Pad Thai',
         image:
             'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
         price: 255),
@@ -96,12 +96,9 @@ class _GridViewPageState extends State<homepage> {
                   GestureDetector(
                     onTap: () {
                       print(index);
-                     
-                      
 
                       if (item[index].statusaddno == true) {
                         showDialog(
-                          
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
@@ -130,18 +127,24 @@ class _GridViewPageState extends State<homepage> {
                                       child: ListView.builder(
                                         shrinkWrap: false,
                                         itemCount: addOnlist.addno1.length,
-                                        itemBuilder:(BuildContext context, int index) {
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
                                           return Container(
                                             child: Column(
-                                              crossAxisAlignment:CrossAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: <Widget>[
                                                 Container(
-                                                  child: Text("${addOnlist.addno1[index].nameaddon}",
+                                                  child: Text(
+                                                    "${addOnlist.addno1[index].nameaddon}",
                                                     style: Theme.of(context)
-                                                        .textTheme.subtitle1!.merge(
+                                                        .textTheme
+                                                        .subtitle1!
+                                                        .merge(
                                                           const TextStyle(
                                                             fontSize: 35,
-                                                            fontWeight:FontWeight.w700,
+                                                            fontWeight:
+                                                                FontWeight.w700,
                                                           ),
                                                         ),
                                                   ),
@@ -157,9 +160,10 @@ class _GridViewPageState extends State<homepage> {
                                                 const SizedBox(
                                                   width: 10,
                                                 ),
-                               
-                                                choiceoptions(addOnlist.addno1[index].checkboxstatus,index),
-                                                
+                                                choiceoptions(
+                                                    addOnlist.addno1[index]
+                                                        .checkboxstatus,
+                                                    index),
                                               ],
                                             ),
                                           );
@@ -223,27 +227,29 @@ class _GridViewPageState extends State<homepage> {
                                             child: ElevatedButton(
                                                 onPressed: () {
                                                   print(textarea.text);
-                                                  setState(() {
-                                                    
-                                                  
-                                                  context.read<provider_app>().add(
-                                                        tasks1(
-                                                          name: "${item[index].productname}",
-                                                          price: item[index].price,
-                                                          images: "${item[index].image}",
-                                                          addonSelect: chooseAddon,
-                                                        ),
-
-                                                      );
-                                                    
-                                                      
-                                                      
-                                                      
-                                                },
-                                                 
-                                              );
-                                              Navigator.pop(context);
-                                              
+                                                  setState(
+                                                    () {
+                                                      context
+                                                          .read<provider_app>()
+                                                          .addtasks1(
+                                                            tasks1(
+                                                              name:
+                                                                  "${item[index].productname}",
+                                                              price: item[index]
+                                                                  .price,
+                                                              images:
+                                                                  "${item[index].image}",
+                                                              addonSelect:
+                                                                  chooseAddon,
+                                                            ),
+                                                          );
+                                                      print("log");
+                                                      print(context
+                                                          .read<provider_app>()
+                                                          .addonSelect);
+                                                    },
+                                                  );
+                                                  Navigator.pop(context);
                                                 },
                                                 style: ElevatedButton.styleFrom(
                                                   primary: Color.fromARGB(
@@ -272,18 +278,15 @@ class _GridViewPageState extends State<homepage> {
                       } else {
                         setState(
                           () {
-
                             print('boss');
                             //chooseAddon1.add(addonofs(price: 0, subNameAddOn: "nan",nameaddon: "nan",ID: 0));
-                            context.read<provider_app>().add(
+                            context.read<provider_app>().addtasks1(
                                   tasks1(
                                     name: "${item[index].productname}",
                                     price: item[index].price,
                                     images: "${item[index].image}",
-                                    
-                                    addonSelect:[],
+                                    addonSelect: [],
                                   ),
-                                  
                                 );
                           },
                         );
@@ -357,152 +360,212 @@ class _GridViewPageState extends State<homepage> {
       ),
     );
   }
-  choiceoptions(bool status,int indexs ){
-    if(status == true ){
+
+  choiceoptions(bool status, int indexs) {
+    if (status == true) {
       var addOnlist = Provider.of<addOn>(context);
       return Container(
-        
+          // child: ListView.builder(
+          //   physics: NeverScrollableScrollPhysics(),
+          //   shrinkWrap: true,
+          //   itemCount: addOnlist.addno1[indexs].Subaddon.length,
+          //   itemBuilder: (BuildContext context, int index2) {
+          //     return Align(
+          //       alignment: AlignmentDirectional(0.4, 0),
+          //       child: Row(
+          //         mainAxisSize: MainAxisSize.max,
+          //         mainAxisAlignment: MainAxisAlignment.start,
+          //         crossAxisAlignment: CrossAxisAlignment.center,
+          //         children: [
+          //           Align(
+          //             alignment: AlignmentDirectional(10, 0),
+          //             child: Container(
+          //               width: 50,
+          //               child: FormField<bool>(
+          //                 builder: (state) {
+          //                   return Column(
+          //                     children: <Widget>[
+          //                       Row(
+          //                         children: <Widget>[
+          //                           RadioListTile(
+          //                             value: index2,
+          //                             groupValue: _paymentType,
+          //                             onChanged: (newValue) => setState(
+          //                                 () => _paymentType = newValue!),
+          //                             activeColor: Colors.red,
+          //                             selected: false,
+          //                           ),
+          //                         ],
+          //                       ),
+          //                     ],
+          //                   );
+          //                 },
+          //               ),
+          //             ),
+          //           ),
+          //           Container(
+          //             width: 425,
+          //             child: Row(
+          //               mainAxisSize: MainAxisSize.max,
+          //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //               children: [
+          //                 Text(
+          //                     "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
+          //                     style: TextStyle(
+          //                         fontSize: 20,
+          //                         fontFamily: 'Inter',
+          //                         fontWeight: FontWeight.w500,
+          //                         color: Colors.black)),
+          //                 Text(
+          //                     "${addOnlist.addno1[indexs].Subaddon[index2].priceAddOn}",
+          //                     style: TextStyle(
+          //                         fontSize: 20,
+          //                         fontFamily: 'Inter',
+          //                         fontWeight: FontWeight.w500,
+          //                         color: Colors.black)),
+          //               ],
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     );
+          //   },
+          // ),
+          );
+    } else {
+      var addOnlist = Provider.of<addOn>(context);
+      return Container(
+        child: ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: addOnlist.addno1[indexs].Subaddon.length,
+          itemBuilder: (BuildContext context, int index2) {
+            return Align(
+              alignment: AlignmentDirectional(0.4, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(10, 0),
+                    child: Container(
+                      width: 50,
+                      child: FormField<bool>(
+                        builder: (state) {
+                          return Column(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Checkbox(
+                                    value: addOnlist.addno1[indexs]
+                                        .Subaddon[index2].check_status,
+                                    onChanged: (value) {
+                                      setState(
+                                        () {
+                                          addOnlist
+                                              .addno1[indexs]
+                                              .Subaddon[index2]
+                                              .check_status = value!;
+                                          state.didChange(value);
+                                          // print(addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn);
+                                          if (value == true) {
+                                            Map boss = {
+                                              "name":
+                                                  "${addOnlist.addno1[indexs].nameaddon}",
+                                              "price": addOnlist.addno1[indexs]
+                                                  .Subaddon[index2].priceAddOn,
+                                              "subnameAddon":
+                                                  "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
+                                              "id": addOnlist.addno1[indexs]
+                                                  .Subaddon[index2].ID
+                                            };
+                                            test.add(boss);
+                                            print(test);
+                                            (chooseAddon.add(addonofs(
+                                                price: addOnlist
+                                                    .addno1[indexs]
+                                                    .Subaddon[index2]
+                                                    .priceAddOn,
+                                                subNameAddOn:
+                                                    "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
+                                                ID: addOnlist.addno1[indexs]
+                                                    .Subaddon[index2].ID,
+                                                nameaddon:
+                                                    "${addOnlist.addno1[indexs].nameaddon}")));
+                                            print("========");
+                                            print("true");
+                                            print(chooseAddon);
 
-        
-        
+                                            print(index2);
+                                            print("========");
+                                          }
+                                          if (value == false) {
+                                            context
+                                                .read<provider_app>()
+                                                .deleteaddon(addOnlist
+                                                    .addno1[indexs]
+                                                    .Subaddon[index2]
+                                                    .ID);
+                                            deleteaddon(addOnlist.addno1[indexs]
+                                                .Subaddon[index2].ID);
+                                            print(chooseAddon);
+                                          } else {}
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 425,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                            "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black)),
+                        Text(
+                            "${addOnlist.addno1[indexs].Subaddon[index2].priceAddOn}",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
       );
-
-      
-
-      
-
     }
-    else{
-      var addOnlist = Provider.of<addOn>(context);
-      return Container(
-                                                  child: ListView.builder(
-                                                    physics:NeverScrollableScrollPhysics(),
-                                                    shrinkWrap: true,
-                                                    itemCount: addOnlist.addno1[indexs].Subaddon.length,
-                                                    itemBuilder:(BuildContext context,int index2) {
-                                                      return Align(
-                                                        alignment:AlignmentDirectional(0.4, 0),
-                                                        child: Row(
-                                                          mainAxisSize:MainAxisSize.max,
-                                                          mainAxisAlignment:MainAxisAlignment.start,
-                                                          crossAxisAlignment:CrossAxisAlignment.center,
-                                                          children: [
-                                                            Align(
-                                                              alignment:AlignmentDirectional(10, 0),
-                                                              child: Container(
-                                                                width: 50,
-                                                                child:FormField<bool>(
-                                                                  builder:(state) {
-                                                                    return Column( children: <Widget>[
-                                                                        Row(
-                                                                          children: <Widget>[
-                                                                            Checkbox(value: addOnlist.addno1[indexs].Subaddon[index2].check_status,
-                                                                              onChanged: (value) {
-                                                                                setState(() 
-                                                                                {
-                                                                                  
-                                                                                  addOnlist.addno1[indexs].Subaddon[index2].check_status = value!;
-                                                                                  state.didChange(value);
-                                                                                  // print(addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn);
-                                                                                  if(value == true){
-                                                                                    
-                                                    
-
-                                                                                    
-
-                                                                                    
-
-                                                                                  (chooseAddon.add(addonofs(price: addOnlist.addno1[indexs].Subaddon[index2].priceAddOn, 
-                                                                                  subNameAddOn: "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
-                                                                                  ID: addOnlist.addno1[indexs].Subaddon[index2].ID,
-                                                                                  nameaddon: "${addOnlist.addno1[indexs].nameaddon}")));
-                                                                                   print("========");
-                                                                                  print("true");
-                                                                                  print(chooseAddon);
-                                                                                  
-                                                                                  print(index2);
-                                                                                  print("========");
-                                                                                  }
-                                                                                  if(value == false){
-                                                                                    
-                                                                                    context
-                                                                                    .read<provider_app>()
-                                                                                    .deleteaddon(addOnlist.addno1[indexs].Subaddon[index2].ID);
-                                                                                    
-
-                                                                                  }
-                                                                                  else{
-
-                                                                                  }
-                                                                                  },
-                                                                                );
-                                                                              },
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              width: 425,
-                                                              
-                                                              child: Row(
-                                                                mainAxisSize:MainAxisSize.max,
-                                                                mainAxisAlignment:MainAxisAlignment.spaceBetween,
-                                                                children: [
-                                                                  Text(
-                                                                      "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
-                                                                      style: TextStyle(
-                                                                          fontSize:20,
-                                                                          fontFamily:'Inter',
-                                                                          fontWeight: FontWeight.w500,
-                                                                          color: Colors.black)),
-                                                                  Text(
-                                                                      "${addOnlist.addno1[indexs].Subaddon[index2].priceAddOn}",
-                                                                      style: TextStyle(
-                                                                          fontSize:20,
-                                                                          fontFamily:'Inter',
-                                                                          fontWeight: FontWeight.w500,
-                                                                          color: Colors.black)),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      );
-                                                    },
-                                                  ),
-                                                );
-
-    }
-    
-    
   }
+
   void deleteaddon(int id) {
-    
     chooseAddon.removeWhere((item) => item.ID == id);
-    
-   
   }
 
-   clecaaddon() {
+  clecaaddon() {
     chooseAddon.clear();
     print("clecaaddon");
     print(chooseAddon);
-   
   }
 
-  void cleccheckbox() {
-    
-    
-   
-  }
+  void cleccheckbox() {}
 
-  void adddata (){
-
-
-  }
+  void adddata() {}
 }

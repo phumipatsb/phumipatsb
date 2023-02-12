@@ -5,12 +5,12 @@ class provider_app with ChangeNotifier {
   List<tasks1> tasks = [];
   List<tasks1> get _tasks => List.unmodifiable(tasks);
 
-  List<addonofs> addonSelect =[];
+  List<addonofs> addonSelect = [];
   List<addonofs> get _taddonofs => List.unmodifiable(addonSelect);
 
   // List<addonofs> addonp=[];
   // List<addonofs> get _addonp => List.unmodifiable(addonp);
-  
+
   // void addAddon(addonofs text) {
   //   addonp.add(text);
   //   notifyListeners();
@@ -23,23 +23,23 @@ class provider_app with ChangeNotifier {
   List<addonofs> get addno2 {
     return [..._taddonofs];
   }
-  
 
-
-  void add(tasks1 text) {
+  void addtasks1(tasks1 text) {
     tasks.add(text);
+    print("log 2");
+    print(tasks);
     notifyListeners();
 
     // for(i in tasks){
     //   print(i);
     // }
   }
-  
 
   void edit(int index, newtext) {
     tasks[index] = newtext;
     notifyListeners();
   }
+
   void deleteaddon(int id) {
     addonSelect.removeWhere((item) => item.ID == id);
     print(addonSelect);
@@ -89,12 +89,8 @@ class zoneName with ChangeNotifier {
       SubZoneDetail(SubZoneName: 'A2', Status: ''),
       SubZoneDetail(SubZoneName: 'A2', Status: ''),
       SubZoneDetail(SubZoneName: 'A2', Status: ''),
-      
-
       SubZoneDetail(SubZoneName: 'A3', Status: ''),
-
       SubZoneDetail(SubZoneName: 'A2', Status: ''),
-
     ]),
     zone(ZoneName: 'Zone B', SubZone: [
       SubZoneDetail(SubZoneName: 'A1', Status: ''),
@@ -134,34 +130,47 @@ class zoneName with ChangeNotifier {
 class addOn with ChangeNotifier {
   final List<addon> _addon = [
     addon(nameaddon: 'Size', checkboxstatus: true, Subaddon: [
-      SubAddOnDetail(subNameAddOn: 'XL', priceAddOn: 20, check_status: false,ID:1),
-      SubAddOnDetail(subNameAddOn: 'L', priceAddOn: 15, check_status: false,ID:2),
-      SubAddOnDetail(subNameAddOn: 'M', priceAddOn: 10, check_status: false,ID:3),
-      SubAddOnDetail(subNameAddOn: 'S', priceAddOn: 15, check_status: false,ID:4),
-      SubAddOnDetail(subNameAddOn: 'S1', priceAddOn: 15, check_status: false,ID:5),
+      SubAddOnDetail(
+          subNameAddOn: 'XL', priceAddOn: 20, check_status: false, ID: 1),
+      SubAddOnDetail(
+          subNameAddOn: 'L', priceAddOn: 15, check_status: false, ID: 2),
+      SubAddOnDetail(
+          subNameAddOn: 'M', priceAddOn: 10, check_status: false, ID: 3),
+      SubAddOnDetail(
+          subNameAddOn: 'S', priceAddOn: 15, check_status: false, ID: 4),
+      SubAddOnDetail(
+          subNameAddOn: 'S1', priceAddOn: 15, check_status: false, ID: 5),
     ]),
-    addon(nameaddon: 'Add On',checkboxstatus: false, Subaddon: [
-      SubAddOnDetail(subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false,ID:6),
-      SubAddOnDetail(subNameAddOn: 'ไข่เจียว', priceAddOn: 15, check_status: false,ID:7),
-      SubAddOnDetail(subNameAddOn: 'ไข่ตุ่น', priceAddOn: 10, check_status: false,ID:8),
+    addon(nameaddon: 'Add On', checkboxstatus: false, Subaddon: [
+      SubAddOnDetail(
+          subNameAddOn: 'ไข่ดาว', priceAddOn: 10, check_status: false, ID: 6),
+      SubAddOnDetail(
+          subNameAddOn: 'ไข่เจียว', priceAddOn: 15, check_status: false, ID: 7),
+      SubAddOnDetail(
+          subNameAddOn: 'ไข่ตุ่น', priceAddOn: 10, check_status: false, ID: 8),
     ]),
-    addon(nameaddon: 'เครื่องปรุง',checkboxstatus: false, Subaddon: [
-      SubAddOnDetail(subNameAddOn: 'พริก', priceAddOn: 10, check_status: false,ID:9),
-      SubAddOnDetail(subNameAddOn: 'น้ำตาล', priceAddOn: 15, check_status: false,ID:10),
-      SubAddOnDetail(subNameAddOn: 'น้ำปลา', priceAddOn: 10, check_status: false,ID:11),
+    addon(nameaddon: 'เครื่องปรุง', checkboxstatus: false, Subaddon: [
+      SubAddOnDetail(
+          subNameAddOn: 'พริก', priceAddOn: 10, check_status: false, ID: 9),
+      SubAddOnDetail(
+          subNameAddOn: 'น้ำตาล', priceAddOn: 15, check_status: false, ID: 10),
+      SubAddOnDetail(
+          subNameAddOn: 'น้ำปลา', priceAddOn: 10, check_status: false, ID: 11),
     ]),
-    addon(nameaddon: 'เครื่องเคียง',checkboxstatus: false, Subaddon: [
-      SubAddOnDetail(subNameAddOn: 'ผัก', priceAddOn: 10, check_status: false,ID:12),
-      SubAddOnDetail(subNameAddOn: 'กุญเชียง', priceAddOn: 15, check_status: false,ID:13),
-      SubAddOnDetail(subNameAddOn: 'แมว', priceAddOn: 10, check_status: false,ID:14),
+    addon(nameaddon: 'เครื่องเคียง', checkboxstatus: false, Subaddon: [
+      SubAddOnDetail(
+          subNameAddOn: 'ผัก', priceAddOn: 10, check_status: false, ID: 12),
+      SubAddOnDetail(
+          subNameAddOn: 'กุญเชียง',
+          priceAddOn: 15,
+          check_status: false,
+          ID: 13),
+      SubAddOnDetail(
+          subNameAddOn: 'แมว', priceAddOn: 10, check_status: false, ID: 14),
     ]),
   ];
 
   List<addon> get addno1 {
     return [..._addon];
   }
-
-  
-
-  
 }
