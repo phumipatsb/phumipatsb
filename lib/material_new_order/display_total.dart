@@ -10,12 +10,15 @@ class display_total extends StatelessWidget {
     double service_charge = 10;
     double TotoAddOn = 0.0;
     double toto = 0.0;
+    double totoaddon = 0.0;
 
     for (var i = 0; i < tasks.length; i++) {
       toto += tasks[i].price * tasks[i].amount;
-      // if (tasks[i].addonSelect.length > 0) {
-      //   TotoAddOn += tasks[i].addonSelect[i].price;
-      // }
+      for (var b = 0; b < tasks[i].addonSelect[i].price; b++) {
+        // if (tasks[i].addonSelect.length >= 0) {
+        //   // totoaddon += tasks[i].addonSelect[b].price;
+        // }
+      }
     }
 
     double TotalPriceBeforeTotal = toto + TotoAddOn;

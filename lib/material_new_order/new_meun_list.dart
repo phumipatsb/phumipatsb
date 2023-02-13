@@ -18,7 +18,7 @@ class _GridViewPageState extends State<homepage> {
   int _paymentType = 1;
   int counter = 0;
   List test = [];
-  List<addonofs1> chooseAddon = [];
+  List<addonofs> chooseAddon = [];
   List<addonofs> chooseAddon1 = [];
   bool checkboxValue = false;
   int y = 10;
@@ -240,14 +240,15 @@ class _GridViewPageState extends State<homepage> {
                                                                   .price,
                                                               images:
                                                                   "${item[index].image}",
-                                                              addonSelect: [],
+                                                              addonSelect:
+                                                                  chooseAddon,
                                                             ),
                                                           );
-                                                      context
-                                                          .read<provider_app>()
-                                                          .addtasks2(addOnse(
-                                                              addonse:
-                                                                  chooseAddon));
+                                                      // context
+                                                      //     .read<provider_app>() tasks2
+                                                      //     .addtasks2(addOnse(
+                                                      //         addonse:
+                                                      //             chooseAddon));
 
                                                       // print("log");
                                                       // print(context
@@ -489,7 +490,7 @@ class _GridViewPageState extends State<homepage> {
                                             // };
                                             // test.add(boss);
                                             // print(test);
-                                            (chooseAddon.add(addonofs1(
+                                            (chooseAddon.add(addonofs(
                                                 price: addOnlist
                                                     .addno1[indexs]
                                                     .Subaddon[index2]
