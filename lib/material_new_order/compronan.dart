@@ -20,9 +20,7 @@ class Productprice {
       required this.productname,
       required this.image,
       required this.price,
-      required this.statusaddno
-      
-      });
+      required this.statusaddno});
 }
 
 // class ProductSelect {
@@ -42,26 +40,46 @@ class Productprice {
 //   provimenu({required this.name, required this.price, required this.images});
 // }
 
-
-
 class tasks1 {
   String name;
   double price;
   String images;
   int amount = 1;
   final List<addonofs> addonSelect;
-  tasks1({required this.name, required this.price, required this.images, required this.addonSelect});
+  tasks1(
+      {required this.name,
+      required this.price,
+      required this.images,
+      required this.addonSelect});
 }
 
-class addonofs{
+class addonofs {
   String nameaddon;
   String subNameAddOn;
   double price;
   int ID;
-  addonofs({required this.price,required this.subNameAddOn,required this.nameaddon,required this.ID});
+  addonofs(
+      {required this.price,
+      required this.subNameAddOn,
+      required this.nameaddon,
+      required this.ID});
+}
 
-  
+class addOnse {
+  final List<addonofs1> addonse;
+  addOnse({required this.addonse});
+}
 
+class addonofs1 {
+  String nameaddon;
+  String subNameAddOn;
+  double price;
+  int ID;
+  addonofs1(
+      {required this.price,
+      required this.subNameAddOn,
+      required this.nameaddon,
+      required this.ID});
 }
 
 // class tasks {
@@ -72,7 +90,6 @@ class addonofs{
 //   List addonst =[];
 //   tasks({required this.name, required this.price, required this.images,required this.addonst});
 // }
-
 
 class zone {
   final String ZoneName;
@@ -100,7 +117,10 @@ class addon {
   final bool checkboxstatus;
   final List<SubAddOnDetail> Subaddon;
 
-  addon({required this.nameaddon, required this.Subaddon,required this.checkboxstatus});
+  addon(
+      {required this.nameaddon,
+      required this.Subaddon,
+      required this.checkboxstatus});
 }
 
 class SubAddOnDetail {
@@ -109,7 +129,9 @@ class SubAddOnDetail {
   bool check_status;
   int ID;
 
-  SubAddOnDetail({required this.subNameAddOn, required this.priceAddOn, required this.check_status, required this.ID});
+  SubAddOnDetail(
+      {required this.subNameAddOn,
+      required this.priceAddOn,
+      required this.check_status,
+      required this.ID});
 }
-
-

@@ -18,7 +18,7 @@ class _GridViewPageState extends State<homepage> {
   int _paymentType = 1;
   int counter = 0;
   List test = [];
-  List<addonofs> chooseAddon = [];
+  List<addonofs1> chooseAddon = [];
   List<addonofs> chooseAddon1 = [];
   bool checkboxValue = false;
   int y = 10;
@@ -83,6 +83,7 @@ class _GridViewPageState extends State<homepage> {
           itemBuilder: (BuildContext context, int index) {
             bool st;
             var tasks = context.read<provider_app>().tasks;
+            var tasks2 = context.read<provider_app>().tasks2;
             var addOnlist = Provider.of<addOn>(context);
             return Container(
               decoration: BoxDecoration(
@@ -239,14 +240,20 @@ class _GridViewPageState extends State<homepage> {
                                                                   .price,
                                                               images:
                                                                   "${item[index].image}",
-                                                              addonSelect:
-                                                                  chooseAddon,
+                                                              addonSelect: [],
                                                             ),
                                                           );
-                                                      print("log");
-                                                      print(context
+                                                      context
                                                           .read<provider_app>()
-                                                          .addonSelect);
+                                                          .addtasks2(addOnse(
+                                                              addonse:
+                                                                  chooseAddon));
+
+                                                      // print("log");
+                                                      // print(context
+                                                      //     .read<provider_app>()
+                                                      //     .addonSelect);
+                                                      clecaaddon();
                                                     },
                                                   );
                                                   Navigator.pop(context);
@@ -470,19 +477,19 @@ class _GridViewPageState extends State<homepage> {
                                           state.didChange(value);
                                           // print(addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn);
                                           if (value == true) {
-                                            Map boss = {
-                                              "name":
-                                                  "${addOnlist.addno1[indexs].nameaddon}",
-                                              "price": addOnlist.addno1[indexs]
-                                                  .Subaddon[index2].priceAddOn,
-                                              "subnameAddon":
-                                                  "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
-                                              "id": addOnlist.addno1[indexs]
-                                                  .Subaddon[index2].ID
-                                            };
-                                            test.add(boss);
-                                            print(test);
-                                            (chooseAddon.add(addonofs(
+                                            // Map boss = {
+                                            //   "name":
+                                            //       "${addOnlist.addno1[indexs].nameaddon}",
+                                            //   "price": addOnlist.addno1[indexs]
+                                            //       .Subaddon[index2].priceAddOn,
+                                            //   "subnameAddon":
+                                            //       "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
+                                            //   "id": addOnlist.addno1[indexs]
+                                            //       .Subaddon[index2].ID
+                                            // };
+                                            // test.add(boss);
+                                            // print(test);
+                                            (chooseAddon.add(addonofs1(
                                                 price: addOnlist
                                                     .addno1[indexs]
                                                     .Subaddon[index2]
@@ -493,12 +500,16 @@ class _GridViewPageState extends State<homepage> {
                                                     .Subaddon[index2].ID,
                                                 nameaddon:
                                                     "${addOnlist.addno1[indexs].nameaddon}")));
-                                            print("========");
-                                            print("true");
-                                            print(chooseAddon);
+                                            // print("========");
+                                            // print("true");
+                                            // print(chooseAddon);
 
-                                            print(index2);
-                                            print("========");
+                                            // print(index2);
+                                            // print("========");
+                                            // context
+                                            //     .read<provider_app>()
+                                            //     .addtasks2(addOnse(
+                                            //         addonse: chooseAddon));
                                           }
                                           if (value == false) {
                                             context
@@ -560,7 +571,7 @@ class _GridViewPageState extends State<homepage> {
   }
 
   clecaaddon() {
-    chooseAddon.clear();
+    chooseAddon = [];
     print("clecaaddon");
     print(chooseAddon);
   }
