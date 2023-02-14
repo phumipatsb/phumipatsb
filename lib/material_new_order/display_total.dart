@@ -14,11 +14,11 @@ class display_total extends StatelessWidget {
 
     for (var i = 0; i < tasks.length; i++) {
       toto += tasks[i].price * tasks[i].amount;
-      for (var b = 0; b < tasks[i].addonSelect[i].price; b++) {
-        // if (tasks[i].addonSelect.length >= 0) {
-        //   // totoaddon += tasks[i].addonSelect[b].price;
-        // }
-      }
+      // for (var b = 0; b < tasks[i].addonSelect[i].price; b++) {
+      //   // if (tasks[i].addonSelect.length >= 0) {
+      //   //   // totoaddon += tasks[i].addonSelect[b].price;
+      //   // }
+      // }
     }
 
     double TotalPriceBeforeTotal = toto + TotoAddOn;

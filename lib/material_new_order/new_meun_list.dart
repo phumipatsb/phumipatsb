@@ -16,14 +16,14 @@ class _GridViewPageState extends State<homepage> {
   final ScrollController _controller = ScrollController();
   final _formKey = GlobalKey<FormState>();
   int _paymentType = 1;
-  int counter = 0;
-  List test = [];
+  var _oneValue = '';
+ 
   List<addonofs> chooseAddon = [];
-  List<addonofs> chooseAddon1 = [];
+  
   bool checkboxValue = false;
   int y = 10;
   TextEditingController textarea = TextEditingController();
-//List<dynamic> AddItem = [];
+
   final item = <dynamic>[
     Productprice(
         statusaddno: true,
@@ -244,16 +244,7 @@ class _GridViewPageState extends State<homepage> {
                                                                   chooseAddon,
                                                             ),
                                                           );
-                                                      // context
-                                                      //     .read<provider_app>() tasks2
-                                                      //     .addtasks2(addOnse(
-                                                      //         addonse:
-                                                      //             chooseAddon));
 
-                                                      // print("log");
-                                                      // print(context
-                                                      //     .read<provider_app>()
-                                                      //     .addonSelect);
                                                       clecaaddon();
                                                     },
                                                   );
@@ -287,7 +278,7 @@ class _GridViewPageState extends State<homepage> {
                         setState(
                           () {
                             print('boss');
-                            //chooseAddon1.add(addonofs(price: 0, subNameAddOn: "nan",nameaddon: "nan",ID: 0));
+                            
                             context.read<provider_app>().addtasks1(
                                   tasks1(
                                     name: "${item[index].productname}",
@@ -300,8 +291,7 @@ class _GridViewPageState extends State<homepage> {
                         );
                       }
 
-                      //print('name' + "${item[index].productname}");
-                      //print(Mapmanu);
+                     
                     },
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -372,73 +362,72 @@ class _GridViewPageState extends State<homepage> {
   choiceoptions(bool status, int indexs) {
     if (status == true) {
       var addOnlist = Provider.of<addOn>(context);
+      var _result;
+      var _selectedOption;
       return Container(
-          // child: ListView.builder(
-          //   physics: NeverScrollableScrollPhysics(),
-          //   shrinkWrap: true,
-          //   itemCount: addOnlist.addno1[indexs].Subaddon.length,
-          //   itemBuilder: (BuildContext context, int index2) {
-          //     return Align(
-          //       alignment: AlignmentDirectional(0.4, 0),
-          //       child: Row(
-          //         mainAxisSize: MainAxisSize.max,
-          //         mainAxisAlignment: MainAxisAlignment.start,
-          //         crossAxisAlignment: CrossAxisAlignment.center,
-          //         children: [
-          //           Align(
-          //             alignment: AlignmentDirectional(10, 0),
-          //             child: Container(
-          //               width: 50,
-          //               child: FormField<bool>(
-          //                 builder: (state) {
-          //                   return Column(
-          //                     children: <Widget>[
-          //                       Row(
-          //                         children: <Widget>[
-          //                           RadioListTile(
-          //                             value: index2,
-          //                             groupValue: _paymentType,
-          //                             onChanged: (newValue) => setState(
-          //                                 () => _paymentType = newValue!),
-          //                             activeColor: Colors.red,
-          //                             selected: false,
-          //                           ),
-          //                         ],
-          //                       ),
-          //                     ],
-          //                   );
-          //                 },
-          //               ),
-          //             ),
-          //           ),
-          //           Container(
-          //             width: 425,
-          //             child: Row(
-          //               mainAxisSize: MainAxisSize.max,
-          //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //               children: [
-          //                 Text(
-          //                     "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
-          //                     style: TextStyle(
-          //                         fontSize: 20,
-          //                         fontFamily: 'Inter',
-          //                         fontWeight: FontWeight.w500,
-          //                         color: Colors.black)),
-          //                 Text(
-          //                     "${addOnlist.addno1[indexs].Subaddon[index2].priceAddOn}",
-          //                     style: TextStyle(
-          //                         fontSize: 20,
-          //                         fontFamily: 'Inter',
-          //                         fontWeight: FontWeight.w500,
-          //                         color: Colors.black)),
-          //               ],
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //     );
-          //   },
-          // ),
+       
+          child: ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: addOnlist.addno1[indexs].Subaddon.length,
+            itemBuilder: (BuildContext context, int index2) {
+              return Align(
+                alignment: AlignmentDirectional(0.4, 0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(10, 0),
+                      
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                      
+                        
+                         child: RadioListTile(
+                          
+                          value: addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn.indexOf(addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn),
+                          groupValue: _selectedOption,
+                          onChanged: (value) {
+                            setState(() {
+                              _selectedOption = value!;
+                              var state;
+                              state.didChange(value);
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 425,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                              "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black)),
+                          Text(
+                              "${addOnlist.addno1[indexs].Subaddon[index2].priceAddOn}",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black)),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
           );
     } else {
       var addOnlist = Provider.of<addOn>(context);
@@ -466,9 +455,10 @@ class _GridViewPageState extends State<homepage> {
                               Row(
                                 children: <Widget>[
                                   Checkbox(
+                                    
                                     value: addOnlist.addno1[indexs]
                                         .Subaddon[index2].check_status,
-                                    onChanged: (value) {
+                                    onChanged: (bool? value) {
                                       setState(
                                         () {
                                           addOnlist
@@ -476,20 +466,10 @@ class _GridViewPageState extends State<homepage> {
                                               .Subaddon[index2]
                                               .check_status = value!;
                                           state.didChange(value);
-                                          // print(addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn);
+                                          
+
                                           if (value == true) {
-                                            // Map boss = {
-                                            //   "name":
-                                            //       "${addOnlist.addno1[indexs].nameaddon}",
-                                            //   "price": addOnlist.addno1[indexs]
-                                            //       .Subaddon[index2].priceAddOn,
-                                            //   "subnameAddon":
-                                            //       "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
-                                            //   "id": addOnlist.addno1[indexs]
-                                            //       .Subaddon[index2].ID
-                                            // };
-                                            // test.add(boss);
-                                            // print(test);
+                                            
                                             (chooseAddon.add(addonofs(
                                                 price: addOnlist
                                                     .addno1[indexs]
@@ -501,16 +481,7 @@ class _GridViewPageState extends State<homepage> {
                                                     .Subaddon[index2].ID,
                                                 nameaddon:
                                                     "${addOnlist.addno1[indexs].nameaddon}")));
-                                            // print("========");
-                                            // print("true");
-                                            // print(chooseAddon);
-
-                                            // print(index2);
-                                            // print("========");
-                                            // context
-                                            //     .read<provider_app>()
-                                            //     .addtasks2(addOnse(
-                                            //         addonse: chooseAddon));
+                                            
                                           }
                                           if (value == false) {
                                             context
@@ -523,7 +494,10 @@ class _GridViewPageState extends State<homepage> {
                                                 .Subaddon[index2].ID);
                                             print(chooseAddon);
                                           } else {}
+                                           cleccheckbox(value);
                                         },
+
+                                       
                                       );
                                     },
                                   ),
@@ -577,7 +551,10 @@ class _GridViewPageState extends State<homepage> {
     print(chooseAddon);
   }
 
-  void cleccheckbox() {}
+  bool cleccheckbox(bool value) {
+    value = false;
+  return value;
+  }
 
   void adddata() {}
 }

@@ -11,17 +11,15 @@ class provider_app with ChangeNotifier {
   List<addOnse> tasks2 = [];
   List<addOnse> get _tasks2 => List.unmodifiable(tasks2);
 
-  void addtasks2(addOnse text) {
-    tasks2.add(text);
-    print("tasks2");
-    print(tasks2);
+  // void addtasks2(addOnse text) {
+  //   tasks2.add(text);
+  //   print("tasks2");
+  //   print(tasks2);
 
-    notifyListeners();
+  //   notifyListeners();
 
-    // for(i in tasks){
-    //   print(i);
-    // }
-  }
+    
+  // }
 
   // List<addonofs> addonp=[];
   // List<addonofs> get _addonp => List.unmodifiable(addonp);
@@ -45,9 +43,7 @@ class provider_app with ChangeNotifier {
     print(tasks);
     notifyListeners();
 
-    // for(i in tasks){
-    //   print(i);
-    // }
+    
   }
 
   void edit(int index, newtext) {
