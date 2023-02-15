@@ -364,6 +364,7 @@ class _GridViewPageState extends State<homepage> {
       var addOnlist = Provider.of<addOn>(context);
       var _result;
       var _selectedOption;
+      int b=0;
       return Container(
        
           child: ListView.builder(
@@ -413,6 +414,10 @@ class _GridViewPageState extends State<homepage> {
                               print('object');
                               
                               _oneValue = value.toString();
+                             
+                              
+
+                              
                               print(value);
                               (chooseAddon.add(addonofs(
                                                 price: addOnlist 
@@ -425,6 +430,8 @@ class _GridViewPageState extends State<homepage> {
                                                     .Subaddon[index2].ID,
                                                 nameaddon:
                                                     "${addOnlist.addno1[indexs].nameaddon}")));
+                                                    
+                                                    
 
                                
                                            
@@ -584,4 +591,6 @@ class _GridViewPageState extends State<homepage> {
   }
 
   void adddata() {}
+  
+  
 }
