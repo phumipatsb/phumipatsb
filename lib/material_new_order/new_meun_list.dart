@@ -372,47 +372,74 @@ class _GridViewPageState extends State<homepage> {
             itemCount: addOnlist.addno1[indexs].Subaddon.length,
             itemBuilder: (BuildContext context, int index2) {
               return Align(
-                alignment: AlignmentDirectional(0.4, 0),
+                alignment: AlignmentDirectional(0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Align(
-                      alignment: AlignmentDirectional(10, 0),
+                    // Align(
+                    //   alignment: AlignmentDirectional(10, 0),
                       
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                      
-                        
-                         child: RadioListTile(
-                          
-                          value: addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn.indexOf(addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn),
-                          groupValue: _selectedOption,
-                          onChanged: (value) {
-                            setState(() {
-                              _selectedOption = value!;
-                              var state;
-                              state.didChange(value);
-                            });
-                          },
-                        ),
-                      ),
-                    ),
+                    //   child: Container(
+                    //     width: 100,
+                    //     height: 50,
+                    //     child: RadioListTile(title: Text("${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}"),
+                    //     value: addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn,
+                    //     groupValue: _oneValue,
+                    //     onChanged: (value) {
+                    //       setState(() {
+                    //         _oneValue = value.toString();
+                    //       });
+                    //     },)
+                    //   ),
+                    // ),
                     Container(
-                      width: 425,
+                      width: 450,
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                              "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black)),
+                          Container(
+                            width: 200,
+                            height: 50,
+                            child: RadioListTile(
+                            title: Text("${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}"),
+                                    value: addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn,
+                                    groupValue: _oneValue,
+                                    onChanged: (value) {
+                                                    
+                            setState(() {
+                              print('object');
+                              
+                              _oneValue = value.toString();
+                              print(value);
+                              (chooseAddon.add(addonofs(
+                                                price: addOnlist 
+                                                    .addno1[indexs]
+                                                    .Subaddon[index2]
+                                                    .priceAddOn,
+                                                subNameAddOn:
+                                                    "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
+                                                ID: addOnlist.addno1[indexs]
+                                                    .Subaddon[index2].ID,
+                                                nameaddon:
+                                                    "${addOnlist.addno1[indexs].nameaddon}")));
+
+                               
+                                           
+                              
+
+                            });
+                                                  },),
+                          ),
+                          // Text(
+                          //     "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
+                          //     style: TextStyle(
+                          //         fontSize: 20,
+                          //         fontFamily: 'Inter',
+                          //         fontWeight: FontWeight.w500,
+                          //         color: Colors.black)),
                           Text(
                               "${addOnlist.addno1[indexs].Subaddon[index2].priceAddOn}",
                               style: TextStyle(
