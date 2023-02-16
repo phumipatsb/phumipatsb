@@ -4,37 +4,19 @@ import 'package:flutter/material.dart';
 
 import 'modelsApi.dart';
 
+Future<Welcome> fetchdata() async{
+  final response = await http.get(Uri.parse('https://partner1.triggersplus.com/dining/get_menu/A53C88185CF64E6F85D00F2C75180AE1/'));
+ final welcome ;
+ if(response.statusCode == 200 && response.body.isNotEmpty){
+  
 
-class apiMenuDataList {
-  // List<CategoryMenuList> menuDataList = [];
+  return welcome = welcomeFromJson(response.body);
+  
+ }
+ else{
+  throw Exception('LOOD');
+ }
+ 
 
-  static Future<List<CategoryMenuList>> fetchMenuList() async {
-    var response = await http.get(
-      Uri.parse(
-        Uri.encodeFull(
-            'https://partner1.triggersplus.com/dining/get_menu/A53C88185CF64E6F85D00F2C75180AE1/'),
-      ),
-    );
-    print(response);
-    return [];
-    // if (response.body.isNotEmpty && response.statusCode == 200) {
-    //   try {
-    //     var json = jsonDecode(response.body);
-    //     return List.from(json['data'])
-    //         .map<CategoryMenuList>((ag) => CategoryMenuList(ag))
-    //         .toList();
-            
-    //   } catch (err) {
-    //     print(err);
-    //     return [];
-    //   }}
-  }
-
-
-
-
-
-
-} 
-
+}
 

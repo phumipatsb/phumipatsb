@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test1/pull_from_api/provider_Api.dart';
 import 'package:test1/table/new_table.dart';
 import 'material_new_order/leftside.dart';
 import 'package:test1/table/table.dart';
 import 'sumneworder.dart';
 import 'models/provider_app.dart';
-import 'models/provider_category.dart';
+
 import 'testlayout.dart';
 import 'package:flutter/services.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => provider_app()),
         ChangeNotifierProvider(create: (_) => zoneName()),
         ChangeNotifierProvider(create: (_) => addOn()),
-        ChangeNotifierProvider(create: (_) => Categories()),
+        ChangeNotifierProvider(create: (_) => provider_api()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
