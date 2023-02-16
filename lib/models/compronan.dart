@@ -137,3 +137,19 @@ class SubAddOnDetail {
 }
 
 
+class selectaf{
+  List<send> selectafdata ;
+  selectaf({required this.selectafdata});
+}
+
+class send{
+  
+  int  index1;
+  int  intdex2;
+  send({required this.index1, required this.intdex2});
+}
+
+
+
+
+

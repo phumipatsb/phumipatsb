@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
+import 'package:test1/models/compronan.dart';
 
 import '../RAW/coloer/hex.dart';
+import '../models/provider_app.dart';
 import '../pull_from_api/provider_Api.dart';
 
 class CategoryMenu extends StatefulWidget {
@@ -20,7 +22,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
     final postModel = Provider.of<provider_api>(context, listen: false);
     postModel.getdata();
   }
-
+  List<send> sendprovier =[];
   int selected = 0;
   int selected_sub_cat = 0;
 
@@ -156,6 +158,11 @@ class _CategoryMenuState extends State<CategoryMenu> {
                                               onTap: () {
                                                 setState(() {
                                                   selected_sub_cat = index;
+                                                  sendprovier.add(send(index1: selected ,intdex2:selected_sub_cat ));
+                                                //   context
+                                                // .read<provider_app>()
+                                                // .addtasks2(selectaf(selectafdata: sendprovier));
+
                                                 });
                                               },
                                               child: Row(

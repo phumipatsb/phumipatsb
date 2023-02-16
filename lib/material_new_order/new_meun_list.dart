@@ -3,7 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:test1/RAW/coloer/hex.dart';
 import '../models/provider_app.dart';
-import 'compronan.dart';
+import '../models/compronan.dart';
 
 class homepage extends StatefulWidget {
   //homepage(Key? key) : super(key: key);

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test1/material_new_order/compronan.dart';
+import 'package:test1/models/compronan.dart';
 import 'package:test1/pull_from_api/orderlist.dart';
 import 'package:test1/RAW/SVG/svg.dart';
 import 'package:test1/RAW/transform/transform.dart';
 
-import 'package:test1/material_new_order/compronan.dart';
+import 'package:test1/models/compronan.dart';
 
 import '../../models/provider_app.dart';
 

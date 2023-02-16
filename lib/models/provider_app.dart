@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:test1/material_new_order/compronan.dart';
+
+import 'compronan.dart';
+
 
 class provider_app with ChangeNotifier {
   List<tasks1> tasks = [];
@@ -8,30 +10,10 @@ class provider_app with ChangeNotifier {
   List<addonofs> addonSelect = [];
   List<addonofs> get _taddonofs => List.unmodifiable(addonSelect);
 
-  List<addOnse> tasks2 = [];
-  List<addOnse> get _tasks2 => List.unmodifiable(tasks2);
+  List<selectaf> tasks2 = [];
+  List<selectaf> get _tasks2 => List.unmodifiable(tasks2);
 
-  // void addtasks2(addOnse text) {
-  //   tasks2.add(text);
-  //   print("tasks2");
-  //   print(tasks2);
-
-  //   notifyListeners();
-
-    
-  // }
-
-  // List<addonofs> addonp=[];
-  // List<addonofs> get _addonp => List.unmodifiable(addonp);
-
-  // void addAddon(addonofs text) {
-  //   addonp.add(text);
-  //   notifyListeners();
-
-  //   // for(i in tasks){
-  //   //   print(i);
-  //   // }
-  // }
+  
 
   List<addonofs> get addno2 {
     return [..._taddonofs];
@@ -41,6 +23,15 @@ class provider_app with ChangeNotifier {
     tasks.add(text);
     print("log 2");
     print(tasks);
+    notifyListeners();
+
+    
+  }
+
+  void addtasks2(selectaf text) {
+    tasks2.add(text);
+    print("log 2");
+    print(tasks2);
     notifyListeners();
 
     
