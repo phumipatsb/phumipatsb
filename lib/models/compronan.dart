@@ -59,7 +59,7 @@ class addonofs {
   String nameaddon;
   String subNameAddOn;
   num price;
-  int ID;
+  String ID;
   addonofs(
       {required this.price,
       required this.subNameAddOn,

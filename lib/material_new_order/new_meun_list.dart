@@ -130,6 +130,7 @@ class _GridViewPageState extends State<homepage> {
                   GestureDetector(
                     onTap: () {
                       var mapObj = postModel.post!.groupOptionList;
+                      print(mapObj);
                       
                       
                            var Options = '${data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions}' ;
@@ -168,7 +169,7 @@ class _GridViewPageState extends State<homepage> {
                                       width: 500,
                                       child: ListView.builder(
                                         shrinkWrap: false,
-                                        itemCount:mapObj?.length,
+                                        itemCount:postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]!.length,
                                         itemBuilder:
                                             (BuildContext context, int index) {
                                           return Container(
@@ -178,8 +179,7 @@ class _GridViewPageState extends State<homepage> {
                                               children: <Widget>[
                                                 Container(
                                                   child: Text(
-                                                    "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].questionTh
-}",
+                                                    "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].questionTh}",
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .subtitle1!
@@ -204,9 +204,8 @@ class _GridViewPageState extends State<homepage> {
                                                   width: 10,
                                                 ),
                                                 choiceoptions(
-                                                    addOnlist.addno1[index]
-                                                        .checkboxstatus,
-                                                    index),
+                                                    "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].mode}",
+                                                    selected,selected_sub_cat,index),
                                               ],
                                             ),
                                           );
@@ -407,19 +406,22 @@ class _GridViewPageState extends State<homepage> {
     );
   }
 
-  choiceoptions(bool status, int indexs) {
-    if (status == true) {
+  choiceoptions(String status, int selected,int selected_sub_cat,int index) {
+    print(status);
+    if (status == "Mode.SIN") {
       var addOnlist = Provider.of<addOn>(context);
       var _result;
       var _selectedOption;
       int b=0;
+      final postModel = Provider.of<provider_api>(context);
+      var data = postModel.post?.data;
       
       return Container(
        
           child: ListView.builder(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: addOnlist.addno1[indexs].Subaddon.length,
+            itemCount: postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items!.length,
             itemBuilder: (BuildContext context, int index2) {
               return Align(
                 alignment: AlignmentDirectional(0, 0),
@@ -466,15 +468,15 @@ class _GridViewPageState extends State<homepage> {
 
                           //   ),
                           // ),
-                          // Text(
-                          //     "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
-                          //     style: TextStyle(
-                          //         fontSize: 20,
-                          //         fontFamily: 'Inter',
-                          //         fontWeight: FontWeight.w500,
-                          //         color: Colors.black)),
                           Text(
-                              "${addOnlist.addno1[indexs].Subaddon[index2].priceAddOn}",
+                              "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice}",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black)),
+                          Text(
+                              "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].price}",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontFamily: 'Inter',
@@ -491,11 +493,15 @@ class _GridViewPageState extends State<homepage> {
           );
     } else {
       var addOnlist = Provider.of<addOn>(context);
+      final postModel = Provider.of<provider_api>(context);
+      var data = postModel.post?.data;
+      bool st5 =false ;
+
       return Container(
         child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: addOnlist.addno1[indexs].Subaddon.length,
+          itemCount: postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items!.length,
           itemBuilder: (BuildContext context, int index2) {
             return Align(
               alignment: AlignmentDirectional(0.4, 0),
@@ -516,42 +522,28 @@ class _GridViewPageState extends State<homepage> {
                                 children: <Widget>[
                                   Checkbox(
                                     
-                                    value: addOnlist.addno1[indexs]
-                                        .Subaddon[index2].check_status,
+                                    value: st5,
                                     onChanged: (bool? value) {
                                       setState(
                                         () {
-                                          addOnlist
-                                              .addno1[indexs]
-                                              .Subaddon[index2]
-                                              .check_status = value!;
+                                          st5 = value!;
                                           state.didChange(value);
                                           
 
                                           if (value == true) {
                                             
                                             (chooseAddon.add(addonofs(
-                                                price: addOnlist
-                                                    .addno1[indexs]
-                                                    .Subaddon[index2]
-                                                    .priceAddOn,
-                                                subNameAddOn:
-                                                    "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
-                                                ID: addOnlist.addno1[indexs]
-                                                    .Subaddon[index2].ID,
-                                                nameaddon:
-                                                    "${addOnlist.addno1[indexs].nameaddon}")));
+                                                price: postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].price!,
+                                                subNameAddOn:"${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice}",
+                                                ID: "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].id!}",
+                                                nameaddon:"${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].questionTh}")));
                                             
                                           }
                                           if (value == false) {
-                                            context
-                                                .read<provider_app>()
-                                                .deleteaddon(addOnlist
-                                                    .addno1[indexs]
-                                                    .Subaddon[index2]
-                                                    .ID);
-                                            deleteaddon(addOnlist.addno1[indexs]
-                                                .Subaddon[index2].ID);
+                                            // context
+                                            //     .read<provider_app>()
+                                            //     .deleteaddon(addOnlist.addno1[indexs].Subaddon[index2].ID);
+                                            deleteaddon("${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].id!}");
                                             print(chooseAddon);
                                           } else {}
                                            cleccheckbox(value);
@@ -576,14 +568,14 @@ class _GridViewPageState extends State<homepage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                            "${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}",
+                            "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice}",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontFamily: 'Inter',
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black)),
                         Text(
-                            "${addOnlist.addno1[indexs].Subaddon[index2].priceAddOn}",
+                            "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].price}",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontFamily: 'Inter',
@@ -601,7 +593,7 @@ class _GridViewPageState extends State<homepage> {
     }
   }
 
-  void deleteaddon(int id) {
+  void deleteaddon(String id) {
     chooseAddon.removeWhere((item) => item.ID == id);
   }
 
