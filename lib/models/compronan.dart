@@ -42,21 +42,23 @@ class Productprice {
 
 class tasks1 {
   String name;
-  double price;
+  num? price;
   String images;
   int amount = 1;
+  String idItem;
   final List<addonofs> addonSelect;
   tasks1(
       {required this.name,
       required this.price,
       required this.images,
-      required this.addonSelect});
+      required this.addonSelect,
+      required this.idItem});
 }
 
 class addonofs {
   String nameaddon;
   String subNameAddOn;
-  double price;
+  num price;
   int ID;
   addonofs(
       {required this.price,
@@ -144,8 +146,8 @@ class selectaf{
 
 class send{
   
-  int  index1;
-  int  intdex2;
+  int  index1 =0;
+  int  intdex2=0;
   send({required this.index1, required this.intdex2});
 }
 

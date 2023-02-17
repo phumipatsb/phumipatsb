@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:test1/RAW/coloer/hex.dart';
 import '../models/provider_app.dart';
 import '../models/compronan.dart';
+import '../pull_from_api/provider_Api.dart';
 
 class homepage extends StatefulWidget {
   //homepage(Key? key) : super(key: key);
@@ -63,11 +65,39 @@ class _GridViewPageState extends State<homepage> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    final postModel = Provider.of<provider_api>(context, listen: false);
+    postModel.getdata();
+  }
   Widget build(BuildContext context) {
-    return
+    final postModel = Provider.of<provider_api>(context);
+    var data = postModel.post?.data;
+    var _groupOptionList = postModel.post?.groupOptionList;
 
-        // backgroundColor: HexColor(backgroundColor),
-        Scrollbar(
+    int selected = context.watch<provider_app>().index1;
+    
+  int selected_sub_cat = context.watch<provider_app>().index2;
+    print("index1 :"+selected.toString());
+    print("index2 :"+ selected_sub_cat.toString());
+
+    
+    return postModel.lodeing?
+    Center(
+            child: Container(
+              child: SpinKitThreeBounce(itemBuilder: ((context, index) {
+                return DecoratedBox(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color:
+                            index.isInfinite ? Colors.red : Colors.red[100]));
+              })),
+            ),
+          )
+
+
+        
+       : Scrollbar(
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: GridView.builder(
@@ -79,11 +109,14 @@ class _GridViewPageState extends State<homepage> {
             mainAxisSpacing: 15,
             mainAxisExtent: 237,
           ),
-          itemCount: item.length,
+          itemCount: data?[selected]
+                                    .items?[selected_sub_cat]
+                                    .items
+                                    ?.length,
           itemBuilder: (BuildContext context, int index) {
             bool st;
             var tasks = context.read<provider_app>().tasks;
-            var tasks2 = context.read<provider_app>().tasks2;
+            //var tasks2 = context.read<provider_app>().tasks2;
             var addOnlist = Provider.of<addOn>(context);
             return Container(
               decoration: BoxDecoration(
@@ -96,9 +129,17 @@ class _GridViewPageState extends State<homepage> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      print(index);
+                      var mapObj = postModel.post!.groupOptionList;
+                      
+                      
+                           var Options = '${data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions}' ;
 
-                      if (item[index].statusaddno == true) {
+                           
+
+                      //print('${data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions}');
+                      //  print('${_groupOptionList?['']}');
+
+                      if (Options != '')  {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -127,7 +168,7 @@ class _GridViewPageState extends State<homepage> {
                                       width: 500,
                                       child: ListView.builder(
                                         shrinkWrap: false,
-                                        itemCount: addOnlist.addno1.length,
+                                        itemCount:mapObj?.length,
                                         itemBuilder:
                                             (BuildContext context, int index) {
                                           return Container(
@@ -137,7 +178,8 @@ class _GridViewPageState extends State<homepage> {
                                               children: <Widget>[
                                                 Container(
                                                   child: Text(
-                                                    "${addOnlist.addno1[index].nameaddon}",
+                                                    "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].questionTh
+}",
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .subtitle1!
@@ -234,14 +276,12 @@ class _GridViewPageState extends State<homepage> {
                                                           .read<provider_app>()
                                                           .addtasks1(
                                                             tasks1(
-                                                              name:
-                                                                  "${item[index].productname}",
-                                                              price: item[index]
-                                                                  .price,
-                                                              images:
-                                                                  "${item[index].image}",
-                                                              addonSelect:
-                                                                  chooseAddon,
+                                                              name: "${data?[selected].items?[selected_sub_cat].items?[index].name}",
+                                                              price: data?[selected].items?[selected_sub_cat].items?[index].price,
+                                                              images: '${data?[selected].items?[selected_sub_cat].items?[index].picture}',
+                                                              idItem: '${data?[selected].items?[selected_sub_cat].items?[index].itemId}',
+                                                              addonSelect: chooseAddon,
+                                                                  
                                                             ),
                                                           );
 
@@ -281,9 +321,10 @@ class _GridViewPageState extends State<homepage> {
                             
                             context.read<provider_app>().addtasks1(
                                   tasks1(
-                                    name: "${item[index].productname}",
-                                    price: item[index].price,
-                                    images: "${item[index].image}",
+                                    name: "${data?[selected].items?[selected_sub_cat].items?[index].name}",
+                                    price: data?[selected].items?[selected_sub_cat].items?[index].price,
+                                    images: '${data?[selected].items?[selected_sub_cat].items?[index].picture}',
+                                    idItem: '${data?[selected].items?[selected_sub_cat].items?[index].itemId}',
                                     addonSelect: [],
                                   ),
                                 );
@@ -304,7 +345,7 @@ class _GridViewPageState extends State<homepage> {
                             bottomRight: Radius.circular(0),
                           ),
                           child: Image.network(
-                            "${item[index].image}",
+                            '${data?[selected].items?[selected_sub_cat].items?[index].picture}',
                             height: 170,
                             width: double.infinity,
                             fit: BoxFit.cover,
@@ -316,13 +357,18 @@ class _GridViewPageState extends State<homepage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "${item[index].productname}",
+                                '${data?[selected].items?[selected_sub_cat].items?[index].name}',
+                                overflow:
+                                                        TextOverflow.ellipsis,
+                                                    maxLines: 1,
                                 style: Theme.of(context)
                                     .textTheme
                                     .subtitle1!
                                     .merge(
                                       const TextStyle(
-                                        fontWeight: FontWeight.w700,
+                                        fontSize: 20,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w400,
                                       ),
                                     ),
                               ),
@@ -330,14 +376,16 @@ class _GridViewPageState extends State<homepage> {
                                 height: 8.0,
                               ),
                               Text(
-                                "${item[index].price}",
+                                '${data?[selected].items?[selected_sub_cat].items?[index].price}.-',
                                 style: Theme.of(context)
                                     .textTheme
                                     .subtitle2!
                                     .merge(
                                       TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.grey.shade500,
+                                        fontSize: 20,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w600,
+                                        color: Color.fromARGB(255, 255, 111, 111),
                                       ),
                                     ),
                               ),

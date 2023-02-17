@@ -13,6 +13,7 @@ import '../pull_from_api/provider_Api.dart';
 class CategoryMenu extends StatefulWidget {
   @override
   State<CategoryMenu> createState() => _CategoryMenuState();
+
 }
 
 class _CategoryMenuState extends State<CategoryMenu> {
@@ -71,6 +72,8 @@ class _CategoryMenuState extends State<CategoryMenu> {
                                           setState(() {
                                             selected = index;
                                             selected_sub_cat = 0;
+                                            context.read<provider_app>().edit1(index);
+                                            context.read<provider_app>().edit1(0);
                                           });
                                         },
                                         child: Padding(
@@ -112,7 +115,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
                                                           color: index ==
                                                                   selected
                                                               ? Colors.red[300]
-                                                              : Colors.black),
+                                                              : Colors.black54),
                                                     )
                                                   ],
                                                 ),
@@ -121,7 +124,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
                                       );
                                     })),
                             const Divider(
-                              height: 10,
+                              height: 5,
                               thickness: 2,
                               indent: 0,
                               endIndent: 0,
@@ -158,28 +161,21 @@ class _CategoryMenuState extends State<CategoryMenu> {
                                               onTap: () {
                                                 setState(() {
                                                   selected_sub_cat = index;
-                                                  sendprovier.add(send(index1: selected ,intdex2:selected_sub_cat ));
-                                                //   context
-                                                // .read<provider_app>()
-                                                // .addtasks2(selectaf(selectafdata: sendprovier));
-
+                                                  context.read<provider_app>().edit(selected);
+                                                  context.read<provider_app>().edit1(selected_sub_cat);
                                                 });
                                               },
                                               child: Row(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
+                                                    MainAxisAlignment.spaceBetween,
                                                 children: [
                                                   Text(
                                                     '${data?[selected].items?[index].name}',
                                                     style: TextStyle(
-                                                        fontSize: 15,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                            fontFamily: 'Inter',
-                                                        color:
-                                                            selected_sub_cat ==
-                                                                    index
+                                                        fontSize: 18,
+                                                        fontWeight:FontWeight.w400,
+                                                        fontFamily: 'Inter',
+                                                        color:selected_sub_cat ==index
                                                                 ? Colors
                                                                     .red[300]
                                                                 : Colors.black),
@@ -199,4 +195,6 @@ class _CategoryMenuState extends State<CategoryMenu> {
             ],
           );
   }
+
+  
 }

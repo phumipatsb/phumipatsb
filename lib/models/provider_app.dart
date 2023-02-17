@@ -10,8 +10,12 @@ class provider_app with ChangeNotifier {
   List<addonofs> addonSelect = [];
   List<addonofs> get _taddonofs => List.unmodifiable(addonSelect);
 
-  List<selectaf> tasks2 = [];
-  List<selectaf> get _tasks2 => List.unmodifiable(tasks2);
+  List<send> tasks2 = [];
+  List<send> get _tasks2 => List.unmodifiable(tasks2);
+
+  int index1 =0;
+  
+  int index2 =0;
 
   
 
@@ -28,7 +32,7 @@ class provider_app with ChangeNotifier {
     
   }
 
-  void addtasks2(selectaf text) {
+  void addtasks2(send text) {
     tasks2.add(text);
     print("log 2");
     print(tasks2);
@@ -37,10 +41,17 @@ class provider_app with ChangeNotifier {
     
   }
 
-  void edit(int index, newtext) {
-    tasks[index] = newtext;
+  void edit(  int newtext ) {
+    index1 =newtext;
     notifyListeners();
   }
+  void edit1(  int newtext ) {
+    index2 =newtext;
+    notifyListeners();
+  }
+
+
+  
 
   void deleteaddon(int id) {
     addonSelect.removeWhere((item) => item.ID == id);
