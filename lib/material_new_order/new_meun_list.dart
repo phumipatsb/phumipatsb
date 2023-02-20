@@ -26,43 +26,43 @@ class _GridViewPageState extends State<homepage> {
   int y = 10;
   TextEditingController textarea = TextEditingController();
 
-  final item = <dynamic>[
-    Productprice(
-        statusaddno: true,
-        categoriesproduct: 'Food',
-        productname: 'Pad Thai',
-        image:
-            'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
-        price: 255),
-    Productprice(
-        statusaddno: false,
-        categoriesproduct: 'Food',
-        productname: 'PSpicy fried chicken',
-        image:
-            'https://fourleaf-datacenter.s3-ap-southeast-1.amazonaws.com/partner1/media/dining_item/ข้าวกระเพราไก่_VVLSQJ8S3XHM.jpg',
-        price: 220),
-    Productprice(
-        statusaddno: true,
-        categoriesproduct: 'Curries',
-        productname: 'Sun-dried shrimp salad',
-        image:
-            'https://www.easycookingmenu.com/media/k2/items/cache/905cf51f8ae04225d8794e7707be5d97_XL.jpg',
-        price: 75),
-    Productprice(
-        statusaddno: false,
-        categoriesproduct: 'Salad',
-        productname: ' Chicken Green Curry',
-        image:
-            'https://www.easycookingmenu.com/media/k2/items/cache/be2c0e4bc68e97336862a76636fd8047_XL.jpg',
-        price: 100),
-    Productprice(
-        statusaddno: true,
-        categoriesproduct: 'Soup',
-        productname: ' Chicken Green Curry',
-        image:
-            'https://www.easycookingmenu.com/media/k2/items/cache/600085de8ec319c3ad7a50be991624bf_XL.jpg',
-        price: 130),
-  ];
+  // final item = <dynamic>[
+  //   Productprice(
+  //       statusaddno: true,
+  //       categoriesproduct: 'Food',
+  //       productname: 'Pad Thai',
+  //       image:
+  //           'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
+  //       price: 255),
+  //   Productprice(
+  //       statusaddno: false,
+  //       categoriesproduct: 'Food',
+  //       productname: 'PSpicy fried chicken',
+  //       image:
+  //           'https://fourleaf-datacenter.s3-ap-southeast-1.amazonaws.com/partner1/media/dining_item/ข้าวกระเพราไก่_VVLSQJ8S3XHM.jpg',
+  //       price: 220),
+  //   Productprice(
+  //       statusaddno: true,
+  //       categoriesproduct: 'Curries',
+  //       productname: 'Sun-dried shrimp salad',
+  //       image:
+  //           'https://www.easycookingmenu.com/media/k2/items/cache/905cf51f8ae04225d8794e7707be5d97_XL.jpg',
+  //       price: 75),
+  //   Productprice(
+  //       statusaddno: false,
+  //       categoriesproduct: 'Salad',
+  //       productname: ' Chicken Green Curry',
+  //       image:
+  //           'https://www.easycookingmenu.com/media/k2/items/cache/be2c0e4bc68e97336862a76636fd8047_XL.jpg',
+  //       price: 100),
+  //   Productprice(
+  //       statusaddno: true,
+  //       categoriesproduct: 'Soup',
+  //       productname: ' Chicken Green Curry',
+  //       image:
+  //           'https://www.easycookingmenu.com/media/k2/items/cache/600085de8ec319c3ad7a50be991624bf_XL.jpg',
+  //       price: 130),
+  // ];
 
   @override
   void initState() {
@@ -78,8 +78,8 @@ class _GridViewPageState extends State<homepage> {
     int selected = context.watch<provider_app>().index1;
     
   int selected_sub_cat = context.watch<provider_app>().index2;
-    print("index1 :"+selected.toString());
-    print("index2 :"+ selected_sub_cat.toString());
+    // print("index1 :"+selected.toString());
+    // print("index2 :"+ selected_sub_cat.toString());
 
     
     return postModel.lodeing?
@@ -117,7 +117,7 @@ class _GridViewPageState extends State<homepage> {
             bool st;
             var tasks = context.read<provider_app>().tasks;
             //var tasks2 = context.read<provider_app>().tasks2;
-            var addOnlist = Provider.of<addOn>(context);
+            //var addOnlist = Provider.of<addOn>(context);
             return Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
@@ -130,7 +130,7 @@ class _GridViewPageState extends State<homepage> {
                   GestureDetector(
                     onTap: () {
                       var mapObj = postModel.post!.groupOptionList;
-                      print(mapObj);
+                      //print(mapObj);
                       
                       
                            var Options = '${data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions}' ;
@@ -179,7 +179,7 @@ class _GridViewPageState extends State<homepage> {
                                               children: <Widget>[
                                                 Container(
                                                   child: Text(
-                                                    "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].questionTh}",
+                                                    "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].question}",
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .subtitle1!
@@ -268,7 +268,7 @@ class _GridViewPageState extends State<homepage> {
                                             height: 50.0,
                                             child: ElevatedButton(
                                                 onPressed: () {
-                                                  print(textarea.text);
+                                                  //print(textarea.text);
                                                   setState(
                                                     () {
                                                       context
@@ -316,7 +316,7 @@ class _GridViewPageState extends State<homepage> {
                       } else {
                         setState(
                           () {
-                            print('boss');
+                            //print('boss');
                             
                             context.read<provider_app>().addtasks1(
                                   tasks1(
@@ -404,17 +404,31 @@ class _GridViewPageState extends State<homepage> {
         ),
       ),
     );
-  }
+  }       
 
   choiceoptions(String status, int selected,int selected_sub_cat,int index) {
-    print(status);
+    //print(status);
     if (status == "Mode.SIN") {
-      var addOnlist = Provider.of<addOn>(context);
+      //var addOnlist = Provider.of<addOn>(context);
       var _result;
       var _selectedOption;
       int b=0;
       final postModel = Provider.of<provider_api>(context);
       var data = postModel.post?.data;
+      var selectedOption;
+      var group;
+      void initState(){
+        super.initState();
+        selectedOption = '';
+
+      }
+
+      setSelectRadio( var val){
+        setState(() {
+           selectedOption = val;
+        });
+      }
+
       
       return Container(
        
@@ -452,29 +466,38 @@ class _GridViewPageState extends State<homepage> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          // Container(
-                          //   width: 200,
-                          //   height: 50,
-                          //   child: LabeledRadio(
-                          //     label: 'This is the first label text',
-                          //     padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                          //     value: true,
-                          //     groupValue: _isRadioSelected,
-                          //     onChanged: (bool newValue) {
-                          //       setState(() {
-                          //         _isRadioSelected = newValue;
-                          //       });
-                          //     },
+                          Container(
+                            child: Row(
+                              children: [
+                                
+                                 Radio(value: "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice}", 
+                                 groupValue: selectedOption,
+                                 activeColor: Colors.pink[100], 
+                                 onChanged:(val){
+                                  print("Radio $val");
+                                  setState(() {
+                                    selectedOption = val;
+                                  });
 
-                          //   ),
-                          // ),
-                          Text(
+                                  //  group = "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice}";
+                                  //  print(group);
+                                 }),
+
+
+
+                                Text(
                               "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice}",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontFamily: 'Inter',
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black)),
+
+                              ],
+                            ),
+                            
+                          ),
+                          
                           Text(
                               "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].price}",
                               style: TextStyle(
@@ -492,7 +515,7 @@ class _GridViewPageState extends State<homepage> {
           ),
           );
     } else {
-      var addOnlist = Provider.of<addOn>(context);
+      //var addOnlist = Provider.of<addOn>(context);
       final postModel = Provider.of<provider_api>(context);
       var data = postModel.post?.data;
       bool st5 =false ;
@@ -544,7 +567,7 @@ class _GridViewPageState extends State<homepage> {
                                             //     .read<provider_app>()
                                             //     .deleteaddon(addOnlist.addno1[indexs].Subaddon[index2].ID);
                                             deleteaddon("${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].id!}");
-                                            print(chooseAddon);
+                                            //print(chooseAddon);
                                           } else {}
                                            cleccheckbox(value);
                                         },
@@ -599,8 +622,8 @@ class _GridViewPageState extends State<homepage> {
 
   clecaaddon() {
     chooseAddon = [];
-    print("clecaaddon");
-    print(chooseAddon);
+    //print("clecaaddon");
+    //print(chooseAddon);
   }
 
   bool cleccheckbox(bool value) {
