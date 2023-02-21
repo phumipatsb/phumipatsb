@@ -4,9 +4,7 @@ import 'package:test1/models/compronan.dart';
 import 'package:test1/pull_from_api/linkApi.dart';
 import 'package:test1/RAW/SVG/svg.dart';
 import 'package:test1/RAW/transform/transform.dart';
-
 import 'package:test1/models/compronan.dart';
-
 import '../../models/provider_app.dart';
 
 class layoutWidget extends StatefulWidget {
@@ -289,11 +287,7 @@ class _layoutWidgetState extends State<layoutWidget> {
                                                             EdgeInsets.fromLTRB(
                                                                 0, 0, 0, 0),
                                                         onPressed: () {
-                                                          context
-                                                              .read<
-                                                                  provider_app>()
-                                                              .minusOrder(
-                                                                  index);
+                                                          context.read<provider_app>().minusOrder(index);
                                                         },
                                                         child: const Icon(
                                                           Icons.remove,

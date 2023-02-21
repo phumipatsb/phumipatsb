@@ -6,11 +6,14 @@ import 'package:test1/RAW/coloer/hex.dart';
 import '../models/provider_app.dart';
 import '../models/compronan.dart';
 import '../pull_from_api/provider_Api.dart';
+import 'package:group_radio_button/group_radio_button.dart';
 
 class homepage extends StatefulWidget {
   //homepage(Key? key) : super(key: key);
+    
 
   @override
+  
   _GridViewPageState createState() => _GridViewPageState();
 }
 
@@ -19,6 +22,10 @@ class _GridViewPageState extends State<homepage> {
   final _formKey = GlobalKey<FormState>();
   int _paymentType = 1;
   var _oneValue = '';
+
+  
+
+  
  
   List<addonofs> chooseAddon = [];
   
@@ -171,7 +178,7 @@ class _GridViewPageState extends State<homepage> {
                                         shrinkWrap: false,
                                         itemCount:postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]!.length,
                                         itemBuilder:
-                                            (BuildContext context, int index) {
+                                            (BuildContext context, int index2) {
                                           return Container(
                                             child: Column(
                                               crossAxisAlignment:
@@ -179,7 +186,7 @@ class _GridViewPageState extends State<homepage> {
                                               children: <Widget>[
                                                 Container(
                                                   child: Text(
-                                                    "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].question}",
+                                                    "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index2].questionTh}",
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .subtitle1!
@@ -204,8 +211,8 @@ class _GridViewPageState extends State<homepage> {
                                                   width: 10,
                                                 ),
                                                 choiceoptions(
-                                                    "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].mode}",
-                                                    selected,selected_sub_cat,index),
+                                                    "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index2].mode}",
+                                                    selected,selected_sub_cat,index, index2),
                                               ],
                                             ),
                                           );
@@ -406,9 +413,10 @@ class _GridViewPageState extends State<homepage> {
     );
   }       
 
-  choiceoptions(String status, int selected,int selected_sub_cat,int index) {
-    //print(status);
-    if (status == "Mode.SIN") {
+  choiceoptions(String status, int selected,int selected_sub_cat,int index ,int index3) {
+    print(status);
+    
+    if (status == "klklk") {
       //var addOnlist = Provider.of<addOn>(context);
       var _result;
       var _selectedOption;
@@ -417,6 +425,13 @@ class _GridViewPageState extends State<homepage> {
       var data = postModel.post?.data;
       var selectedOption;
       var group;
+       int selectedRadio = 0 ;
+      
+                             
+
+      //var _status = ["Pending", "Released", "Blocked", "Blocked", "Blocked", "Blocked", "Blocked", "Blocked"];
+      String _verticalGroupValue = "0";
+      String _singleValue = "";
       void initState(){
         super.initState();
         selectedOption = '';
@@ -435,7 +450,7 @@ class _GridViewPageState extends State<homepage> {
           child: ListView.builder(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items!.length,
+            itemCount: postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index3].items!.length,
             itemBuilder: (BuildContext context, int index2) {
               return Align(
                 alignment: AlignmentDirectional(0, 0),
@@ -470,23 +485,28 @@ class _GridViewPageState extends State<homepage> {
                             child: Row(
                               children: [
                                 
-                                 Radio(value: "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice}", 
-                                 groupValue: selectedOption,
-                                 activeColor: Colors.pink[100], 
-                                 onChanged:(val){
-                                  print("Radio $val");
-                                  setState(() {
-                                    selectedOption = val;
-                                  });
 
-                                  //  group = "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice}";
-                                  //  print(group);
-                                 }),
+                                Radio(
+                                  value: "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
+                                  groupValue: selectedRadio,
+                                  onChanged: (value) => 
+                                  setState(() {
+                                    print("ob");
+                                    selectedRadio = 1;
+                                  }),
+                              
+                            ),  
+
+                                
+
+
+                                                  
+                             
 
 
 
                                 Text(
-                              "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice}",
+                              "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontFamily: 'Inter',
@@ -499,7 +519,7 @@ class _GridViewPageState extends State<homepage> {
                           ),
                           
                           Text(
-                              "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].price}",
+                              "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index3].items![index2].price}",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontFamily: 'Inter',
@@ -524,7 +544,7 @@ class _GridViewPageState extends State<homepage> {
         child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items!.length,
+          itemCount: postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index3].items!.length,
           itemBuilder: (BuildContext context, int index2) {
             return Align(
               alignment: AlignmentDirectional(0.4, 0),
@@ -556,21 +576,22 @@ class _GridViewPageState extends State<homepage> {
                                           if (value == true) {
                                             
                                             (chooseAddon.add(addonofs(
-                                                price: postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].price!,
-                                                subNameAddOn:"${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice}",
-                                                ID: "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].id!}",
-                                                nameaddon:"${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].questionTh}")));
+                                                price: postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index3].items![index2].price!,
+                                                subNameAddOn:"${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
+                                                ID: "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index3].items![index2].id!}",
+                                                nameaddon:"${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index3].questionTh}")));
                                             
                                           }
                                           if (value == false) {
                                             // context
                                             //     .read<provider_app>()
                                             //     .deleteaddon(addOnlist.addno1[indexs].Subaddon[index2].ID);
-                                            deleteaddon("${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].id!}");
+                                            deleteaddon("${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index3].items![index2].id!}");
                                             //print(chooseAddon);
                                           } else {}
                                            cleccheckbox(value);
                                         },
+                                        
 
                                        
                                       );
@@ -591,14 +612,14 @@ class _GridViewPageState extends State<homepage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                            "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice}",
+                            "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontFamily: 'Inter',
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black)),
                         Text(
-                            "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].price}",
+                            "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index3].items![index2].price}",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontFamily: 'Inter',
@@ -630,8 +651,32 @@ class _GridViewPageState extends State<homepage> {
     value = false;
   return value;
   }
+  
+  
 
-  void adddata() {}
+   radiobt(int selected ,int  selected_sub_cat , int index ,int index2) {
+     final postModel = Provider.of<provider_api>(context);
+      var data = postModel.post?.data;
+      int selectedRadio =0;
+      
+
+    // ignore: dead_code
+    for(int i = 0; i <postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice!.length; i++)
+        {
+          //print(postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index].items![index2].choice!.length);
+         return Radio<int>(
+          value: i,
+          groupValue: selectedRadio,
+          onChanged: (value) => 
+          setState(() {
+            selectedRadio =1;
+          }),
+      
+    );  
+
+
+        };
+  }
   
   
 }

@@ -9,3 +9,7 @@ const whiteColor = '#FFFFFF';
 const iconColor = '#FF6F6F';
 const lineColor = '#FF6F6F';
 const textPriceColor = '#FF6F6F';
+
+const   backgroundpayment = '#FFDCDC';
+const  topboottt ='#FFB7B2';
+

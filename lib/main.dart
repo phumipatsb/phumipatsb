@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test1/pull_from_api/provider_Api.dart';
 import 'package:test1/table/new_table.dart';
+import 'cash_out_shop/payment_page.dart';
 import 'material_new_order/leftside.dart';
 import 'package:test1/table/table.dart';
 import 'sumneworder.dart';
@@ -31,8 +32,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: Scaffold(
-            body: //ResultScreen(),)
-                new_table(),
+            body: payment_page(),
+                //new_table(),
           )),
     );
   }
