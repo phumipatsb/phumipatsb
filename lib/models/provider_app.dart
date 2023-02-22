@@ -14,14 +14,11 @@ class provider_app with ChangeNotifier {
   List<send> get _tasks2 => List.unmodifiable(tasks2);
 
   int index1 =0;
-  
   int index2 =0;
 
-  
-
-  List<addonofs> get addno2 {
-    return [..._taddonofs];
-  }
+  // List<addonofs> get addno2 {
+  //   return [..._taddonofs];
+  // }
 
   void addtasks1(tasks1 text) {
     tasks.add(text);
@@ -49,6 +46,9 @@ class provider_app with ChangeNotifier {
     index2 =newtext;
     notifyListeners();
   }
+
+
+
 
 
   
@@ -187,3 +187,25 @@ class zoneName with ChangeNotifier {
 //     return [..._addon];
 //   }
 // }
+
+
+class provider_payment with ChangeNotifier {
+
+
+  String Location = '';
+  String Payment = '';
+
+
+  void save_Location(String newtext1 ) {
+    Location =newtext1;
+    notifyListeners();
+  }
+
+  void save_Payment(String newtext2 ) {
+    Payment =newtext2;
+    notifyListeners();
+  }
+
+
+
+}

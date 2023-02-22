@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => provider_app()),
         ChangeNotifierProvider(create: (_) => zoneName()),
-        //ChangeNotifierProvider(create: (_) => addOn()),
+        ChangeNotifierProvider(create: (_) => provider_payment()),
         ChangeNotifierProvider(create: (_) => provider_api()),
       ],
       child: MaterialApp(

@@ -13,3 +13,6 @@ const textPriceColor = '#FF6F6F';
 const   backgroundpayment = '#FFDCDC';
 const  topboottt ='#FFB7B2';
 
+const  textpaymam ='#3F3F3F';
+
+
