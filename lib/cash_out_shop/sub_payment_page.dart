@@ -3,15 +3,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
+import 'package:test1/cash_out_shop/popup_Scan_to%20_pay.dart';
 import 'package:test1/models/provider_app.dart';
 
 import '../RAW/coloer/hex.dart';
 
 class sub_payment_page extends StatefulWidget {
-  sub_payment_page({
-    Key? key,
-  }) : super(key: key);
-
   @override
   State<sub_payment_page> createState() => _sub_payment_page();
 }
@@ -19,18 +16,13 @@ class sub_payment_page extends StatefulWidget {
 class _sub_payment_page extends State<sub_payment_page> {
   String? _groupValue;
   String? _groupValue1;
-  
- 
 
   ValueChanged<String?> _valueChangedHandler() {
     return (value) => setState(() {
           _groupValue = value!;
-          
 
           print('Location  : $value');
           context.read<provider_payment>().save_Location(value);
-         
-
         });
   }
 
@@ -39,6 +31,18 @@ class _sub_payment_page extends State<sub_payment_page> {
           _groupValue1 = value!;
           print('Payment  : $value');
           context.read<provider_payment>().save_Payment(value);
+          if (value == 'Scan To Pay') {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                      content: Container(
+                    height: 600,
+                    width: 500,
+                    child: popup_Scan_to_pay(),
+                  ));
+                });
+          }
         });
   }
 
@@ -289,12 +293,14 @@ class _sub_payment_page extends State<sub_payment_page> {
                                                         child:
                                                             RadioOptionPayment<
                                                                 String>(
-                                                          value: 'Pay at counter',
+                                                          value:
+                                                              'Pay at counter',
                                                           groupValue:
                                                               _groupValue1,
                                                           onChanged1:
                                                               _valueChangedHandler1(),
-                                                          label: 'Pay at counter',
+                                                          label:
+                                                              'Pay at counter',
                                                           text: 'One',
                                                         ),
                                                       ),
@@ -361,7 +367,7 @@ class _sub_payment_page extends State<sub_payment_page> {
                                                                         0),
                                                             color:
                                                                 Colors.black12),
-                                                                child:
+                                                        child:
                                                             RadioOptionPayment<
                                                                 String>(
                                                           value: 'Scan To Pay',
@@ -372,7 +378,6 @@ class _sub_payment_page extends State<sub_payment_page> {
                                                           label: 'Scan To Pay',
                                                           text: 'One',
                                                         ),
-                                                                
                                                       ),
                                                     ),
                                                   ),
@@ -423,7 +428,6 @@ class _sub_payment_page extends State<sub_payment_page> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                     ),
-                                    
                                   ),
                                 ),
                               ),

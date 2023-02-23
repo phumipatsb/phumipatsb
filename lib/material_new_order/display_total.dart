@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/provider_app.dart';
 
-class display_total extends StatelessWidget {
+class display_total extends StatefulWidget {
+  @override
+  State<display_total> createState() => _display_totalState();
+}
+
+class _display_totalState extends State<display_total> {
   @override
   Widget build(BuildContext context) {
     var tasks = context.watch<provider_app>().tasks;
@@ -19,6 +24,7 @@ class display_total extends StatelessWidget {
       //   //   // totoaddon += tasks[i].addonSelect[b].price;
       //   // }
       // }
+
     }
 
     double TotalPriceBeforeTotal = toto + TotoAddOn;
@@ -27,6 +33,12 @@ class display_total extends StatelessWidget {
     double totvat = TotalPriceBeforeTotalch * (vat / 100);
 
     double Grand_Total = toto + totvat + totoserviceCharge;
+
+    initState() {
+      sendtoto(Grand_Total);
+    }
+
+    sendtoto(Grand_Total);
 
     return Container(
       child: Column(
@@ -131,5 +143,14 @@ class display_total extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  sendtoto(double toto) {
+    if (toto != 0) {
+      setState(() {
+        context.read<provider_payment>().save_Total(toto);
+        print("object");
+      });
+    }
   }
 }

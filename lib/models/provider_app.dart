@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 
 import 'compronan.dart';
 
-
 class provider_app with ChangeNotifier {
   List<tasks1> tasks = [];
   List<tasks1> get _tasks => List.unmodifiable(tasks);
@@ -13,8 +12,8 @@ class provider_app with ChangeNotifier {
   List<send> tasks2 = [];
   List<send> get _tasks2 => List.unmodifiable(tasks2);
 
-  int index1 =0;
-  int index2 =0;
+  int index1 = 0;
+  int index2 = 0;
 
   // List<addonofs> get addno2 {
   //   return [..._taddonofs];
@@ -25,8 +24,6 @@ class provider_app with ChangeNotifier {
     print("log 2");
     print(tasks);
     notifyListeners();
-
-    
   }
 
   void addtasks2(send text) {
@@ -34,24 +31,17 @@ class provider_app with ChangeNotifier {
     print("log 2");
     print(tasks2);
     notifyListeners();
-
-    
   }
 
-  void edit(  int newtext ) {
-    index1 =newtext;
-    notifyListeners();
-  }
-  void edit1(  int newtext ) {
-    index2 =newtext;
+  void edit(int newtext) {
+    index1 = newtext;
     notifyListeners();
   }
 
-
-
-
-
-  
+  void edit1(int newtext) {
+    index2 = newtext;
+    notifyListeners();
+  }
 
   void deleteaddon(int id) {
     addonSelect.removeWhere((item) => item.ID == id);
@@ -188,24 +178,30 @@ class zoneName with ChangeNotifier {
 //   }
 // }
 
-
 class provider_payment with ChangeNotifier {
-
-
   String Location = '';
   String Payment = '';
+  double sendTotal = 0;
+  bool stpy = false;
 
-
-  void save_Location(String newtext1 ) {
-    Location =newtext1;
+  void save_Location(String newtext1) {
+    Location = newtext1;
     notifyListeners();
   }
 
-  void save_Payment(String newtext2 ) {
-    Payment =newtext2;
+  void save_Payment(String newtext2) {
+    Payment = newtext2;
     notifyListeners();
   }
 
+  void save_Total(double newtext3) {
+    sendTotal = newtext3;
+    print("sendTotal $sendTotal");
+  }
 
-
+  void updaet_st(bool newtext4) {
+    stpy = newtext4;
+    print("sendTotal $stpy");
+    notifyListeners();
+  }
 }

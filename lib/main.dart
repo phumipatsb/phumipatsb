@@ -32,8 +32,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: Scaffold(
-            body: payment_page(),
-                //new_table(),
+            body: //payment_page(),
+                new_table(),
           )),
     );
   }
