@@ -41,19 +41,41 @@ class _popup_Complete extends State<popup_Complete> {
                         color: HexColor(textpaymam))),
               ),
             ),
+            // Padding(
+            //   padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
+            //   child: Container(
+            //       child: SizedBox(
+            //     height: 300,
+            //     width: 300,
+            //     child: CheckMark(
+            //       active: chst(),
+            //       curve: Curves.decelerate,
+            //       duration: const Duration(milliseconds: 1000),
+            //     ),
+            //   )),
+            // )
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
+              padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
               child: Container(
+                alignment: Alignment.center,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      checked = !checked;
+                    });
+                  },
                   child: SizedBox(
-                height: 300,
-                width: 300,
-                child: CheckMark(
-                  active: chst(),
-                  curve: Curves.decelerate,
-                  duration: const Duration(milliseconds: 1000),
+                    height: 350,
+                    width: 350,
+                    child: CheckMark(
+                      active: checked,
+                      curve: Curves.decelerate,
+                      duration: const Duration(milliseconds: 500),
+                    ),
+                  ),
                 ),
-              )),
-            )
+              ),
+            ),
           ],
         ),
       ),
