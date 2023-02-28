@@ -205,3 +205,27 @@ class provider_payment with ChangeNotifier {
     notifyListeners();
   }
 }
+
+class provider_Language with ChangeNotifier {
+  String Language = "EN";
+
+  void updaet_Language(String newtext1) {
+    Language = newtext1;
+    notifyListeners();
+  }
+
+
+
+}
+
+class provider_login with ChangeNotifier {
+  String login_status = "EN";
+
+  void updaet_Language(String newtext1) {
+    login_status = newtext1;
+    notifyListeners();
+  }
+
+
+
+}

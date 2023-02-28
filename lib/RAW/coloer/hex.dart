@@ -15,4 +15,6 @@ const  topboottt ='#FFB7B2';
 
 const  textpaymam ='#3F3F3F';
 
+const  bgpin ='#FFB7B2';
+
 
