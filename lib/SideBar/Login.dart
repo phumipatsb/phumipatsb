@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'login_pin.dart';
-
+enum SampleItem { English,  }
 class Login extends StatefulWidget {
   @override
   State<Login> createState() => _LoginState();
@@ -10,6 +10,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   String choice = "Click Settings to make your selection";
   bool login_status = false;
+  String selanguage = "";
+  SampleItem? selectedMenu;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -30,7 +32,10 @@ class _LoginState extends State<Login> {
                   ));
                 });
           }
-          if (login_status == true) {}
+          if (login_status == true) {
+            
+            
+          }
         });
       },
       child: Center(

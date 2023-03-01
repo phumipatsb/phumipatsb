@@ -15,7 +15,7 @@ class _languagepdState extends State<languagepd> {
   String selanguage = "EN";
   @override
   Widget build(BuildContext context) {
-    String choice = "Click Settings to make your selection";
+    
     return PopupMenuButton<SampleItem>(
       initialValue: selectedMenu,
       shape: const RoundedRectangleBorder(

@@ -173,13 +173,16 @@ class provider_Language with ChangeNotifier {
 }
 
 class provider_login with ChangeNotifier {
-  String login_status = "EN";
+  bool status_login = false;
 
-  void updaet_Language(String newtext1) {
-    login_status = newtext1;
+  void updaet_Language_status_login(bool newtext1) {
+    status_login = newtext1;
     notifyListeners();
   }
 
 
 
 }
+
+
+

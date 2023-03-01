@@ -14,7 +14,10 @@ class login_pin extends StatefulWidget {
 class _login_pinState extends State<login_pin> {
   @override
   List pin = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  String passwork= "2543";
   String pincode ="";
+  String name = "login";
+  
   Widget build(BuildContext context) {
     return Container(
       child: Column(
@@ -231,6 +234,20 @@ class _login_pinState extends State<login_pin> {
                     child: ElevatedButton(
                         onPressed: () {
                           //Navigator.push(context,MaterialPageRoute(builder: (context) => confrim_order()));
+                          setState(() {
+                            if(pincode == passwork){
+                              context.read<provider_login>().updaet_Language_status_login(true);
+                              name="boss";
+
+                              Navigator.pop(context);
+                            }
+                            if(pincode != passwork){
+                              context.read<provider_login>().updaet_Language_status_login(false);
+                              name="login";
+
+
+                            }
+                          });
                         },
                         style: ElevatedButton.styleFrom(
                           primary:
