@@ -3,9 +3,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:test1/RAW/coloer/hex.dart';
+import 'package:test1/pull_from_api/provider_Api.dart';
 import '../models/provider_app.dart';
 import '../models/compronan.dart';
-import '../pull_from_api/provider_Api.dart';
+
 import 'package:group_radio_button/group_radio_button.dart';
 
 class homepage extends StatefulWidget {
@@ -26,44 +27,6 @@ class _GridViewPageState extends State<homepage> {
   bool checkboxValue = false;
   int y = 10;
   TextEditingController textarea = TextEditingController();
-
-  // final item = <dynamic>[
-  //   Productprice(
-  //       statusaddno: true,
-  //       categoriesproduct: 'Food',
-  //       productname: 'Pad Thai',
-  //       image:
-  //           'https://s359.thaibuffer.com/pagebuilder/a9b86b24-fd18-4e76-9b01-cd4a273d312c.jpg',
-  //       price: 255),
-  //   Productprice(
-  //       statusaddno: false,
-  //       categoriesproduct: 'Food',
-  //       productname: 'PSpicy fried chicken',
-  //       image:
-  //           'https://fourleaf-datacenter.s3-ap-southeast-1.amazonaws.com/partner1/media/dining_item/ข้าวกระเพราไก่_VVLSQJ8S3XHM.jpg',
-  //       price: 220),
-  //   Productprice(
-  //       statusaddno: true,
-  //       categoriesproduct: 'Curries',
-  //       productname: 'Sun-dried shrimp salad',
-  //       image:
-  //           'https://www.easycookingmenu.com/media/k2/items/cache/905cf51f8ae04225d8794e7707be5d97_XL.jpg',
-  //       price: 75),
-  //   Productprice(
-  //       statusaddno: false,
-  //       categoriesproduct: 'Salad',
-  //       productname: ' Chicken Green Curry',
-  //       image:
-  //           'https://www.easycookingmenu.com/media/k2/items/cache/be2c0e4bc68e97336862a76636fd8047_XL.jpg',
-  //       price: 100),
-  //   Productprice(
-  //       statusaddno: true,
-  //       categoriesproduct: 'Soup',
-  //       productname: ' Chicken Green Curry',
-  //       image:
-  //           'https://www.easycookingmenu.com/media/k2/items/cache/600085de8ec319c3ad7a50be991624bf_XL.jpg',
-  //       price: 130),
-  // ];
   String? _groupValue;
 
   ValueChanged<String?> _valueChangedHandler(
@@ -86,12 +49,12 @@ class _GridViewPageState extends State<homepage> {
   @override
   void initState() {
     super.initState();
-    final postModel = Provider.of<provider_api>(context, listen: false);
+    final postModel = Provider.of<provider_api_Manu>(context, listen: false);
     postModel.getdata();
   }
 
   Widget build(BuildContext context) {
-    final postModel = Provider.of<provider_api>(context);
+    final postModel = Provider.of<provider_api_Manu>(context);
     var data = postModel.post?.data;
     var _groupOptionList = postModel.post?.groupOptionList;
 
@@ -476,7 +439,7 @@ class _GridViewPageState extends State<homepage> {
       var _result;
       var _selectedOption;
 
-      final postModel = Provider.of<provider_api>(context);
+      final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
 
       return Container(
@@ -573,7 +536,7 @@ class _GridViewPageState extends State<homepage> {
       );
     } else {
       //var addOnlist = Provider.of<addOn>(context);
-      final postModel = Provider.of<provider_api>(context);
+      final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
       bool st5 = false;
 

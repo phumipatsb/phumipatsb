@@ -10,6 +10,7 @@ import '../RAW/coloer/hex.dart';
 import '../models/provider_app.dart';
 import '../pull_from_api/provider_Api.dart';
 
+
 class CategoryMenu extends StatefulWidget {
   @override
   State<CategoryMenu> createState() => _CategoryMenuState();
@@ -20,7 +21,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
   @override
   void initState() {
     super.initState();
-    final postModel = Provider.of<provider_api>(context, listen: false);
+    final postModel = Provider.of<provider_api_Manu>(context, listen: false);
     postModel.getdata();
   }
   List<send> sendprovier =[];
@@ -28,7 +29,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
   int selected_sub_cat = 0;
 
   Widget build(BuildContext context) {
-    final postModel = Provider.of<provider_api>(context);
+    final postModel = Provider.of<provider_api_Manu>(context);
     var data = postModel.post?.data;
     //print(postModel.post?.data?.length);
     return postModel.lodeing
