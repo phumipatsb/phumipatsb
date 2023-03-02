@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sqflite/utils/utils.dart';
 
-
 import 'package:test1/RAW/coloer/hex.dart';
 import 'package:test1/SideBar/leftside.dart';
 import 'package:provider/provider.dart';
@@ -17,30 +16,25 @@ class new_table extends StatefulWidget {
 }
 
 class _new_table extends State<new_table> {
-  
   @override
   void initState() {
     super.initState();
-    final postModel_Table = Provider.of<provider_api_table>(context, listen: false);
-    postModel_Table.getdata();
+    final postModel_Table =
+        Provider.of<provider_api_table>(context, listen: false);
+    postModel_Table.post_table;
   }
-   
-  
 
   Widget build(BuildContext context) {
-
-    
-   final postModel = Provider.of<provider_api_table>(context);
+    final postModel = Provider.of<provider_api_table>(context);
     var data = postModel.post_table;
-    
+
     final subitem = [];
     List Order = ['Take Away', 'Q'];
     List<dynamic> AddItem = [];
     int current = 0;
     final zone = Provider.of<zoneName>(context);
     return Scaffold(
-      body: 
-       Center(
+      body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -76,7 +70,8 @@ class _new_table extends State<new_table> {
                                       fit: FlexFit.tight,
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(16),
+                                          borderRadius:
+                                              BorderRadius.circular(16),
                                           color: HexColor(backgroundColor),
                                         ),
                                         child: Container(
@@ -114,7 +109,7 @@ class _new_table extends State<new_table> {
                                                         return GestureDetector(
                                                           onTap: () {
                                                             //Navigator.push(context,MaterialPageRoute(builder: (context) => sumneworder()));
-    
+
                                                             setState(() {});
                                                           },
                                                           child: Padding(
@@ -148,7 +143,8 @@ class _new_table extends State<new_table> {
                                                                       .Status)),
                                                               child: Center(
                                                                 child: Text(
-                                                                    Order[index],
+                                                                    Order[
+                                                                        index],
                                                                     style:
                                                                         TextStyle(
                                                                       color: Colors
@@ -183,22 +179,25 @@ class _new_table extends State<new_table> {
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(18),
-                                                    color:
-                                                        HexColor(backgroundColor),
+                                                        BorderRadius.circular(
+                                                            18),
+                                                    color: HexColor(
+                                                        backgroundColor),
                                                   ),
                                                   child: Column(
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsets.all(
-                                                                10.0),
+                                                            const EdgeInsets
+                                                                .all(10.0),
                                                         child: Text(
                                                           '${zone.Zone[index].ZoneName}',
                                                           style: TextStyle(
-                                                              color: Colors.black,
+                                                              color:
+                                                                  Colors.black,
                                                               fontSize: 35,
                                                               fontWeight:
                                                                   FontWeight
@@ -206,67 +205,87 @@ class _new_table extends State<new_table> {
                                                           maxLines: 1,
                                                         ),
                                                       ),
-    
                                                       Wrap(
                                                         children: [
                                                           SizedBox(
-                                                           
-                                                            height: MediaQuery.of(context).size.height/4,
-                                                          
-                                                          child: GridView.builder(
-                                                           shrinkWrap: true,
-                                                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                            crossAxisCount: 5,
-                                                            crossAxisSpacing: 12.0,
-                                                            mainAxisSpacing: 10,
-                                                            mainAxisExtent: 100,
+                                                            height: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height /
+                                                                4,
+                                                            child: GridView
+                                                                .builder(
+                                                                    shrinkWrap:
+                                                                        true,
+                                                                    gridDelegate:
+                                                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                      crossAxisCount:
+                                                                          5,
+                                                                      crossAxisSpacing:
+                                                                          12.0,
+                                                                      mainAxisSpacing:
+                                                                          10,
+                                                                      mainAxisExtent:
+                                                                          100,
+                                                                    ),
+                                                                    itemCount: zone
+                                                                        .Zone[
+                                                                            index]
+                                                                        .SubZone
+                                                                        .length,
+                                                                    itemBuilder:
+                                                                        (context,
+                                                                            index2) {
+                                                                      return GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          Navigator.push(
+                                                                              context,
+                                                                              MaterialPageRoute(builder: (context) => sumneworder()));
+
+                                                                          var AddItem =
+                                                                              context.read<zoneName>();
+                                                                          AddItem.zoneNameSelect = zone
+                                                                              .Zone[index]
+                                                                              .ZoneName;
+                                                                          AddItem.subZoneNameSelect = zone
+                                                                              .Zone[index]
+                                                                              .SubZone[index2]
+                                                                              .SubZoneName;
+                                                                          print(
+                                                                              AddItem.subZoneNameSelect);
+                                                                          print(
+                                                                              AddItem.zoneNameSelect);
+                                                                          setState(
+                                                                              () {});
+                                                                        },
+                                                                        child:
+                                                                            AnimatedContainer(
+                                                                          height:
+                                                                              80,
+                                                                          width:
+                                                                              80,
+                                                                          duration:
+                                                                              const Duration(milliseconds: 300),
+                                                                          margin:
+                                                                              const EdgeInsets.all(6),
+                                                                          decoration: BoxDecoration(
+                                                                              borderRadius: BorderRadius.circular(18),
+                                                                              color: ChangeColor(zone.Zone[index].SubZone[index2].Status)),
+                                                                          child:
+                                                                              Center(
+                                                                            child: Text(zone.Zone[index].SubZone[index2].SubZoneName,
+                                                                                style: TextStyle(
+                                                                                  color: Colors.black,
+                                                                                  fontSize: 20,
+                                                                                )),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    }),
                                                           ),
-                                                            
-                                                            
-                                                            itemCount: zone.Zone[index].SubZone.length,
-                                                            itemBuilder: (context, index2){
-                                                              return GestureDetector(
-                                                                onTap: () {
-                                                                  Navigator.push(context,MaterialPageRoute(builder: (context) => sumneworder()));
-                                                      
-                                                                  var AddItem =context.read<zoneName>();
-                                                                      AddItem.zoneNameSelect = zone.Zone[index].ZoneName;
-                                                                      AddItem.subZoneNameSelect = zone.Zone[index].SubZone[index2].SubZoneName;
-                                                                      print(AddItem.subZoneNameSelect);
-                                                                  print(AddItem.zoneNameSelect);
-                                                                  setState((){
-                                                                  });
-                                                                },
-                                                                child: AnimatedContainer(
-                                                                                              height: 80,
-                                                                                              width: 80,
-                                                                                              duration: const Duration(
-                                                                                                  milliseconds: 300),
-                                                                                              margin: const EdgeInsets.all(6),
-                                                                                              decoration: BoxDecoration(
-                                                                                                  borderRadius: BorderRadius.circular(18),
-                                                                                                  color:  ChangeColor(zone.Zone[index].SubZone[index2].Status) ),
-                                                                                              child: Center(
-                                                                                                child: Text(
-                                                                                                    zone.Zone[index].SubZone[index2].SubZoneName,
-                                                                                                    style: TextStyle(
-                                                                                                      color: Colors.black,
-                                                                                                      fontSize: 20,)
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                
-                                                              );
-                                                            }),
-                                                          
-                                                          
-                                                          
-                                                        ),
                                                         ],
-                                                         
                                                       )
-    
-                                                      
                                                     ],
                                                   ),
                                                 ),

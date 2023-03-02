@@ -15,7 +15,6 @@ class _languagepdState extends State<languagepd> {
   String selanguage = "EN";
   @override
   Widget build(BuildContext context) {
-    
     return PopupMenuButton<SampleItem>(
       initialValue: selectedMenu,
       shape: const RoundedRectangleBorder(
@@ -24,7 +23,7 @@ class _languagepdState extends State<languagepd> {
         ),
       ),
       offset: Offset(60, 0), // SET THE (X,Y) POSITION
-      shadowColor: Colors.black,
+      // shadowColor: Colors.black,
       // Callback that sets the selected popup menu item.
       onSelected: (SampleItem item) {
         setState(() {
@@ -85,4 +84,3 @@ class _languagepdState extends State<languagepd> {
     );
   }
 }
-

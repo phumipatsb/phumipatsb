@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test1/table/layout_table.dart';
+import 'package:test1/table/table_Api.dart';
 import 'pull_from_api/provider_Api.dart';
 import 'package:test1/table/new_table.dart';
 import 'SideBar/Login.dart';
@@ -32,13 +34,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => provider_Language()),
         ChangeNotifierProvider(create: (_) => provider_login()),
         ChangeNotifierProvider(create: (_) => provider_api_table()),
-        
+        ChangeNotifierProvider(create: (_) => TableStatusProviderApi()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: Scaffold(
-            body: //PopupMenuButtonWidgetStateFul(),
-                new_table(),
+            body: layout_table(),
+            //new_table(),
           )),
     );
   }
