@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:test1/models/compronan.dart';
 import 'package:test1/pull_from_api/modelsApi_Table.dart';
+import 'modelsApi_Staff_list.dart';
 import 'modelsApi_manu.dart';
 import 'linkApi.dart';
 import 'modelsApi_status_table.dart';
@@ -37,6 +38,19 @@ class TableStatusProviderApi extends ChangeNotifier {
   getPostData() async {
     loading = true;
     post = (await fetchdataTableStatus());
+    loading = false;
+    notifyListeners();
+  }
+}
+
+class ProviderApi_Staff_list extends ChangeNotifier {
+  List<StaffList>? posts;
+
+  bool loading = false;
+
+  getPost_Staff_list() async {
+    loading = true;
+    posts = (await fetchdatastafflist());
     loading = false;
     notifyListeners();
   }

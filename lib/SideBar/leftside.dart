@@ -7,6 +7,7 @@ import 'package:test1/pull_from_api/linkApi.dart';
 
 import '../sumneworder.dart';
 import '../table/new_table.dart';
+import '../table/table_Api.dart';
 import 'Login.dart';
 
 class leftside extends StatefulWidget {
@@ -76,7 +77,7 @@ class _leftside extends State<leftside> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => new_table()));
+                                  builder: (context) => ListData()));
                         }
                         if (index == 1) {
                           Navigator.push(

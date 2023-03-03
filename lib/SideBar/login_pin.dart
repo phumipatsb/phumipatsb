@@ -5,6 +5,7 @@ import 'package:sqflite/utils/utils.dart';
 
 import '../RAW/coloer/hex.dart';
 import '../models/provider_app.dart';
+import '../pull_from_api/provider_Api.dart';
 
 class login_pin extends StatefulWidget {
   @override
@@ -13,12 +14,23 @@ class login_pin extends StatefulWidget {
 
 class _login_pinState extends State<login_pin> {
   @override
+
+  void initState() {
+    super.initState();
+    final Model_list = Provider.of<ProviderApi_Staff_list>(context, listen: false);
+    Model_list.getPost_Staff_list();
+    print(Model_list);
+  } 
+
+  
   List pin = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   String passwork= "2543";
   String pincode ="";
   String name = "login";
-  
+  int pinnecond =0;
   Widget build(BuildContext context) {
+    final Model_list = Provider.of<ProviderApi_Staff_list>(context);
+    
     return Container(
       child: Column(
         children: [
@@ -72,7 +84,7 @@ class _login_pinState extends State<login_pin> {
                 border: Border.all(width: 2, color: HexColor(lineColor)),
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              child: pincode.length == 0
+              child: pincode.length == 0 
                 ? Center(
                     child: Text("Please enter your password",
                     style: const TextStyle(
@@ -83,9 +95,10 @@ class _login_pinState extends State<login_pin> {
                   )
               
               :Center(
-                child: Text("$pincode",
+                
+                child: Text("*"*pinnecond,
                     style: const TextStyle(
-                        fontSize: 40,
+                        fontSize: 60,
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w400,
                         color: Colors.black)),
@@ -103,15 +116,29 @@ class _login_pinState extends State<login_pin> {
                           crossAxisCount: 3,
                           crossAxisSpacing: 12.0,
                           mainAxisSpacing: 15,
-                          mainAxisExtent: 80,
+                          mainAxisExtent: 95,
                         ),
                         itemCount: pin.length,
                         itemBuilder: (BuildContext context, int index) {
                           return GestureDetector(
                             onTap: () {
                               setState(() {
-                                print("${pin[index]}");
+                                
                                 addpin("${pin[index]}");
+
+                              for(int i=0;i < Model_list.posts!.length ;i++ ){
+                              if(pincode == Model_list.posts![i].password ){
+                              context.read<provider_login>().updaet_status_login(true);
+                              context.read<provider_login>().updaet_login_name("${Model_list.posts![i].name}");
+
+                              
+                              Navigator.pop(context);
+                              
+                              }
+                              pinnecond =pincode.length;
+                              print("pinnecond"+pinnecond.toString());
+                            }
+
                               });
                             },
                             child: Container(
@@ -148,7 +175,7 @@ class _login_pinState extends State<login_pin> {
                             });
                           },
                           child: Container(
-                            height: 80,
+                            height: 90,
                             width: 155,
                             decoration: BoxDecoration(
                               border: Border.all(
@@ -173,10 +200,25 @@ class _login_pinState extends State<login_pin> {
                             setState(() {
                               print("0");
                               addpin('0');
+                              for(int i=0;i < Model_list.posts!.length ;i++ ){
+                              if(pincode == Model_list.posts![i].password ){
+                                context.read<provider_login>().updaet_status_login(true);
+                                context.read<provider_login>().updaet_login_name("${Model_list.posts![i].name}");
+                                
+                                Navigator.pop(context);
+                              }
+                              else{
+                                context.read<provider_login>().updaet_status_login(false);
+                              }
+                              
+          
+                            }
+                            pinnecond =pincode.length;
+                               
                             });
                           },
                           child: Container(
-                            height: 80,
+                            height: 90,
                             width: 155,
                             decoration: BoxDecoration(
                               border: Border.all(
@@ -204,7 +246,7 @@ class _login_pinState extends State<login_pin> {
                               });
                             },
                             child: Container(
-                              height: 80,
+                              height: 90,
                               width: 155,
                               decoration: BoxDecoration(
                                 border: Border.all(
@@ -226,41 +268,7 @@ class _login_pinState extends State<login_pin> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Container(
-                    width: double.infinity,
-                    height: 50.0,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          //Navigator.push(context,MaterialPageRoute(builder: (context) => confrim_order()));
-                          setState(() {
-                            if(pincode == passwork){
-                              context.read<provider_login>().updaet_Language_status_login(true);
-                              name="boss";
-
-                              Navigator.pop(context);
-                            }
-                            if(pincode != passwork){
-                              context.read<provider_login>().updaet_Language_status_login(false);
-                              name="login";
-
-
-                            }
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary:
-                              Color.fromARGB(255, 255, 111, 111), // background
-                        ),
-                        child: Text("Confirm",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white))),
-                  ),
-                ),
+                
               ],
             ),
           ),
@@ -278,10 +286,11 @@ class _login_pinState extends State<login_pin> {
     
   }
   void deleteString(){
-    if(pincode.length ==0){
+    if(pincode.length ==0 || pinnecond ==0){
       return;
     }
     pincode = pincode.substring(0, pincode.length -1);
+    pinnecond--;
     print(pincode);
   }
 

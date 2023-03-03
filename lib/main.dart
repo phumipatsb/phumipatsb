@@ -11,7 +11,7 @@ import 'SideBar/leftside.dart';
 import 'sumneworder.dart';
 import 'models/provider_app.dart';
 
-import 'testlayout.dart';
+import 'ไฟล์เก่า/testlayout.dart';
 import 'package:flutter/services.dart';
 
 import 'ไฟล์เก่า/test.dart';
@@ -35,6 +35,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => provider_login()),
         ChangeNotifierProvider(create: (_) => provider_api_table()),
         ChangeNotifierProvider(create: (_) => TableStatusProviderApi()),
+        ChangeNotifierProvider(create: (_) => ProviderApi_Staff_list()),
+        ChangeNotifierProvider(create: (_) => provider_table()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:test1/pull_from_api/modelsApi_Staff_list.dart';
 
 import 'modelsApi_Table.dart';
 import 'modelsApi_manu.dart';
@@ -34,6 +35,19 @@ Future<TableStatusApi> fetchdataTableStatus() async {
   final tableApi;
   if (response.statusCode == 200 && response.body.isNotEmpty) {
     return tableApi = tableStatusApiFromJson(response.body);
+  } else {
+    throw Exception('Failed to load Data');
+  }
+}
+
+
+
+Future<List<StaffList>> fetchdatastafflist() async {
+  final response = await http.get(Uri.parse(
+      'https://6401a5cd0a2a1afebeeea96e.mockapi.io/user_login/staff_list'));
+  final tableApi;
+  if (response.statusCode == 200 && response.body.isNotEmpty) {
+    return tableApi = staffListFromJson(response.body);
   } else {
     throw Exception('Failed to load Data');
   }

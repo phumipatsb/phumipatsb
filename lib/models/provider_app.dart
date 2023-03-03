@@ -174,15 +174,37 @@ class provider_Language with ChangeNotifier {
 
 class provider_login with ChangeNotifier {
   bool status_login = false;
+  String name ='';
 
-  void updaet_Language_status_login(bool newtext1) {
+  void updaet_status_login(bool newtext1) {
     status_login = newtext1;
+    notifyListeners();
+  }
+
+  void updaet_login_name(String newtext1) {
+    name = newtext1;
     notifyListeners();
   }
 
 
 
 }
+
+class provider_table with ChangeNotifier {
+  String zoneNameSelect = '';
+  String subZoneNameSelect = '';
+
+  void ZoneNameSelect(String select) {
+    zoneNameSelect = select;
+    notifyListeners();
+  }
+
+  void SubZoneNameSelect(String select) {
+    subZoneNameSelect = select;
+    notifyListeners();
+  }
+}
+
 
 
 

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
+import '../models/provider_app.dart';
 import '../pull_from_api/provider_Api.dart';
+import '../sumneworder.dart';
 
 class ListData extends StatefulWidget {
   const ListData({super.key});
@@ -150,7 +152,10 @@ class _ListDataState extends State<ListData> {
                                                                                         itemBuilder: (context, index2) {
                                                                                           return GestureDetector(
                                                                                             onTap: () {
-                                                                                              print(index2);
+                                                                                              context.read<provider_table>().ZoneNameSelect('${Model_list.post_table![index].zone}');
+                                                                                              context.read<provider_table>().SubZoneNameSelect('${Model_list.post_table![index].items![index2].name}');
+                                                                                              Navigator.push(context, MaterialPageRoute(builder: (context) => sumneworder()));
+                                                                                              
                                                                                             },
                                                                                             child: AnimatedContainer(
                                                                                               height: 80,
