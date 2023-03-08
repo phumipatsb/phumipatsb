@@ -180,6 +180,7 @@ class provider_Language with ChangeNotifier {
     if (Language == "ZH") {
       Language_ds = "choice_cn";
     }
+    notifyListeners();
   }
 }
 

@@ -165,6 +165,7 @@ class _ListDataState extends State<ListData> {
                                                                                           height: 100,
                                                                                           width: 200,
                                                                                           child: ListView.builder(
+                                                                                              physics: NeverScrollableScrollPhysics(),
                                                                                               itemCount: tableListStatus[0].table.length,
                                                                                               itemBuilder: (context, indexQueue) {
                                                                                                 return GestureDetector(

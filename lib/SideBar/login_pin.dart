@@ -19,7 +19,7 @@ class _login_pinState extends State<login_pin> {
     final Model_list =
         Provider.of<ProviderApi_Staff_list>(context, listen: false);
     Model_list.getPost_Staff_list();
-    print(Model_list);
+    // print(Model_list);
   }
 
   List pin = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -138,7 +138,7 @@ class _login_pinState extends State<login_pin> {
                                     Navigator.pop(context);
                                   }
                                   pinnecond = pincode.length;
-                                  print("pinnecond" + pinnecond.toString());
+                                  // print("pinnecond" + pinnecond.toString());
                                 }
                               });
                             },
@@ -284,7 +284,7 @@ class _login_pinState extends State<login_pin> {
 
   void addpin(String pin) {
     pincode += pin;
-    print(pincode);
+    // print(pincode);
   }
 
   void clearpin() {
@@ -297,6 +297,6 @@ class _login_pinState extends State<login_pin> {
     }
     pincode = pincode.substring(0, pincode.length - 1);
     pinnecond--;
-    print(pincode);
+    // print(pincode);
   }
 }
