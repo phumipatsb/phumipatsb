@@ -4,7 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:test1/RAW/coloer/hex.dart';
 import 'package:test1/SideBar/language.dart';
 import 'package:test1/pull_from_api/linkApi.dart';
-
+import 'package:test1/table/layout_table.dart';
 import '../sumneworder.dart';
 import '../table/new_table.dart';
 import '../table/table_Api.dart';
@@ -37,14 +37,13 @@ class _leftside extends State<leftside> {
           Padding(
             padding: const EdgeInsets.all(4),
             child: Container(
-              width: 70,
-              height: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                color: HexColor(whiteColor),
-              ),
-              child: Login()
-            ),
+                width: 70,
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: HexColor(whiteColor),
+                ),
+                child: Login()),
           ),
           SizedBox(
             height: 10,
@@ -56,7 +55,7 @@ class _leftside extends State<leftside> {
               borderRadius: BorderRadius.circular(10.0),
               color: HexColor(whiteColor),
             ),
-            child:  Center(
+            child: Center(
               child: languagepd(),
             ),
           ),
@@ -77,7 +76,7 @@ class _leftside extends State<leftside> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ListData()));
+                                  builder: (context) => layout_table()));
                         }
                         if (index == 1) {
                           Navigator.push(

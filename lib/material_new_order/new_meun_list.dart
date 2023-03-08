@@ -441,6 +441,7 @@ class _GridViewPageState extends State<homepage> {
 
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
+      var Language_ds = context.watch<provider_Language>().Language_ds;
 
       return Container(
         child: ListView.builder(
@@ -539,6 +540,7 @@ class _GridViewPageState extends State<homepage> {
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
       bool st5 = false;
+      var Language_ds1 = context.watch<provider_Language>().Language_ds;
 
       return Container(
         child: ListView.builder(

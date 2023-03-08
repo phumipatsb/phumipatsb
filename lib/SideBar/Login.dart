@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import '../models/provider_app.dart';
 import 'login_pin.dart';
-enum SampleItem { English,  }
+import 'logout.dart';
+
+enum SampleItem {
+  English,
+}
+
 class Login extends StatefulWidget {
   @override
   State<Login> createState() => _LoginState();
@@ -9,11 +15,13 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   String choice = "Click Settings to make your selection";
-  bool login_status = false;
+
   String selanguage = "";
   SampleItem? selectedMenu;
   @override
   Widget build(BuildContext context) {
+    bool login_status = context.watch<provider_login>().status_login;
+    String name = context.watch<provider_login>().name;
     return Container(
       width: double.infinity,
       child: GestureDetector(
@@ -35,16 +43,25 @@ class _LoginState extends State<Login> {
                   });
             }
             if (login_status == true) {
-              
-              
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                        content: Container(
+                      height: 100,
+                      width: 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: logout(),
+                    ));
+                  });
             }
           });
         },
         child: Center(
-          
-          child: Text("Login",
+          child: Text("$name",
               style: const TextStyle(
-                  fontSize: 20,
                   fontFamily: 'Inter',
                   fontWeight: FontWeight.w500,
                   color: Colors.black)),

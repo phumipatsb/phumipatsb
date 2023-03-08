@@ -10,11 +10,10 @@ const iconColor = '#FF6F6F';
 const lineColor = '#FF6F6F';
 const textPriceColor = '#FF6F6F';
 
-const   backgroundpayment = '#FFDCDC';
-const  topboottt ='#FFB7B2';
+const backgroundpayment = '#FFDCDC';
+const topboottt = '#FFB7B2';
 
-const  textpaymam ='#3F3F3F';
+const textpaymam = '#3F3F3F';
 
-const  bgpin ='#FFB7B2';
-
-
+const bgpin = '#FFB7B2';
+const btlogout = '#FFDCDC';

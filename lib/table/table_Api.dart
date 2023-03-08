@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import 'package:test1/models/provider_app.dart';
+import 'package:test1/pull_from_api/modelsApi_status_table.dart';
 
-import '../models/provider_app.dart';
 import '../pull_from_api/provider_Api.dart';
 import '../sumneworder.dart';
 
@@ -13,38 +15,84 @@ class ListData extends StatefulWidget {
   State<ListData> createState() => _ListDataState();
 }
 
+class zoneList {
+  String zone = "";
+  String id = "";
+  List<tableListNew> table = [];
+  zoneList({required this.zone, required this.id, required this.table});
+}
+
+class tableListNew {
+  String name = "";
+  String id = "";
+  List status = [];
+  tableListNew({required this.name, required this.id, required this.status});
+}
+
 class _ListDataState extends State<ListData> {
+  List<zoneList> tableListStatus = [];
+  late List data;
+  var test;
   @override
   void initState() {
     super.initState();
-    final Model_list = Provider.of<provider_api_table>(context, listen: false);
-    final StatusList =
-        Provider.of<TableStatusProviderApi>(context, listen: false);
-    StatusList.getPostData();
-    Model_list.getdata_table();
+    fetchprovider();
   }
 
-  Widget build(BuildContext context) {
-    //final zone = Provider.of<zoneName>(context);
-    final Model_list = Provider.of<provider_api_table>(context);
-    final StatusList = Provider.of<TableStatusProviderApi>(context);
+  Future fetchprovider() async {
+    tableListStatus = [];
 
+    final Model_list = Provider.of<provider_api_table>(context, listen: false);
+    await Model_list.getPostData2();
+    final StatusList =
+        Provider.of<TableStatusProviderApi>(context, listen: false);
+    await StatusList.getdatastatus();
+
+    for (int i = 0; i < Model_list.post2!.length; i++) {
+      tableListStatus.add(zoneList(
+          zone: Model_list.post2![i].zone!,
+          id: Model_list.post2![i].id!,
+          table: []));
+      List items = Model_list.post2![i].items!;
+      for (int j = 0; j < items.length; j++) {
+        var zonefind = StatusList.post3!.datas!
+            .firstWhere(
+                (element) =>
+                    (element.tableName == Model_list.post2![i].items![j].name &&
+                        element.tableZone == Model_list.post2![i].zone),
+                orElse: () => Data())
+            .toJson();
+        // print(tableListStatus[i].zone);
+        if (zonefind.isNotEmpty) {
+          tableListStatus[i].table.add(tableListNew(
+              id: Model_list.post2![i].items![j].id!,
+              name: Model_list.post2![i].items![j].name!,
+              status: zonefind['status']));
+        } else {
+          tableListStatus[i].table.add(tableListNew(
+              id: Model_list.post2![i].items![j].id!,
+              name: Model_list.post2![i].items![j].name!,
+              status: []));
+        }
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: Model_list.lodeing
-          ? Center(
-              child: Container(
-                child: SpinKitThreeBounce(itemBuilder: ((context, index) {
-                  return DecoratedBox(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color:
-                              index.isInfinite ? Colors.red : Colors.red[100]));
-                })),
-              ),
-            )
-          : Center(
+      body: FutureBuilder(
+          future: fetchprovider(),
+          builder: (context, AsyncSnapshot<dynamic> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            }
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            }
+            return Center(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(0),
                 child: Row(
                   children: [
                     Flexible(
@@ -68,8 +116,10 @@ class _ListDataState extends State<ListData> {
                                               children: [
                                                 Expanded(
                                                   child: ListView.builder(
-                                                      itemCount: Model_list
-                                                          .post_table?.length,
+                                                      // physics:
+                                                      //     NeverScrollableScrollPhysics(),
+                                                      itemCount: tableListStatus
+                                                          .length,
                                                       itemBuilder:
                                                           (context, index) {
                                                         return SizedBox(
@@ -106,7 +156,7 @@ class _ListDataState extends State<ListData> {
                                                                                   mainAxisAlignment: MainAxisAlignment.start,
                                                                                   children: [
                                                                                     Text(
-                                                                                      '${Model_list.post_table![index].zone}:',
+                                                                                      '${tableListStatus[index].zone}:',
                                                                                       style: TextStyle(fontSize: 40, color: Colors.black),
                                                                                     ),
                                                                                     Padding(
@@ -115,17 +165,17 @@ class _ListDataState extends State<ListData> {
                                                                                           height: 100,
                                                                                           width: 200,
                                                                                           child: ListView.builder(
-                                                                                              itemCount: Model_list.post_table![0].items!.length,
-                                                                                              itemBuilder: (context, index_queue) {
+                                                                                              itemCount: tableListStatus[0].table.length,
+                                                                                              itemBuilder: (context, indexQueue) {
                                                                                                 return GestureDetector(
                                                                                                   onTap: (() {
-                                                                                                    print(index_queue);
+                                                                                                    print(indexQueue);
                                                                                                   }),
                                                                                                   child: Container(
                                                                                                     height: 80,
                                                                                                     width: 80,
-                                                                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(18), color: Colors.white),
-                                                                                                    child: Center(child: Text('${Model_list.post_table![index].items![index_queue].name}')),
+                                                                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(18), color: ChangeColor(tableListStatus[0].table[indexQueue].status)),
+                                                                                                    child: Center(child: Text('${tableListStatus[0].table[indexQueue].name}')),
                                                                                                   ),
                                                                                                 );
                                                                                               }),
@@ -136,7 +186,7 @@ class _ListDataState extends State<ListData> {
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
                                                                                     Text(
-                                                                                      '${Model_list.post_table![index].zone}',
+                                                                                      '${tableListStatus[index].zone}',
                                                                                       style: TextStyle(fontSize: 40, color: Colors.black),
                                                                                     ),
                                                                                     GridView.builder(
@@ -147,24 +197,24 @@ class _ListDataState extends State<ListData> {
                                                                                           mainAxisSpacing: 10,
                                                                                           mainAxisExtent: 100,
                                                                                         ),
-                                                                                        itemCount: Model_list.post_table![index].items!.length,
+                                                                                        itemCount: tableListStatus[index].table.length,
                                                                                         physics: NeverScrollableScrollPhysics(),
                                                                                         itemBuilder: (context, index2) {
+                                                                                          // print('${tableListStatus[index].zone} |${tableListStatus[index].table[index2].name}|${tableListStatus[index].table[index2].status}');
                                                                                           return GestureDetector(
                                                                                             onTap: () {
-                                                                                              context.read<provider_table>().ZoneNameSelect('${Model_list.post_table![index].zone}');
-                                                                                              context.read<provider_table>().SubZoneNameSelect('${Model_list.post_table![index].items![index2].name}');
+                                                                                              context.read<provider_table>().ZoneNameSelect('${tableListStatus[index].zone}');
+                                                                                              context.read<provider_table>().SubZoneNameSelect('${tableListStatus[index].table[index2].name}');
                                                                                               Navigator.push(context, MaterialPageRoute(builder: (context) => sumneworder()));
-                                                                                              
                                                                                             },
                                                                                             child: AnimatedContainer(
                                                                                               height: 80,
                                                                                               width: 80,
                                                                                               duration: const Duration(milliseconds: 300),
                                                                                               margin: const EdgeInsets.all(6),
-                                                                                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(18), color: Colors.white),
+                                                                                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(18), color: ChangeColor(tableListStatus[index].table[index2].status)),
                                                                                               child: Center(
-                                                                                                child: Text('${Model_list.post_table![index].items![index2].name}',
+                                                                                                child: Text('${tableListStatus[index].table[index2].name}',
                                                                                                     style: TextStyle(
                                                                                                       color: Colors.black,
                                                                                                       fontSize: 20,
@@ -195,37 +245,18 @@ class _ListDataState extends State<ListData> {
                   ],
                 ),
               ),
-            ),
+            );
+          }),
     );
   }
 }
 
-class CheckColorFormApi extends StatelessWidget {
-  const CheckColorFormApi({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final StatusList = Provider.of<TableStatusProviderApi>(context);
-    return ListView.builder(
-        itemCount: StatusList.post?.datas!.length,
-        itemBuilder: (context, index) {
-          return Container();
-        });
-  }
-}
-
-ChangeColor(String status) {
-  switch (status) {
-    case 'ODR':
-      print('Ordering');
-      return Colors.yellow;
-      break; // The switch statement must be told to exit, or it will execute every case.
-    case 'Pay':
-      print('Pay');
-      return Colors.blue;
-      break;
-    default:
-      print('');
-      return Colors.white;
+ChangeColor(List status) {
+  if (status.isEmpty) {
+    return Colors.white;
+  } else if (status.contains('ORD')) {
+    return Colors.yellow;
+  } else {
+    return Colors.blue;
   }
 }

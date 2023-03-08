@@ -130,8 +130,6 @@ class zoneName with ChangeNotifier {
   }
 }
 
-
-
 class provider_payment with ChangeNotifier {
   String Location = '';
   String Payment = '';
@@ -162,19 +160,32 @@ class provider_payment with ChangeNotifier {
 
 class provider_Language with ChangeNotifier {
   String Language = "EN";
+  String Language_ds = 'choice';
 
   void updaet_Language(String newtext1) {
     Language = newtext1;
     notifyListeners();
   }
 
-
-
+  void ch_Language() {
+    if (Language == "EN") {
+      Language_ds = "choice";
+    }
+    if (Language == "TH") {
+      Language_ds = "choice_th";
+    }
+    if (Language == "JP") {
+      Language_ds = "choice";
+    }
+    if (Language == "ZH") {
+      Language_ds = "choice_cn";
+    }
+  }
 }
 
 class provider_login with ChangeNotifier {
   bool status_login = false;
-  String name ='';
+  String name = 'login';
 
   void updaet_status_login(bool newtext1) {
     status_login = newtext1;
@@ -185,9 +196,6 @@ class provider_login with ChangeNotifier {
     name = newtext1;
     notifyListeners();
   }
-
-
-
 }
 
 class provider_table with ChangeNotifier {
@@ -204,7 +212,3 @@ class provider_table with ChangeNotifier {
     notifyListeners();
   }
 }
-
-
-
-

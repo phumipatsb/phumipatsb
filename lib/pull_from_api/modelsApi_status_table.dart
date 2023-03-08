@@ -1,16 +1,16 @@
 // To parse this JSON data, do
 //
-//     final tableStatusApi = tableStatusApiFromJson(jsonString);
+//     final tableStatus = tableStatusFromJson(jsonString);
 
 import 'dart:convert';
 
-TableStatusApi tableStatusApiFromJson(String str) =>
-    TableStatusApi.fromJson(json.decode(str));
+TableStatus tableStatusFromJson(String str) =>
+    TableStatus.fromJson(json.decode(str));
 
-String tableStatusApiToJson(TableStatusApi data) => json.encode(data.toJson());
+String tableStatusToJson(TableStatus data) => json.encode(data.toJson());
 
-class TableStatusApi {
-  TableStatusApi({
+class TableStatus {
+  TableStatus({
     this.status,
     this.updateHash,
     this.statusMsg,
@@ -24,7 +24,7 @@ class TableStatusApi {
   DateTime? updateDatetime;
   List<Data>? datas;
 
-  factory TableStatusApi.fromJson(Map<String, dynamic> json) => TableStatusApi(
+  factory TableStatus.fromJson(Map<String, dynamic> json) => TableStatus(
         status: json["status"],
         updateHash: json["update_hash"],
         statusMsg: json["status_msg"],
@@ -50,65 +50,44 @@ class TableStatusApi {
 class Data {
   Data({
     this.status,
-    this.discount,
-    this.tableZone,
-    this.total,
-    this.room,
-    this.discountLabel,
-    this.totalOption,
     this.name,
-    this.purchaseDateDatetime,
-    this.discountOption,
+    this.room,
+    this.tableZone,
     this.tableName,
-    this.purchaseDate,
-    this.billingId,
+    this.captainCount,
+    this.splitCount,
   });
 
-  String? status;
-  double? discount;
-  String? tableZone;
-  double? total;
-  String? room;
-  String? discountLabel;
-  String? totalOption;
+  List<String>? status;
   String? name;
-  DateTime? purchaseDateDatetime;
-  String? discountOption;
+  String? room;
+  String? tableZone;
   String? tableName;
-  String? purchaseDate;
-  String? billingId;
+  int? captainCount;
+  int? splitCount;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        status: json["status"],
-        discount: json["discount"],
-        tableZone: json["table_zone"],
-        total: json["total"],
-        room: json["room"],
-        discountLabel: json["discount_label"],
-        totalOption: json["total_option"],
+        status: json["status"] == null
+            ? []
+            : List<String>.from(json["status"]!.map((x) => x)),
         name: json["name"],
-        purchaseDateDatetime: json["purchase_date_datetime"] == null
-            ? null
-            : DateTime.parse(json["purchase_date_datetime"]),
-        discountOption: json["discount_option"],
+        room: json["room"],
+        tableZone: json["table_zone"],
         tableName: json["table_name"],
-        purchaseDate: json["purchase_date"],
-        billingId: json["billing_id"],
+        captainCount: json["captain_count"],
+        splitCount: json["split_count"],
       );
 
   Map<String, dynamic> toJson() => {
-        "status": status,
-        "discount": discount,
-        "table_zone": tableZone,
-        "total": total,
-        "room": room,
-        "discount_label": discountLabel,
-        "total_option": totalOption,
+        "status":
+            status == null ? [] : List<dynamic>.from(status!.map((x) => x)),
         "name": name,
-        "purchase_date_datetime": purchaseDateDatetime?.toIso8601String(),
-        "discount_option": discountOption,
+        "room": room,
+        "table_zone": tableZone,
         "table_name": tableName,
-        "purchase_date": purchaseDate,
-        "billing_id": billingId,
+        "captain_count": captainCount,
+        "split_count": splitCount,
       };
+
+  where(bool Function(dynamic element) param0) {}
 }

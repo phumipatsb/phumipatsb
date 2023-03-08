@@ -29,18 +29,16 @@ Future<List<TableList>> fetchdata_table() async {
   }
 }
 
-Future<TableStatusApi> fetchdataTableStatus() async {
+Future<TableStatus> fetchdataTableStatus() async {
   final response = await http.get(Uri.parse(
-      'https://partner1.triggersplus.com/order/open_bill_list/A53C88185CF64E6F85D00F2C75180AE1/1/123/'));
+      'https://partner1.triggersplus.com/order/open_table_list/A53C88185CF64E6F85D00F2C75180AE1/123/?output=json'));
   final tableApi;
   if (response.statusCode == 200 && response.body.isNotEmpty) {
-    return tableApi = tableStatusApiFromJson(response.body);
+    return tableApi = tableStatusFromJson(response.body);
   } else {
     throw Exception('Failed to load Data');
   }
 }
-
-
 
 Future<List<StaffList>> fetchdatastafflist() async {
   final response = await http.get(Uri.parse(

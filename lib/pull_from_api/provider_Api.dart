@@ -19,25 +19,25 @@ class provider_api_Manu extends ChangeNotifier {
 }
 
 class provider_api_table extends ChangeNotifier {
-  List<TableList>? post_table;
+  List<TableList>? post2;
   bool lodeing = false;
 
-  getdata_table() async {
+  getPostData2() async {
     lodeing = true;
-    post_table = (await fetchdata_table());
+    post2 = (await fetchdata_table());
     lodeing = false;
     notifyListeners();
   }
 }
 
 class TableStatusProviderApi extends ChangeNotifier {
-  TableStatusApi? post;
+  TableStatus? post3;
 
   bool loading = false;
 
-  getPostData() async {
+  getdatastatus() async {
     loading = true;
-    post = (await fetchdataTableStatus());
+    post3 = (await fetchdataTableStatus());
     loading = false;
     notifyListeners();
   }
