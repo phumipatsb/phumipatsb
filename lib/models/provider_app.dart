@@ -82,54 +82,6 @@ class provider_app with ChangeNotifier {
   }
 }
 
-class zoneName with ChangeNotifier {
-  final List<zone> _zone = [
-    zone(ZoneName: 'Zone A', SubZone: [
-      SubZoneDetail(SubZoneName: 'A1', Status: ''),
-      SubZoneDetail(SubZoneName: 'A1', Status: ''),
-      SubZoneDetail(SubZoneName: 'A1', Status: ''),
-      SubZoneDetail(SubZoneName: 'A1', Status: ''),
-      SubZoneDetail(SubZoneName: 'A2', Status: ''),
-      SubZoneDetail(SubZoneName: 'A2', Status: ''),
-      SubZoneDetail(SubZoneName: 'A2', Status: ''),
-      SubZoneDetail(SubZoneName: 'A3', Status: ''),
-      SubZoneDetail(SubZoneName: 'A2', Status: ''),
-    ]),
-    zone(ZoneName: 'Zone B', SubZone: [
-      SubZoneDetail(SubZoneName: 'A1', Status: ''),
-      SubZoneDetail(SubZoneName: 'A2', Status: 'Pay')
-    ]),
-    zone(ZoneName: 'Zone C', SubZone: [
-      SubZoneDetail(SubZoneName: 'B1', Status: 'Ordering'),
-      SubZoneDetail(SubZoneName: 'B2', Status: 'Pay')
-    ]),
-  ];
-
-  List<zone> get Zone {
-    return [..._zone];
-  }
-
-  List<selectzone> _select = [];
-
-  List<selectzone> get select {
-    return [..._select];
-  }
-
-  String _zoneNameSelect = '';
-  String _subZoneNameSelect = '';
-  String get zoneNameSelect => _zoneNameSelect;
-  String get subZoneNameSelect => _subZoneNameSelect;
-  set zoneNameSelect(String select) {
-    _zoneNameSelect = select;
-    notifyListeners();
-  }
-
-  set subZoneNameSelect(String select) {
-    _subZoneNameSelect = select;
-    notifyListeners();
-  }
-}
-
 class provider_payment with ChangeNotifier {
   String Location = '';
   String Payment = '';
@@ -160,26 +112,9 @@ class provider_payment with ChangeNotifier {
 
 class provider_Language with ChangeNotifier {
   String Language = "EN";
-  String Language_ds = 'choice';
 
   void updaet_Language(String newtext1) {
     Language = newtext1;
-    notifyListeners();
-  }
-
-  void ch_Language() {
-    if (Language == "EN") {
-      Language_ds = "choice";
-    }
-    if (Language == "TH") {
-      Language_ds = "choice_th";
-    }
-    if (Language == "JP") {
-      Language_ds = "choice";
-    }
-    if (Language == "ZH") {
-      Language_ds = "choice_cn";
-    }
     notifyListeners();
   }
 }
@@ -213,3 +148,5 @@ class provider_table with ChangeNotifier {
     notifyListeners();
   }
 }
+
+datatable() {}

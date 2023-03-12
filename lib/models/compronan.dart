@@ -138,23 +138,19 @@ class SubAddOnDetail {
       required this.ID});
 }
 
-
-class selectaf{
-  List<send> selectafdata ;
+class selectaf {
+  List<send> selectafdata;
   selectaf({required this.selectafdata});
 }
 
-class send{
-  
-  int  index1 =0;
-  int  intdex2=0;
+class send {
+  int index1 = 0;
+  int intdex2 = 0;
   send({required this.index1, required this.intdex2});
 }
 
-
-
-
-
-
-
-
+class Option {
+  String? Choice;
+  num? price;
+  Option({required this.Choice, required this.price});
+}

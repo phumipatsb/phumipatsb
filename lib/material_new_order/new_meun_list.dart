@@ -9,6 +9,8 @@ import '../models/compronan.dart';
 
 import 'package:group_radio_button/group_radio_button.dart';
 
+import '../pull_from_api/modelsApi_manu.dart';
+
 class homepage extends StatefulWidget {
   //homepage(Key? key) : super(key: key);
 
@@ -21,9 +23,9 @@ class _GridViewPageState extends State<homepage> {
   final _formKey = GlobalKey<FormState>();
   int _paymentType = 1;
   var _oneValue = '';
-
+  Map<int, String> selectedOptions = {};
   List<addonofs> chooseAddon = [];
-
+  List<Option> AddOption = [];
   bool checkboxValue = false;
   int y = 10;
   TextEditingController textarea = TextEditingController();
@@ -35,6 +37,7 @@ class _GridViewPageState extends State<homepage> {
           _groupValue = value!;
           print(chooseAddon);
           final bool isSelected = value == _groupValue;
+          chooseAddon.toSet().toList();
 
           print('Location  : $isSelected');
           if (isSelected == true) {
@@ -57,13 +60,12 @@ class _GridViewPageState extends State<homepage> {
     final postModel = Provider.of<provider_api_Manu>(context);
     var data = postModel.post?.data;
     var _groupOptionList = postModel.post?.groupOptionList;
-    var Language = context.watch<provider_Language>().Language_ds;
 
     int selected = context.watch<provider_app>().index1;
 
     int selectedSubCat = context.watch<provider_app>().index2;
     // print("index1 :"+selected.toString());
-    // print("index2 :"+ selected_sub_cat.toString());
+    // print("index2 :"+ selectedSubCat.toString());
 
     return postModel.lodeing
         ? Center(
@@ -112,7 +114,16 @@ class _GridViewPageState extends State<homepage> {
                             var Options =
                                 '${data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions}';
 
-                            if (Options != '') {
+                            if (data?[selected]
+                                        .items?[selectedSubCat]
+                                        .items?[index]
+                                        .itemGroupOptions !=
+                                    '' ||
+                                data?[selected]
+                                        .items?[selectedSubCat]
+                                        .items?[index]
+                                        .itemGroupOptions !=
+                                    null) {
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -154,36 +165,28 @@ class _GridViewPageState extends State<homepage> {
                                                 itemBuilder:
                                                     (BuildContext context,
                                                         int index2) {
+                                                  print(postModel
+                                                      .post!
+                                                      .groupOptionList![
+                                                          data?[selected]
+                                                              .items?[
+                                                                  selectedSubCat]
+                                                              .items?[index]
+                                                              .itemGroupOptions]![
+                                                          index2]
+                                                      .mode);
                                                   return Container(
                                                     child: Column(
                                                       crossAxisAlignment:
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: <Widget>[
-                                                        choiceoptions2(
+                                                        choiceLanguage(
                                                             selected,
                                                             selectedSubCat,
                                                             index,
                                                             index2),
 
-                                                        // Container(
-                                                        //   child: Text(
-                                                        //     "${postModel.post!.groupOptionList![data?[selected].items?[selected_sub_cat].items?[index].itemGroupOptions]![index2].questionTh}",
-                                                        //     style:
-                                                        //         Theme.of(
-                                                        //                 context)
-                                                        //             .textTheme
-                                                        //             .subtitle1!
-                                                        //             .merge(
-                                                        //               const TextStyle(
-                                                        //                 fontSize:
-                                                        //                     35,
-                                                        //                 fontWeight:
-                                                        //                     FontWeight.w700,
-                                                        //               ),
-                                                        //             ),
-                                                        //   ),
-                                                        // ),
                                                         const Divider(
                                                           height: 10,
                                                           thickness: 2,
@@ -198,12 +201,73 @@ class _GridViewPageState extends State<homepage> {
                                                         const SizedBox(
                                                           width: 10,
                                                         ),
-                                                        choiceoptions(
-                                                            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].mode}",
-                                                            selected,
-                                                            selectedSubCat,
-                                                            index,
-                                                            index2),
+                                                        // choiceoptions(
+                                                        //     "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].mode}",
+                                                        //     selected,
+                                                        //     selectedSubCat,
+                                                        //     index,
+                                                        //     index2),
+                                                        Container(
+                                                          // ignore: unrelated_type_equality_checks
+                                                          child: postModel
+                                                                      .post!
+                                                                      .groupOptionList![
+                                                                          data![selected]
+                                                                              .items?[
+                                                                                  selectedSubCat]
+                                                                              .items?[
+                                                                                  index]
+                                                                              .itemGroupOptions]![
+                                                                          index2]
+                                                                      .mode ==
+                                                                  Mode.SIN
+                                                              ? ListView
+                                                                  .builder(
+                                                                      physics:
+                                                                          NeverScrollableScrollPhysics(),
+                                                                      shrinkWrap:
+                                                                          true,
+                                                                      itemCount: postModel
+                                                                          .post!
+                                                                          .groupOptionList![
+                                                                              data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![
+                                                                              index2]
+                                                                          .items!
+                                                                          .length,
+                                                                      itemBuilder:
+                                                                          (context,
+                                                                              index_sub_cat_addon) {
+                                                                        AddOption.add(Option(
+                                                                            Choice:
+                                                                                postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice,
+                                                                            price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
+                                                                        //print('sss ${AddOption}');
+                                                                        return RadioListTile(
+                                                                            title:
+                                                                                Text('${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!}'),
+                                                                            secondary: Text('${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price}'),
+                                                                            value: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id,
+                                                                            groupValue: selectedOptions[postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length],
+                                                                            onChanged: (val) {
+                                                                              setState(() {
+                                                                                selectedOptions[postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length] = val!;
+                                                                                // chooseAddon.add(AddonItem(title: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question, addonTitle: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice, price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
+                                                                                // chooseAddon.toSet().toList();
+                                                                                var test = chooseAddon.indexWhere((element) => element.nameaddon == postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question);
+                                                                                print(test);
+                                                                                if (test != -1) {
+                                                                                  chooseAddon[test].subNameAddOn = postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!;
+                                                                                } else {
+                                                                                  chooseAddon.add(addonofs(nameaddon: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question!, subNameAddOn: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!, price: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!, ID: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id!));
+                                                                                  chooseAddon.toSet().toList();
+                                                                                  print(chooseAddon);
+                                                                                }
+                                                                                // print('A :${chooseAddon.length}');
+                                                                              });
+                                                                            });
+                                                                      })
+                                                              : Container(),
+                                                        )
                                                       ],
                                                     ),
                                                   );
@@ -358,6 +422,8 @@ class _GridViewPageState extends State<homepage> {
                                           addonSelect: [],
                                         ),
                                       );
+                                  selectedOptions = {};
+                                  print(selectedOptions);
                                 },
                               );
                             }
@@ -443,12 +509,14 @@ class _GridViewPageState extends State<homepage> {
       //var addOnlist = Provider.of<addOn>(context);
       var _result;
       var _selectedOption;
+      String? selectedItem;
 
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
-      var LanguageDs = context.watch<provider_Language>().Language_ds;
-
+      Map<int, String> selectedOptions = {};
       return Container(
+        width: 200,
+        height: 50,
         child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
@@ -461,6 +529,23 @@ class _GridViewPageState extends State<homepage> {
               .items!
               .length,
           itemBuilder: (BuildContext context, int index2) {
+            AddOption.add(Option(
+                Choice: postModel
+                    .post!
+                    .groupOptionList![data?[selected]
+                        .items?[selectedSubCat]
+                        .items?[index]
+                        .itemGroupOptions]![index3]
+                    .items![index2]
+                    .choice!,
+                price: postModel
+                    .post!
+                    .groupOptionList![data?[selected]
+                        .items?[selectedSubCat]
+                        .items?[index]
+                        .itemGroupOptions]![index3]
+                    .items![index2]
+                    .price!));
             return Align(
               alignment: AlignmentDirectional(0, 0),
               child: Row(
@@ -468,72 +553,127 @@ class _GridViewPageState extends State<homepage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Align(
-                  //   alignment: AlignmentDirectional(10, 0),
+                  RadioListTile(
+                      title: Text(
+                          '${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].choice!}'),
+                      secondary: Text(
+                          '${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].price!}'),
+                      value: postModel
+                          .post!
+                          .groupOptionList![data?[selected]
+                              .items?[selectedSubCat]
+                              .items?[index]
+                              .itemGroupOptions]![index3]
+                          .items![index2]
+                          .id!,
+                      groupValue: selectedOptions[postModel
+                          .post!
+                          .groupOptionList![data?[selected]
+                              .items?[selectedSubCat]
+                              .items?[index]
+                              .itemGroupOptions]![index2]
+                          .items!
+                          .length],
+                      onChanged: (val) {
+                        setState(() {
+                          selectedOptions[postModel
+                              .post!
+                              .groupOptionList![data?[selected]
+                                  .items?[selectedSubCat]
+                                  .items?[index]
+                                  .itemGroupOptions]![index2]
+                              .items!
+                              .length] = val!;
+                          // chooseAddon.add(AddonItem(title: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question, addonTitle: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice, price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
+                          // chooseAddon.toSet().toList();
+                          var test = chooseAddon.indexWhere((element) =>
+                              element.nameaddon ==
+                              postModel
+                                  .post!
+                                  .groupOptionList![data?[selected]
+                                      .items?[selectedSubCat]
+                                      .items?[index]
+                                      .itemGroupOptions]![index2]
+                                  .question!);
+                          print(test);
+                          if (test != -1) {
+                            chooseAddon[test].subNameAddOn = postModel
+                                .post!
+                                .groupOptionList![data?[selected]
+                                    .items?[selectedSubCat]
+                                    .items?[index]
+                                    .itemGroupOptions]![index3]
+                                .items![index2]
+                                .choice!;
+                          } else {
+                            chooseAddon.add(addonofs(
+                                nameaddon: postModel
+                                    .post!
+                                    .groupOptionList![data?[selected]
+                                        .items?[selectedSubCat]
+                                        .items?[index]
+                                        .itemGroupOptions]![index2]
+                                    .question!,
+                                subNameAddOn: postModel
+                                    .post!
+                                    .groupOptionList![data?[selected]
+                                        .items?[selectedSubCat]
+                                        .items?[index]
+                                        .itemGroupOptions]![index3]
+                                    .items![index2]
+                                    .choice!,
+                                price: postModel
+                                    .post!
+                                    .groupOptionList![data?[selected]
+                                        .items?[selectedSubCat]
+                                        .items?[index]
+                                        .itemGroupOptions]![index3]
+                                    .items![index2]
+                                    .price!,
+                                ID: postModel
+                                    .post!
+                                    .groupOptionList![data?[selected]
+                                        .items?[selectedSubCat]
+                                        .items?[index]
+                                        .itemGroupOptions]![index3]
+                                    .items![index2]
+                                    .id!));
+                            chooseAddon.toSet().toList();
+                            print(chooseAddon);
+                          }
+                          // print('A :${chooseAddon.length}');
+                        });
+                      })
 
-                  //   child: Container(
-                  //     width: 100,
-                  //     height: 50,
-                  //     child: RadioListTile(title: Text("${addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn}"),
-                  //     value: addOnlist.addno1[indexs].Subaddon[index2].subNameAddOn,
-                  //     groupValue: _oneValue,
-                  //     onChanged: (value) {
-                  //       setState(() {
-                  //         _oneValue = value.toString();
-                  //       });
-                  //     },)
+                  // Container(
+                  //   width: 450,
+                  //   child: Row(
+                  //     mainAxisSize: MainAxisSize.max,
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Container(
+                  //         child: Row(
+                  //           children: [
+                  //             Text(
+                  //                 "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
+                  //                 style: TextStyle(
+                  //                     fontSize: 20,
+                  //                     fontFamily: 'Inter',
+                  //                     fontWeight: FontWeight.w500,
+                  //                     color: Colors.black)),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //       Text(
+                  //           "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].price}",
+                  //           style: TextStyle(
+                  //               fontSize: 20,
+                  //               fontFamily: 'Inter',
+                  //               fontWeight: FontWeight.w500,
+                  //               color: Colors.black)),
+                  //     ],
                   //   ),
                   // ),
-                  RadioOptionLocation<String>(
-                    value:
-                        "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
-                    groupValue: _groupValue,
-                    onChanged: _valueChangedHandler(
-                        "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].questionTh}",
-                        "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
-                        postModel
-                            .post!
-                            .groupOptionList![data?[selected]
-                                .items?[selectedSubCat]
-                                .items?[index]
-                                .itemGroupOptions]![index3]
-                            .items![index2]
-                            .price!,
-                        "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].id!}"),
-                    label:
-                        "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
-                    text: 'One',
-                  ),
-
-                  Container(
-                    width: 450,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                  "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black)),
-                            ],
-                          ),
-                        ),
-                        Text(
-                            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].price}",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black)),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             );
@@ -545,7 +685,6 @@ class _GridViewPageState extends State<homepage> {
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
       bool st5 = false;
-      var Language = context.watch<provider_Language>().Language_ds;
 
       return Container(
         child: ListView.builder(
@@ -657,7 +796,7 @@ class _GridViewPageState extends State<homepage> {
     }
   }
 
-  choiceoptions2(int selected, int selectedSubCat, int index, int index2) {
+  choiceLanguage(int selected, int selectedSubCat, int index, int index2) {
     var Language = context.watch<provider_Language>().Language;
     print(Language);
 

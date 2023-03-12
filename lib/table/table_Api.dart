@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+// import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:test1/models/provider_app.dart';
 import 'package:test1/pull_from_api/modelsApi_status_table.dart';
@@ -35,6 +35,7 @@ class _ListDataState extends State<ListData> {
   var test;
   @override
   void initState() {
+    tableListStatus = [];
     super.initState();
     fetchprovider();
   }
@@ -76,6 +77,7 @@ class _ListDataState extends State<ListData> {
         }
       }
     }
+    print(tableListStatus.length);
   }
 
   @override
