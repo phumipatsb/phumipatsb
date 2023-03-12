@@ -30,7 +30,7 @@ class _GridViewPageState extends State<homepage> {
   int y = 10;
   TextEditingController textarea = TextEditingController();
   String? _groupValue;
-
+  bool st5 = false;
   ValueChanged<String?> _valueChangedHandler(
       String name, String subname, num price, String ID) {
     return (value) => setState(() {
@@ -208,66 +208,144 @@ class _GridViewPageState extends State<homepage> {
                                                         //     index,
                                                         //     index2),
                                                         Container(
-                                                          // ignore: unrelated_type_equality_checks
-                                                          child: postModel
-                                                                      .post!
-                                                                      .groupOptionList![
-                                                                          data![selected]
-                                                                              .items?[
-                                                                                  selectedSubCat]
-                                                                              .items?[
-                                                                                  index]
-                                                                              .itemGroupOptions]![
-                                                                          index2]
-                                                                      .mode ==
-                                                                  Mode.SIN
-                                                              ? ListView
-                                                                  .builder(
+                                                            // ignore: unrelated_type_equality_checks
+                                                            child: postModel
+                                                                        .post!
+                                                                        .groupOptionList![
+                                                                            data![selected].items?[selectedSubCat].items?[index].itemGroupOptions]![
+                                                                            index2]
+                                                                        .mode ==
+                                                                    Mode.SIN
+                                                                ? ListView
+                                                                    .builder(
+                                                                        physics:
+                                                                            NeverScrollableScrollPhysics(),
+                                                                        shrinkWrap:
+                                                                            true,
+                                                                        itemCount: postModel
+                                                                            .post!
+                                                                            .groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![
+                                                                                index2]
+                                                                            .items!
+                                                                            .length,
+                                                                        itemBuilder:
+                                                                            (context,
+                                                                                index_sub_cat_addon) {
+                                                                          AddOption.add(Option(
+                                                                              Choice: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice,
+                                                                              price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
+                                                                          //print('sss ${AddOption}');
+                                                                          return RadioListTile(
+                                                                              title: Text('${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!}'),
+                                                                              secondary: Text('${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price}'),
+                                                                              value: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id,
+                                                                              groupValue: selectedOptions[postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length],
+                                                                              onChanged: (val) {
+                                                                                setState(() {
+                                                                                  selectedOptions[postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length] = val!;
+                                                                                  // chooseAddon.add(AddonItem(title: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question, addonTitle: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice, price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
+                                                                                  // chooseAddon.toSet().toList();
+                                                                                  var test = chooseAddon.indexWhere((element) => element.nameaddon == postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question);
+                                                                                  print(test);
+                                                                                  if (test != -1) {
+                                                                                    chooseAddon[test].subNameAddOn = postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!;
+                                                                                  } else {
+                                                                                    chooseAddon.add(addonofs(nameaddon: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question!, subNameAddOn: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!, price: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!, ID: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id!));
+                                                                                    chooseAddon.toSet().toList();
+                                                                                    print(chooseAddon);
+                                                                                  }
+                                                                                  // print('A :${chooseAddon.length}');
+                                                                                });
+                                                                              });
+                                                                        })
+                                                                : Container(
+                                                                    child: ListView
+                                                                        .builder(
                                                                       physics:
                                                                           NeverScrollableScrollPhysics(),
                                                                       shrinkWrap:
                                                                           true,
                                                                       itemCount: postModel
                                                                           .post!
-                                                                          .groupOptionList![
-                                                                              data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![
-                                                                              index2]
+                                                                          .groupOptionList![data?[selected]
+                                                                              .items?[selectedSubCat]
+                                                                              .items?[index]
+                                                                              .itemGroupOptions]![index2]
                                                                           .items!
                                                                           .length,
                                                                       itemBuilder:
-                                                                          (context,
-                                                                              index_sub_cat_addon) {
-                                                                        AddOption.add(Option(
-                                                                            Choice:
-                                                                                postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice,
-                                                                            price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
-                                                                        //print('sss ${AddOption}');
-                                                                        return RadioListTile(
-                                                                            title:
-                                                                                Text('${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!}'),
-                                                                            secondary: Text('${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price}'),
-                                                                            value: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id,
-                                                                            groupValue: selectedOptions[postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length],
-                                                                            onChanged: (val) {
-                                                                              setState(() {
-                                                                                selectedOptions[postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length] = val!;
-                                                                                // chooseAddon.add(AddonItem(title: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question, addonTitle: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice, price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
-                                                                                // chooseAddon.toSet().toList();
-                                                                                var test = chooseAddon.indexWhere((element) => element.nameaddon == postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question);
-                                                                                print(test);
-                                                                                if (test != -1) {
-                                                                                  chooseAddon[test].subNameAddOn = postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!;
-                                                                                } else {
-                                                                                  chooseAddon.add(addonofs(nameaddon: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question!, subNameAddOn: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!, price: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!, ID: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id!));
-                                                                                  chooseAddon.toSet().toList();
-                                                                                  print(chooseAddon);
-                                                                                }
-                                                                                // print('A :${chooseAddon.length}');
-                                                                              });
-                                                                            });
-                                                                      })
-                                                              : Container(),
-                                                        )
+                                                                          (BuildContext context,
+                                                                              int index2) {
+                                                                        return Align(
+                                                                          alignment: AlignmentDirectional(
+                                                                              0.4,
+                                                                              0),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.start,
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.center,
+                                                                            children: [
+                                                                              Align(
+                                                                                alignment: AlignmentDirectional(10, 0),
+                                                                                child: Container(
+                                                                                  width: 50,
+                                                                                  child: FormField<bool>(
+                                                                                    builder: (state) {
+                                                                                      return Column(
+                                                                                        children: <Widget>[
+                                                                                          Row(
+                                                                                            children: <Widget>[
+                                                                                              Checkbox(
+                                                                                                value: st5,
+                                                                                                onChanged: (bool? value) {
+                                                                                                  setState(
+                                                                                                    () {
+                                                                                                      st5 = value!;
+                                                                                                      state.didChange(value);
+
+                                                                                                      if (value == true) {
+                                                                                                        (chooseAddon.add(addonofs(price: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index2].price!, subNameAddOn: "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index2].choice}", ID: "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index2].id!}", nameaddon: "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionTh}")));
+                                                                                                      }
+                                                                                                      if (value == false) {
+                                                                                                        // context
+                                                                                                        //     .read<provider_app>()
+                                                                                                        //     .deleteaddon(addOnlist.addno1[indexs].Subaddon[index2].ID);
+                                                                                                        deleteaddon("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index2].id!}");
+                                                                                                        //print(chooseAddon);
+                                                                                                      } else {}
+                                                                                                      cleccheckbox(value);
+                                                                                                    },
+                                                                                                  );
+                                                                                                },
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ],
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                              Container(
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                  children: [
+                                                                                    Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index2].choice}", style: TextStyle(fontSize: 20, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black)),
+                                                                                    Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index2].price}", style: TextStyle(fontSize: 20, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black)),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    ),
+                                                                  ))
                                                       ],
                                                     ),
                                                   );
