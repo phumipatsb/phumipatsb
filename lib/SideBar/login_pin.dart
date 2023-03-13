@@ -14,13 +14,7 @@ class login_pin extends StatefulWidget {
 
 class _login_pinState extends State<login_pin> {
   @override
-  void initState() {
-    super.initState();
-    final Model_list =
-        Provider.of<ProviderApi_Staff_list>(context, listen: false);
-    Model_list.getPost_Staff_list();
-    // print(Model_list);
-  }
+  
 
   List pin = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   String passwork = "2543";

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/provider_app.dart';
+import '../pull_from_api/provider_Api.dart';
 import 'login_pin.dart';
 import 'logout.dart';
 
@@ -19,6 +20,13 @@ class _LoginState extends State<Login> {
   String selanguage = "";
   SampleItem? selectedMenu;
   @override
+  void initState() {
+    super.initState();
+    final Model_list =
+        Provider.of<ProviderApi_Staff_list>(context, listen: false);
+    Model_list.getPost_Staff_list();
+    // print(Model_list);
+  }
   Widget build(BuildContext context) {
     bool login_status = context.watch<provider_login>().status_login;
     String name = context.watch<provider_login>().name;
