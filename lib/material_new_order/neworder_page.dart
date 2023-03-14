@@ -266,7 +266,7 @@ class _layoutWidgetState extends State<layoutWidget> {
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(16),
-                                                  color: Colors.black26,
+                                                  color: Colors.white30,
                                                 ),
                                                 child: Row(
                                                   mainAxisAlignment:

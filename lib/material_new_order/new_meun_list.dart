@@ -8,7 +8,7 @@ import '../models/provider_app.dart';
 import '../models/compronan.dart';
 
 import 'package:group_radio_button/group_radio_button.dart';
-
+import 'package:http/http.dart' as http;
 import '../pull_from_api/modelsApi_manu.dart';
 
 class homepage extends StatefulWidget {
@@ -38,7 +38,7 @@ class _GridViewPageState extends State<homepage> {
     var data = postModel.post?.data;
     var _groupOptionList = postModel.post?.groupOptionList;
     bool st5 = false;
-
+    final ImageErrorWidgetBuilder? errorBuilder;
     int selected = context.watch<provider_app>().index1;
 
     int selectedSubCat = context.watch<provider_app>().index2;
@@ -183,7 +183,7 @@ class _GridViewPageState extends State<homepage> {
                                                                             data![selected].items?[selectedSubCat].items?[index].itemGroupOptions]![
                                                                             index2]
                                                                         .mode ==
-                                                                    Mode.SIN
+                                                                    Mode.MUL
                                                                 ? ListView
                                                                     .builder(
                                                                         physics:
@@ -422,14 +422,13 @@ class _GridViewPageState extends State<homepage> {
                                         return Container(
                                           height: 170,
                                           child: Center(
-                                            
+
                                           child: CircularProgressIndicator(),
                                           ),
                                         );
                                         }})
+
                                 
-
-
 
                                 // child: Image.network(
                                 //   '${data?[selected].items?[selectedSubCat].items?[index].picture}',
