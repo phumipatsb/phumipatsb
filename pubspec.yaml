@@ -51,6 +51,7 @@ dependencies:
   custom_radio: ^0.1.2
   checkmark: ^0.0.2+1
   flare_flutter: ^3.0.2
+  cached_network_image: ^3.2.3
   
 
 dev_dependencies:

@@ -17,3 +17,4 @@ const textpaymam = '#3F3F3F';
 
 const bgpin = '#FFB7B2';
 const btlogout = '#FFDCDC';
+const confi = '#EC5534';
