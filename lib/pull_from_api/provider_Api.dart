@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:test1/models/compronan.dart';
 import 'package:test1/pull_from_api/modelsApi_Table.dart';
 import 'modelsApi_Staff_list.dart';
+import 'modelsApi_bill_list.dart';
 import 'modelsApi_manu.dart';
 import 'linkApi.dart';
 import 'modelsApi_status_table.dart';
@@ -51,6 +52,19 @@ class ProviderApi_Staff_list extends ChangeNotifier {
   getPost_Staff_list() async {
     loading = true;
     posts = (await fetchdatastafflist());
+    loading = false;
+    notifyListeners();
+  }
+}
+
+class bill_list_ProviderApi extends ChangeNotifier {
+  BillList? post3;
+
+  bool loading = false;
+
+  get_data_bill_list_ProviderApi() async {
+    loading = true;
+    post3 = (await fetch_data_bill_list());
     loading = false;
     notifyListeners();
   }

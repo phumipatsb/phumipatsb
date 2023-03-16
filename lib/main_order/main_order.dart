@@ -7,8 +7,10 @@ import 'package:test1/RAW/coloer/hex.dart';
 import 'package:test1/SideBar/leftside.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:test1/main_order/close_shift.dart';
 import '../material_new_order/date_month_year.dart';
 import '../models/provider_app.dart';
+import '../pull_from_api/provider_Api.dart';
 import '../sumneworder.dart';
 
 class main_order extends StatefulWidget {
@@ -21,7 +23,13 @@ class _main_order extends State<main_order> {
   TextEditingController passwordController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    final shiftlist = Provider.of<bill_list_ProviderApi>(context, listen: false);
+    shiftlist.get_data_bill_list_ProviderApi();
+  }
   Widget build(BuildContext context) {
+    final Shift_list = Provider.of<bill_list_ProviderApi>(context);
     String cdate2 = DateFormat("dd  MMMM yyyy").format(DateTime.now());
     return Scaffold(
         body: Center(
@@ -115,287 +123,7 @@ class _main_order extends State<main_order> {
                                                                       Container(
                                                                 height: 565,
                                                                 width: 500,
-                                                                child: Column(
-                                                                  children: [
-                                                                    Container(
-                                                                      width:
-                                                                          486,
-                                                                      height:
-                                                                          38,
-                                                                      child: ElevatedButton(
-                                                                          onPressed: () {
-                                                                            Navigator.pop(context);
-                                                                          },
-                                                                          style: ElevatedButton.styleFrom(
-                                                                            primary: Color.fromARGB(
-                                                                                255,
-                                                                                255,
-                                                                                111,
-                                                                                111), // background
-                                                                          ),
-                                                                          child: Text("Confirm", style: TextStyle(fontSize: 20, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.white))),
-                                                                    ),
-                                                                    SizedBox(
-                                                                      height:
-                                                                          25,
-                                                                    ),
-                                                                    Container(
-                                                                      width:
-                                                                          480,
-                                                                      height:
-                                                                          500,
-                                                                      child:
-                                                                          Column(
-                                                                        children: [
-                                                                          Padding(
-                                                                            padding: const EdgeInsets.fromLTRB(
-                                                                                10,
-                                                                                0,
-                                                                                10,
-                                                                                10),
-                                                                            child:
-                                                                                Container(
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text("Finished Orders", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black)),
-                                                                                  Text("7", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black))
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: const EdgeInsets.fromLTRB(
-                                                                                10,
-                                                                                0,
-                                                                                10,
-                                                                                10),
-                                                                            child:
-                                                                                Container(
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text("Unfinished Orders", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black)),
-                                                                                  Text("2", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black))
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          const Divider(
-                                                                            height:
-                                                                                10,
-                                                                            thickness:
-                                                                                2,
-                                                                            indent:
-                                                                                0,
-                                                                            endIndent:
-                                                                                0,
-                                                                            color:
-                                                                                Colors.black,
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: const EdgeInsets.fromLTRB(
-                                                                                10,
-                                                                                10,
-                                                                                10,
-                                                                                10),
-                                                                            child:
-                                                                                Container(
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text("Cash", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black)),
-                                                                                  Text("1500", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black))
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: const EdgeInsets.fromLTRB(
-                                                                                10,
-                                                                                10,
-                                                                                10,
-                                                                                10),
-                                                                            child:
-                                                                                Container(
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text("Credit Card", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black)),
-                                                                                  Text("1000", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black))
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: const EdgeInsets.fromLTRB(
-                                                                                10,
-                                                                                10,
-                                                                                10,
-                                                                                10),
-                                                                            child:
-                                                                                Container(
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text("Prompt Pay", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black)),
-                                                                                  Text("1000", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black))
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: const EdgeInsets.fromLTRB(
-                                                                                10,
-                                                                                10,
-                                                                                10,
-                                                                                10),
-                                                                            child:
-                                                                                Container(
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text("Transfer", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black)),
-                                                                                  Text("0", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black))
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          const Divider(
-                                                                            height:
-                                                                                10,
-                                                                            thickness:
-                                                                                2,
-                                                                            indent:
-                                                                                0,
-                                                                            endIndent:
-                                                                                0,
-                                                                            color:
-                                                                                Colors.black,
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: const EdgeInsets.fromLTRB(
-                                                                                10,
-                                                                                10,
-                                                                                10,
-                                                                                10),
-                                                                            child:
-                                                                                Container(
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text("Subtotal", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black)),
-                                                                                  Text("3500", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black))
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: const EdgeInsets.fromLTRB(
-                                                                                10,
-                                                                                10,
-                                                                                10,
-                                                                                10),
-                                                                            child:
-                                                                                Container(
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text("Discount", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black)),
-                                                                                  Text("0", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black))
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: const EdgeInsets.fromLTRB(
-                                                                                10,
-                                                                                10,
-                                                                                10,
-                                                                                10),
-                                                                            child:
-                                                                                Container(
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text("Service Charge", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black)),
-                                                                                  Text("0", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black))
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: const EdgeInsets.fromLTRB(
-                                                                                10,
-                                                                                10,
-                                                                                10,
-                                                                                10),
-                                                                            child:
-                                                                                Container(
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text("Vat", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black)),
-                                                                                  Text("0", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black))
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: const EdgeInsets.fromLTRB(
-                                                                                10,
-                                                                                10,
-                                                                                10,
-                                                                                10),
-                                                                            child:
-                                                                                Container(
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text("Misc", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black)),
-                                                                                  Text("0", style: TextStyle(fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black))
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          SizedBox(height: 20,),
-                                                                          Container(
-                                                                            child:
-                                                                                Row(
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                              children: [
-                                                                                SizedBox(
-                                                                                  width: 136,
-                                                                                  height: 34,
-                                                                                  child: ElevatedButton(
-                                                                                      onPressed: () {
-                                                                                        Navigator.pop(context);
-                                                                                      },
-                                                                                      style: ElevatedButton.styleFrom(
-                                                                                        primary: Color.fromARGB(255, 255, 111, 111), // background
-                                                                                      ),
-                                                                                      child: Text("Cancel", style: TextStyle(fontSize: 20, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.white))),
-                                                                                ),
-                                                                                SizedBox(
-                                                                                  width: 136,
-                                                                                  height: 34,
-                                                                                  child: ElevatedButton(
-                                                                                      onPressed: () {
-                                                                                        Navigator.pop(context);
-                                                                                      },
-                                                                                      style: ElevatedButton.styleFrom(
-                                                                                        primary: Color.fromARGB(255, 255, 111, 111), // background
-                                                                                      ),
-                                                                                      child: Text("Confirm", style: TextStyle(fontSize: 20, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.white))),
-                                                                                )
-                                                                              ],
-                                                                            ),
-                                                                          )
-                                                                        ],
-                                                                      ),
-                                                                    )
-                                                                  ],
-                                                                ),
+                                                                child: close_shift()
                                                               ));
                                                             });
                                                       },
@@ -439,7 +167,7 @@ class _main_order extends State<main_order> {
                                           child: Container(
                                             child: ListView.builder(
                                               shrinkWrap: false,
-                                              itemCount: 10,
+                                              itemCount: Shift_list.post3?.datas?.length, 
                                               itemBuilder:
                                                   (BuildContext context,
                                                       int index) {

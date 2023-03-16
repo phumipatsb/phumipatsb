@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => TableStatusProviderApi()),
         ChangeNotifierProvider(create: (_) => ProviderApi_Staff_list()),
         ChangeNotifierProvider(create: (_) => provider_table()),
+        ChangeNotifierProvider(create: (_) => bill_list_ProviderApi()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

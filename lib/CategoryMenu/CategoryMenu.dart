@@ -99,6 +99,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
                                                         backgroundImage:
                                                             NetworkImage(
                                                                 '${data?[index].picture}',
+                                                                
                                                                 scale: 3.0),
                                                       ),
                                                     ),

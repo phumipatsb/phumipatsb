@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test1/models/compronan.dart';
 import '../models/provider_app.dart';
 
 class display_total extends StatefulWidget {
@@ -11,19 +12,26 @@ class _display_totalState extends State<display_total> {
   @override
   Widget build(BuildContext context) {
     var tasks = context.watch<provider_app>().tasks;
+    //var toto3 = context.watch<provider_app>().totalAmount;
     double vat = 7;
     double service_charge = 10;
     double TotoAddOn = 0.0;
     double toto = 0.0;
     double totoaddon = 0.0;
+     int a ;
+      var toto3 = 0.0;
+    
 
     for (var i = 0; i < tasks.length; i++) {
       toto += tasks[i].price! * tasks[i].amount;
-      // for (var b = 0; b < tasks[i].addonSelect[i].price; b++) {
-      //   // if (tasks[i].addonSelect.length >= 0) {
-      //   //   // totoaddon += tasks[i].addonSelect[b].price;
-      //   // }
-      // }
+      a=i;
+      for(var b = 0; b < tasks[a].addonSelect.length; b++){
+         TotoAddOn += tasks[a].addonSelect[b].price;
+        
+
+      }
+      
+      
 
     }
 
@@ -149,7 +157,7 @@ class _display_totalState extends State<display_total> {
     if (toto != 0) {
       setState(() {
         context.read<provider_payment>().save_Total(toto);
-        print("object");
+        
       });
     }
   }

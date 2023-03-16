@@ -25,6 +25,7 @@ class _GridViewPageState extends State<homepage> {
   List<Option> AddOption = [];
   TextEditingController textarea = TextEditingController();
   bool st5 = false;
+  
 
   @override
   void initState() {
@@ -38,6 +39,7 @@ class _GridViewPageState extends State<homepage> {
     var data = postModel.post?.data;
     var _groupOptionList = postModel.post?.groupOptionList;
     bool st5 = false;
+    String _radioValue;
     final ImageErrorWidgetBuilder? errorBuilder;
     int selected = context.watch<provider_app>().index1;
 
@@ -90,7 +92,7 @@ class _GridViewPageState extends State<homepage> {
                                 '${data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions}';
                                 print("itemGroupOptions"+ "${data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions}");
 
-                            if (data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions !=null || Options != " ") {
+                            if ( Options.isNotEmpty) {
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
@@ -100,286 +102,297 @@ class _GridViewPageState extends State<homepage> {
                                               Radius.circular(32.0))),
                                       contentPadding:
                                           EdgeInsets.only(top: 10.0),
-                                      content: Container(
-                                        width: 500,
-                                        height: 600,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.stretch,
-                                          children: <Widget>[
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.fromLTRB(
-                                                      8, 0, 8, 0),
-                                              child: Container(
-                                                alignment: Alignment.topRight,
-                                                child: IconButton(
-                                                  icon: Icon(
-                                                    Icons.close,
-                                                    color: Colors.black54,
-                                                    size: 45,
-                                                  ),
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                    clecaaddon();
-                                                  },
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.fromLTRB(
-                                                      8, 0, 8, 0),
-                                              child: Container(
-                                                height: 350,
-                                                width: 500,
-                                                child: ListView.builder(
-                                                  shrinkWrap: false,
-                                                  itemCount: postModel
-                                                      .post!
-                                                      .groupOptionList![data?[
-                                                              selected]
-                                                          .items?[
-                                                              selectedSubCat]
-                                                          .items?[index]
-                                                          .itemGroupOptions]!
-                                                      .length,
-                                                  itemBuilder:
-                                                      (BuildContext context,
-                                                          int index2) {
-                                                    print(postModel
-                                                        .post!
-                                                        .groupOptionList![data?[
-                                                                selected]
-                                                            .items?[
-                                                                selectedSubCat]
-                                                            .items?[index]
-                                                            .itemGroupOptions]![index2]
-                                                        .mode);
-                                                    return Container(
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: <Widget>[
-                                                          questionLanguage(
-                                                              selected,
-                                                              selectedSubCat,
-                                                              index,
-                                                              index2),
-                                                          const Divider(
-                                                            height: 10,
-                                                            thickness: 2,
-                                                            indent: 0,
-                                                            endIndent: 0,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    255,
-                                                                    110,
-                                                                    110),
-                                                          ),
-                                                          const SizedBox(
-                                                            width: 10,
-                                                          ),
-                                                          Container(
-                                                              // ignore: unrelated_type_equality_checks
-                                                              child: postModel
-                                                                          .post!
-                                                                          .groupOptionList![
-                                                                              data![selected].items?[selectedSubCat].items?[index].itemGroupOptions]![
-                                                                              index2]
-                                                                          .mode ==
-                                                                      Mode.SIN
-                                                                  ? ListView
-                                                                      .builder(
-                                                                          physics:
-                                                                              NeverScrollableScrollPhysics(),
-                                                                          shrinkWrap:
-                                                                              true,
-                                                                          itemCount: postModel
-                                                                              .post!
-                                                                              .groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![
-                                                                                  index2]
-                                                                              .items!
-                                                                              .length,
-                                                                          itemBuilder:
-                                                                              (context, index_sub_cat_addon) {
-                                                                            AddOption.add(Option(
-                                                                                Choice: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice,
-                                                                                price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
-                                                                            //print('sss ${AddOption}');
-                                                                            return RadioListTile(
-                                                                                title: choiceLanguage(selected, selectedSubCat, index, index2, index_sub_cat_addon),
-                                                                                secondary: Text(
-                                                                                  '${postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price}',
-                                                                                  style: const TextStyle(
-                                                                                    fontSize: 25,
-                                                                                    fontWeight: FontWeight.w700,
-                                                                                  ),
-                                                                                ),
-                                                                                value: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id,
-                                                                                groupValue: selectedOptions[postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length],
-                                                                                onChanged: (val) {
-                                                                                  setState(() {
-                                                                                    selectedOptions[postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length] = val!;
-                                                                                    // chooseAddon.add(AddonItem(title: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question, addonTitle: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice, price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
-                                                                                    // chooseAddon.toSet().toList();
-                                                                                    var test = chooseAddon.indexWhere((element) => element.nameaddon == postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question);
-                                                                                    print(test);
-                                                                                    if (test != -1) {
-                                                                                      chooseAddon[test].subNameAddOn = postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!;
-                                                                                    } else {
-                                                                                      chooseAddon.add(addonofs(nameaddon: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question!, subNameAddOn: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!, price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!, ID: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id!));
-                                                                                      chooseAddon.toSet().toList();
-                                                                                      print(chooseAddon);
-                                                                                    }
-                                                                                    // print('A :${chooseAddon.length}');
-                                                                                  });
-                                                                                });
-                                                                          })
-                                                                  : Container(
-                                                                      child: choiceoptions(
-                                                                          selected,
-                                                                          selectedSubCat,
-                                                                          index,
-                                                                          index2),
-                                                                    ))
-                                                        ],
+                                      content: StatefulBuilder(
+                                        
+                                        builder: (context,  setState) {
+                                          return Container(
+                                            width: 500,
+                                            height: 600,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.stretch,
+                                              children: <Widget>[
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          8, 0, 8, 0),
+                                                  child: Container(
+                                                    alignment: Alignment.topRight,
+                                                    child: IconButton(
+                                                      icon: Icon(
+                                                        Icons.close,
+                                                        color: Colors.black54,
+                                                        size: 45,
                                                       ),
-                                                    );
-                                                  },
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              alignment: Alignment.bottomLeft,
-                                              padding: EdgeInsets.all(10),
-                                              child: Text('NOTE',
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      fontFamily: 'Inter',
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: Colors.black)),
-                                            ),
-                                            Container(
-                                              alignment: Alignment.center,
-                                              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                              child: Column(
-                                                children: [
-                                                  TextField(
-                                                      controller: textarea,
-                                                      keyboardType:
-                                                          TextInputType
-                                                              .multiline,
-                                                      maxLines: 4,
-                                                      autocorrect: true,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        hintStyle: TextStyle(
-                                                            fontSize: 16,
-                                                            color: Colors.grey),
-                                                        filled: true,
-                                                        fillColor:
-                                                            Colors.white70,
-                                                        contentPadding:
-                                                            EdgeInsets.fromLTRB(
-                                                                10, 0, 0, 0),
-                                                        enabledBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          8.0)),
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color: Colors
-                                                                      .red,
-                                                                  width: 2),
-                                                        ),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          8.0)),
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color: Colors
-                                                                      .green),
-                                                        ),
-                                                      )),
-                                                  const SizedBox(
-                                                    height: 10,
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                        clecaaddon();
+                                                      },
+                                                    ),
                                                   ),
-                                                ],
-                                              ),
-                                            ),
-                                            InkWell(
-                                              child: GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    context
-                                                                  .read<
-                                                                      provider_app>()
-                                                                  .addtasks1(
-                                                                    tasks1(
-                                                                      name:
-                                                                          "${data?[selected].items?[selectedSubCat].items?[index].name}",
-                                                                      price: data?[selected]
-                                                                          .items?[
-                                                                              selectedSubCat]
-                                                                          .items?[
-                                                                              index]
-                                                                          .price,
-                                                                      images:
-                                                                          '${data?[selected].items?[selectedSubCat].items?[index].picture}',
-                                                                      idItem:
-                                                                          '${data?[selected].items?[selectedSubCat].items?[index].itemId}',
-                                                                      addonSelect:
-                                                                          chooseAddon,
-                                                                    ),
-                                                                  );
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          8, 0, 8, 0),
+                                                  child: Container(
+                                                    height: 350,
+                                                    width: 500,
+                                                    child: ListView.builder(
+                                                      shrinkWrap: false,
+                                                      itemCount: postModel
+                                                          .post!
+                                                          .groupOptionList![data?[
+                                                                  selected]
+                                                              .items?[
+                                                                  selectedSubCat]
+                                                              .items?[index]
+                                                              .itemGroupOptions]!
+                                                          .length,
+                                                      itemBuilder:
+                                                          (BuildContext context,
+                                                              int index2) {
+                                                        print(postModel
+                                                            .post!
+                                                            .groupOptionList![data?[
+                                                                    selected]
+                                                                .items?[
+                                                                    selectedSubCat]
+                                                                .items?[index]
+                                                                .itemGroupOptions]![index2]
+                                                            .mode);
+                                                            
+                                                        return Container(
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: <Widget>[
+                                                              questionLanguage(
+                                                                  selected,
+                                                                  selectedSubCat,
+                                                                  index,
+                                                                  index2),
+                                                              const Divider(
+                                                                height: 10,
+                                                                thickness: 2,
+                                                                indent: 0,
+                                                                endIndent: 0,
+                                                                color:
+                                                                    Color.fromARGB(
+                                                                        255,
+                                                                        255,
+                                                                        110,
+                                                                        110),
+                                                              ),
+                                                              const SizedBox(
+                                                                width: 10,
+                                                              ),
+                                                              Container(
+                                                                  
+                                                                  child: postModel
+                                                                              .post!
+                                                                              .groupOptionList![
+                                                                                  data![selected].items?[selectedSubCat].items?[index].itemGroupOptions]![
+                                                                                  index2]
+                                                                              .mode ==
+                                                                          Mode.SIN
+                                                                      ? ListView
+                                                                          .builder(
+                                                                              physics:
+                                                                                  NeverScrollableScrollPhysics(),
+                                                                              shrinkWrap:
+                                                                                  true,
+                                                                              itemCount: postModel
+                                                                                  .post!
+                                                                                  .groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![
+                                                                                      index2]
+                                                                                  .items!
+                                                                                  .length,
+                                                                              itemBuilder:
+                                                                                  (context, index_sub_cat_addon) {
+                                                                                AddOption.add(Option(
+                                                                                    Choice: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice,
+                                                                                    price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
+                                                                                //print('sss ${AddOption}');
+                                                                                int? defval = postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].defaultChoice ;
+                                                                                print("def"+"$defval");
+                                                                                _radioValue = "${postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}";
+                                                                                return RadioListTile(
+                                                                                    title: choiceLanguage(selected, selectedSubCat, index, index2, index_sub_cat_addon),
+                                                                                    secondary: Text('${postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price}',
+                                                                                      style: const TextStyle(
+                                                                                        fontSize: 25,
+                                                                                        fontWeight: FontWeight.w700,
+                                                                                      ),
+                                                                                    ),
+                                                                                    value: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id,
+                                                                                    groupValue: selectedOptions[postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length],
+                                                                                    onChanged: (val) {
+                                                                                      setState(() {
+                                                                                        _radioValue = val!;
 
-                                                              clecaaddon();
-                                                  });
-                                                  Navigator.pop(
-                                                              context);
-                                                },
-                                                child: Container(
-                                                  padding: EdgeInsets.only(
-                                                      top: 18, bottom: 20),
-                                                  decoration: BoxDecoration(
-                                                    color: HexColor(confi),
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                            bottomLeft:
-                                                                Radius.circular(
-                                                                    32.0),
-                                                            bottomRight:
-                                                                Radius.circular(
-                                                                    32.0)),
-                                                  ),
-                                                  child: Text(
-                                                    "Confirm",
-                                                    style: TextStyle(
-                                                      fontSize:30,
-                                                      fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                        color: Colors.white),
-                                                    textAlign: TextAlign.center,
+                                                                                        selectedOptions[postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length] = val!;
+                                                                                        
+                                                                                        var test = chooseAddon.indexWhere((element) => element.nameaddon == postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question);
+                                                                                        
+                                                                                        if (test != -1) {
+                                                                                          chooseAddon[test].subNameAddOn = postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!;
+                                                                                          chooseAddon[test].price = postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!;
+                                                                                        } else {
+                                                                                          chooseAddon.add(addonofs(nameaddon: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question!, subNameAddOn: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!, price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!, ID: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id!));
+                                                                                          chooseAddon.toSet().toList();
+                                                                                          print(chooseAddon);
+                                                                                        }
+                                                                                        // print('A :${chooseAddon.length}');
+                                                                                      });
+                                                                                    });
+                                                                              })
+                                                                      : Container(
+                                                                          child: choiceoptions(
+                                                                              selected,
+                                                                              selectedSubCat,
+                                                                              index,
+                                                                              index2),
+                                                                        ))
+                                                            ],
+                                                          ),
+                                                        );
+                                                      },
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
+                                                Container(
+                                                  alignment: Alignment.bottomLeft,
+                                                  padding: EdgeInsets.all(10),
+                                                  child: Text('NOTE',
+                                                      style: TextStyle(
+                                                          fontSize: 20,
+                                                          fontFamily: 'Inter',
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.black)),
+                                                ),
+                                                Container(
+                                                  alignment: Alignment.center,
+                                                  padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                                  child: Column(
+                                                    children: [
+                                                      TextField(
+                                                          controller: textarea,
+                                                          keyboardType:
+                                                              TextInputType
+                                                                  .multiline,
+                                                          maxLines: 4,
+                                                          autocorrect: true,
+                                                          decoration:
+                                                              InputDecoration(
+                                                            hintStyle: TextStyle(
+                                                                fontSize: 16,
+                                                                color: Colors.grey),
+                                                            filled: true,
+                                                            fillColor:
+                                                                Colors.white70,
+                                                            contentPadding:
+                                                                EdgeInsets.fromLTRB(
+                                                                    10, 0, 0, 0),
+                                                            enabledBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius.all(
+                                                                      Radius
+                                                                          .circular(
+                                                                              8.0)),
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                      color: Colors
+                                                                          .red,
+                                                                      width: 2),
+                                                            ),
+                                                            focusedBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius.all(
+                                                                      Radius
+                                                                          .circular(
+                                                                              8.0)),
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                      color: Colors
+                                                                          .green),
+                                                            ),
+                                                          )),
+                                                      const SizedBox(
+                                                        height: 10,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                InkWell(
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        context
+                                                                      .read<
+                                                                          provider_app>()
+                                                                      .addtasks1(
+                                                                        tasks1(
+                                                                          name:
+                                                                              "${data?[selected].items?[selectedSubCat].items?[index].name}",
+                                                                          price: data?[selected]
+                                                                              .items?[
+                                                                                  selectedSubCat]
+                                                                              .items?[
+                                                                                  index]
+                                                                              .price,
+                                                                          images:
+                                                                              '${data?[selected].items?[selectedSubCat].items?[index].picture}',
+                                                                          idItem:
+                                                                              '${data?[selected].items?[selectedSubCat].items?[index].itemId}',
+                                                                          addonSelect:
+                                                                              chooseAddon,
+                                                                        ),
+                                                                      );
+                                      
+                                                                  clecaaddon();
+                                                                  
+                                                      });
+                                                      Navigator.pop(
+                                                                  context);
+                                                    },
+                                                    child: Container(
+                                                      padding: EdgeInsets.only(
+                                                          top: 18, bottom: 20),
+                                                      decoration: BoxDecoration(
+                                                        color: HexColor(confi),
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                                bottomLeft:
+                                                                    Radius.circular(
+                                                                        32.0),
+                                                                bottomRight:
+                                                                    Radius.circular(
+                                                                        32.0)),
+                                                      ),
+                                                      child: Text(
+                                                        "Confirm",
+                                                        style: TextStyle(
+                                                          fontSize:30,
+                                                          fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                            color: Colors.white),
+                                                        textAlign: TextAlign.center,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ],
-                                        ),
+                                          );
+                                        }
                                       ),
                                     );
                                   });
@@ -419,38 +432,66 @@ class _GridViewPageState extends State<homepage> {
                                     bottomLeft: Radius.circular(0),
                                     bottomRight: Radius.circular(0),
                                   ),
-                                  child: Image.network(
-                                      "${data?[selected].items?[selectedSubCat].items?[index].picture}",
-                                      height: 170, frameBuilder: (context,
-                                          child,
-                                          frame,
-                                          wasSynchronouslyLoaded) {
-                                    return child;
-                                  }, loadingBuilder:
-                                          (context, child, loadingProgress) {
-                                    if (loadingProgress == null) {
-                                      return child;
-                                    } else {
-                                      return Container(
-                                        height: 170,
-                                        child: Center(
-                                          child: Stack(
-                                            children: [
-                                              Container(child: Image.network(
-                                                "http://blog.triggersplus.com/wp-content/uploads/2020/08/001-2048x2048.png"),),
-                                                Center(
-                                                  child: Container(
-                                                    child: CircularProgressIndicator(),
-                                                  ),
-                                                )
-                                            ],
+                                  // child: Image.network(
+                                  //     "${data?[selected].items?[selectedSubCat].items?[index].picture}",
+                                  //     height: 170, frameBuilder: (context,
+                                  //         child,
+                                  //         frame,
+                                  //         wasSynchronouslyLoaded) {
+                                  //   return child;
+                                  // }, loadingBuilder:
+                                  //         (context, child, loadingProgress) {
+                                  //   if (loadingProgress == null) {
+                                  //     return child;
+                                  //   } else {
+                                  //     return Container(
+                                  //       height: 170,
+                                  //       child: Center(
+                                  //         child: Stack(
+                                  //           children: [
+                                              
+                                  //               Center(
+                                  //                 child: Container(
+                                  //                   child: CircularProgressIndicator(),
+                                  //                 ),
+                                  //               )
+                                  //           ],
                                             
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                  })
-                                  
+                                  //         ),
+                                  //       ),
+                                  //     );
+                                  //   }
+                                  // })
+
+                                 child : Image.network(
+                                    '${data?[selected].items?[selectedSubCat].items?[index].picture}',
+                                    height: 170,
+                                    errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                                      return  Container(
+                                          height: 170,
+                                          child: Center(
+                                            child: Stack(
+                                              children: [
+                                                Text('Failed to load image'),
+                                                CircularProgressIndicator(),
+                                              ],
+                                            ),
+                                           ));
+                                      
+                                     },
+                                   ),
+                                //   child: FadeInImage(
+                                //   image: NetworkImage(${data?[selected].items?[selectedSubCat].items?[index].picture}),
+                                //   placeholder: AssetImage(
+                                //       "assets/images/placeholder.jpg"),
+                                //   imageErrorBuilder:
+                                //       (context, error, stackTrace) {
+                                //     return Image.asset(
+                                //         'assets/images/error.jpg',
+                                //         fit: BoxFit.fitWidth);
+                                //   },
+                                //   fit: BoxFit.fitWidth,
+                                // ),
                                   
                                   
            
@@ -564,16 +605,8 @@ class _GridViewPageState extends State<homepage> {
 
                                     if (value == true) {
                                       (chooseAddon.add(addonofs(
-                                          price: postModel
-                                              .post!
-                                              .groupOptionList![data?[selected]
-                                                  .items?[selectedSubCat]
-                                                  .items?[index]
-                                                  .itemGroupOptions]![index3]
-                                              .items![index2]
-                                              .price!,
-                                          subNameAddOn:
-                                              "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
+                                          price: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].price!,
+                                          subNameAddOn:"${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
                                           ID:
                                               "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].id!}",
                                           nameaddon:
@@ -631,100 +664,97 @@ class _GridViewPageState extends State<homepage> {
 
   questionLanguage(int selected, int selectedSubCat, int index, int index2) {
     var Language = context.watch<provider_Language>().Language;
-
     if (Language == "EN") {
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
-      return Container(
-        child: Text(
-          "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
-          style: const TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w700,
-          ),
+      return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
+        style: const TextStyle(
+          fontSize: 28,
+          fontWeight: FontWeight.w700,
         ),
       );
     }
-    if (Language == "TH") {
+    else if(Language == "TH"){
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
-      if ("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionTh}" !=
-          null) {
-        return Container(
-          child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionTh}",
-            style: const TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        );
-      } else {
-        return Container(
-          child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
-            style: const TextStyle(
-              fontSize: 35,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        );
+      if(postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionTh != null )
+      {
+        if(postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionTh != "null")
+        {
+          return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionTh}",
+        style: const TextStyle(
+          fontSize: 28,
+          fontWeight: FontWeight.w700,
+        ),
+      );
+        }
       }
-    }
+      else
+      {
+        return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
+        style: const TextStyle(
+          fontSize: 28,
+          fontWeight: FontWeight.w700,
+        ),
+        );
 
-    if (Language == "JP") {
-      final postModel = Provider.of<provider_api_Manu>(context);
-      var data = postModel.post?.data;
-      if ("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionJa}" !=
-          null) {
-        return Container(
-          child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionJa}",
-            style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        );
-      } else {
-        return Container(
-          child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
-            style: const TextStyle(
-              fontSize: 35,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        );
       }
     }
-    if (Language == "ZH") {
+    else if(Language == "JP"){
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
-      if ("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionCn}" !=
-          null) {
-        return Container(
-          child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionCn}",
-            style: const TextStyle(
-              fontSize: 35,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        );
+      if(postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionJa != null )
+      {
+        if(postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionJa != "null")
+        {
+          return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionJa}",
+        style: const TextStyle(
+          fontSize: 28,
+          fontWeight: FontWeight.w700,
+        ),
+      );
+        }
       }
-       else {
-        return Container(
-          child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
-            style: const TextStyle(
-              fontSize: 35,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
+      else
+      {
+        return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
+        style: const TextStyle(
+          fontSize: 28,
+          fontWeight: FontWeight.w700,
+        ),
         );
+
       }
     }
+    else if(Language == "ZH"){
+      final postModel = Provider.of<provider_api_Manu>(context);
+      var data = postModel.post?.data;
+      if(postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionCn != null )
+      {
+        if(postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionCn != "null")
+        {
+          return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionCn}",
+        style: const TextStyle(
+          fontSize: 28,
+          fontWeight: FontWeight.w700,
+        ),
+      );
+        }
+      }
+      else
+      {
+        return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
+        style: const TextStyle(
+          fontSize: 28,
+          fontWeight: FontWeight.w700,
+        ),
+        );
+
+      }
+    }
+   
+
+
   }
 
   choiceLanguage(int selected, int selectedSubCat, int index, int index2,
@@ -749,7 +779,7 @@ class _GridViewPageState extends State<homepage> {
       var data = postModel.post?.data;
       if ("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceTh}" !=
           null) {
-        if("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceCn}" == "null")
+        if("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceTh}" == "null")
         {
           return Container(
           child: Text(
@@ -776,7 +806,7 @@ class _GridViewPageState extends State<homepage> {
       } else {
         return Container(
           child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}",
+            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceTh}",
             style: const TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.w700,
@@ -877,6 +907,7 @@ class _GridViewPageState extends State<homepage> {
 
   clecaaddon() {
     chooseAddon = [];
+    selectedOptions ={};
     //print("clecaaddon");
     //print(chooseAddon);
   }

@@ -6,8 +6,8 @@ class provider_app with ChangeNotifier {
   List<tasks1> tasks = [];
   List<tasks1> get _tasks => List.unmodifiable(tasks);
 
-  List<addonofs> addonSelect = [];
-  List<addonofs> get _taddonofs => List.unmodifiable(addonSelect);
+  // List<addonofs> addonSelect = [];
+  // List<addonofs> get _taddonofs => List.unmodifiable(addonSelect);
 
   List<send> tasks2 = [];
   List<send> get _tasks2 => List.unmodifiable(tasks2);
@@ -15,9 +15,7 @@ class provider_app with ChangeNotifier {
   int index1 = 0;
   int index2 = 0;
 
-  // List<addonofs> get addno2 {
-  //   return [..._taddonofs];
-  // }
+  
 
   void addtasks1(tasks1 text) {
     tasks.add(text);
@@ -43,11 +41,11 @@ class provider_app with ChangeNotifier {
     notifyListeners();
   }
 
-  void deleteaddon(int id) {
-    addonSelect.removeWhere((item) => item.ID == id);
-    print(addonSelect);
-    notifyListeners();
-  }
+  // void deleteaddon(int id) {
+  //   addonSelect.removeWhere((item) => item.ID == id);
+  //   print(addonSelect);
+  //   notifyListeners();
+  // }
 
   void delete(int index) {
     tasks.removeAt(index);
@@ -80,6 +78,9 @@ class provider_app with ChangeNotifier {
     print(tasks);
     notifyListeners();
   }
+
+
+  
 }
 
 class provider_payment with ChangeNotifier {
