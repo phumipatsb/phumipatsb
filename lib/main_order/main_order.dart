@@ -25,9 +25,11 @@ class _main_order extends State<main_order> {
   @override
   void initState() {
     super.initState();
-    final shiftlist = Provider.of<bill_list_ProviderApi>(context, listen: false);
+    final shiftlist =
+        Provider.of<bill_list_ProviderApi>(context, listen: false);
     shiftlist.get_data_bill_list_ProviderApi();
   }
+
   Widget build(BuildContext context) {
     final Shift_list = Provider.of<bill_list_ProviderApi>(context);
     String cdate2 = DateFormat("dd  MMMM yyyy").format(DateTime.now());
@@ -56,7 +58,7 @@ class _main_order extends State<main_order> {
                       ),
                     ),
                     const SizedBox(
-                      width: 10,
+                      width: 0,
                     ),
                     Flexible(
                         flex: 8,
@@ -119,12 +121,18 @@ class _main_order extends State<main_order> {
                                                                 (BuildContext
                                                                     context) {
                                                               return AlertDialog(
-                                                                  content:
-                                                                      Container(
-                                                                height: 565,
-                                                                width: 500,
-                                                                child: close_shift()
-                                                              ));
+                                                                shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(32.0))),
+                                                                content:
+                                                                    Container(
+                                                                  height: 565,
+                                                                  width: 500,
+                                                                  
+                                                                  child:
+                                                                      close_shift(),
+                                                                ),
+                                                              );
                                                             });
                                                       },
                                                       style: ElevatedButton
@@ -164,131 +172,152 @@ class _main_order extends State<main_order> {
                                                 BorderRadius.circular(16),
                                             color: HexColor(backgroundColor),
                                           ),
-                                          child: Container(
-                                            child: ListView.builder(
-                                              shrinkWrap: false,
-                                              itemCount: Shift_list.post3?.datas?.length, 
-                                              itemBuilder:
-                                                  (BuildContext context,
-                                                      int index) {
-                                                return Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Container(
-                                                    height: 100,
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(18),
-                                                        color: Colors.white),
-                                                    child: Padding(
-                                                      padding: const EdgeInsets
-                                                              .fromLTRB(
-                                                          10, 0, 30, 0),
-                                                      child: Row(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .center,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Container(
-                                                            child: Text(
-                                                              "Zone A " + " A1",
-                                                              style: Theme.of(
-                                                                      context)
-                                                                  .textTheme
-                                                                  .subtitle1!
-                                                                  .merge(
-                                                                    const TextStyle(
-                                                                      fontSize:
-                                                                          20,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
-                                                                    ),
-                                                                  ),
+                                          child: Flexible(
+                                            flex: 1,
+                                            fit: FlexFit.tight,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(16),
+                                              ),
+                                              child: Container(
+                                                child: ListView.builder(
+                                                  shrinkWrap: false,
+                                                  itemCount: Shift_list
+                                                      .post3?.datas?.length,
+                                                  itemBuilder:
+                                                      (BuildContext context,
+                                                          int index) {
+                                                    return Column(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .fromLTRB(
+                                                                  5, 10, 5, 10),
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          16),
+                                                              color: ChangeColor(
+                                                                  "${Shift_list.post3?.datas![index].status}"),
                                                             ),
-                                                          ),
-                                                          Container(
-                                                            child: Column(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Container(
+                                                            height: 110,
+                                                            child: Row(
+                                                              children: [
+                                                                Flexible(
+                                                                  flex: 1,
+                                                                  fit: FlexFit
+                                                                      .tight,
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        Container(
                                                                       child:
                                                                           Text(
-                                                                    '$cdate2',
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .visible,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .left,
-                                                                    style:
-                                                                        TextStyle(
-                                                                      height:
-                                                                          1.2102272327129657,
-                                                                      fontSize:
-                                                                          20,
-                                                                      fontFamily:
-                                                                          'Inter',
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
-                                                                      color: Color
-                                                                          .fromARGB(
+                                                                        "${Shift_list.post3?.datas![index].tableZone} ${Shift_list.post3?.datas![index].tableName}",
+                                                                        style: Theme.of(context)
+                                                                            .textTheme
+                                                                            .subtitle1!
+                                                                            .merge(
+                                                                              const TextStyle(
+                                                                                fontSize: 22,
+                                                                                fontWeight: FontWeight.w400,
+                                                                              ),
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Flexible(
+                                                                  flex: 1,
+                                                                  fit: FlexFit
+                                                                      .tight,
+                                                                  child: Column(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .stretch,
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Container(
+                                                                          child:
+                                                                              Text(
+                                                                        '${Shift_list.post3?.datas![index].purchaseDate}',
+                                                                        overflow:
+                                                                            TextOverflow.visible,
+                                                                        textAlign:
+                                                                            TextAlign.left,
+                                                                        style:
+                                                                            // ignore: prefer_const_constructors
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              23,
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          fontWeight:
+                                                                              FontWeight.w400,
+                                                                          color: const Color.fromARGB(
                                                                               255,
                                                                               0,
                                                                               0,
                                                                               0),
 
-                                                                      /* letterSpacing: 0.0, */
-                                                                    ),
-                                                                  )),
-                                                                  Container(
-                                                                    child: Text(
-                                                                      "11.54 a.m.",
-                                                                      style: Theme.of(
-                                                                              context)
-                                                                          .textTheme
-                                                                          .subtitle1!
-                                                                          .merge(
-                                                                            const TextStyle(
-                                                                              fontSize: 20,
-                                                                              fontWeight: FontWeight.w400,
+                                                                          /* letterSpacing: 0.0, */
+                                                                        ),
+                                                                      )),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Flexible(
+                                                                  flex: 1,
+                                                                  fit: FlexFit
+                                                                      .tight,
+                                                                  child:
+                                                                      Container(
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.fromLTRB(
+                                                                              60,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                      child:
+                                                                          Text(
+                                                                        "${Shift_list.post3?.datas![index].total}",
+                                                                        style: Theme.of(context)
+                                                                            .textTheme
+                                                                            .subtitle1!
+                                                                            .merge(
+                                                                              const TextStyle(
+                                                                                fontSize: 20,
+                                                                                fontWeight: FontWeight.w400,
+                                                                              ),
                                                                             ),
-                                                                          ),
-                                                                    ),
-                                                                  )
-                                                                ]),
-                                                          ),
-                                                          Container(
-                                                            child: Text(
-                                                              "500",
-                                                              style: Theme.of(
-                                                                      context)
-                                                                  .textTheme
-                                                                  .subtitle1!
-                                                                  .merge(
-                                                                    const TextStyle(
-                                                                      fontSize:
-                                                                          20,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
+                                                                      ),
                                                                     ),
                                                                   ),
+                                                                ),
+                                                              ],
                                                             ),
                                                           ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              },
+                                                        )
+                                                      ],
+                                                    );
+                                                  },
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -308,12 +337,13 @@ class _main_order extends State<main_order> {
   }
 
   ChangeColor(String status) {
+    print(status);
     switch (status) {
-      case 'Ordering':
+      case 'Status.FIN':
         // print('Ordering');
         return Colors.yellow;
         break; // The switch statement must be told to exit, or it will execute every case.
-      case 'Pay':
+      case 'Status.ORD':
         // print('Pay');
         return Colors.blue;
         break;

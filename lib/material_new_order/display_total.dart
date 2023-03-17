@@ -25,8 +25,8 @@ class _display_totalState extends State<display_total> {
     for (var i = 0; i < tasks.length; i++) {
       toto += tasks[i].price! * tasks[i].amount;
       a=i;
-      for(var b = 0; b < tasks[a].addonSelect.length; b++){
-         TotoAddOn += tasks[a].addonSelect[b].price;
+      for(var b = 0; b < tasks[i].addonSelect.length; b++){
+         TotoAddOn += tasks[i].addonSelect[b].price;
         
 
       }
