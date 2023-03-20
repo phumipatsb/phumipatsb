@@ -3,6 +3,7 @@ import 'package:test1/models/compronan.dart';
 import 'package:test1/pull_from_api/modelsApi_Table.dart';
 import 'modelsApi_Staff_list.dart';
 import 'modelsApi_bill_list.dart';
+import 'modelsApi_close_shift.dart';
 import 'modelsApi_manu.dart';
 import 'linkApi.dart';
 import 'modelsApi_status_table.dart';
@@ -65,6 +66,20 @@ class bill_list_ProviderApi extends ChangeNotifier {
   get_data_bill_list_ProviderApi() async {
     loading = true;
     post3 = (await fetch_data_bill_list());
+    loading = false;
+    notifyListeners();
+  }
+}
+
+
+class close_shift_ProviderApi extends ChangeNotifier {
+  CloseShift? billpost;
+
+  bool loading = false;
+
+  GetDatabillshift() async {
+    loading = true;
+    billpost = (await fetch_data_close_shift());
     loading = false;
     notifyListeners();
   }

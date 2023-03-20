@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test1/check_void_Finished%20Bill/check_page.dart';
 import 'package:test1/table/layout_table.dart';
 import 'package:test1/table/table_Api.dart';
 import 'pull_from_api/provider_Api.dart';
@@ -37,12 +38,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProviderApi_Staff_list()),
         ChangeNotifierProvider(create: (_) => provider_table()),
         ChangeNotifierProvider(create: (_) => bill_list_ProviderApi()),
+        ChangeNotifierProvider(create: (_) => close_shift_ProviderApi()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: Scaffold(
-            body: layout_table(),
-            //new_table(),
+            body: //layout_table(),
+            check_page(),
           )),
     );
   }

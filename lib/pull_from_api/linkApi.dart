@@ -5,6 +5,7 @@ import 'package:test1/pull_from_api/modelsApi_Staff_list.dart';
 import 'package:test1/pull_from_api/modelsApi_bill_list.dart';
 
 import 'modelsApi_Table.dart';
+import 'modelsApi_close_shift.dart';
 import 'modelsApi_manu.dart';
 import 'modelsApi_status_table.dart';
 
@@ -59,6 +60,18 @@ Future<BillList> fetch_data_bill_list() async {
   final tableApi;
   if (response.statusCode == 200 && response.body.isNotEmpty) {
     return tableApi = billListFromJson(response.body);
+  } else {
+    throw Exception('Failed to load Data');
+  }
+}
+
+
+Future<CloseShift> fetch_data_close_shift() async {
+  final response = await http.get(Uri.parse(
+      'https://partner1.triggersplus.com/order/close_shift_prepare/type/A53C88185CF64E6F85D00F2C75180AE1/1/123/'));
+  final tableApi;
+  if (response.statusCode == 200 && response.body.isNotEmpty) {
+    return tableApi = closeShiftFromJson(response.body);
   } else {
     throw Exception('Failed to load Data');
   }

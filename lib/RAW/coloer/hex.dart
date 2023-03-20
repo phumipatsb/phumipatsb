@@ -19,3 +19,4 @@ const bgpin = '#FFB7B2';
 const btlogout = '#FFDCDC';
 const confi = '#EC5534';
 const Shift1 = '#EC5534';
+const Cancel = '#AEAEAE';
