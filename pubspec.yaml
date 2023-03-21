@@ -52,6 +52,7 @@ dependencies:
   checkmark: ^0.0.2+1
   flare_flutter: ^3.0.2
   cached_network_image: ^3.2.3
+  flutter_svg: ^2.0.4
   
 
 dev_dependencies:
@@ -78,8 +79,23 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-  - images/1.png
-  - images/bin.png
+    - assets/images/check.svg
+    - assets/images/Date_of_Birth.svg
+    - assets/images/Discount.svg
+    - assets/images/Email_Address.svg
+    - assets/images/find.svg
+    - assets/images/Finished_Bill.svg
+    - assets/images/gift.svg
+    - assets/images/Member.svg
+    - assets/images/name.svg
+    - assets/images/Note.svg
+    - assets/images/Payment.svg
+    - assets/images/Phone_Number.svg
+    - assets/images/Select_Member.svg
+    - assets/images/void.svg
+  
+
+  
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

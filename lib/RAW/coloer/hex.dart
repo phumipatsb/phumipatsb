@@ -20,3 +20,7 @@ const btlogout = '#FFDCDC';
 const confi = '#EC5534';
 const Shift1 = '#EC5534';
 const Cancel = '#AEAEAE';
+
+const Void = '#FFB79E';
+const Check = '#ABE3FF';
+const Finished_Bill = '#BEFFAE';
