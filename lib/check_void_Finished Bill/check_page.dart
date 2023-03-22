@@ -5,6 +5,7 @@ import 'package:sqflite/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:test1/SideBar/leftside.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:test1/check_void_Finished%20Bill/Select%20Member.dart';
 import '../RAW/coloer/hex.dart';
 
 class check_page extends StatefulWidget {
@@ -127,7 +128,10 @@ class _check_page extends State<check_page> {
                                                   child: Column(
                                                     children: [
                                                       Padding(
-                                                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .fromLTRB(
+                                                                0, 0, 0, 5),
                                                         child: Flexible(
                                                           flex: 1,
                                                           fit: FlexFit.tight,
@@ -138,36 +142,53 @@ class _check_page extends State<check_page> {
                                                                   BorderRadius
                                                                       .circular(
                                                                           0),
-                                                              
                                                             ),
                                                             child: Row(
-                                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                                            children: [
-                                                              Padding(
-                                                                  padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
-                                                                  child: Expanded(
-                                                                    child: SvgPicture.asset('assets/images/Discount.svg', height: 25, width: 25,),
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .fromLTRB(
+                                                                          20,
+                                                                          10,
+                                                                          20,
+                                                                          0),
+                                                                  child:
+                                                                      Expanded(
+                                                                    child: SvgPicture
+                                                                        .asset(
+                                                                      'assets/images/Discount.svg',
+                                                                      height:
+                                                                          25,
+                                                                      width: 25,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .fromLTRB(
+                                                                          0,
+                                                                          10,
+                                                                          0,
+                                                                          0),
                                                                   child: Text(
-                                                                        "Discount",
-                                                                        style: TextStyle(
-                                                                            fontSize:
-                                                                                20,
-                                                                            fontFamily:
-                                                                                'Inter',
-                                                                            fontWeight:
-                                                                                FontWeight
-                                                                                    .w500,
-                                                                            color: Colors
-                                                                                .black)),
+                                                                      "Discount",
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              20,
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          fontWeight: FontWeight
+                                                                              .w500,
+                                                                          color:
+                                                                              Colors.black)),
                                                                 ),
-                                                      
-                                                            ],
-                                                          ),
-                                                           
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -180,70 +201,103 @@ class _check_page extends State<check_page> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                       0),
+                                                                        0),
                                                             color: Colors.black,
                                                           ),
-                                                         
                                                         ),
                                                       ),
                                                       Flexible(
                                                         flex: 2,
                                                         fit: FlexFit.tight,
                                                         child: Container(
-                                                          decoration: BoxDecoration(
-                                                        
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                                bottomLeft:
-                                                                    Radius.circular(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius: BorderRadius.only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
                                                                         16),
-                                                                bottomRight:
-                                                                    Radius.circular(
+                                                                bottomRight: Radius
+                                                                    .circular(
                                                                         16)),
-                                                      ),
+                                                          ),
                                                           child: Row(
-                                                          children: [
-                                                            Padding(
-                                                                padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
-                                                                child: Container(
-                                                                  child: SvgPicture.asset('assets/images/gift.svg', height: 35, width: 35,),
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .fromLTRB(
+                                                                        10,
+                                                                        5,
+                                                                        10,
+                                                                        0),
+                                                                child:
+                                                                    Container(
+                                                                  child:
+                                                                      SvgPicture
+                                                                          .asset(
+                                                                    'assets/images/gift.svg',
+                                                                    height: 35,
+                                                                    width: 35,
+                                                                  ),
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: const EdgeInsets.fromLTRB(0, 5, 8, 0),
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .fromLTRB(
+                                                                        0,
+                                                                        5,
+                                                                        8,
+                                                                        0),
                                                                 child: Container(
-                                                                  height: 35,
-                                                                  width: 225,
-                                                                  child: TextField(
-                                                                                controller: nameController,
-                                                                                decoration: InputDecoration(
-                                                                                  border: OutlineInputBorder(),
-                                                                                  labelText: 'Gift Code',
-                                                                                ),
-                                                                                onChanged: (text) {
-                                                                                  setState(() {
-                                                                                    fullName = text;
-                                                                                    //you can access nameController in its scope to get
-                                                                                    // the value of text entered as shown below
-                                                                                    //fullName = nameController.text;
-                                                                                  });
-                                                                                },
-                                                                              )
-                                                                ),
+                                                                    height: 35,
+                                                                    width: 225,
+                                                                    child: TextField(
+                                                                      controller:
+                                                                          nameController,
+                                                                      decoration:
+                                                                          InputDecoration(
+                                                                        border:
+                                                                            OutlineInputBorder(),
+                                                                        labelText:
+                                                                            'Gift Code',
+                                                                      ),
+                                                                      onChanged:
+                                                                          (text) {
+                                                                        setState(
+                                                                            () {
+                                                                          fullName =
+                                                                              text;
+                                                                          //you can access nameController in its scope to get
+                                                                          // the value of text entered as shown below
+                                                                          //fullName = nameController.text;
+                                                                        });
+                                                                      },
+                                                                    )),
                                                               ),
-
                                                               Padding(
-                                                                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                                                child: Container(
-                                                                  child: SvgPicture.asset('assets/images/find.svg', height: 35, width: 35,),
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .fromLTRB(
+                                                                        0,
+                                                                        5,
+                                                                        0,
+                                                                        0),
+                                                                child:
+                                                                    Container(
+                                                                  child:
+                                                                      SvgPicture
+                                                                          .asset(
+                                                                    'assets/images/find.svg',
+                                                                    height: 35,
+                                                                    width: 35,
+                                                                  ),
                                                                 ),
                                                               )
-                                                          ],
-                                                        ),
-                                                         
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
-                                                      
 
                                                       // Expanded(
                                                       //   child: Row(
@@ -346,75 +400,110 @@ class _check_page extends State<check_page> {
                                                           ),
                                                         ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .fromLTRB(
-                                                                20, 0, 20, 0),
-                                                        child: Container(
-                                                          width:
-                                                              double.infinity,
-                                                          height: 80,
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (BuildContext
+                                                                      context) {
+                                                                return AlertDialog(
+                                                                    shape:
+                                                                        RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .all(
+                                                                        Radius.circular(
+                                                                            32.0),
+                                                                      ),
+                                                                    ),
+                                                                    
+                                                                    contentPadding:
+                                                                        EdgeInsets.only(
+                                                                            top:
+                                                                                10.0),
+                                                                    content: StatefulBuilder(builder:
+                                                                        (context,
+                                                                            setState) {
+                                                                      return Container(
+                                                                        width:
+                                                                            700,
+                                                                        height:
+                                                                            600,
+                                                                            child: Select_Member(),
+                                                                      );
+                                                                    }));
+                                                              });
+                                                        },
+                                                        child: Padding(
                                                           padding:
-                                                              EdgeInsets.all(
-                                                                  12),
-                                                          alignment:
-                                                              Alignment.center,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            border: Border.all(
-                                                                color: HexColor(
-                                                                    textPriceColor),
-                                                                width: 2),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .all(
-                                                              Radius.circular(
-                                                                  8.0),
+                                                              const EdgeInsets
+                                                                      .fromLTRB(
+                                                                  20, 0, 20, 0),
+                                                          child: Container(
+                                                            width:
+                                                                double.infinity,
+                                                            height: 80,
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    12),
+                                                            alignment: Alignment
+                                                                .center,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              border: Border.all(
+                                                                  color: HexColor(
+                                                                      textPriceColor),
+                                                                  width: 2),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .all(
+                                                                Radius.circular(
+                                                                    8.0),
+                                                              ),
                                                             ),
-                                                          ),
-                                                          child: Row(
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .fromLTRB(
-                                                                        0,
-                                                                        0,
-                                                                        0,
-                                                                        0),
-                                                                child:
-                                                                    Container(
+                                                            child: Row(
+                                                              children: [
+                                                                Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .fromLTRB(
+                                                                          0,
+                                                                          0,
+                                                                          0,
+                                                                          0),
                                                                   child:
-                                                                      SvgPicture
-                                                                          .asset(
-                                                                    'assets/images/Select_Member.svg',
-                                                                    height: 40,
-                                                                    width: 40,
+                                                                      Container(
+                                                                    child: SvgPicture
+                                                                        .asset(
+                                                                      'assets/images/Select_Member.svg',
+                                                                      height:
+                                                                          40,
+                                                                      width: 40,
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .all(
-                                                                        8.0),
-                                                                child:
-                                                                    Container(
-                                                                  child: Text(
-                                                                      "Select Member",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              20,
-                                                                          fontFamily:
-                                                                              'Inter',
-                                                                          fontWeight: FontWeight
-                                                                              .w400,
-                                                                          color:
-                                                                              Colors.black)),
-                                                                ),
-                                                              )
-                                                            ],
+                                                                Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      Container(
+                                                                    child: Text(
+                                                                        "Select Member",
+                                                                        style: TextStyle(
+                                                                            fontSize:
+                                                                                20,
+                                                                            fontFamily:
+                                                                                'Inter',
+                                                                            fontWeight:
+                                                                                FontWeight.w400,
+                                                                            color: Colors.black)),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -503,156 +592,182 @@ class _check_page extends State<check_page> {
                                         child: Column(
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsets.fromLTRB(0, 8, 0, 10),
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 8, 0, 10),
                                               child: Flexible(
-                                                                  flex: 2,
-                                                                  fit: FlexFit.tight,
-                                                                  child: Container(
-                                                                    decoration: BoxDecoration(
-                                                                      borderRadius: BorderRadius.circular(0),),
-                                                                    child: Row(
-                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                      children: [
-                                                                        Container(
-                                                                          width: 180,
-                                                                          height: 67,
-                                                                          decoration: BoxDecoration(
-                                                                      borderRadius: BorderRadius.circular(16),
-                                                                      color: HexColor(Void)
-                                                                    ),
-                                                                    child: Row(
-                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                      children: [
-                                                                        Container(
-                                                                          child:
-                                                                      SvgPicture
-                                                                          .asset(
-                                                                    'assets/images/void.svg',
-                                                                    height: 40,
-                                                                    width: 40,
-                                                                  ),
-                                                                        ),
-                                                                        Container(
-                                                                          child: Text(
-                                                                      "Void",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              20,
-                                                                          fontFamily:
-                                                                              'Inter',
-                                                                          fontWeight: FontWeight
+                                                flex: 2,
+                                                fit: FlexFit.tight,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Container(
+                                                        width: 180,
+                                                        height: 67,
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        16),
+                                                            color:
+                                                                HexColor(Void)),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Container(
+                                                              child: SvgPicture
+                                                                  .asset(
+                                                                'assets/images/void.svg',
+                                                                height: 40,
+                                                                width: 40,
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              child: Text(
+                                                                  "Void",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontFamily:
+                                                                          'Inter',
+                                                                      fontWeight:
+                                                                          FontWeight
                                                                               .w400,
-                                                                          color:
-                                                                              Colors.black)),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                        ),
-                                                                        SizedBox(width: 15,),
-                                                                        Container(
-                                                                          width: 180,
-                                                                          height: 67,
-                                                                          decoration: BoxDecoration(
-                                                                      borderRadius: BorderRadius.circular(16),
-                                                                      color: HexColor(Check)
-                                                                    ),
-                                                                    child: Row(
-                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                      children: [
-                                                                        Container(
-                                                                          child:
-                                                                      SvgPicture
-                                                                          .asset(
-                                                                    'assets/images/check.svg',
-                                                                    height: 40,
-                                                                    width: 40,
-                                                                  ),
-                                                                        ),
-                                                                        Container(
-                                                                          child: Text(
-                                                                      "Check",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              20,
-                                                                          fontFamily:
-                                                                              'Inter',
-                                                                          fontWeight: FontWeight
-                                                                              .w400,
-                                                                          color:
-                                                                              Colors.black)),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                        ),
-                                                                        SizedBox(width: 15,),
-                                                                        Container(
-                                                                          width: 180,
-                                                                          height: 67,
-                                                                          decoration: BoxDecoration(
-                                                                      borderRadius: BorderRadius.circular(16),
-                                                                      color: HexColor(Finished_Bill)
-                                                                    ),
-                                                                    child: Row(
-                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                      children: [
-                                                                        Container(
-                                                                          child:
-                                                                      SvgPicture
-                                                                          .asset(
-                                                                    'assets/images/Finished_Bill.svg',
-                                                                    height: 40,
-                                                                    width: 40,
-                                                                  ),
-                                                                        ),
-                                                                        Container(
-                                                                          child: Text(
-                                                                      "Finished Bill",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              20,
-                                                                          fontFamily:
-                                                                              'Inter',
-                                                                          fontWeight: FontWeight
-                                                                              .w400,
-                                                                          color:
-                                                                              Colors.black)),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                        )
-                                            
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                            ),
-                    Flexible(
-                      flex: 2,
-                      fit: FlexFit.tight,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          width: 570,
-                            
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Colors.black26
-                          ),
-                         child: Center(
-                           child: Text(
-                                                          "Close",
-                                                          style: TextStyle(
-                                                            fontSize:30,
-                                                            fontWeight:
-                                                                            FontWeight
-                                                                                .w400,
-                                                              color: Colors.black),
-                                                          textAlign: TextAlign.center,
+                                                                      color: Colors
+                                                                          .black)),
+                                                            ),
+                                                          ],
                                                         ),
-                         ),
-                        ),
-                      ),
-                    ),
+                                                      ),
+                                                      SizedBox(
+                                                        width: 15,
+                                                      ),
+                                                      Container(
+                                                        width: 180,
+                                                        height: 67,
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        16),
+                                                            color: HexColor(
+                                                                Check)),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Container(
+                                                              child: SvgPicture
+                                                                  .asset(
+                                                                'assets/images/check.svg',
+                                                                height: 40,
+                                                                width: 40,
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              child: Text(
+                                                                  "Check",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontFamily:
+                                                                          'Inter',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: Colors
+                                                                          .black)),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        width: 15,
+                                                      ),
+                                                      Container(
+                                                        width: 180,
+                                                        height: 67,
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        16),
+                                                            color: HexColor(
+                                                                Finished_Bill)),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Container(
+                                                              child: SvgPicture
+                                                                  .asset(
+                                                                'assets/images/Finished_Bill.svg',
+                                                                height: 40,
+                                                                width: 40,
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              child: Text(
+                                                                  "Finished Bill",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontFamily:
+                                                                          'Inter',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: Colors
+                                                                          .black)),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Flexible(
+                                              flex: 2,
+                                              fit: FlexFit.tight,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Container(
+                                                  width: 570,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              16),
+                                                      color: Colors.black26),
+                                                  child: Center(
+                                                    child: Text(
+                                                      "Close",
+                                                      style: TextStyle(
+                                                          fontSize: 30,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: Colors.black),
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),

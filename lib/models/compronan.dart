@@ -63,3 +63,11 @@ class Option {
   num? price;
   Option({required this.Choice, required this.price});
 }
+
+
+
+class mamber{
+  String name;
+  String telephone; 
+  mamber({required this.name ,required this.telephone});
+}
