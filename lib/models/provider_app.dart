@@ -151,3 +151,30 @@ class provider_table with ChangeNotifier {
 }
 
 
+class SelectMember with ChangeNotifier{
+  String name = '';
+  String telephone= ''; 
+  int Point=0;
+  String IdMamber = '';
+  bool status_Select_Member = false;
+
+  void updaet_status_Select_Member(bool newtext1) {
+    status_Select_Member = newtext1;
+    notifyListeners();
+  }
+
+
+  void updarttasks_Select_name(String name1 ,String telephone1,int Point1,String IdMamber1 ) {
+   name = name1;
+   telephone= telephone1; 
+   Point=Point1;
+   IdMamber = IdMamber1;
+     
+    
+    print("log 2");
+    print(name);
+    notifyListeners();
+  }
+}
+
+

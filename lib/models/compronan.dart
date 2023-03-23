@@ -69,5 +69,16 @@ class Option {
 class mamber{
   String name;
   String telephone; 
-  mamber({required this.name ,required this.telephone});
+  int Point;
+  num IdMamber;
+  mamber({required this.name ,required this.telephone,required this.Point,required this.IdMamber});
+}
+
+
+class Select_Member{
+  String name = '';
+  String telephone= ''; 
+  int Point=0;
+  String IdMamber = '';
+  Select_Member({required this.name ,required this.telephone,required this.Point,required this.IdMamber});
 }

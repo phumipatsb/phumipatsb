@@ -24,3 +24,7 @@ const Cancel = '#AEAEAE';
 const Void = '#FFB79E';
 const Check = '#ABE3FF';
 const Finished_Bill = '#BEFFAE';
+
+const file1 = '#FFEAEA';
+const file2 = '#FFF7F7';
+
