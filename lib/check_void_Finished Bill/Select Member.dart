@@ -106,7 +106,7 @@ class _Select_MemberState extends State<Select_Member> {
              borderSide: BorderSide(color: Colors.pink.shade300),
             ), 
          ),
-         onChanged: seachitem,
+         onChanged: sercmamber,
          ),
          
          ),
@@ -116,6 +116,8 @@ class _Select_MemberState extends State<Select_Member> {
           itemCount: member1.length,
           itemBuilder: (context,index){
             final mamberse = member1[index];
+            //member1 == books
+            //mamberse == book
 
             return Container(
               width: 200,
@@ -131,5 +133,25 @@ class _Select_MemberState extends State<Select_Member> {
       )
       ],
     );
+    
+  }
+   sercmamber (String query){
+    print(query);
+    final suggestins = member1.where((mamberse){
+      final se = mamberse.name.toLowerCase();
+      final se1 = mamberse.telephone.toLowerCase();
+      final input = query.toLowerCase();
+      return se.contains(input) || se1.contains(input);
+    }).toList();
+    setState(() {
+      if(query.isEmpty){
+        member1 = member1;
+      }
+      else{
+         member1 = suggestins;
+      }
+
+     
+    });
   }
 }
