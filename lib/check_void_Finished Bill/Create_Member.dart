@@ -1,12 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:test1/models/compronan.dart';
 import '../RAW/coloer/hex.dart';
 import '../models/provider_app.dart';
+import 'date_picker.dart';
 import 'radio_sex.dart';
 
+import 'package:time_picker_spinner_pop_up/time_picker_spinner_pop_up.dart';
 class Create_Member extends StatefulWidget {
   @override
   State<Create_Member> createState() => _Create_MemberState();
@@ -15,9 +20,16 @@ class Create_Member extends StatefulWidget {
 class _Create_MemberState extends State<Create_Member> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-
-
+  TextEditingController emailController = TextEditingController();
   String? _groupValue;
+  String DoB = "Date of Birth";
+
+ 
+
+  
+ 
+  
+  
 
   ValueChanged<String?> _valueChangedHandler() {
     // print(_groupValue);
@@ -26,6 +38,8 @@ class _Create_MemberState extends State<Create_Member> {
 
   @override
   Widget build(BuildContext context) {
+    //var Language = context.watch<provider_Language>().Language;
+     var Language = "JP";
     return Container(
       child: Column(
         children: [
@@ -154,11 +168,14 @@ class _Create_MemberState extends State<Create_Member> {
                                         width: 350,
                                         height: 45,
                                         child: TextField(
+                                          style: TextStyle(fontSize: 20),
                                           controller: nameController,
                                           decoration: InputDecoration(
                                             hintText: 'Name',
+                                            
                                             hintStyle:
                                                 TextStyle(color: Colors.grey),
+                                                
                                             filled: true,
                                             fillColor: Colors.white70,
                                             contentPadding: EdgeInsets.fromLTRB(
@@ -205,9 +222,223 @@ class _Create_MemberState extends State<Create_Member> {
                                           width: 350,
                                           height: 45,
                                           child: TextField(
+                                             style: TextStyle(fontSize: 20),
                                             controller: phoneController,
                                             decoration: InputDecoration(
                                               hintText: 'Phone Number',
+                                              hintStyle:
+                                                  TextStyle(color: Colors.grey),
+                                              filled: true,
+                                              fillColor: Colors.white70,
+                                              contentPadding: EdgeInsets.fromLTRB(
+                                                  10, 0, 0, 0),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(8.0)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.black45,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(8.0)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.pink.shade300),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 55,
+                                        child: SvgPicture.asset(
+                                          'assets/images/Date_of_Birth.svg',
+                                          height: 35,
+                                          width: 35,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 0, 0, 0),
+                                        child: Container(
+                                          width: 350,
+                                          height: 45,
+                                          child:
+                                          GestureDetector(
+                                            onTap: () async {
+              var datePicked = await DatePicker.showSimpleDatePicker(
+                context,
+                initialDate: DateTime(200),
+                firstDate: DateTime(2000),
+                lastDate: DateTime(2022),
+                dateFormat: "d,MMMM,yyyy",
+                locale: Language == "TH"? DateTimePickerLocale.th 
+                : Language == "EN"?DateTimePickerLocale.en_us
+                :Language == "JP"?DateTimePickerLocale.jp:DateTimePickerLocale.zh_cn,
+                looping: true,
+              );
+              DateTime datetime = DateTime.now();
+
+              final snackBar =
+                  SnackBar(content: Text("Date Picked $datePicked"));
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              String DAY = DateFormat.d().format(datePicked!);
+              String MONTH = DateFormat.MMMM().format(datePicked);
+              String YEAR = DateFormat.y().format(datePicked);
+              String sumdate =(DAY+"/"+MONTH+"/"+YEAR);
+              
+              setState(() {
+                DoB= sumdate;
+              });
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 2),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(8),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                      '${DoB}',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black),
+                    ),
+              ),
+            ),
+                                            
+                                            
+                                            
+                                          )
+
+                                          
+            
+                                          
+                                          
+                                          
+          //                                 ElevatedButton(
+          //   child: Text("${DoB}"),
+          //   onPressed: () async {
+          //     var datePicked = await DatePicker.showSimpleDatePicker(
+          //       context,
+          //       initialDate: DateTime(200),
+          //       firstDate: DateTime(2000),
+          //       lastDate: DateTime(2022),
+          //       dateFormat: "d,MMMM,yyyy",
+          //       locale: DateTimePickerLocale.th,
+          //       looping: true,
+          //     );
+          //     DateTime datetime = DateTime.now();
+
+          //     final snackBar =
+          //         SnackBar(content: Text("Date Picked $datePicked"));
+          //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          //     String DAY = DateFormat.d().format(datePicked!);
+          //     String MONTH = DateFormat.MMMM().format(datePicked);
+          //     String YEAR = DateFormat.y().format(datePicked);
+          //     String sumdate =(DAY+"/"+MONTH+"/"+YEAR);
+              
+          //     setState(() {
+          //       DoB= sumdate;
+          //     });
+          //   },
+          // ),
+                                          
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 55,
+                                        child: SvgPicture.asset(
+                                          'assets/images/Email_Address.svg',
+                                          height: 35,
+                                          width: 35,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 0, 0, 0),
+                                        child: Container(
+                                          width: 350,
+                                          height: 45,
+                                          child: TextField(
+                                             style: TextStyle(fontSize: 20),
+                                            controller: emailController,
+                                            decoration: InputDecoration(
+                                              hintText: 'email@email.com',
+                                              hintStyle:
+                                                  TextStyle(color: Colors.grey),
+                                              filled: true,
+                                              fillColor: Colors.white70,
+                                              contentPadding: EdgeInsets.fromLTRB(
+                                                  10, 0, 0, 0),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(8.0)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.black45,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(8.0)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.pink.shade300),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 55,
+                                        child: SvgPicture.asset(
+                                          'assets/images/Note.svg',
+                                          height: 35,
+                                          width: 35,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 0, 0, 0),
+                                        child: Container(
+                                          width: 350,
+                                          height: 75,
+                                          child: TextField(
+                                             style: TextStyle(fontSize: 20),
+                                            controller: emailController,
+                                            decoration: InputDecoration(
+                                              hintText: 'Note',
                                               hintStyle:
                                                   TextStyle(color: Colors.grey),
                                               filled: true,
@@ -288,23 +519,30 @@ class _Create_MemberState extends State<Create_Member> {
               // ),
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: 73,
-            padding: EdgeInsets.only(top: 18, bottom: 20),
-            decoration: BoxDecoration(
-              color: HexColor(confi),
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(32.0),
-                  bottomRight: Radius.circular(32.0)),
-            ),
-            child: Text(
-              "Confirm",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white),
-              textAlign: TextAlign.center,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                print(nameController.text);
+              });
+            },
+            child: Container(
+              width: double.infinity,
+              height: 73,
+              padding: EdgeInsets.only(top: 18, bottom: 20),
+              decoration: BoxDecoration(
+                color: HexColor(confi),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(32.0),
+                    bottomRight: Radius.circular(32.0)),
+              ),
+              child: Text(
+                "Confirm",
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ],
@@ -338,4 +576,11 @@ class _Create_MemberState extends State<Create_Member> {
 
   //   }
   // }
+
+  
 }
+
+
+
+
+
