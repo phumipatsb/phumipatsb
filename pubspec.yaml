@@ -89,6 +89,7 @@ flutter:
     - assets/images/find.svg
     - assets/images/Finished_Bill.svg
     - assets/images/gift.svg
+    - assets/images/male_image.svg
     - assets/images/male.svg
     - assets/images/Member.svg
     - assets/images/name.svg
@@ -97,6 +98,7 @@ flutter:
     - assets/images/Phone_Number.svg
     - assets/images/Select_Member.svg
     - assets/images/void.svg
+    - assets/images/woman_portrait.svg
   
 
   
