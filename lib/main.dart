@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => bill_list_ProviderApi()),
         ChangeNotifierProvider(create: (_) => close_shift_ProviderApi()),
         ChangeNotifierProvider(create: (_) => SelectMember()),
+        ChangeNotifierProvider(create: (_) => newmember()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

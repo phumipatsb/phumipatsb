@@ -12,6 +12,7 @@ import 'date_picker.dart';
 import 'radio_sex.dart';
 
 import 'package:time_picker_spinner_pop_up/time_picker_spinner_pop_up.dart';
+
 class Create_Member extends StatefulWidget {
   @override
   State<Create_Member> createState() => _Create_MemberState();
@@ -21,15 +22,11 @@ class _Create_MemberState extends State<Create_Member> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController noteController = TextEditingController();
   String? _groupValue;
+
   String DoB = "Date of Birth";
-
- 
-
-  
- 
-  
-  
+  final maxLines = 5;
 
   ValueChanged<String?> _valueChangedHandler() {
     // print(_groupValue);
@@ -39,7 +36,7 @@ class _Create_MemberState extends State<Create_Member> {
   @override
   Widget build(BuildContext context) {
     //var Language = context.watch<provider_Language>().Language;
-     var Language = "JP";
+    var Language = "JP";
     return Container(
       child: Column(
         children: [
@@ -102,7 +99,7 @@ class _Create_MemberState extends State<Create_Member> {
                         child: Column(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
+                              padding: const EdgeInsets.fromLTRB(6, 20, 0, 0),
                               child: Container(
                                 child: Row(
                                   children: [
@@ -150,6 +147,8 @@ class _Create_MemberState extends State<Create_Member> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(10, 35, 0, 0),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
                                 child: Row(
@@ -172,10 +171,8 @@ class _Create_MemberState extends State<Create_Member> {
                                           controller: nameController,
                                           decoration: InputDecoration(
                                             hintText: 'Name',
-                                            
                                             hintStyle:
                                                 TextStyle(color: Colors.grey),
-                                                
                                             filled: true,
                                             fillColor: Colors.white70,
                                             contentPadding: EdgeInsets.fromLTRB(
@@ -200,8 +197,6 @@ class _Create_MemberState extends State<Create_Member> {
                                   ],
                                 ),
                               ),
-                              
-
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                                 child: Container(
@@ -222,7 +217,7 @@ class _Create_MemberState extends State<Create_Member> {
                                           width: 350,
                                           height: 45,
                                           child: TextField(
-                                             style: TextStyle(fontSize: 20),
+                                            style: TextStyle(fontSize: 20),
                                             controller: phoneController,
                                             decoration: InputDecoration(
                                               hintText: 'Phone Number',
@@ -230,8 +225,9 @@ class _Create_MemberState extends State<Create_Member> {
                                                   TextStyle(color: Colors.grey),
                                               filled: true,
                                               fillColor: Colors.white70,
-                                              contentPadding: EdgeInsets.fromLTRB(
-                                                  10, 0, 0, 0),
+                                              contentPadding:
+                                                  EdgeInsets.fromLTRB(
+                                                      10, 0, 0, 0),
                                               enabledBorder: OutlineInputBorder(
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(8.0)),
@@ -243,7 +239,8 @@ class _Create_MemberState extends State<Create_Member> {
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(8.0)),
                                                 borderSide: BorderSide(
-                                                    color: Colors.pink.shade300),
+                                                    color:
+                                                        Colors.pink.shade300),
                                               ),
                                             ),
                                           ),
@@ -253,7 +250,6 @@ class _Create_MemberState extends State<Create_Member> {
                                   ),
                                 ),
                               ),
-
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                                 child: Container(
@@ -271,94 +267,80 @@ class _Create_MemberState extends State<Create_Member> {
                                         padding: const EdgeInsets.fromLTRB(
                                             10, 0, 0, 0),
                                         child: Container(
-                                          width: 350,
-                                          height: 45,
-                                          child:
-                                          GestureDetector(
-                                            onTap: () async {
-              var datePicked = await DatePicker.showSimpleDatePicker(
-                context,
-                initialDate: DateTime(200),
-                firstDate: DateTime(2000),
-                lastDate: DateTime(2022),
-                dateFormat: "d,MMMM,yyyy",
-                locale: Language == "TH"? DateTimePickerLocale.th 
-                : Language == "EN"?DateTimePickerLocale.en_us
-                :Language == "JP"?DateTimePickerLocale.jp:DateTimePickerLocale.zh_cn,
-                looping: true,
-              );
-              DateTime datetime = DateTime.now();
+                                            width: 350,
+                                            height: 45,
+                                            child: GestureDetector(
+                                              onTap: () async {
+                                                var datePicked =
+                                                    await DatePicker
+                                                        .showSimpleDatePicker(
+                                                  context,
+                                                  initialDate: DateTime(200),
+                                                  firstDate: DateTime(2000),
+                                                  lastDate: DateTime(2022),
+                                                  dateFormat: "d,MMMM,yyyy",
+                                                  locale: Language == "TH"
+                                                      ? DateTimePickerLocale.th
+                                                      : Language == "EN"
+                                                          ? DateTimePickerLocale
+                                                              .en_us
+                                                          : Language == "JP"
+                                                              ? DateTimePickerLocale
+                                                                  .jp
+                                                              : DateTimePickerLocale
+                                                                  .zh_cn,
+                                                  looping: true,
+                                                );
+                                                DateTime datetime =
+                                                    DateTime.now();
 
-              final snackBar =
-                  SnackBar(content: Text("Date Picked $datePicked"));
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              String DAY = DateFormat.d().format(datePicked!);
-              String MONTH = DateFormat.MMMM().format(datePicked);
-              String YEAR = DateFormat.y().format(datePicked);
-              String sumdate =(DAY+"/"+MONTH+"/"+YEAR);
-              
-              setState(() {
-                DoB= sumdate;
-              });
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey, width: 2),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(8),
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                      '${DoB}',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black),
-                    ),
-              ),
-            ),
-                                            
-                                            
-                                            
-                                          )
+                                                final snackBar = SnackBar(
+                                                    content: Text(
+                                                        "Date Picked $datePicked"));
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(snackBar);
+                                                    
+                                                String DAY = DateFormat.d()
+                                                    .format(datePicked!);
+                                                String MONTH = DateFormat.MMMM()
+                                                    .format(datePicked);
+                                                String YEAR = DateFormat.y()
+                                                    .format(datePicked);
+                                                String sumdate = (DAY +
+                                                    "/" +
+                                                    MONTH +
+                                                    "/" +
+                                                    YEAR);
 
-                                          
-            
-                                          
-                                          
-                                          
-          //                                 ElevatedButton(
-          //   child: Text("${DoB}"),
-          //   onPressed: () async {
-          //     var datePicked = await DatePicker.showSimpleDatePicker(
-          //       context,
-          //       initialDate: DateTime(200),
-          //       firstDate: DateTime(2000),
-          //       lastDate: DateTime(2022),
-          //       dateFormat: "d,MMMM,yyyy",
-          //       locale: DateTimePickerLocale.th,
-          //       looping: true,
-          //     );
-          //     DateTime datetime = DateTime.now();
-
-          //     final snackBar =
-          //         SnackBar(content: Text("Date Picked $datePicked"));
-          //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          //     String DAY = DateFormat.d().format(datePicked!);
-          //     String MONTH = DateFormat.MMMM().format(datePicked);
-          //     String YEAR = DateFormat.y().format(datePicked);
-          //     String sumdate =(DAY+"/"+MONTH+"/"+YEAR);
-              
-          //     setState(() {
-          //       DoB= sumdate;
-          //     });
-          //   },
-          // ),
-                                          
-                                        ),
+                                                setState(() {
+                                                  DoB = sumdate;
+                                                });
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.grey,
+                                                      width: 2),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(8),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    '${DoB}',
+                                                    style: TextStyle(
+                                                        fontSize: 18,
+                                                        fontFamily: 'Inter',
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                              ),
+                                            )),
                                       ),
                                     ],
                                   ),
@@ -373,7 +355,7 @@ class _Create_MemberState extends State<Create_Member> {
                                         width: 55,
                                         child: SvgPicture.asset(
                                           'assets/images/Email_Address.svg',
-                                          height: 35,
+                                          height: 25,
                                           width: 35,
                                         ),
                                       ),
@@ -384,7 +366,7 @@ class _Create_MemberState extends State<Create_Member> {
                                           width: 350,
                                           height: 45,
                                           child: TextField(
-                                             style: TextStyle(fontSize: 20),
+                                            style: TextStyle(fontSize: 20),
                                             controller: emailController,
                                             decoration: InputDecoration(
                                               hintText: 'email@email.com',
@@ -392,8 +374,9 @@ class _Create_MemberState extends State<Create_Member> {
                                                   TextStyle(color: Colors.grey),
                                               filled: true,
                                               fillColor: Colors.white70,
-                                              contentPadding: EdgeInsets.fromLTRB(
-                                                  10, 0, 0, 0),
+                                              contentPadding:
+                                                  EdgeInsets.fromLTRB(
+                                                      10, 0, 0, 0),
                                               enabledBorder: OutlineInputBorder(
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(8.0)),
@@ -405,7 +388,8 @@ class _Create_MemberState extends State<Create_Member> {
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(8.0)),
                                                 borderSide: BorderSide(
-                                                    color: Colors.pink.shade300),
+                                                    color:
+                                                        Colors.pink.shade300),
                                               ),
                                             ),
                                           ),
@@ -419,6 +403,7 @@ class _Create_MemberState extends State<Create_Member> {
                                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                                 child: Container(
                                   child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         width: 55,
@@ -431,20 +416,23 @@ class _Create_MemberState extends State<Create_Member> {
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             10, 0, 0, 0),
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 350,
-                                          height: 75,
+                                          height: 120,
+                                          
                                           child: TextField(
-                                             style: TextStyle(fontSize: 20),
-                                            controller: emailController,
+                                            maxLines: maxLines,
+                                            style: TextStyle(fontSize: 20),
+                                            controller: noteController,
                                             decoration: InputDecoration(
                                               hintText: 'Note',
                                               hintStyle:
                                                   TextStyle(color: Colors.grey),
                                               filled: true,
                                               fillColor: Colors.white70,
-                                              contentPadding: EdgeInsets.fromLTRB(
-                                                  10, 0, 0, 0),
+                                              contentPadding:
+                                                  EdgeInsets.fromLTRB(
+                                                      10, 0, 0, 0),
                                               enabledBorder: OutlineInputBorder(
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(8.0)),
@@ -456,7 +444,8 @@ class _Create_MemberState extends State<Create_Member> {
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(8.0)),
                                                 borderSide: BorderSide(
-                                                    color: Colors.pink.shade300),
+                                                    color:
+                                                        Colors.pink.shade300),
                                               ),
                                             ),
                                           ),
@@ -475,54 +464,16 @@ class _Create_MemberState extends State<Create_Member> {
                 ),
               ),
 
-              // child: Row(
-              //   children: [
-              //     Expanded(child:Column(
-              //       children: [
-
-              //         Padding(
-              //           padding: const EdgeInsets.fromLTRB(20, 15, 0, 0),
-              //           child: Container(
-              //            child: Row(
-              //             children: [
-              //               MyRadioOption<String>(
-              //                       value: 'male',
-              //                       groupValue: _groupValue,
-              //                       onChanged: _valueChangedHandler(),
-              //                       label: 'A',
-              //                       text: 'One',
-              //                     ),
-              //                     MyRadioOption<String>(
-              //                       value: 'female',
-              //                       groupValue: _groupValue,
-              //                       onChanged: _valueChangedHandler(),
-              //                       label: 'B',
-              //                       text: 'Two',
-              //                     ),
-              //             ],
-              //            ),
-              //           ),
-              //         ),
-              //         Container(
-              //           width: 98,
-              //           height: 140,
-              //          child: SvgPicture.asset(
-              //             'assets/images/male_image.svg',
-              //             height: 30,
-              //             width: 30,
-              //           ),
-              //         )
-
-              //       ],
-              //     ) )
-              //   ],
-              // ),
+              
             ),
           ),
           GestureDetector(
             onTap: () {
               setState(() {
                 print(nameController.text);
+
+                context.read<newmember>().addmember(newmem_ber(name: nameController.text, telephone: phoneController.text, date_of_birth: DoB, email: emailController.text, note: noteController.text,gender:_groupValue ));
+                  Navigator.pop(context);                      
               });
             },
             child: Container(
@@ -550,37 +501,5 @@ class _Create_MemberState extends State<Create_Member> {
     );
   }
 
-  // sexsvg(var i){
-  //   if(i == "male")
-  //   {
-  //   return  Container(
-  //     child: SvgPicture.asset(
-  //                         'assets/images/male_image.svg',
-  //                         height: 30,
-  //                         width: 30,
-  //                       ),
-
-  //     );
-
-  //   }
-  //   else
-  //   {
-  //     return  Container(
-  //       child: SvgPicture.asset(
-  //                         'assets/images/woman_portrait.svg',
-  //                         height: 30,
-  //                         width: 30,
-  //                       ),
-
-  //     );
-
-  //   }
-  // }
-
   
 }
-
-
-
-
-

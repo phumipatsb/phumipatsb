@@ -23,8 +23,8 @@ class MyRadioOption<T> extends StatelessWidget {
       final bool isSelected = value == groupValue;
   
       return Container(
-        width: 40,
-        height: 40,
+        width: 50,
+        height: 50,
         decoration: ShapeDecoration(
           shape: CircleBorder(
             side: BorderSide(
@@ -35,12 +35,12 @@ class MyRadioOption<T> extends StatelessWidget {
         ),
         child: value == "male"?Center(child: SvgPicture.asset(
                           'assets/images/male.svg',
-                          height: 30,
-                          width: 30,
+                          height: 40,
+                          width: 40,
                         ),):Center(child: SvgPicture.asset(
                           'assets/images/female.svg',
-                          height: 30,
-                          width: 30,
+                          height: 40,
+                          width: 40,
                         ),),
         // child: Center(
           

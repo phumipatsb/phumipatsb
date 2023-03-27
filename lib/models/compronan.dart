@@ -82,3 +82,22 @@ class Select_Member{
   String IdMamber = '';
   Select_Member({required this.name ,required this.telephone,required this.Point,required this.IdMamber});
 }
+
+
+
+class newmem_ber {
+  String? gender;
+  String name;
+  String telephone= ''; 
+  String date_of_birth;
+ String email;
+ String note;
+  
+  newmem_ber(
+      {required this.name,
+      required this.gender,
+      required this.telephone,
+      required this.date_of_birth,
+      required this.email,
+      required this.note});
+}

@@ -178,3 +178,20 @@ class SelectMember with ChangeNotifier{
 }
 
 
+class newmember with ChangeNotifier{
+List<newmem_ber> new_member = [];
+
+void addmember(newmem_ber text) {
+    new_member.add(text);
+    print("log 2");
+    print(new_member);
+    notifyListeners();
+  }
+
+
+
+
+
+}
+
+
