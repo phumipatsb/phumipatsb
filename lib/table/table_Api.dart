@@ -178,7 +178,7 @@ class _ListDataState extends State<ListData> {
                                                                                                     height: 80,
                                                                                                     width: 80,
                                                                                                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(18), color: ChangeColor(tableListStatus[0].table[indexQueue].status)),
-                                                                                                    child: Center(child: Text('${tableListStatus[0].table[indexQueue].name}')),
+                                                                                                    child: Center(child: Text('${tableListStatus[0].table[indexQueue].name}', style: TextStyle(fontSize: 30, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black))),
                                                                                                   ),
                                                                                                 );
                                                                                               }),

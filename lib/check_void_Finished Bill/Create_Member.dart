@@ -124,12 +124,12 @@ class _Create_MemberState extends State<Create_Member> {
                             Padding(
                               padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                               child: Container(
-                                width: 120,
-                                height: 190,
+                                width: 110,
+                                height: 150,
                                 child: SvgPicture.asset(
                                   'assets/images/male_image.svg',
-                                  width: 120,
-                                  height: 190,
+                                  width: 110,
+                                  height: 150,
                                 ),
                               ),
                             )
@@ -472,7 +472,13 @@ class _Create_MemberState extends State<Create_Member> {
               setState(() {
                 print(nameController.text);
 
-                context.read<newmember>().addmember(newmem_ber(name: nameController.text, telephone: phoneController.text, date_of_birth: DoB, email: emailController.text, note: noteController.text,gender:_groupValue ));
+                context.read<newmember>().addmember(newmem_ber(
+                  name: nameController.text, 
+                  telephone: phoneController.text, 
+                  date_of_birth: DoB, 
+                  email: emailController.text, 
+                  note: noteController.text,
+                  gender:_groupValue ));
                   Navigator.pop(context);                      
               });
             },

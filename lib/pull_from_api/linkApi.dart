@@ -22,7 +22,7 @@ Future<Welcome> fetchdata_manu() async {
 
 Future<List<TableList>> fetchdata_table() async {
   final response = await http.get(Uri.parse(
-      'https://partner1.triggersplus.com/dining/get_restaurant_mode/C3897EA1CEBB49AA81B0BD391E412581/'));
+      'https://partner1.triggersplus.com/dining/get_restaurant_mode/55A52601B5214162B4ABFADC25B33A60/'));
   final TableList;
   if (response.statusCode == 200 && response.body.isNotEmpty) {
     return TableList = tableListFromJson(response.body);

@@ -536,39 +536,25 @@ class _check_page extends State<check_page> {
                                                                           children: [
                                                                             GestureDetector(
                                                                               onTap: () {
-                                                          showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (BuildContext
-                                                                      context) {
-                                                                return AlertDialog(
-                                                                    shape:
-                                                                        RoundedRectangleBorder(
-                                                                      borderRadius:
-                                                                          BorderRadius
-                                                                              .all(
-                                                                        Radius.circular(
-                                                                            32.0),
-                                                                      ),
-                                                                    ),
-                                                                    
-                                                                    contentPadding:
-                                                                        EdgeInsets.only(
-                                                                            top:
-                                                                                10.0),
-                                                                    content: StatefulBuilder(builder:
-                                                                        (context,
-                                                                            setState) {
-                                                                      return Container(
-                                                                        width:
-                                                                            700,
-                                                                        height:
-                                                                            600,
-                                                                            child: Select_Member_page(),
-                                                                      );
-                                                                    }));
-                                                              });
-                                                        },
+                                                                                showDialog(
+                                                                                    context: context,
+                                                                                    builder: (BuildContext context) {
+                                                                                      return AlertDialog(
+                                                                                          shape: RoundedRectangleBorder(
+                                                                                            borderRadius: BorderRadius.all(
+                                                                                              Radius.circular(32.0),
+                                                                                            ),
+                                                                                          ),
+                                                                                          contentPadding: EdgeInsets.only(top: 10.0),
+                                                                                          content: StatefulBuilder(builder: (context, setState) {
+                                                                                            return Container(
+                                                                                              width: 700,
+                                                                                              height: 600,
+                                                                                              child: Select_Member_page(),
+                                                                                            );
+                                                                                          }));
+                                                                                    });
+                                                                              },
                                                                               child: Padding(
                                                                                 padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                                                                                 child: Container(
@@ -589,9 +575,7 @@ class _check_page extends State<check_page> {
                                                                                     Container(
                                                                                       child: Row(
                                                                                         children: [
-                                                                                          Container(
-                                                                                            width: 110,
-                                                                                            child: Text("Name", style: const TextStyle(fontSize: 14, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black))),
+                                                                                          Container(width: 110, child: Text("Name", style: const TextStyle(fontSize: 14, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black))),
                                                                                           Text("${name_Member}", style: const TextStyle(fontSize: 14, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black)),
                                                                                         ],
                                                                                       ),
@@ -599,9 +583,7 @@ class _check_page extends State<check_page> {
                                                                                     Container(
                                                                                       child: Row(
                                                                                         children: [
-                                                                                          Container(
-                                                                                            width: 110,
-                                                                                            child: Text("Tel.", style: const TextStyle(fontSize: 14, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black))),
+                                                                                          Container(width: 110, child: Text("Tel.", style: const TextStyle(fontSize: 14, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black))),
                                                                                           Text("${telephone_Member}", style: const TextStyle(fontSize: 14, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black)),
                                                                                         ],
                                                                                       ),
@@ -609,9 +591,7 @@ class _check_page extends State<check_page> {
                                                                                     Container(
                                                                                       child: Row(
                                                                                         children: [
-                                                                                          Container(
-                                                                                            width: 110,
-                                                                                            child: Text("Current Point", style: const TextStyle(fontSize: 14, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black))),
+                                                                                          Container(width: 110, child: Text("Current Point", style: const TextStyle(fontSize: 14, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black))),
                                                                                           Text("${Point_Member}", style: const TextStyle(fontSize: 14, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.black)),
                                                                                         ],
                                                                                       ),

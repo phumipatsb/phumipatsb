@@ -45,8 +45,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: Scaffold(
-            body: //layout_table(),
-            check_page(),
+            body: layout_table(),
+            //check_page(),
           )),
     );
   }
