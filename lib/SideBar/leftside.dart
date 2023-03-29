@@ -7,7 +7,7 @@ import 'package:test1/main_order/main_order.dart';
 import 'package:test1/pull_from_api/linkApi.dart';
 import 'package:test1/table/layout_table.dart';
 import '../sumneworder.dart';
-import '../table/new_table.dart';
+
 import '../table/table_Api.dart';
 import 'Login.dart';
 

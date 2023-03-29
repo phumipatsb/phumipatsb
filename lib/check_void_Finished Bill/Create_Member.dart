@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:test1/models/compronan.dart';
 import '../RAW/coloer/hex.dart';
 import '../models/provider_app.dart';
-import 'date_picker.dart';
+
 import 'radio_sex.dart';
 
 import 'package:time_picker_spinner_pop_up/time_picker_spinner_pop_up.dart';

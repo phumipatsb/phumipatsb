@@ -138,6 +138,7 @@ class provider_login with ChangeNotifier {
 class provider_table with ChangeNotifier {
   String zoneNameSelect = '';
   String subZoneNameSelect = '';
+  String seNumberPeople = '';
 
   void ZoneNameSelect(String select) {
     zoneNameSelect = select;
@@ -146,6 +147,10 @@ class provider_table with ChangeNotifier {
 
   void SubZoneNameSelect(String select) {
     subZoneNameSelect = select;
+    notifyListeners();
+  }
+  void NumberPeopleSelect(String select) {
+    seNumberPeople= select;
     notifyListeners();
   }
 }

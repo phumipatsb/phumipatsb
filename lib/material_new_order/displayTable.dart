@@ -10,8 +10,7 @@ class displayTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String zoneNameSelect = context.watch<provider_table>().zoneNameSelect;
-    String SubZoneNameSelect1 =
-        context.watch<provider_table>().subZoneNameSelect;
+    String SubZoneNameSelect1 =context.watch<provider_table>().subZoneNameSelect;
     //String = 
     return Row(
       children: [

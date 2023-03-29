@@ -4,7 +4,7 @@ import 'package:test1/check_void_Finished%20Bill/check_page.dart';
 import 'package:test1/table/layout_table.dart';
 import 'package:test1/table/table_Api.dart';
 import 'pull_from_api/provider_Api.dart';
-import 'package:test1/table/new_table.dart';
+
 import 'SideBar/Login.dart';
 import 'cash_out_shop/payment_page.dart';
 import 'SideBar/leftside.dart';

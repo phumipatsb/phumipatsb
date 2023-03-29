@@ -104,7 +104,7 @@ class Data {
     };
 }
 
-enum DiscountLabel { EMPTY, DISCOUNT }
+enum DiscountLabel { DISCOUNT, EMPTY }
 
 final discountLabelValues = EnumValues({
     "Discount": DiscountLabel.DISCOUNT,
@@ -117,11 +117,12 @@ final optionValues = EnumValues({
     "currency_decimal_comma": Option.CURRENCY_DECIMAL_COMMA
 });
 
-enum Status { ORD, FIN }
+enum Status { FIN, ORD, PAY }
 
 final statusValues = EnumValues({
     "FIN": Status.FIN,
-    "ORD": Status.ORD
+    "ORD": Status.ORD,
+    "PAY": Status.PAY
 });
 
 class EnumValues<T> {

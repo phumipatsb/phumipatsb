@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import 'package:test1/SideBar/number_people.dart';
 import 'package:test1/models/provider_app.dart';
 import 'package:test1/pull_from_api/modelsApi_status_table.dart';
 
@@ -208,7 +209,22 @@ class _ListDataState extends State<ListData> {
                                                                                             onTap: () {
                                                                                               context.read<provider_table>().ZoneNameSelect('${tableListStatus[index].zone}');
                                                                                               context.read<provider_table>().SubZoneNameSelect('${tableListStatus[index].table[index2].name}');
-                                                                                              Navigator.push(context, MaterialPageRoute(builder: (context) => sumneworder()));
+
+                                                                                              setState(() {
+                                                                                                showDialog(
+                                                                                                    context: context,
+                                                                                                    builder: (BuildContext context) {
+                                                                                                      return AlertDialog(
+                                                                                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                                                                                                          content: Container(
+                                                                                                            height: 200,
+                                                                                                            width: 400,
+                                                                                                            child: number_people(),
+                                                                                                          ));
+                                                                                                    });
+                                                                                              });
+
+                                                                                             
                                                                                             },
                                                                                             child: AnimatedContainer(
                                                                                               height: 80,
@@ -220,7 +236,7 @@ class _ListDataState extends State<ListData> {
                                                                                                 child: Text('${tableListStatus[index].table[index2].name}',
                                                                                                     style: TextStyle(
                                                                                                       color: Colors.black,
-                                                                                                      fontSize: 20,
+                                                                                                      fontSize: 26,
                                                                                                     )),
                                                                                               ),
                                                                                             ),

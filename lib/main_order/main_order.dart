@@ -480,6 +480,9 @@ class _main_order extends State<main_order> {
                                                   itemBuilder:
                                                       (BuildContext context,
                                                           int index) {
+                                                    String? dater;
+                                                     dater = Shift_list.post3?.datas![index].purchaseDate;
+                                                     String result = dater!.substring(0, dater.indexOf(','));
                                                     return Column(
                                                       children: [
                                                         Padding(
@@ -507,23 +510,40 @@ class _main_order extends State<main_order> {
                                                                   child:
                                                                       Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
-                                                                            8.0),
+                                                                        const EdgeInsets.fromLTRB(0, 30, 0, 0),
                                                                     child:
                                                                         Container(
                                                                       child:
-                                                                          Text(
+                                                                          Column(
+                                                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                                                            children: [
+                                                                              Text(
                                                                         "${Shift_list.post3?.datas![index].tableZone} ${Shift_list.post3?.datas![index].tableName}",
                                                                         style: Theme.of(context)
-                                                                            .textTheme
-                                                                            .subtitle1!
-                                                                            .merge(
-                                                                              const TextStyle(
-                                                                                fontSize: 22,
-                                                                                fontWeight: FontWeight.w400,
-                                                                              ),
-                                                                            ),
+                                                                                .textTheme
+                                                                                .subtitle1!
+                                                                                .merge(
+                                                                                  const TextStyle(
+                                                                                    fontSize: 22,
+                                                                                    fontWeight: FontWeight.w400,
+                                                                                  ),
+                                                                                ),
                                                                       ),
+                                                                      SizedBox(height: 10,),
+                                                                      Text(
+                                                                        "${Shift_list.post3?.datas![index].billingId} ",
+                                                                        style: Theme.of(context)
+                                                                                .textTheme
+                                                                                .subtitle1!
+                                                                                .merge(
+                                                                                  const TextStyle(
+                                                                                    fontSize: 22,
+                                                                                    fontWeight: FontWeight.w400,
+                                                                                  ),
+                                                                                ),
+                                                                      ),
+                                                                            ],
+                                                                          ),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -537,7 +557,7 @@ class _main_order extends State<main_order> {
                                                                             .center,
                                                                     crossAxisAlignment:
                                                                         CrossAxisAlignment
-                                                                            .stretch,
+                                                                            .center,
                                                                     mainAxisSize:
                                                                         MainAxisSize
                                                                             .max,
@@ -545,7 +565,7 @@ class _main_order extends State<main_order> {
                                                                       Container(
                                                                           child:
                                                                               Text(
-                                                                        '${Shift_list.post3?.datas![index].purchaseDate}',
+                                                                        '${Shift_list.post3?.datas![index].purchaseDateDatetime?.hour}:${Shift_list.post3?.datas![index].purchaseDateDatetime?.minute}:${Shift_list.post3?.datas![index].purchaseDateDatetime?.second}',
                                                                         overflow:
                                                                             TextOverflow.visible,
                                                                         textAlign:
@@ -565,7 +585,34 @@ class _main_order extends State<main_order> {
                                                                               0,
                                                                               0),
 
-                                                                          /* letterSpacing: 0.0, */
+                                                                          
+                                                                        ),
+                                                                      )),
+                                                                      Container(
+                                                                        
+                                                                          child:
+                                                                              Text(
+                                                                        result,
+                                                                        overflow:
+                                                                            TextOverflow.visible,
+                                                                        textAlign:
+                                                                            TextAlign.left,
+                                                                        style:
+                                                                            // ignore: prefer_const_constructors
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              23,
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          fontWeight:
+                                                                              FontWeight.w400,
+                                                                          color: const Color.fromARGB(
+                                                                              255,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+
+                                                                          
                                                                         ),
                                                                       )),
                                                                     ],
