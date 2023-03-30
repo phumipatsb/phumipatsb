@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:test1/RAW/coloer/hex.dart';
 import 'package:test1/SideBar/language.dart';
+import 'package:test1/check_void_Finished%20Bill/check_page.dart';
 import 'package:test1/main_order/main_order.dart';
 import 'package:test1/pull_from_api/linkApi.dart';
 import 'package:test1/table/layout_table.dart';
@@ -83,13 +84,19 @@ class _leftside extends State<leftside> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => sumneworder()));
+                                  builder: (context) => sumneworder())); 
                         }
                         if (index == 2) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => main_order()));
+                        }
+                        if (index == 3) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>  check_page()));
                         }
                       });
                     },

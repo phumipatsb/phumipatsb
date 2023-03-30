@@ -482,7 +482,7 @@ class _main_order extends State<main_order> {
                                                           int index) {
                                                     String? dater;
                                                      dater = Shift_list.post3?.datas![index].purchaseDate;
-                                                     String result = dater!.substring(0, dater.indexOf(','));
+                                                     String? result = dater!.substring(0, dater.indexOf(','));
                                                     return Column(
                                                       children: [
                                                         Padding(

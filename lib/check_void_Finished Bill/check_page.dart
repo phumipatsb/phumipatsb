@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sqflite/utils/utils.dart';
+import 'package:test1/check_void_Finished%20Bill/discount.dart';
 import '../models/provider_app.dart';
 import 'package:provider/provider.dart';
 import 'package:test1/SideBar/leftside.dart';
@@ -12,11 +13,17 @@ class check_page extends StatefulWidget {
   @override
   _check_page createState() => _check_page();
 }
-
+List<String> discountitem = [
+  '30% discount on Food',
+  '30% discount on Drink',
+  'Buy 2 getfree Salad'
+];
 class _check_page extends State<check_page> {
   TextEditingController controller = TextEditingController();
   TextEditingController nameController = TextEditingController();
   String fullName = '';
+  List<String> filteredItem = [];
+
 
   @override
   Widget build(BuildContext context) {
@@ -133,211 +140,7 @@ class _check_page extends State<check_page> {
                                                             16),
                                                     color: Colors.white,
                                                   ),
-                                                  child: Column(
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .fromLTRB(
-                                                                0, 0, 0, 5),
-                                                        child: Flexible(
-                                                          flex: 1,
-                                                          fit: FlexFit.tight,
-                                                          child: Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          0),
-                                                            ),
-                                                            child: Row(
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                              .fromLTRB(
-                                                                          20,
-                                                                          10,
-                                                                          20,
-                                                                          0),
-                                                                  child:
-                                                                      Expanded(
-                                                                    child: SvgPicture
-                                                                        .asset(
-                                                                      'assets/images/Discount.svg',
-                                                                      height:
-                                                                          25,
-                                                                      width: 25,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                              .fromLTRB(
-                                                                          0,
-                                                                          10,
-                                                                          0,
-                                                                          0),
-                                                                  child: Text(
-                                                                      "Discount",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              20,
-                                                                          fontFamily:
-                                                                              'Inter',
-                                                                          fontWeight: FontWeight
-                                                                              .w500,
-                                                                          color:
-                                                                              Colors.black)),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Flexible(
-                                                        flex: 4,
-                                                        fit: FlexFit.tight,
-                                                        child: Container(
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        0),
-                                                            color: Colors.black,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Flexible(
-                                                        flex: 2,
-                                                        fit: FlexFit.tight,
-                                                        child: Container(
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius: BorderRadius.only(
-                                                                bottomLeft: Radius
-                                                                    .circular(
-                                                                        16),
-                                                                bottomRight: Radius
-                                                                    .circular(
-                                                                        16)),
-                                                          ),
-                                                          child: Row(
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .fromLTRB(
-                                                                        10,
-                                                                        5,
-                                                                        10,
-                                                                        0),
-                                                                child:
-                                                                    Container(
-                                                                  child:
-                                                                      SvgPicture
-                                                                          .asset(
-                                                                    'assets/images/gift.svg',
-                                                                    height: 35,
-                                                                    width: 35,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .fromLTRB(
-                                                                        0,
-                                                                        5,
-                                                                        8,
-                                                                        0),
-                                                                child: Container(
-                                                                    height: 35,
-                                                                    width: 225,
-                                                                    child: TextField(
-                                                                      controller:
-                                                                          nameController,
-                                                                      decoration:
-                                                                          InputDecoration(
-                                                                        border:
-                                                                            OutlineInputBorder(),
-                                                                        labelText:
-                                                                            'Gift Code',
-                                                                      ),
-                                                                      onChanged:
-                                                                          (text) {
-                                                                        setState(
-                                                                            () {
-                                                                          fullName =
-                                                                              text;
-                                                                          //you can access nameController in its scope to get
-                                                                          // the value of text entered as shown below
-                                                                          //fullName = nameController.text;
-                                                                        });
-                                                                      },
-                                                                    )),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .fromLTRB(
-                                                                        0,
-                                                                        5,
-                                                                        0,
-                                                                        0),
-                                                                child:
-                                                                    Container(
-                                                                  child:
-                                                                      SvgPicture
-                                                                          .asset(
-                                                                    'assets/images/find.svg',
-                                                                    height: 35,
-                                                                    width: 35,
-                                                                  ),
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-
-                                                      // Expanded(
-                                                      //   child: Row(
-                                                      //     children: [
-                                                      //       Padding(
-                                                      //           padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                                                      //           child: Container(
-                                                      //             child: SvgPicture.asset('assets/images/gift.svg', height: 35, width: 35,),
-                                                      //           ),
-                                                      //         ),
-                                                      //         Container(
-                                                      //           height: 50,
-                                                      //           width: 200,
-                                                      //           child: TextField(
-
-                                                      //                               controller: textarea,
-                                                      //                               keyboardType: TextInputType.multiline,
-                                                      //                               maxLines: 4,
-                                                      //                               decoration: InputDecoration(
-                                                      //                                  hintText: "Enter Remarks",
-                                                      //                                  focusedBorder: OutlineInputBorder(
-                                                      //                                     borderSide: BorderSide(width: 1, color: Colors.redAccent)
-                                                      //                                  )
-                                                      //                               ),
-
-                                                      //                            ),
-                                                      //         ),
-                                                      //     ],
-                                                      //   ),
-                                                      // )
-                                                    ],
-                                                  ),
+                                                  child: discount_page()
                                                 ),
                                               ),
                                             ),

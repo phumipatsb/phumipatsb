@@ -24,7 +24,7 @@ class _number_peopleState extends State<number_people> {
     String SubZoneNameSelect1 =context.watch<provider_table>().subZoneNameSelect;
     String select =context.watch<provider_table>().seNumberPeople;
     int NumberPeople = 10;
-    
+     int? selectindex;
     
 
     return Container(
@@ -102,14 +102,16 @@ class _number_peopleState extends State<number_people> {
                                   return GestureDetector(
                                     onTap: () {
                                       context.read<provider_table>().NumberPeopleSelect(index.toString());
+                                       selectindex = index;
                                     },
                                     child: Container(
                                       width: 40,
                                       height: 40,
                                       decoration: BoxDecoration(
-                                          color: index % 2 == 0
-                                              ? HexColor(file1)
-                                              : HexColor(file2),
+                                          // color: index % 2 == 0
+                                          //     ? HexColor(file1)
+                                          //     : HexColor(file2),
+                                          color: index == selectindex? Colors.black26 : Colors.white,
                                           borderRadius: BorderRadius.circular(0)),
                                       child: Center(
                                         child: Text("${index}",

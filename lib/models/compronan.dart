@@ -101,3 +101,19 @@ class newmem_ber {
       required this.email,
       required this.note});
 }
+
+
+
+class zoneList {
+  String zone = "";
+  String id = "";
+  List<tableListNew> table = [];
+  zoneList({required this.zone, required this.id, required this.table});
+}
+
+class tableListNew {
+  String name = "";
+  String id = "";
+  List status = [];
+  tableListNew({required this.name, required this.id, required this.status});
+}

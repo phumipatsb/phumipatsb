@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 // import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
-import 'package:test1/SideBar/number_people.dart';
+import 'package:test1/table/number_people.dart';
 import 'package:test1/models/provider_app.dart';
 import 'package:test1/pull_from_api/modelsApi_status_table.dart';
 
+import '../RAW/coloer/hex.dart';
+import '../models/compronan.dart';
 import '../pull_from_api/provider_Api.dart';
 import '../sumneworder.dart';
 
@@ -14,20 +18,6 @@ class ListData extends StatefulWidget {
 
   @override
   State<ListData> createState() => _ListDataState();
-}
-
-class zoneList {
-  String zone = "";
-  String id = "";
-  List<tableListNew> table = [];
-  zoneList({required this.zone, required this.id, required this.table});
-}
-
-class tableListNew {
-  String name = "";
-  String id = "";
-  List status = [];
-  tableListNew({required this.name, required this.id, required this.status});
 }
 
 class _ListDataState extends State<ListData> {
@@ -83,6 +73,13 @@ class _ListDataState extends State<ListData> {
 
   @override
   Widget build(BuildContext context) {
+    List item = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    String zoneNameSelect = context.watch<provider_table>().zoneNameSelect;
+    String SubZoneNameSelect1 =
+        context.watch<provider_table>().subZoneNameSelect;
+    String select = context.watch<provider_table>().seNumberPeople;
+    int NumberPeople = 10;
+    int? selectindex;
     return Scaffold(
       body: FutureBuilder(
           future: fetchprovider(),
@@ -214,17 +211,155 @@ class _ListDataState extends State<ListData> {
                                                                                                 showDialog(
                                                                                                     context: context,
                                                                                                     builder: (BuildContext context) {
-                                                                                                      return AlertDialog(
-                                                                                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                                                                                                          content: Container(
-                                                                                                            height: 200,
-                                                                                                            width: 400,
-                                                                                                            child: number_people(),
-                                                                                                          ));
+                                                                                                      return AlertDialog(content: StatefulBuilder(builder: (context, StateSetter setState) {
+                                                                                                        return Container(
+                                                                                                          height: 200,
+                                                                                                          width: 400,
+                                                                                                          child: Column(
+                                                                                                            children: [
+                                                                                                              Flexible(
+                                                                                                                  flex: 1,
+                                                                                                                  fit: FlexFit.tight,
+                                                                                                                  child: Center(
+                                                                                                                    child: Row(
+                                                                                                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                                                                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                                      children: [
+                                                                                                                        Text(
+                                                                                                                          ' ${zoneNameSelect}',
+                                                                                                                          overflow: TextOverflow.visible,
+                                                                                                                          textAlign: TextAlign.left,
+                                                                                                                          style: TextStyle(
+                                                                                                                            fontSize: 30,
+                                                                                                                            fontFamily: 'Inter',
+                                                                                                                            fontWeight: FontWeight.w400,
+                                                                                                                            color: Color.fromARGB(255, 0, 0, 0),
+
+                                                                                                                            /* letterSpacing: 0.0, */
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                        Text(
+                                                                                                                          ' ${SubZoneNameSelect1}',
+                                                                                                                          overflow: TextOverflow.visible,
+                                                                                                                          textAlign: TextAlign.left,
+                                                                                                                          style: TextStyle(
+                                                                                                                            fontSize: 30,
+                                                                                                                            fontFamily: 'Inter',
+                                                                                                                            fontWeight: FontWeight.w400,
+                                                                                                                            color: Color.fromARGB(255, 0, 0, 0),
+
+                                                                                                                            /* letterSpacing: 0.0, */
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                      ],
+                                                                                                                    ),
+                                                                                                                  )),
+                                                                                                              Flexible(
+                                                                                                                flex: 1,
+                                                                                                                fit: FlexFit.tight,
+                                                                                                                child: Container(
+                                                                                                                    decoration: BoxDecoration(
+                                                                                                                      borderRadius: BorderRadius.circular(0),
+                                                                                                                    ),
+                                                                                                                    child: Container(
+                                                                                                                      child: Row(
+                                                                                                                        children: [
+                                                                                                                          Padding(
+                                                                                                                            padding: const EdgeInsets.fromLTRB(30, 0, 20, 0),
+                                                                                                                            child: Container(
+                                                                                                                              child: SvgPicture.asset(
+                                                                                                                                'assets/images/Member.svg',
+                                                                                                                                height: 30,
+                                                                                                                                width: 30,
+                                                                                                                              ),
+                                                                                                                            ),
+                                                                                                                          ),
+                                                                                                                          Padding(
+                                                                                                                            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                                                                                                            child: Container(
+                                                                                                                                width: 300,
+                                                                                                                                height: 40,
+                                                                                                                                child: ListView.builder(
+                                                                                                                                    scrollDirection: Axis.horizontal,
+                                                                                                                                    itemCount: item.length,
+                                                                                                                                    itemBuilder: (context, indexitem) {
+                                                                                                                                      return Padding(
+                                                                                                                                        padding: const EdgeInsets.all(1.0),
+                                                                                                                                        child: GestureDetector(
+                                                                                                                                          onTap: () {
+                                                                                                                                            setState(() {
+                                                                                                                                              selectindex = indexitem;
+                                                                                                                                            });
+                                                                                                                                          },
+                                                                                                                                          child: Container(
+                                                                                                                                            height: 60,
+                                                                                                                                            width: 40,
+                                                                                                                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: indexitem == selectindex ? Colors.pink.shade100 : Colors.white),
+                                                                                                                                            child: Center(
+                                                                                                                                                child: Row(
+                                                                                                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                                                                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                                                              children: [
+                                                                                                                                                Container(
+                                                                                                                                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                                                                                                                                                  child: Text(
+                                                                                                                                                    '${item[indexitem]}',
+                                                                                                                                                    style: TextStyle(fontSize: 25, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black),
+                                                                                                                                                  ),
+                                                                                                                                                ),
+                                                                                                                                              ],
+                                                                                                                                            )),
+                                                                                                                                          ),
+                                                                                                                                        ),
+                                                                                                                                      );
+                                                                                                                                    })),
+                                                                                                                          )
+                                                                                                                        ],
+                                                                                                                      ),
+                                                                                                                    )),
+                                                                                                              ),
+                                                                                                              Flexible(
+                                                                                                                flex: 1,
+                                                                                                                fit: FlexFit.tight,
+                                                                                                                child: Container(
+                                                                                                                  decoration: BoxDecoration(
+                                                                                                                    borderRadius: BorderRadius.circular(0),
+                                                                                                                  ),
+                                                                                                                  child: GestureDetector(
+                                                                                                                      onTap: () {
+                                                                                                                        setState(() {
+                                                                                                                          print("boss:${select}");
+                                                                                                                          if (select.isEmpty || select == "0") {
+                                                                                                                            print("object");
+                                                                                                                          } else {
+                                                                                                                            Navigator.push(context, MaterialPageRoute(builder: (context) => sumneworder()));
+                                                                                                                          }
+                                                                                                                        });
+                                                                                                                      },
+                                                                                                                      child: Padding(
+                                                                                                                        padding: const EdgeInsets.all(8.0),
+                                                                                                                        child: Container(
+                                                                                                                            height: 30,
+                                                                                                                            width: 350,
+                                                                                                                            decoration: BoxDecoration(
+                                                                                                                              border: Border.all(width: 2, color: HexColor(lineColor)),
+                                                                                                                              borderRadius: BorderRadius.circular(
+                                                                                                                                32,
+                                                                                                                              ),
+                                                                                                                              color: HexColor(textPriceColor),
+                                                                                                                            ),
+                                                                                                                            child: Center(
+                                                                                                                              child: Text("Order", style: TextStyle(fontSize: 30, fontFamily: 'Inter', fontWeight: FontWeight.w500, color: Colors.white)),
+                                                                                                                            )),
+                                                                                                                      )),
+                                                                                                                ),
+                                                                                                              ),
+                                                                                                            ],
+                                                                                                          ),
+                                                                                                        );
+                                                                                                      }));
                                                                                                     });
                                                                                               });
-
-                                                                                             
                                                                                             },
                                                                                             child: AnimatedContainer(
                                                                                               height: 80,
