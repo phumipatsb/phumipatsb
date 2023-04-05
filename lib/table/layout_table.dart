@@ -43,7 +43,7 @@ class _layout_table extends State<layout_table> {
                         child: leftside(),
                       ),
                     ),
-                    Flexible(flex: 8, fit: FlexFit.tight, child: ListData()),
+                    //Flexible(flex: 8, fit: FlexFit.tight, child: ListData()),
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),

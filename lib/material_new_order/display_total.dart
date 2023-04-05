@@ -49,6 +49,7 @@ class _display_totalState extends State<display_total> {
     sendtoto(Grand_Total);
 
     return Container(
+      
       child: Column(
         children: <Widget>[
           Container(

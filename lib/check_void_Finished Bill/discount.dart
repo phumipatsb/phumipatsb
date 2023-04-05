@@ -13,7 +13,8 @@ class discount_page extends StatefulWidget {
 List<String> discountitem = [
   '30% discount on Food',
   '20% discount on Drink',
-  'Buy 2 getfree Salad'
+  'Buy 2 getfree Salad',
+  "10% Discount on food " 
 ];
 
 class _discount_pageState extends State<discount_page> {

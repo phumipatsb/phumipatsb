@@ -4,6 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 // import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import 'package:test1/material_new_order/layout_neworder.dart';
 import 'package:test1/table/number_people.dart';
 import 'package:test1/models/provider_app.dart';
 import 'package:test1/pull_from_api/modelsApi_status_table.dart';
@@ -11,16 +12,16 @@ import 'package:test1/pull_from_api/modelsApi_status_table.dart';
 import '../RAW/coloer/hex.dart';
 import '../models/compronan.dart';
 import '../pull_from_api/provider_Api.dart';
-import '../sumneworder.dart';
+import '../material_new_order/sumneworder.dart';
 
-class ListData extends StatefulWidget {
-  const ListData({super.key});
+class table_api extends StatefulWidget {
+  const table_api({super.key});
 
   @override
-  State<ListData> createState() => _ListDataState();
+  State<table_api> createState() => _table_apiState();
 }
 
-class _ListDataState extends State<ListData> {
+class _table_apiState extends State<table_api> {
   List<zoneList> tableListStatus = [];
   late List data;
   var test;
@@ -77,7 +78,7 @@ class _ListDataState extends State<ListData> {
     String zoneNameSelect = context.watch<provider_table>().zoneNameSelect;
     String SubZoneNameSelect1 =
         context.watch<provider_table>().subZoneNameSelect;
-    String select = context.watch<provider_table>().seNumberPeople;
+    //String select = context.watch<provider_table>().seNumberPeople;
     int NumberPeople = 10;
     int? selectindex;
     return Scaffold(
@@ -105,7 +106,7 @@ class _ListDataState extends State<ListData> {
                               fit: FlexFit.tight,
                               child: Center(
                                   child: Padding(
-                                      padding: EdgeInsets.all(10.0),
+                                      padding: EdgeInsets.all(0),
                                       child: Column(
                                         children: [
                                           Flexible(
@@ -281,7 +282,7 @@ class _ListDataState extends State<ListData> {
                                                                                                                                 height: 40,
                                                                                                                                 child: ListView.builder(
                                                                                                                                     scrollDirection: Axis.horizontal,
-                                                                                                                                    itemCount: item.length,
+                                                                                                                                    itemCount: 10,
                                                                                                                                     itemBuilder: (context, indexitem) {
                                                                                                                                       return Padding(
                                                                                                                                         padding: const EdgeInsets.all(1.0),
@@ -289,6 +290,7 @@ class _ListDataState extends State<ListData> {
                                                                                                                                           onTap: () {
                                                                                                                                             setState(() {
                                                                                                                                               selectindex = indexitem;
+                                                                                                                                              print(selectindex);
                                                                                                                                             });
                                                                                                                                           },
                                                                                                                                           child: Container(
@@ -303,7 +305,7 @@ class _ListDataState extends State<ListData> {
                                                                                                                                                 Container(
                                                                                                                                                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
                                                                                                                                                   child: Text(
-                                                                                                                                                    '${item[indexitem]}',
+                                                                                                                                                    '${indexitem}',
                                                                                                                                                     style: TextStyle(fontSize: 25, fontFamily: 'Inter', fontWeight: FontWeight.w400, color: Colors.black),
                                                                                                                                                   ),
                                                                                                                                                 ),
@@ -328,11 +330,12 @@ class _ListDataState extends State<ListData> {
                                                                                                                   child: GestureDetector(
                                                                                                                       onTap: () {
                                                                                                                         setState(() {
-                                                                                                                          print("boss:${select}");
-                                                                                                                          if (select.isEmpty || select == "0") {
+                                                                                                                          print("boss:${selectindex}");
+                                                                                                                          if (selectindex == 0) {
                                                                                                                             print("object");
                                                                                                                           } else {
-                                                                                                                            Navigator.push(context, MaterialPageRoute(builder: (context) => sumneworder()));
+                                                                                                                            context.read<provider_table>().barSelect(1);
+                                                                                                                            Navigator.push(context, MaterialPageRoute(builder: (context) => layout_neworder()));
                                                                                                                           }
                                                                                                                         });
                                                                                                                       },

@@ -25,7 +25,6 @@ class _GridViewPageState extends State<homepage> {
   List<Option> AddOption = [];
   TextEditingController textarea = TextEditingController();
   bool st5 = false;
-  
 
   @override
   void initState() {
@@ -90,9 +89,10 @@ class _GridViewPageState extends State<homepage> {
 
                             var Options =
                                 '${data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions}';
-                                print("itemGroupOptions"+ "${data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions}");
+                            print("itemGroupOptions" +
+                                "${data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions}");
 
-                            if ( Options.isNotEmpty) {
+                            if (Options.isNotEmpty) {
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
@@ -103,297 +103,278 @@ class _GridViewPageState extends State<homepage> {
                                       contentPadding:
                                           EdgeInsets.only(top: 10.0),
                                       content: StatefulBuilder(
-                                        
-                                        builder: (context,  setState) {
-                                          return Container(
-                                            width: 500,
-                                            height: 600,
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.stretch,
-                                              children: <Widget>[
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.fromLTRB(
-                                                          8, 0, 8, 0),
-                                                  child: Container(
-                                                    alignment: Alignment.topRight,
-                                                    child: IconButton(
-                                                      icon: Icon(
-                                                        Icons.close,
-                                                        color: Colors.black54,
-                                                        size: 45,
-                                                      ),
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                        clecaaddon();
-                                                      },
+                                          builder: (context, setState) {
+                                        return Container(
+                                          width: 500,
+                                          height: 600,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                            children: <Widget>[
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        8, 0, 8, 0),
+                                                child: Container(
+                                                  alignment: Alignment.topRight,
+                                                  child: IconButton(
+                                                    icon: Icon(
+                                                      Icons.close,
+                                                      color: Colors.black54,
+                                                      size: 45,
                                                     ),
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                      clecaaddon();
+                                                    },
                                                   ),
                                                 ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.fromLTRB(
-                                                          8, 0, 8, 0),
-                                                  child: Container(
-                                                    height: 350,
-                                                    width: 500,
-                                                    child: ListView.builder(
-                                                      shrinkWrap: false,
-                                                      itemCount: postModel
-                                                          .post!
-                                                          .groupOptionList![data?[
-                                                                  selected]
-                                                              .items?[
-                                                                  selectedSubCat]
-                                                              .items?[index]
-                                                              .itemGroupOptions]!
-                                                          .length,
-                                                      itemBuilder:
-                                                          (BuildContext context,
-                                                              int index2) {
-                                                        print(postModel
-                                                            .post!
-                                                            .groupOptionList![data?[
-                                                                    selected]
-                                                                .items?[
-                                                                    selectedSubCat]
-                                                                .items?[index]
-                                                                .itemGroupOptions]![index2]
-                                                            .mode);
-                                                            
-                                                        return Container(
-                                                          child: Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: <Widget>[
-                                                              questionLanguage(
-                                                                  selected,
-                                                                  selectedSubCat,
-                                                                  index,
-                                                                  index2),
-                                                              const Divider(
-                                                                height: 10,
-                                                                thickness: 2,
-                                                                indent: 0,
-                                                                endIndent: 0,
-                                                                color:
-                                                                    Color.fromARGB(
-                                                                        255,
-                                                                        255,
-                                                                        110,
-                                                                        110),
-                                                              ),
-                                                              const SizedBox(
-                                                                width: 10,
-                                                              ),
-                                                              Container(
-                                                                  
-                                                                  child: postModel
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        8, 0, 8, 0),
+                                                child: Container(
+                                                  height: 350,
+                                                  width: 500,
+                                                  child: ListView.builder(
+                                                    shrinkWrap: false,
+                                                    itemCount: postModel
+                                                        .post!
+                                                        .groupOptionList![data?[
+                                                                selected]
+                                                            .items?[
+                                                                selectedSubCat]
+                                                            .items?[index]
+                                                            .itemGroupOptions]!
+                                                        .length,
+                                                    itemBuilder:
+                                                        (BuildContext context,
+                                                            int index2) {
+                                                      return Container(
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: <Widget>[
+                                                            questionLanguage(
+                                                                selected,
+                                                                selectedSubCat,
+                                                                index,
+                                                                index2),
+                                                            const Divider(
+                                                              height: 10,
+                                                              thickness: 2,
+                                                              indent: 0,
+                                                              endIndent: 0,
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      255,
+                                                                      110,
+                                                                      110),
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 10,
+                                                            ),
+                                                            Container(
+                                                                child: postModel
+                                                                            .post!
+                                                                            .groupOptionList![data![selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2]
+                                                                            .mode ==
+                                                                        Mode.SIN
+                                                                    ? ListView.builder(
+                                                                        physics: NeverScrollableScrollPhysics(),
+                                                                        shrinkWrap: true,
+                                                                        itemCount: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length,
+                                                                        itemBuilder: (context, index_sub_cat_addon) {
+                                                                          AddOption.add(Option(
+                                                                              Choice: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice,
+                                                                              price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
+                                                                          //print('sss ${AddOption}');
+                                                                          int? defval = postModel
                                                                               .post!
-                                                                              .groupOptionList![
-                                                                                  data![selected].items?[selectedSubCat].items?[index].itemGroupOptions]![
-                                                                                  index2]
-                                                                              .mode ==
-                                                                          Mode.SIN
-                                                                      ? ListView
-                                                                          .builder(
-                                                                              physics:
-                                                                                  NeverScrollableScrollPhysics(),
-                                                                              shrinkWrap:
-                                                                                  true,
-                                                                              itemCount: postModel
-                                                                                  .post!
-                                                                                  .groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![
-                                                                                      index2]
-                                                                                  .items!
-                                                                                  .length,
-                                                                              itemBuilder:
-                                                                                  (context, index_sub_cat_addon) {
-                                                                                AddOption.add(Option(
-                                                                                    Choice: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice,
-                                                                                    price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
-                                                                                //print('sss ${AddOption}');
-                                                                                int? defval = postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].defaultChoice ;
-                                                                                print("def"+"$defval");
-                                                                                _radioValue = "${postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}";
-                                                                                return RadioListTile(
-                                                                                    title: choiceLanguage(selected, selectedSubCat, index, index2, index_sub_cat_addon),
-                                                                                    secondary: Text('${postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price}',
-                                                                                      style: const TextStyle(
-                                                                                        fontSize: 25,
-                                                                                        fontWeight: FontWeight.w700,
-                                                                                      ),
-                                                                                    ),
-                                                                                    value: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id,
-                                                                                    groupValue: selectedOptions[postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length],
-                                                                                    onChanged: (val) {
-                                                                                      setState(() {
-                                                                                        _radioValue = val!;
+                                                                              .groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2]
+                                                                              .defaultChoice;
+                                                                          print("def" +
+                                                                              "$defval");
+                                                                          _radioValue =
+                                                                              "${postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}";
+                                                                          return RadioListTile(
+                                                                              title: choiceLanguage(selected, selectedSubCat, index, index2, index_sub_cat_addon),
+                                                                              secondary: Text(
+                                                                                '${postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price}',
+                                                                                style: const TextStyle(
+                                                                                  fontSize: 25,
+                                                                                  fontWeight: FontWeight.w700,
+                                                                                ),
+                                                                              ),
+                                                                              value: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id,
+                                                                              groupValue: selectedOptions[postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length],
+                                                                              onChanged: (val) {
+                                                                                setState(() {
+                                                                                  _radioValue = val!;
 
-                                                                                        selectedOptions[postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length] = val!;
-                                                                                        
-                                                                                        var test = chooseAddon.indexWhere((element) => element.nameaddon == postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question);
-                                                                                        
-                                                                                        if (test != -1) {
-                                                                                          chooseAddon[test].subNameAddOn = postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!;
-                                                                                          chooseAddon[test].price = postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!;
-                                                                                        } else {
-                                                                                          chooseAddon.add(addonofs(nameaddon: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question!, subNameAddOn: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!, price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!, ID: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id!));
-                                                                                          chooseAddon.toSet().toList();
-                                                                                          print(chooseAddon);
-                                                                                        }
-                                                                                        // print('A :${chooseAddon.length}');
-                                                                                      });
-                                                                                    });
-                                                                              })
-                                                                      : Container(
-                                                                          child: choiceoptions(
-                                                                              selected,
-                                                                              selectedSubCat,
-                                                                              index,
-                                                                              index2),
-                                                                        ))
-                                                            ],
-                                                          ),
-                                                        );
-                                                      },
-                                                    ),
+                                                                                  selectedOptions[postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length] = val!;
+
+                                                                                  var test = chooseAddon.indexWhere((element) => element.nameaddon == postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question);
+
+                                                                                  if (test != -1) {
+                                                                                    chooseAddon[test].subNameAddOn = postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!;
+                                                                                    chooseAddon[test].price = postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!;
+                                                                                  } else {
+                                                                                    chooseAddon.add(addonofs(nameaddon: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question!, subNameAddOn: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!, price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!, ID: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id!));
+                                                                                    chooseAddon.toSet().toList();
+                                                                                    print(chooseAddon);
+                                                                                  }
+                                                                                  // print('A :${chooseAddon.length}');
+                                                                                });
+                                                                              });
+                                                                        })
+                                                                    : Container(
+                                                                        child: choiceoptions(
+                                                                            selected,
+                                                                            selectedSubCat,
+                                                                            index,
+                                                                            index2),
+                                                                      ))
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
                                                   ),
                                                 ),
-                                                Container(
-                                                  alignment: Alignment.bottomLeft,
-                                                  padding: EdgeInsets.all(10),
-                                                  child: Text('NOTE',
+                                              ),
+                                              Container(
+                                                alignment: Alignment.bottomLeft,
+                                                padding: EdgeInsets.all(10),
+                                                child: Text('NOTE',
+                                                    style: TextStyle(
+                                                        fontSize: 20,
+                                                        fontFamily: 'Inter',
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: Colors.black)),
+                                              ),
+                                              Container(
+                                                alignment: Alignment.center,
+                                                padding: EdgeInsets.fromLTRB(
+                                                    10, 0, 10, 0),
+                                                child: Column(
+                                                  children: [
+                                                    TextField(
+                                                        controller: textarea,
+                                                        keyboardType:
+                                                            TextInputType
+                                                                .multiline,
+                                                        maxLines: 4,
+                                                        autocorrect: true,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          hintStyle: TextStyle(
+                                                              fontSize: 16,
+                                                              color:
+                                                                  Colors.grey),
+                                                          filled: true,
+                                                          fillColor:
+                                                              Colors.white70,
+                                                          contentPadding:
+                                                              EdgeInsets
+                                                                  .fromLTRB(10,
+                                                                      0, 0, 0),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .all(Radius
+                                                                        .circular(
+                                                                            8.0)),
+                                                            borderSide:
+                                                                BorderSide(
+                                                                    color: Colors
+                                                                        .red,
+                                                                    width: 2),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .all(Radius
+                                                                        .circular(
+                                                                            8.0)),
+                                                            borderSide:
+                                                                BorderSide(
+                                                                    color: Colors
+                                                                        .green),
+                                                          ),
+                                                        )),
+                                                    const SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              InkWell(
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      context
+                                                          .read<provider_app>()
+                                                          .addtasks1(
+                                                            tasks1(
+                                                              name:
+                                                                  "${data?[selected].items?[selectedSubCat].items?[index].name}",
+                                                              price: data?[selected]
+                                                                  .items?[
+                                                                      selectedSubCat]
+                                                                  .items?[index]
+                                                                  .price,
+                                                              images:
+                                                                  '${data?[selected].items?[selectedSubCat].items?[index].picture}',
+                                                              idItem:
+                                                                  '${data?[selected].items?[selectedSubCat].items?[index].itemId}',
+                                                              addonSelect:
+                                                                  chooseAddon,
+                                                            ),
+                                                          );
+
+                                                      clecaaddon();
+                                                    });
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Container(
+                                                    padding: EdgeInsets.only(
+                                                        top: 18, bottom: 20),
+                                                    decoration: BoxDecoration(
+                                                      color: HexColor(confi),
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                              bottomLeft: Radius
+                                                                  .circular(
+                                                                      32.0),
+                                                              bottomRight: Radius
+                                                                  .circular(
+                                                                      32.0)),
+                                                    ),
+                                                    child: Text(
+                                                      "Confirm",
                                                       style: TextStyle(
-                                                          fontSize: 20,
-                                                          fontFamily: 'Inter',
+                                                          fontSize: 30,
                                                           fontWeight:
                                                               FontWeight.w500,
-                                                          color: Colors.black)),
-                                                ),
-                                                Container(
-                                                  alignment: Alignment.center,
-                                                  padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                                  child: Column(
-                                                    children: [
-                                                      TextField(
-                                                          controller: textarea,
-                                                          keyboardType:
-                                                              TextInputType
-                                                                  .multiline,
-                                                          maxLines: 4,
-                                                          autocorrect: true,
-                                                          decoration:
-                                                              InputDecoration(
-                                                            hintStyle: TextStyle(
-                                                                fontSize: 16,
-                                                                color: Colors.grey),
-                                                            filled: true,
-                                                            fillColor:
-                                                                Colors.white70,
-                                                            contentPadding:
-                                                                EdgeInsets.fromLTRB(
-                                                                    10, 0, 0, 0),
-                                                            enabledBorder:
-                                                                OutlineInputBorder(
-                                                              borderRadius:
-                                                                  BorderRadius.all(
-                                                                      Radius
-                                                                          .circular(
-                                                                              8.0)),
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                      color: Colors
-                                                                          .red,
-                                                                      width: 2),
-                                                            ),
-                                                            focusedBorder:
-                                                                OutlineInputBorder(
-                                                              borderRadius:
-                                                                  BorderRadius.all(
-                                                                      Radius
-                                                                          .circular(
-                                                                              8.0)),
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                      color: Colors
-                                                                          .green),
-                                                            ),
-                                                          )),
-                                                      const SizedBox(
-                                                        height: 10,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                InkWell(
-                                                  child: GestureDetector(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        context
-                                                                      .read<
-                                                                          provider_app>()
-                                                                      .addtasks1(
-                                                                        tasks1(
-                                                                          name:
-                                                                              "${data?[selected].items?[selectedSubCat].items?[index].name}",
-                                                                          price: data?[selected]
-                                                                              .items?[
-                                                                                  selectedSubCat]
-                                                                              .items?[
-                                                                                  index]
-                                                                              .price,
-                                                                          images:
-                                                                              '${data?[selected].items?[selectedSubCat].items?[index].picture}',
-                                                                          idItem:
-                                                                              '${data?[selected].items?[selectedSubCat].items?[index].itemId}',
-                                                                          addonSelect:
-                                                                              chooseAddon,
-                                                                        ),
-                                                                      );
-                                      
-                                                                  clecaaddon();
-                                                                  
-                                                      });
-                                                      Navigator.pop(
-                                                                  context);
-                                                    },
-                                                    child: Container(
-                                                      padding: EdgeInsets.only(
-                                                          top: 18, bottom: 20),
-                                                      decoration: BoxDecoration(
-                                                        color: HexColor(confi),
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                                bottomLeft:
-                                                                    Radius.circular(
-                                                                        32.0),
-                                                                bottomRight:
-                                                                    Radius.circular(
-                                                                        32.0)),
-                                                      ),
-                                                      child: Text(
-                                                        "Confirm",
-                                                        style: TextStyle(
-                                                          fontSize:30,
-                                                          fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                            color: Colors.white),
-                                                        textAlign: TextAlign.center,
-                                                      ),
+                                                          color: Colors.white),
+                                                      textAlign:
+                                                          TextAlign.center,
                                                     ),
                                                   ),
                                                 ),
-                                              ],
-                                            ),
-                                          );
-                                        }
-                                      ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      }),
                                     );
                                   });
                             } else {
@@ -426,60 +407,61 @@ class _GridViewPageState extends State<homepage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(16.0),
-                                    topRight: Radius.circular(16.0),
-                                    bottomLeft: Radius.circular(0),
-                                    bottomRight: Radius.circular(0),
-                                  ),
-                                  // child: Image.network(
-                                  //     "${data?[selected].items?[selectedSubCat].items?[index].picture}",
-                                  //     height: 170, frameBuilder: (context,
-                                  //         child,
-                                  //         frame,
-                                  //         wasSynchronouslyLoaded) {
-                                  //   return child;
-                                  // }, loadingBuilder:
-                                  //         (context, child, loadingProgress) {
-                                  //   if (loadingProgress == null) {
-                                  //     return child;
-                                  //   } else {
-                                  //     return Container(
-                                  //       height: 170,
-                                  //       child: Center(
-                                  //         child: Stack(
-                                  //           children: [
-                                              
-                                  //               Center(
-                                  //                 child: Container(
-                                  //                   child: CircularProgressIndicator(),
-                                  //                 ),
-                                  //               )
-                                  //           ],
-                                            
-                                  //         ),
-                                  //       ),
-                                  //     );
-                                  //   }
-                                  // })
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(16.0),
+                                  topRight: Radius.circular(16.0),
+                                  bottomLeft: Radius.circular(0),
+                                  bottomRight: Radius.circular(0),
+                                ),
+                                // child: Image.network(
+                                //     "${data?[selected].items?[selectedSubCat].items?[index].picture}",
+                                //     height: 170, frameBuilder: (context,
+                                //         child,
+                                //         frame,
+                                //         wasSynchronouslyLoaded) {
+                                //   return child;
+                                // }, loadingBuilder:
+                                //         (context, child, loadingProgress) {
+                                //   if (loadingProgress == null) {
+                                //     return child;
+                                //   } else {
+                                //     return Container(
+                                //       height: 170,
+                                //       child: Center(
+                                //         child: Stack(
+                                //           children: [
 
-                                 child : Image.network(
-                                    '${data?[selected].items?[selectedSubCat].items?[index].picture}',
-                                    height: 170,
-                                    errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                                      return  Container(
-                                          height: 170,
-                                          child: Center(
-                                            child: Stack(
-                                              children: [
-                                                Text('Failed to load image'),
-                                                CircularProgressIndicator(),
-                                              ],
-                                            ),
-                                           ));
-                                      
-                                     },
-                                   ),
+                                //               Center(
+                                //                 child: Container(
+                                //                   child: CircularProgressIndicator(),
+                                //                 ),
+                                //               )
+                                //           ],
+
+                                //         ),
+                                //       ),
+                                //     );
+                                //   }
+                                // })
+
+                                child: Image.network(
+                                  '${data?[selected].items?[selectedSubCat].items?[index].picture}',
+                                  height: 170,
+                                  errorBuilder: (BuildContext context,
+                                      Object exception,
+                                      StackTrace? stackTrace) {
+                                    return Container(
+                                        height: 170,
+                                        child: Center(
+                                          child: Stack(
+                                            children: [
+                                              Text('Failed to load image'),
+                                              CircularProgressIndicator(),
+                                            ],
+                                          ),
+                                        ));
+                                  },
+                                ),
                                 //   child: FadeInImage(
                                 //   image: NetworkImage(${data?[selected].items?[selectedSubCat].items?[index].picture}),
                                 //   placeholder: AssetImage(
@@ -492,41 +474,20 @@ class _GridViewPageState extends State<homepage> {
                                 //   },
                                 //   fit: BoxFit.fitWidth,
                                 // ),
-                                  
-                                  
-           
-            
 
-                                  // child: Image.network(
-                                  //   '${data?[selected].items?[selectedSubCat].items?[index].picture}',
-                                  //   height: 170,
-                                  //   width: double.infinity,
-                                  //   fit: BoxFit.cover,
-                                  // ),
-                                  ),
-                              
-
-
+                                // child: Image.network(
+                                //   '${data?[selected].items?[selectedSubCat].items?[index].picture}',
+                                //   height: 170,
+                                //   width: double.infinity,
+                                //   fit: BoxFit.cover,
+                                // ),
+                              ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      '${data?[selected].items?[selectedSubCat].items?[index].name}',
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .subtitle1!
-                                          .merge(
-                                            const TextStyle(
-                                              fontSize: 20,
-                                              fontFamily: 'Inter',
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                    ),
+                                    nameLanguage(selected, selectedSubCat, index),
                                     const SizedBox(
                                       height: 8.0,
                                     ),
@@ -605,8 +566,16 @@ class _GridViewPageState extends State<homepage> {
 
                                     if (value == true) {
                                       (chooseAddon.add(addonofs(
-                                          price: postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].price!,
-                                          subNameAddOn:"${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
+                                          price: postModel
+                                              .post!
+                                              .groupOptionList![data?[selected]
+                                                  .items?[selectedSubCat]
+                                                  .items?[index]
+                                                  .itemGroupOptions]![index3]
+                                              .items![index2]
+                                              .price!,
+                                          subNameAddOn:
+                                              "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].choice}",
                                           ID:
                                               "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].id!}",
                                           nameaddon:
@@ -667,94 +636,122 @@ class _GridViewPageState extends State<homepage> {
     if (Language == "EN") {
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
-      return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
+      return Text(
+        "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
         style: const TextStyle(
           fontSize: 28,
           fontWeight: FontWeight.w700,
         ),
       );
-    }
-    else if(Language == "TH"){
+    } else if (Language == "TH") {
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
-      if(postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionTh != null )
-      {
-        if(postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionTh != "null")
-        {
-          return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionTh}",
-        style: const TextStyle(
-          fontSize: 28,
-          fontWeight: FontWeight.w700,
-        ),
-      );
+      if (postModel
+              .post!
+              .groupOptionList![data?[selected]
+                  .items?[selectedSubCat]
+                  .items?[index]
+                  .itemGroupOptions]![index2]
+              .questionTh !=
+          null) {
+        if (postModel
+                .post!
+                .groupOptionList![data?[selected]
+                    .items?[selectedSubCat]
+                    .items?[index]
+                    .itemGroupOptions]![index2]
+                .questionTh !=
+            "null") {
+          return Text(
+            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionTh}",
+            style: const TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.w700,
+            ),
+          );
         }
-      }
-      else
-      {
-        return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
-        style: const TextStyle(
-          fontSize: 28,
-          fontWeight: FontWeight.w700,
-        ),
+      } else {
+        return Text(
+          "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
+          style: const TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.w700,
+          ),
         );
-
       }
-    }
-    else if(Language == "JP"){
+    } else if (Language == "JP") {
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
-      if(postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionJa != null )
-      {
-        if(postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionJa != "null")
-        {
-          return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionJa}",
-        style: const TextStyle(
-          fontSize: 28,
-          fontWeight: FontWeight.w700,
-        ),
-      );
+      if (postModel
+              .post!
+              .groupOptionList![data?[selected]
+                  .items?[selectedSubCat]
+                  .items?[index]
+                  .itemGroupOptions]![index2]
+              .questionJa !=
+          null) {
+        if (postModel
+                .post!
+                .groupOptionList![data?[selected]
+                    .items?[selectedSubCat]
+                    .items?[index]
+                    .itemGroupOptions]![index2]
+                .questionJa !=
+            "null") {
+          return Text(
+            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionJa}",
+            style: const TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.w700,
+            ),
+          );
         }
-      }
-      else
-      {
-        return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
-        style: const TextStyle(
-          fontSize: 28,
-          fontWeight: FontWeight.w700,
-        ),
+      } else {
+        return Text(
+          "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
+          style: const TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.w700,
+          ),
         );
-
       }
-    }
-    else if(Language == "ZH"){
+    } else if (Language == "ZH") {
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
-      if(postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionCn != null )
-      {
-        if(postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionCn != "null")
-        {
-          return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionCn}",
-        style: const TextStyle(
-          fontSize: 28,
-          fontWeight: FontWeight.w700,
-        ),
-      );
+      if (postModel
+              .post!
+              .groupOptionList![data?[selected]
+                  .items?[selectedSubCat]
+                  .items?[index]
+                  .itemGroupOptions]![index2]
+              .questionCn !=
+          null) {
+        if (postModel
+                .post!
+                .groupOptionList![data?[selected]
+                    .items?[selectedSubCat]
+                    .items?[index]
+                    .itemGroupOptions]![index2]
+                .questionCn !=
+            "null") {
+          return Text(
+            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].questionCn}",
+            style: const TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.w700,
+            ),
+          );
         }
-      }
-      else
-      {
-        return Text("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
-        style: const TextStyle(
-          fontSize: 28,
-          fontWeight: FontWeight.w700,
-        ),
+      } else {
+        return Text(
+          "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question}",
+          style: const TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.w700,
+          ),
         );
-
       }
     }
-   
-
-
   }
 
   choiceLanguage(int selected, int selectedSubCat, int index, int index2,
@@ -779,29 +776,27 @@ class _GridViewPageState extends State<homepage> {
       var data = postModel.post?.data;
       if ("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceTh}" !=
           null) {
-        if("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceTh}" == "null")
-        {
+        if ("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceTh}" ==
+            "null") {
           return Container(
-          child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}",
-            style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
+            child: Text(
+              "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}",
+              style: const TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-        );
-        }
-        else{
+          );
+        } else {
           return Container(
-          child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceTh}",
-            style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
+            child: Text(
+              "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceTh}",
+              style: const TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-        );
-
+          );
         }
       } else {
         return Container(
@@ -821,29 +816,27 @@ class _GridViewPageState extends State<homepage> {
       var data = postModel.post?.data;
       if ("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}" !=
           null) {
-            if("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceCn}" == "null")
-        {
+        if ("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceCn}" ==
+            "null") {
           return Container(
-          child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}",
-            style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
+            child: Text(
+              "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}",
+              style: const TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-        );
-        }
-        else{
+          );
+        } else {
           return Container(
-          child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceJa}",
-            style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
+            child: Text(
+              "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceJa}",
+              style: const TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-        );
-
+          );
         }
       } else {
         return Container(
@@ -860,31 +853,29 @@ class _GridViewPageState extends State<homepage> {
     if (Language == "ZH") {
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
-      if ("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceCn}" !=null) 
-      {
-        if("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceCn}" == "null")
-        {
+      if ("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceCn}" !=
+          null) {
+        if ("${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceCn}" ==
+            "null") {
           return Container(
-          child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}",
-            style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
+            child: Text(
+              "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}",
+              style: const TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-        );
-        }
-        else{
+          );
+        } else {
           return Container(
-          child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceCn}",
-            style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
+            child: Text(
+              "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceCn}",
+              style: const TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-        );
-
+          );
         }
       } else {
         return Container(
@@ -907,7 +898,7 @@ class _GridViewPageState extends State<homepage> {
 
   clecaaddon() {
     chooseAddon = [];
-    selectedOptions ={};
+    selectedOptions = {};
     //print("clecaaddon");
     //print(chooseAddon);
   }
@@ -915,5 +906,110 @@ class _GridViewPageState extends State<homepage> {
   bool cleccheckbox(bool value) {
     value = false;
     return value;
+  }
+
+  nameLanguage(int selected, int selectedSubCat, int index) {
+    var Language = context.watch<provider_Language>().Language;
+    if (Language == "EN") {
+      final postModel = Provider.of<provider_api_Manu>(context);
+      var data = postModel.post?.data;
+      return Text(
+        '${data?[selected].items?[selectedSubCat].items?[index].name}',
+        overflow: TextOverflow.ellipsis,
+        maxLines: 1,
+        style: Theme.of(context).textTheme.subtitle1!.merge(
+              const TextStyle(
+                fontSize: 20,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+      );
+    } else if (Language == "TH") {
+      final postModel = Provider.of<provider_api_Manu>(context);
+      var data = postModel.post?.data;
+      if (data?[selected].items?[selectedSubCat].items?[index].nameTh !=
+          null) {
+        if (data?[selected].items?[selectedSubCat].items?[index].nameTh !=
+            "null") {
+          return Text(
+                                      '${data?[selected].items?[selectedSubCat].items?[index].nameTh}',
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subtitle1!
+                                          .merge(
+                                            const TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: 'Inter',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                    );
+        }
+      } else {
+        return Text(
+        '${data?[selected].items?[selectedSubCat].items?[index].name}',
+        overflow: TextOverflow.ellipsis,
+        maxLines: 1,
+        style: Theme.of(context).textTheme.subtitle1!.merge(
+              const TextStyle(
+                fontSize: 20,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+      );
+      }
+    } else if (Language == "JP") {
+      final postModel = Provider.of<provider_api_Manu>(context);
+      var data = postModel.post?.data;
+      if (data?[selected].items?[selectedSubCat].items?[index].nameJa !=
+          null) {
+        if (data?[selected].items?[selectedSubCat].items?[index].nameJa !=
+            "null") {
+          return Text(
+            "${data?[selected].items?[selectedSubCat].items?[index].nameJa}",
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+            ),
+          );
+        }
+      } else {
+        return Text(
+          "${data?[selected].items?[selectedSubCat].items?[index].name}",
+          style: const TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.w700,
+          ),
+        );
+      }
+    } else if (Language == "ZH") {
+      final postModel = Provider.of<provider_api_Manu>(context);
+      var data = postModel.post?.data;
+      if (data?[selected].items?[selectedSubCat].items?[index].nameCn !=
+          null) {
+        if (data?[selected].items?[selectedSubCat].items?[index].nameCn !=
+            "null") {
+          return Text(
+            "${data?[selected].items?[selectedSubCat].items?[index].nameCn}",
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+            ),
+          );
+        }
+      } else {
+        return Text(
+          "${data?[selected].items?[selectedSubCat].items?[index].name}",
+          style: const TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.w700,
+          ),
+        );
+      }
+    }
   }
 }

@@ -9,12 +9,12 @@ import 'modelsApi_close_shift.dart';
 import 'modelsApi_manu.dart';
 import 'modelsApi_status_table.dart';
 
-Future<Welcome> fetchdata_manu() async {
+Future<Manu> fetchdata_manu() async {
   final response = await http.get(Uri.parse(
       'https://partner1.triggersplus.com/dining/get_menu/A53C88185CF64E6F85D00F2C75180AE1/'));
   final welcome;
   if (response.statusCode == 200 && response.body.isNotEmpty) {
-    return welcome = welcomeFromJson(response.body);
+    return welcome = manuFromJson(response.body);
   } else {
     throw Exception('LOOD');
   }

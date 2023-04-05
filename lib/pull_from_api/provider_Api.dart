@@ -9,7 +9,7 @@ import 'linkApi.dart';
 import 'modelsApi_status_table.dart';
 
 class provider_api_Manu extends ChangeNotifier {
-  Welcome? post;
+  Manu? post;
   bool lodeing = false;
 
   getdata() async {

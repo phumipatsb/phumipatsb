@@ -13,7 +13,7 @@ import '../../material_new_order/displayTable.dart';
 import '../../material_new_order/display_total.dart';
 import '../../material_new_order/neworder_page.dart';
 import '../../material_new_order/neworderwidget.dart';
-import '../../sumneworder.dart';
+import '../../material_new_order/sumneworder.dart';
 import '../confirm_order.dart';
 
 class newOrder_comfirm_order extends StatefulWidget {

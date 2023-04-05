@@ -1,13 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
 import 'package:test1/RAW/coloer/hex.dart';
 import 'package:test1/SideBar/language.dart';
 import 'package:test1/check_void_Finished%20Bill/check_page.dart';
 import 'package:test1/main_order/main_order.dart';
+import 'package:test1/models/provider_app.dart';
 import 'package:test1/pull_from_api/linkApi.dart';
 import 'package:test1/table/layout_table.dart';
-import '../sumneworder.dart';
+import '../material_new_order/sumneworder.dart';
 
 import '../table/table_Api.dart';
 import 'Login.dart';
@@ -26,7 +28,7 @@ class _leftside extends State<leftside> {
     Icons.support_agent,
   ];
 
-  int selected = 1;
+  int selected = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +39,9 @@ class _leftside extends State<leftside> {
             height: 20,
           ),
           Padding(
-            padding: const EdgeInsets.all(4),
+            padding: const EdgeInsets.all(8),
             child: Container(
-                width: 70,
+               
                 height: 40,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
@@ -47,18 +49,19 @@ class _leftside extends State<leftside> {
                 ),
                 child: Login()),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            width: 70,
-            height: 40,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              color: HexColor(whiteColor),
-            ),
-            child: Center(
-              child: languagepd(),
+          
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                color: HexColor(whiteColor),
+              ),
+              child: Center(
+                child: languagepd(),
+              ),
             ),
           ),
           SizedBox(
@@ -74,30 +77,10 @@ class _leftside extends State<leftside> {
                     onTap: () {
                       setState(() {
                         selected = index;
-                        if (index == 0) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => layout_table()));  
-                        }
-                        if (index == 1) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => sumneworder())); 
-                        }
-                        if (index == 2) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => main_order()));
-                        }
-                        if (index == 3) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>  check_page()));
-                        }
+                        print(selected);
+                        context
+                                .read<provider_table>()
+                                .barSelect(selected);
                       });
                     },
                     child: Padding(

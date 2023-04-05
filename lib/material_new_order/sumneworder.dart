@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sqflite/utils/utils.dart';
 
-import 'SideBar/leftside.dart';
-import 'RAW/coloer/hex.dart';
-
-import 'material_new_order/new_meun_list.dart';
+import '../SideBar/leftside.dart';
+import '../RAW/coloer/hex.dart';
+import 'package:sizer/sizer.dart';
+import 'new_meun_list.dart';
 import 'package:provider/provider.dart';
-import 'CategoryMenu/CategoryMenu.dart';
-import 'material_new_order/Sum_Layout_neworder.dart';
+import '../CategoryMenu/CategoryMenu.dart';
+import 'Sum_Layout_neworder.dart';
 
 class sumneworder extends StatefulWidget {
   @override
@@ -18,6 +18,8 @@ class sumneworder extends StatefulWidget {
 class _sumneworder extends State<sumneworder> {
   @override
   Widget build(BuildContext context) {
+    MediaQueryData media = MediaQuery.of(context);
+    print(media.size);
     return Scaffold(
         body: Center(
       child: Container(
@@ -31,26 +33,13 @@ class _sumneworder extends State<sumneworder> {
                 child: Row(
                   // ignore: sort_child_properties_last
                   children: [
-                    Flexible(
-                      flex: 1,
-                      fit: FlexFit.tight,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: HexColor(backgroundColor),
-                        ),
-                        child: leftside(),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
+                    
                     Flexible(
                         flex: 8,
                         fit: FlexFit.tight,
                         child: Center(
                           child: Padding(
-                              padding: EdgeInsets.all(10.0),
+                              padding: EdgeInsets.all(0),
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -60,8 +49,9 @@ class _sumneworder extends State<sumneworder> {
                                     flex: 3,
                                     fit: FlexFit.tight,
                                     child: Padding(
-                                      padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                                       child: Container(
+                                        
                                         child: testneworder(),
                                         //child: neworder(),
                                         decoration: BoxDecoration(

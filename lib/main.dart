@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test1/NewLayout/mainSceen.dart';
 import 'package:test1/check_void_Finished%20Bill/check_page.dart';
 import 'package:test1/table/layout_table.dart';
 import 'package:test1/table/table_Api.dart';
+
 import 'pull_from_api/provider_Api.dart';
 
 import 'SideBar/Login.dart';
 import 'cash_out_shop/payment_page.dart';
 import 'SideBar/leftside.dart';
 
-import 'sumneworder.dart';
+import 'material_new_order/sumneworder.dart';
 import 'models/provider_app.dart';
-
+import 'package:sizer/sizer.dart';
 import 'ไฟล์เก่า/testlayout.dart';
 import 'package:flutter/services.dart';
 
@@ -42,12 +44,16 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SelectMember()),
         ChangeNotifierProvider(create: (_) => newmember()),
       ],
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: Scaffold(
-            body: layout_table(),
-            //check_page(),
-          )),
+      child: Sizer(
+        builder: (context, orientation, deviceType) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: Scaffold(
+              body: //layout_table(),
+              sumlayout(),
+            ));
+        }
+      ),
     );
   }
 }

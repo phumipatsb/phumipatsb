@@ -139,6 +139,7 @@ class provider_table with ChangeNotifier {
   String zoneNameSelect = '';
   String subZoneNameSelect = '';
   String seNumberPeople = '';
+ int sebar = 0;
 
   void ZoneNameSelect(String select) {
     zoneNameSelect = select;
@@ -151,6 +152,11 @@ class provider_table with ChangeNotifier {
   }
   void NumberPeopleSelect(String select) {
     seNumberPeople= select;
+    notifyListeners();
+  }
+
+  void barSelect(int select) {
+    sebar= select;
     notifyListeners();
   }
 }
