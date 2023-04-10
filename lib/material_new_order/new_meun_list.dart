@@ -105,8 +105,14 @@ class _GridViewPageState extends State<homepage> {
                                       content: StatefulBuilder(
                                           builder: (context, setState) {
                                         return Container(
-                                          width: 500,
-                                          height: 600,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              0.9,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              1.58,
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
@@ -137,8 +143,14 @@ class _GridViewPageState extends State<homepage> {
                                                     const EdgeInsets.fromLTRB(
                                                         8, 0, 8, 0),
                                                 child: Container(
-                                                  height: 350,
-                                                  width: 500,
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height /
+                                                      3.4,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      0.9,
                                                   child: ListView.builder(
                                                     shrinkWrap: false,
                                                     itemCount: postModel
@@ -154,6 +166,11 @@ class _GridViewPageState extends State<homepage> {
                                                         (BuildContext context,
                                                             int index2) {
                                                       return Container(
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            3,
                                                         child: Column(
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment
@@ -180,6 +197,11 @@ class _GridViewPageState extends State<homepage> {
                                                               width: 10,
                                                             ),
                                                             Container(
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    3,
                                                                 child: postModel
                                                                             .post!
                                                                             .groupOptionList![data![selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2]
@@ -234,6 +256,9 @@ class _GridViewPageState extends State<homepage> {
                                                                               });
                                                                         })
                                                                     : Container(
+                                                                        height:
+                                                                            MediaQuery.of(context).size.height *
+                                                                                3,
                                                                         child: choiceoptions(
                                                                             selected,
                                                                             selectedSubCat,
@@ -248,6 +273,10 @@ class _GridViewPageState extends State<homepage> {
                                                 ),
                                               ),
                                               Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    10,
                                                 alignment: Alignment.bottomLeft,
                                                 padding: EdgeInsets.all(10),
                                                 child: Text('NOTE',
@@ -346,7 +375,7 @@ class _GridViewPageState extends State<homepage> {
                                                   },
                                                   child: Container(
                                                     padding: EdgeInsets.only(
-                                                        top: 18, bottom: 20),
+                                                        top: 21, bottom: 21),
                                                     decoration: BoxDecoration(
                                                       color: HexColor(confi),
                                                       borderRadius:
@@ -446,7 +475,6 @@ class _GridViewPageState extends State<homepage> {
 
                                 child: Image.network(
                                   '${data?[selected].items?[selectedSubCat].items?[index].picture}',
-                                  height: 170,
                                   errorBuilder: (BuildContext context,
                                       Object exception,
                                       StackTrace? stackTrace) {
@@ -487,7 +515,8 @@ class _GridViewPageState extends State<homepage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    nameLanguage(selected, selectedSubCat, index),
+                                    nameLanguage(
+                                        selected, selectedSubCat, index),
                                     const SizedBox(
                                       height: 8.0,
                                     ),
@@ -928,45 +957,40 @@ class _GridViewPageState extends State<homepage> {
     } else if (Language == "TH") {
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
-      if (data?[selected].items?[selectedSubCat].items?[index].nameTh !=
-          null) {
+      if (data?[selected].items?[selectedSubCat].items?[index].nameTh != null) {
         if (data?[selected].items?[selectedSubCat].items?[index].nameTh !=
             "null") {
           return Text(
-                                      '${data?[selected].items?[selectedSubCat].items?[index].nameTh}',
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .subtitle1!
-                                          .merge(
-                                            const TextStyle(
-                                              fontSize: 20,
-                                              fontFamily: 'Inter',
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                    );
+            '${data?[selected].items?[selectedSubCat].items?[index].nameTh}',
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            style: Theme.of(context).textTheme.subtitle1!.merge(
+                  const TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+          );
         }
       } else {
         return Text(
-        '${data?[selected].items?[selectedSubCat].items?[index].name}',
-        overflow: TextOverflow.ellipsis,
-        maxLines: 1,
-        style: Theme.of(context).textTheme.subtitle1!.merge(
-              const TextStyle(
-                fontSize: 20,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w400,
+          '${data?[selected].items?[selectedSubCat].items?[index].name}',
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+          style: Theme.of(context).textTheme.subtitle1!.merge(
+                const TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-            ),
-      );
+        );
       }
     } else if (Language == "JP") {
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
-      if (data?[selected].items?[selectedSubCat].items?[index].nameJa !=
-          null) {
+      if (data?[selected].items?[selectedSubCat].items?[index].nameJa != null) {
         if (data?[selected].items?[selectedSubCat].items?[index].nameJa !=
             "null") {
           return Text(
@@ -989,8 +1013,7 @@ class _GridViewPageState extends State<homepage> {
     } else if (Language == "ZH") {
       final postModel = Provider.of<provider_api_Manu>(context);
       var data = postModel.post?.data;
-      if (data?[selected].items?[selectedSubCat].items?[index].nameCn !=
-          null) {
+      if (data?[selected].items?[selectedSubCat].items?[index].nameCn != null) {
         if (data?[selected].items?[selectedSubCat].items?[index].nameCn !=
             "null") {
           return Text(

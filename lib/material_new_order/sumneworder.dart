@@ -18,87 +18,44 @@ class sumneworder extends StatefulWidget {
 class _sumneworder extends State<sumneworder> {
   @override
   Widget build(BuildContext context) {
-    MediaQueryData media = MediaQuery.of(context);
-    print(media.size);
-    return Scaffold(
-        body: Center(
-      child: Container(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(00, 0, 0, 0),
-          child: Column(
-            children: [
-              Flexible(
-                flex: 1,
-                fit: FlexFit.tight,
-                child: Row(
-                  // ignore: sort_child_properties_last
-                  children: [
-                    
-                    Flexible(
-                        flex: 8,
-                        fit: FlexFit.tight,
-                        child: Center(
-                          child: Padding(
-                              padding: EdgeInsets.all(0),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Flexible(
-                                    flex: 3,
-                                    fit: FlexFit.tight,
-                                    child: Padding(
-                                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                      child: Container(
-                                        
-                                        child: testneworder(),
-                                        //child: neworder(),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(16),
-                                          color: HexColor(backgroundColor),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Flexible(
-                                    flex: 2,
-                                    fit: FlexFit.tight,
-                                    child: Padding(
-                                      padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          color: HexColor(backgroundColor),
-                                        ),
-                                        child: CategoryMenu(),
-                                      ),
-                                    ),
-                                  ),
-                                  Flexible(
-                                    flex: 7,
-                                    fit: FlexFit.tight,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: HexColor(backgroundColor),
-                                      ),
-                                      child: homepage(), //link to neworder()
-                                    ),
-                                  )
-                                ],
-                              )),
-                        )),
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.center,
-                ),
-              ),
-            ],
-          ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+      child: Scaffold(
+          body: Container(
+        child: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.25,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: HexColor(backgroundColor)),
+              child: testneworder(),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.0225,
+              color: Colors.white,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.17,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: HexColor(backgroundColor)),
+              child: CategoryMenu(),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.0225,
+              color: Colors.white,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.53,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: HexColor(backgroundColor)),
+              child: homepage(),
+            ),
+          ],
         ),
-      ),
-    ));
+      )),
+    );
   }
 }

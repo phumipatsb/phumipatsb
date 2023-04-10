@@ -18,21 +18,15 @@ class _display_totalState extends State<display_total> {
     double TotoAddOn = 0.0;
     double toto = 0.0;
     double totoaddon = 0.0;
-     int a ;
-      var toto3 = 0.0;
-    
+    int a;
+    var toto3 = 0.0;
 
     for (var i = 0; i < tasks.length; i++) {
       toto += tasks[i].price! * tasks[i].amount;
-      a=i;
-      for(var b = 0; b < tasks[i].addonSelect.length; b++){
-         TotoAddOn += tasks[i].addonSelect[b].price;
-        
-
+      a = i;
+      for (var b = 0; b < tasks[i].addonSelect.length; b++) {
+        TotoAddOn += tasks[i].addonSelect[b].price;
       }
-      
-      
-
     }
 
     double TotalPriceBeforeTotal = toto + TotoAddOn;
@@ -49,7 +43,6 @@ class _display_totalState extends State<display_total> {
     sendtoto(Grand_Total);
 
     return Container(
-      
       child: Column(
         children: <Widget>[
           Container(
@@ -59,7 +52,7 @@ class _display_totalState extends State<display_total> {
                 Text(
                   'Suntotal',
                   style: TextStyle(
-                      fontSize: 14,
+                      fontSize: MediaQuery.of(context).size.height / 80,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
                       color: Colors.black),
@@ -67,7 +60,7 @@ class _display_totalState extends State<display_total> {
                 Text(
                   '$TotalPriceBeforeTotal' + '.-',
                   style: TextStyle(
-                      fontSize: 14,
+                      fontSize: MediaQuery.of(context).size.height / 80,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
                       color: Colors.black),
@@ -83,7 +76,7 @@ class _display_totalState extends State<display_total> {
                 Text(
                   'Service Charge',
                   style: TextStyle(
-                      fontSize: 14,
+                      fontSize: MediaQuery.of(context).size.height / 80,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
                       color: Colors.black),
@@ -91,7 +84,7 @@ class _display_totalState extends State<display_total> {
                 Text(
                   '$totoserviceCharge' + '.-',
                   style: TextStyle(
-                      fontSize: 14,
+                      fontSize: MediaQuery.of(context).size.height / 80,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
                       color: Colors.black),
@@ -107,7 +100,7 @@ class _display_totalState extends State<display_total> {
                 Text(
                   'VAT',
                   style: TextStyle(
-                      fontSize: 14,
+                      fontSize: MediaQuery.of(context).size.height / 80,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
                       color: Colors.black),
@@ -115,7 +108,7 @@ class _display_totalState extends State<display_total> {
                 Text(
                   '${totvat.toStringAsFixed(1)}' + '.-',
                   style: TextStyle(
-                      fontSize: 14,
+                      fontSize: MediaQuery.of(context).size.height / 80,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
                       color: Colors.black),
@@ -131,8 +124,8 @@ class _display_totalState extends State<display_total> {
                 Text(
                   'Grand Total',
                   style: Theme.of(context).textTheme.subtitle1!.merge(
-                        const TextStyle(
-                          fontSize: 20,
+                        TextStyle(
+                          fontSize: MediaQuery.of(context).size.height / 60,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -140,8 +133,8 @@ class _display_totalState extends State<display_total> {
                 Text(
                   '$Grand_Total' + '.-',
                   style: Theme.of(context).textTheme.subtitle1!.merge(
-                        const TextStyle(
-                          fontSize: 20,
+                        TextStyle(
+                          fontSize: MediaQuery.of(context).size.height / 60,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -158,7 +151,6 @@ class _display_totalState extends State<display_total> {
     if (toto != 0) {
       setState(() {
         context.read<provider_payment>().save_Total(toto);
-        
       });
     }
   }

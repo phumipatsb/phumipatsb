@@ -16,6 +16,7 @@ import 'package:test1/table/table_Api.dart';
 import '../material_new_order/layout_neworder.dart';
 import '../models/provider_app.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+
 class sumlayout extends StatefulWidget {
   const sumlayout({super.key});
 
@@ -31,41 +32,46 @@ class _sumlayoutState extends State<sumlayout> {
     var width = size.width;
     int seindex = context.watch<provider_table>().sebar;
     return Container(
-
       child: Row(
         children: [
-         
           Container(
-            
             width: MediaQuery.of(context).size.width * 0.17,
             decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(0),
-                          color: HexColor(backgroundColor),
-                        ),
-           child: leftside(),
+              borderRadius: BorderRadius.circular(0),
+              color: HexColor(backgroundColor),
+            ),
+            child: leftside(),
           ),
           Container(
-            
-            width: MediaQuery.of(context).size.width * 0.0225,
+            width: MediaQuery.of(context).size.width * 0.0005,
             color: Colors.white,
           ),
-         
-         
           Container(
-             width: MediaQuery.of(context).size.width * 0.8075,
-            child: seindex == 0? 
-            Container(child: table_api(),)
-            : seindex ==1?Container(child: layout_neworder(),)
-            : seindex==2?Container(child: Text("3"),)
-            : seindex==3?Container(child: Text("4"),)
-            : seindex ==4?Container(child: Text("5"),)
-            :Container(),
+            width: MediaQuery.of(context).size.width * 0.8075,
+            child: seindex == 0
+                ? Container(
+                    child: table_api(),
+                  )
+                : seindex == 1
+                    ? Container(
+                        child: sumneworder(),
+                      )
+                    : seindex == 2
+                        ? Container(
+                            child: Text("3"),
+                          )
+                        : seindex == 3
+                            ? Container(
+                                child: Text("4"),
+                              )
+                            : seindex == 4
+                                ? Container(
+                                    child: Text("5"),
+                                  )
+                                : Container(),
           )
-         
-          
         ],
       ),
     );
   }
 }
-

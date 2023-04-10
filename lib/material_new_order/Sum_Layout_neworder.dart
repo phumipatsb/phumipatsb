@@ -22,178 +22,155 @@ class _testneworder extends State<testneworder> {
   @override
   Widget build(BuildContext context) {
     bool login_status = context.watch<provider_login>().status_login;
-    return Center(
-      
-      child: Container(
-        
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-          child: Column(children: [
-            Flexible(
-              flex: 1,
-              fit: FlexFit.tight,
-              child: Column(children: [
-                Flexible(
-                  flex: 1,
-                  fit: FlexFit.tight,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: HexColor(backgroundColor),
-                    ),
-                    //child: leftside(),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 10, 20, 0),
-                      child: Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              child: NewOrderWidget(),
-                            ),
-                            Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    child: displayTable(),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    child: date_month_year(),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
+    return Container(
+      child: Column(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.05,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(5, 2, 5, 0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    child: NewOrderWidget(),
+                  ),
+                  Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          child: displayTable(),
                         ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Container(
+                          child: date_month_year(),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.0115,
+            child: Container(
+              child: const Divider(
+                height: 10,
+                thickness: 2,
+                indent: 0,
+                endIndent: 0,
+                color: Color.fromARGB(255, 255, 110, 110),
+              ),
+            ),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.188,
+            child: Row(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Container(
+                        child: Clear_All(),
                       ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        height: MediaQuery.of(context).size.height * 0.17,
+                        child: layoutWidget(),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.0115,
+                  child: Container(
+                    child: const VerticalDivider(
+                      width: 10,
+                      thickness: 2,
+                      indent: 0,
+                      endIndent: 0,
+                      color: Color.fromARGB(255, 255, 110, 110),
                     ),
                   ),
                 ),
                 Container(
-                  child: const Divider(
-                    height: 10,
-                    thickness: 2,
-                    indent: 0,
-                    endIndent: 0,
-                    color: Color.fromARGB(255, 255, 110, 110),
-                  ),
-                ),
-                Flexible(
-                  flex: 4,
-                  fit: FlexFit.tight,
-                  child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Container(
-                                child: Clear_All(),
-                              ),
-                              Container(
-                                width: 308.0,
-                                height: 186.0,
-                                child: layoutWidget(),
-                              )
-                            ],
-                          ),
+                  width: MediaQuery.of(context).size.width * 0.317,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 4, 5, 15),
+                        child: display_total(),
+                      ),
+                      Container(
+                        child: const Divider(
+                          height: 10,
+                          thickness: 2,
+                          indent: 0,
+                          endIndent: 0,
+                          color: Color.fromARGB(255, 255, 110, 110),
                         ),
-                        Container(
-                          child: const VerticalDivider(
-                            width: 10,
-                            thickness: 2,
-                            indent: 0,
-                            endIndent: 0,
-                            color: Color.fromARGB(255, 255, 110, 110),
-                          ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(0, 30, 5, 15),
-                                child: display_total(),
-                              ),
-                              Container(
-                                child: const Divider(
-                                  height: 10,
-                                  thickness: 2,
-                                  indent: 0,
-                                  endIndent: 0,
-                                  color: Color.fromARGB(255, 255, 110, 110),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                child: Container(
-                                  width: 280,
-                                  height: 50.0,
-                                  child: ElevatedButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          if (login_status == false) {
-                                            showDialog(
-                                                context: context,
-                                                builder:
-                                                    (BuildContext context) {
-                                                  return AlertDialog(
-                                                      content: Container(
-                                                    height: 600,
-                                                    width: 500,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                    ),
-                                                    child: login_pin(),
-                                                  ));
-                                                });
-                                          }
-                                          else
-                                          {
-                                            print("POST DATA API");
-                                          }
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          height: MediaQuery.of(context).size.height * 0.038,
+                          child: ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  if (login_status == false) {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                              content: Container(
+                                            height: 600,
+                                            width: 500,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: login_pin(),
+                                          ));
                                         });
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: (context) =>
-                                        //             confrim_order()));
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Color.fromARGB(
-                                            255, 255, 111, 111), // background
-                                      ),
-                                      child: Text("Confirm",
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontFamily: 'Inter',
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white))),
-                                ),
-                              )
-                            ],
-                          ),
+                                  } else {
+                                    print("POST DATA API");
+                                  }
+                                });
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) =>
+                                //             confrim_order()));
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color.fromARGB(
+                                    255, 255, 111, 111), // background
+                              ),
+                              child: Text("Confirm",
+                                  style: TextStyle(
+                                      fontSize:
+                                          MediaQuery.of(context).size.height /
+                                              50,
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white))),
                         ),
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
-              ]),
-            )
-          ]),
-        ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
