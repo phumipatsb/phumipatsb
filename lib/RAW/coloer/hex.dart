@@ -29,5 +29,5 @@ const file1 = '#FFEAEA';
 const file2 = '#FFF7F7';
 const radiomali = '#FFEAEA';
 const BorderSide1 = '#D9D9D9';
-
+const to = '#EDEDED';
 

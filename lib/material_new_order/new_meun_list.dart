@@ -56,11 +56,13 @@ class _GridViewPageState extends State<homepage> {
               })),
             ),
           )
-        : Scrollbar(
-            child: Padding(
+        : 
+           Padding(
+            
               padding: const EdgeInsets.all(10),
               child: GridView.builder(
                 controller: _controller,
+                
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
@@ -74,483 +76,454 @@ class _GridViewPageState extends State<homepage> {
                   var tasks = context.read<provider_app>().tasks;
 
                   return Container(
+                    
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(
                         16.0,
                       ),
-                      color: Colors.white,
+                      color: HexColor(to),
                     ),
-                    child: Wrap(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            var mapObj = postModel.post!.groupOptionList;
-                            //print(mapObj);
+                    child: GestureDetector(
+                      onTap: () {
+                        var mapObj = postModel.post!.groupOptionList;
+                        //print(mapObj);
 
-                            var Options =
-                                '${data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions}';
-                            print("itemGroupOptions" +
-                                "${data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions}");
+                        var Options =
+                            '${data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions}';
+                        print("itemGroupOptions" +
+                            "${data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions}");
 
-                            if (Options.isNotEmpty) {
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(32.0))),
-                                      contentPadding:
-                                          EdgeInsets.only(top: 10.0),
-                                      content: StatefulBuilder(
-                                          builder: (context, setState) {
-                                        return Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              0.9,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              1.58,
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.stretch,
-                                            children: <Widget>[
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        8, 0, 8, 0),
-                                                child: Container(
-                                                  alignment: Alignment.topRight,
-                                                  child: IconButton(
-                                                    icon: Icon(
-                                                      Icons.close,
-                                                      color: Colors.black54,
-                                                      size: 45,
-                                                    ),
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                      clecaaddon();
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        8, 0, 8, 0),
-                                                child: Container(
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height /
-                                                      3.4,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                      0.9,
-                                                  child: ListView.builder(
-                                                    shrinkWrap: false,
-                                                    itemCount: postModel
-                                                        .post!
-                                                        .groupOptionList![data?[
-                                                                selected]
-                                                            .items?[
-                                                                selectedSubCat]
-                                                            .items?[index]
-                                                            .itemGroupOptions]!
-                                                        .length,
-                                                    itemBuilder:
-                                                        (BuildContext context,
-                                                            int index2) {
-                                                      return Container(
-                                                        height: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .height *
-                                                            3,
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: <Widget>[
-                                                            questionLanguage(
-                                                                selected,
-                                                                selectedSubCat,
-                                                                index,
-                                                                index2),
-                                                            const Divider(
-                                                              height: 10,
-                                                              thickness: 2,
-                                                              indent: 0,
-                                                              endIndent: 0,
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      255,
-                                                                      110,
-                                                                      110),
-                                                            ),
-                                                            const SizedBox(
-                                                              width: 10,
-                                                            ),
-                                                            Container(
-                                                                height: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .height *
-                                                                    3,
-                                                                child: postModel
-                                                                            .post!
-                                                                            .groupOptionList![data![selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2]
-                                                                            .mode ==
-                                                                        Mode.SIN
-                                                                    ? ListView.builder(
-                                                                        physics: NeverScrollableScrollPhysics(),
-                                                                        shrinkWrap: true,
-                                                                        itemCount: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length,
-                                                                        itemBuilder: (context, index_sub_cat_addon) {
-                                                                          AddOption.add(Option(
-                                                                              Choice: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice,
-                                                                              price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
-                                                                          //print('sss ${AddOption}');
-                                                                          int? defval = postModel
-                                                                              .post!
-                                                                              .groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2]
-                                                                              .defaultChoice;
-                                                                          print("def" +
-                                                                              "$defval");
-                                                                          _radioValue =
-                                                                              "${postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}";
-                                                                          return RadioListTile(
-                                                                              title: choiceLanguage(selected, selectedSubCat, index, index2, index_sub_cat_addon),
-                                                                              secondary: Text(
-                                                                                '${postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price}',
-                                                                                style: const TextStyle(
-                                                                                  fontSize: 25,
-                                                                                  fontWeight: FontWeight.w700,
-                                                                                ),
-                                                                              ),
-                                                                              value: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id,
-                                                                              groupValue: selectedOptions[postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length],
-                                                                              onChanged: (val) {
-                                                                                setState(() {
-                                                                                  _radioValue = val!;
-
-                                                                                  selectedOptions[postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length] = val!;
-
-                                                                                  var test = chooseAddon.indexWhere((element) => element.nameaddon == postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question);
-
-                                                                                  if (test != -1) {
-                                                                                    chooseAddon[test].subNameAddOn = postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!;
-                                                                                    chooseAddon[test].price = postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!;
-                                                                                  } else {
-                                                                                    chooseAddon.add(addonofs(nameaddon: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question!, subNameAddOn: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!, price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!, ID: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id!));
-                                                                                    chooseAddon.toSet().toList();
-                                                                                    print(chooseAddon);
-                                                                                  }
-                                                                                  // print('A :${chooseAddon.length}');
-                                                                                });
-                                                                              });
-                                                                        })
-                                                                    : Container(
-                                                                        height:
-                                                                            MediaQuery.of(context).size.height *
-                                                                                3,
-                                                                        child: choiceoptions(
-                                                                            selected,
-                                                                            selectedSubCat,
-                                                                            index,
-                                                                            index2),
-                                                                      ))
-                                                          ],
-                                                        ),
-                                                      );
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height /
-                                                    10,
-                                                alignment: Alignment.bottomLeft,
-                                                padding: EdgeInsets.all(10),
-                                                child: Text('NOTE',
-                                                    style: TextStyle(
-                                                        fontSize: 20,
-                                                        fontFamily: 'Inter',
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: Colors.black)),
-                                              ),
-                                              Container(
-                                                alignment: Alignment.center,
-                                                padding: EdgeInsets.fromLTRB(
-                                                    10, 0, 10, 0),
-                                                child: Column(
-                                                  children: [
-                                                    TextField(
-                                                        controller: textarea,
-                                                        keyboardType:
-                                                            TextInputType
-                                                                .multiline,
-                                                        maxLines: 4,
-                                                        autocorrect: true,
-                                                        decoration:
-                                                            InputDecoration(
-                                                          hintStyle: TextStyle(
-                                                              fontSize: 16,
-                                                              color:
-                                                                  Colors.grey),
-                                                          filled: true,
-                                                          fillColor:
-                                                              Colors.white70,
-                                                          contentPadding:
-                                                              EdgeInsets
-                                                                  .fromLTRB(10,
-                                                                      0, 0, 0),
-                                                          enabledBorder:
-                                                              OutlineInputBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .all(Radius
-                                                                        .circular(
-                                                                            8.0)),
-                                                            borderSide:
-                                                                BorderSide(
-                                                                    color: Colors
-                                                                        .red,
-                                                                    width: 2),
-                                                          ),
-                                                          focusedBorder:
-                                                              OutlineInputBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .all(Radius
-                                                                        .circular(
-                                                                            8.0)),
-                                                            borderSide:
-                                                                BorderSide(
-                                                                    color: Colors
-                                                                        .green),
-                                                          ),
-                                                        )),
-                                                    const SizedBox(
-                                                      height: 10,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              InkWell(
-                                                child: GestureDetector(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      context
-                                                          .read<provider_app>()
-                                                          .addtasks1(
-                                                            tasks1(
-                                                              name:
-                                                                  "${data?[selected].items?[selectedSubCat].items?[index].name}",
-                                                              price: data?[selected]
-                                                                  .items?[
-                                                                      selectedSubCat]
-                                                                  .items?[index]
-                                                                  .price,
-                                                              images:
-                                                                  '${data?[selected].items?[selectedSubCat].items?[index].picture}',
-                                                              idItem:
-                                                                  '${data?[selected].items?[selectedSubCat].items?[index].itemId}',
-                                                              addonSelect:
-                                                                  chooseAddon,
-                                                            ),
-                                                          );
-
-                                                      clecaaddon();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    padding: EdgeInsets.only(
-                                                        top: 21, bottom: 21),
-                                                    decoration: BoxDecoration(
-                                                      color: HexColor(confi),
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                              bottomLeft: Radius
-                                                                  .circular(
-                                                                      32.0),
-                                                              bottomRight: Radius
-                                                                  .circular(
-                                                                      32.0)),
-                                                    ),
-                                                    child: Text(
-                                                      "Confirm",
-                                                      style: TextStyle(
-                                                          fontSize: 30,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.white),
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      }),
-                                    );
-                                  });
-                            } else {
-                              setState(
-                                () {
-                                  //print('boss');
-
-                                  context.read<provider_app>().addtasks1(
-                                        tasks1(
-                                          name:
-                                              "${data?[selected].items?[selectedSubCat].items?[index].name}",
-                                          price: data?[selected]
-                                              .items?[selectedSubCat]
-                                              .items?[index]
-                                              .price,
-                                          images:
-                                              '${data?[selected].items?[selectedSubCat].items?[index].picture}',
-                                          idItem:
-                                              '${data?[selected].items?[selectedSubCat].items?[index].itemId}',
-                                          addonSelect: [],
-                                        ),
-                                      );
-                                  selectedOptions = {};
-                                  print(selectedOptions);
-                                },
-                              );
-                            }
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(16.0),
-                                  topRight: Radius.circular(16.0),
-                                  bottomLeft: Radius.circular(0),
-                                  bottomRight: Radius.circular(0),
-                                ),
-                                // child: Image.network(
-                                //     "${data?[selected].items?[selectedSubCat].items?[index].picture}",
-                                //     height: 170, frameBuilder: (context,
-                                //         child,
-                                //         frame,
-                                //         wasSynchronouslyLoaded) {
-                                //   return child;
-                                // }, loadingBuilder:
-                                //         (context, child, loadingProgress) {
-                                //   if (loadingProgress == null) {
-                                //     return child;
-                                //   } else {
-                                //     return Container(
-                                //       height: 170,
-                                //       child: Center(
-                                //         child: Stack(
-                                //           children: [
-
-                                //               Center(
-                                //                 child: Container(
-                                //                   child: CircularProgressIndicator(),
-                                //                 ),
-                                //               )
-                                //           ],
-
-                                //         ),
-                                //       ),
-                                //     );
-                                //   }
-                                // })
-
-                                child: Image.network(
-                                  '${data?[selected].items?[selectedSubCat].items?[index].picture}',
-                                  errorBuilder: (BuildContext context,
-                                      Object exception,
-                                      StackTrace? stackTrace) {
+                        if (Options.isNotEmpty) {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(32.0))),
+                                  contentPadding:
+                                      EdgeInsets.only(top: 10.0),
+                                  content: StatefulBuilder(
+                                      builder: (context, setState) {
                                     return Container(
-                                        height: 170,
-                                        child: Center(
-                                          child: Stack(
-                                            children: [
-                                              Text('Failed to load image'),
-                                              CircularProgressIndicator(),
-                                            ],
-                                          ),
-                                        ));
-                                  },
-                                ),
-                                //   child: FadeInImage(
-                                //   image: NetworkImage(${data?[selected].items?[selectedSubCat].items?[index].picture}),
-                                //   placeholder: AssetImage(
-                                //       "assets/images/placeholder.jpg"),
-                                //   imageErrorBuilder:
-                                //       (context, error, stackTrace) {
-                                //     return Image.asset(
-                                //         'assets/images/error.jpg',
-                                //         fit: BoxFit.fitWidth);
-                                //   },
-                                //   fit: BoxFit.fitWidth,
-                                // ),
-
-                                // child: Image.network(
-                                //   '${data?[selected].items?[selectedSubCat].items?[index].picture}',
-                                //   height: 170,
-                                //   width: double.infinity,
-                                //   fit: BoxFit.cover,
-                                // ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    nameLanguage(
-                                        selected, selectedSubCat, index),
-                                    const SizedBox(
-                                      height: 8.0,
-                                    ),
-                                    Text(
-                                      '${data?[selected].items?[selectedSubCat].items?[index].price}.-',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .subtitle2!
-                                          .merge(
-                                            TextStyle(
-                                              fontSize: 20,
-                                              fontFamily: 'Inter',
-                                              fontWeight: FontWeight.w600,
-                                              color: Color.fromARGB(
-                                                  255, 255, 111, 111),
+                                      width: MediaQuery.of(context).size.width / 0.9,
+                                      height: MediaQuery.of(context).size.height /1.58,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
+                                        children: <Widget>[
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.fromLTRB(
+                                                    8, 0, 8, 0),
+                                            child: Container(
+                                              alignment: Alignment.topRight,
+                                              child: IconButton(
+                                                icon: Icon(
+                                                  Icons.close,
+                                                  color: Colors.black54,
+                                                  size: 45,
+                                                ),
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  clecaaddon();
+                                                },
+                                              ),
                                             ),
                                           ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.fromLTRB(
+                                                    8, 0, 8, 0),
+                                            child: Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  3.4,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  0.9,
+                                              child: ListView.builder(
+                                                shrinkWrap: false,
+                                                itemCount: postModel
+                                                    .post!
+                                                    .groupOptionList![data?[
+                                                            selected]
+                                                        .items?[
+                                                            selectedSubCat]
+                                                        .items?[index]
+                                                        .itemGroupOptions]!
+                                                    .length,
+                                                itemBuilder:
+                                                    (BuildContext context,
+                                                        int index2) {
+                                                  return Container(
+                                                    
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        questionLanguage(
+                                                            selected,
+                                                            selectedSubCat,
+                                                            index,
+                                                            index2),
+                                                        const Divider(
+                                                          height: 10,
+                                                          thickness: 2,
+                                                          indent: 0,
+                                                          endIndent: 0,
+                                                          color: Color
+                                                              .fromARGB(
+                                                                  255,
+                                                                  255,
+                                                                  110,
+                                                                  110),
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 10,
+                                                        ),
+                                                        Container(
+                                                            
+                                                            child: postModel
+                                                                        .post!
+                                                                        .groupOptionList![data![selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2]
+                                                                        .mode ==
+                                                                    Mode.SIN
+                                                                ? ListView.builder(
+                                                                    physics: NeverScrollableScrollPhysics(),
+                                                                    shrinkWrap: true,
+                                                                    itemCount: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length,
+                                                                    itemBuilder: (context, index_sub_cat_addon) {
+                                                                      AddOption.add(Option(
+                                                                          Choice: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice,
+                                                                          price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price));
+                                                                      //print('sss ${AddOption}');
+                                                                      int? defval = postModel
+                                                                          .post!
+                                                                          .groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2]
+                                                                          .defaultChoice;
+                                                                      print("def" +
+                                                                          "$defval");
+                                                                      _radioValue =
+                                                                          "${postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}";
+                                                                      return RadioListTile(
+                                                                          title: choiceLanguage(selected, selectedSubCat, index, index2, index_sub_cat_addon),
+                                                                          secondary: Text(
+                                                                            '${postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price}',
+                                                                            style: const TextStyle(
+                                                                              fontSize: 25,
+                                                                              fontWeight: FontWeight.w700,
+                                                                            ),
+                                                                          ),
+                                                                          value: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id,
+                                                                          groupValue: selectedOptions[postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length],
+                                                                          onChanged: (val) {
+                                                                            setState(() {
+                                                                              _radioValue = val!;
+
+                                                                              selectedOptions[postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items!.length] = val!;
+
+                                                                              var test = chooseAddon.indexWhere((element) => element.nameaddon == postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question);
+
+                                                                              if (test != -1) {
+                                                                                chooseAddon[test].subNameAddOn = postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!;
+                                                                                chooseAddon[test].price = postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!;
+                                                                              } else {
+                                                                                chooseAddon.add(addonofs(nameaddon: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].question!, subNameAddOn: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice!, price: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price!, ID: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id!));
+                                                                                chooseAddon.toSet().toList();
+                                                                                print(chooseAddon);
+                                                                              }
+                                                                              // print('A :${chooseAddon.length}');
+                                                                            });
+                                                                          });
+                                                                    })
+                                                                : Container(
+                                                                    
+                                                                    child: choiceoptions(
+                                                                        selected,
+                                                                        selectedSubCat,
+                                                                        index,
+                                                                        index2),
+                                                                  ))
+                                                      ],
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                10,
+                                            alignment: Alignment.bottomLeft,
+                                            padding: EdgeInsets.all(10),
+                                            child: Text('NOTE',
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontFamily: 'Inter',
+                                                    fontWeight:
+                                                        FontWeight.w500,
+                                                    color: Colors.black)),
+                                          ),
+                                          Container(
+                                            alignment: Alignment.center,
+                                            padding: EdgeInsets.fromLTRB(
+                                                10, 0, 10, 0),
+                                            child: Column(
+                                              children: [
+                                                TextField(
+                                                    controller: textarea,
+                                                    keyboardType:
+                                                        TextInputType
+                                                            .multiline,
+                                                    maxLines: 4,
+                                                    autocorrect: true,
+                                                    decoration:
+                                                        InputDecoration(
+                                                      hintStyle: TextStyle(
+                                                          fontSize: 16,
+                                                          color:
+                                                              Colors.grey),
+                                                      filled: true,
+                                                      fillColor:
+                                                          Colors.white70,
+                                                      contentPadding:
+                                                          EdgeInsets
+                                                              .fromLTRB(10,
+                                                                  0, 0, 0),
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .all(Radius
+                                                                    .circular(
+                                                                        8.0)),
+                                                        borderSide:
+                                                            BorderSide(
+                                                                color: Colors
+                                                                    .red,
+                                                                width: 2),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .all(Radius
+                                                                    .circular(
+                                                                        8.0)),
+                                                        borderSide:
+                                                            BorderSide(
+                                                                color: Colors
+                                                                    .green),
+                                                      ),
+                                                    )),
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          InkWell(
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  context
+                                                      .read<provider_app>()
+                                                      .addtasks1(
+                                                        tasks1(
+                                                          name:
+                                                              "${data?[selected].items?[selectedSubCat].items?[index].name}",
+                                                          price: data?[selected]
+                                                              .items?[
+                                                                  selectedSubCat]
+                                                              .items?[index]
+                                                              .price,
+                                                          images:
+                                                              '${data?[selected].items?[selectedSubCat].items?[index].picture}',
+                                                          idItem:
+                                                              '${data?[selected].items?[selectedSubCat].items?[index].itemId}',
+                                                          addonSelect:
+                                                              chooseAddon,
+                                                        ),
+                                                      );
+
+                                                  clecaaddon();
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Container(
+                                                padding: EdgeInsets.only(
+                                                    top: 21, bottom: 21),
+                                                decoration: BoxDecoration(
+                                                  color: HexColor(confi),
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                          bottomLeft: Radius
+                                                              .circular(
+                                                                  32.0),
+                                                          bottomRight: Radius
+                                                              .circular(
+                                                                  32.0)),
+                                                ),
+                                                child: Text(
+                                                  "Confirm",
+                                                  style: TextStyle(
+                                                      fontSize: 30,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: Colors.white),
+                                                  textAlign:
+                                                      TextAlign.center,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                );
+                              });
+                        } else {
+                          setState(
+                            () {
+                              //print('boss');
+
+                              context.read<provider_app>().addtasks1(
+                                    tasks1(
+                                      name:
+                                          "${data?[selected].items?[selectedSubCat].items?[index].name}",
+                                      price: data?[selected]
+                                          .items?[selectedSubCat]
+                                          .items?[index]
+                                          .price,
+                                      images:
+                                          '${data?[selected].items?[selectedSubCat].items?[index].picture}',
+                                      idItem:
+                                          '${data?[selected].items?[selectedSubCat].items?[index].itemId}',
+                                      addonSelect: [],
                                     ),
-                                    const SizedBox(
-                                      height: 2,
-                                    ),
-                                  ],
+                                  );
+                              selectedOptions = {};
+                              print(selectedOptions);
+                            },
+                          );
+                        }
+                      },
+                      child: Container(
+                        
+                        decoration: BoxDecoration(
+                      borderRadius: BorderRadius.vertical(top: Radius.circular(16),bottom: Radius.circular(0))
+                      
+                    ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Flexible(
+                      flex: 3,
+                      fit: FlexFit.tight,
+                      child: Container(
+                         
+                        
+                         child: Container(
+                           decoration: BoxDecoration(
+      color: const Color.fromARGB(255, 232, 237, 243),
+      image:  DecorationImage(
+        image: NetworkImage(
+            '${data?[selected].items?[selectedSubCat].items?[index].picture}',
+            
+            ),
+        fit: BoxFit.cover,
+      ),
+      
+      borderRadius: BorderRadius.vertical(bottom: Radius.circular(0),top: Radius.circular(16))),
+                           
+                           
+                          //  Image.network(
+                            
+                            
+                          //           '${data?[selected].items?[selectedSubCat].items?[index].picture}',
+                                    
+                                    
+                          //           errorBuilder: (BuildContext context,
+                          //               Object exception,
+                          //               StackTrace? stackTrace) {
+                          //             return Container(
+                                        
+                          //                 child: Center(
+                          //                   child: Stack(
+                          //                     children: [
+                          //                       Text('Failed to load image'),
+                          //                       CircularProgressIndicator(),
+                          //                     ],
+                          //                   ),
+                          //                 ));
+                          //           },
+                          //         ),
+                         ),
+                        
+                        
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(0),
+                          
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(5, 2, 0, 0),
+                          child: Container(
+                            width: double.infinity,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  child: nameLanguage( selected,  selectedSubCat,  index),
                                 ),
-                              )
-                            ],
+                                
+                                Container(
+                                  child: Text(
+                                    '${data?[selected].items?[selectedSubCat].items?[index].price}',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: Theme.of(context).textTheme.subtitle1!.merge(
+                                           TextStyle(
+                                            color: Colors.pink.shade300,
+                                            fontSize: 20,
+                                            fontFamily: 'Inter',
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ],
+                        
+                      ),
+                    ),
+                    
+                        ],
+                      ),  
+                                                  
+                      ),
                     ),
                   );
                 },
               ),
-            ),
-          );
+            );
+          
   }
 
   choiceoptions(int selected, int selectedSubCat, int index, int index3) {
@@ -996,7 +969,7 @@ class _GridViewPageState extends State<homepage> {
           return Text(
             "${data?[selected].items?[selectedSubCat].items?[index].nameJa}",
             style: const TextStyle(
-              fontSize: 15,
+              fontSize: 18,
               fontWeight: FontWeight.w700,
             ),
           );
@@ -1005,8 +978,8 @@ class _GridViewPageState extends State<homepage> {
         return Text(
           "${data?[selected].items?[selectedSubCat].items?[index].name}",
           style: const TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
           ),
         );
       }

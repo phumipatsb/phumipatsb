@@ -23,13 +23,14 @@ class table_api extends StatefulWidget {
 
 class _table_apiState extends State<table_api> {
   List<zoneList> tableListStatus = [];
-  late List data;
-  var test;
+ 
+ 
   @override
   void initState() {
     tableListStatus = [];
     super.initState();
-    fetchprovider();
+    // fetchprovider();
+    
   }
 
   Future fetchprovider() async {
@@ -70,6 +71,7 @@ class _table_apiState extends State<table_api> {
       }
     }
     print(tableListStatus.length);
+    print('contax${Model_list.post2!.length}');
   }
 
   @override
@@ -284,6 +286,7 @@ class _table_apiState extends State<table_api> {
                                                                                                                                     scrollDirection: Axis.horizontal,
                                                                                                                                     itemCount: 10,
                                                                                                                                     itemBuilder: (context, indexitem) {
+                                                                                                                                      indexitem++;
                                                                                                                                       return Padding(
                                                                                                                                         padding: const EdgeInsets.all(1.0),
                                                                                                                                         child: GestureDetector(

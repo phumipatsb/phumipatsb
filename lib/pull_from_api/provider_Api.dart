@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
 import 'package:test1/models/compronan.dart';
 import 'package:test1/pull_from_api/modelsApi_Table.dart';
 import 'modelsApi_Staff_list.dart';
@@ -7,7 +8,7 @@ import 'modelsApi_close_shift.dart';
 import 'modelsApi_manu.dart';
 import 'linkApi.dart';
 import 'modelsApi_status_table.dart';
-
+import 'package:test1/pull_from_api/modelsApi_status_table.dart';
 class provider_api_Manu extends ChangeNotifier {
   Manu? post;
   bool lodeing = false;
@@ -84,3 +85,5 @@ class close_shift_ProviderApi extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+
