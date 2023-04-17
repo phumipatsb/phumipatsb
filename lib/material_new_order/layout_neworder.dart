@@ -37,7 +37,7 @@ class _layout_neworderState extends State<layout_neworder> {
            
             Container(
               
-              width: MediaQuery.of(context).size.width * 0.17,
+              width: MediaQuery.of(context).size.width * 0.10,
               decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(0),
                             color: HexColor(backgroundColor),
@@ -46,13 +46,13 @@ class _layout_neworderState extends State<layout_neworder> {
             ),
             Container(
               
-              width: MediaQuery.of(context).size.width * 0.0225,
+              width: MediaQuery.of(context).size.width * 0.0115,
               color: Colors.white,
             ),
            
            
             Container(
-               width: MediaQuery.of(context).size.width * 0.8075,
+               width: MediaQuery.of(context).size.width * 0.885,
               child: seindex == 0? 
               Container(child: table_api(),)
               : seindex ==1?Container(child: sumneworder(),)

@@ -188,7 +188,6 @@ class _GridViewPageState extends State<homepage> {
                                                           width: 10,
                                                         ),
                                                         Container(
-                                                            
                                                             child: postModel
                                                                         .post!
                                                                         .groupOptionList![data![selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2]
@@ -418,10 +417,8 @@ class _GridViewPageState extends State<homepage> {
                         }
                       },
                       child: Container(
-                        
                         decoration: BoxDecoration(
-                      borderRadius: BorderRadius.vertical(top: Radius.circular(16),bottom: Radius.circular(0))
-                      
+                      borderRadius: BorderRadius.vertical(top: Radius.circular(16),bottom: Radius.circular(0)) 
                     ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -862,8 +859,10 @@ class _GridViewPageState extends State<homepage> {
           return Container(
             child: Text(
               "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}",
+              overflow: TextOverflow.ellipsis,
+                                                      maxLines: 1,
               style: const TextStyle(
-                fontSize: 28,
+                fontSize: 20,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -872,6 +871,8 @@ class _GridViewPageState extends State<homepage> {
           return Container(
             child: Text(
               "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choiceCn}",
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
               style: const TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.w700,
@@ -882,10 +883,12 @@ class _GridViewPageState extends State<homepage> {
       } else {
         return Container(
           child: Text(
-            "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}",
+          "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}",
+          overflow: TextOverflow.ellipsis,
+            maxLines: 1,
             style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
+            fontSize: 28,
+            fontWeight: FontWeight.w700,
             ),
           ),
         );
@@ -968,6 +971,8 @@ class _GridViewPageState extends State<homepage> {
             "null") {
           return Text(
             "${data?[selected].items?[selectedSubCat].items?[index].nameJa}",
+            overflow: TextOverflow.ellipsis,
+                                                      maxLines: 1,
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w700,
@@ -977,7 +982,9 @@ class _GridViewPageState extends State<homepage> {
       } else {
         return Text(
           "${data?[selected].items?[selectedSubCat].items?[index].name}",
-          style: const TextStyle(
+          overflow: TextOverflow.ellipsis,
+                                                      maxLines: 1,
+          style: const TextStyle(                                                                                                                                                           
             fontSize: 20,
             fontWeight: FontWeight.w500,
           ),
@@ -991,6 +998,8 @@ class _GridViewPageState extends State<homepage> {
             "null") {
           return Text(
             "${data?[selected].items?[selectedSubCat].items?[index].nameCn}",
+            overflow: TextOverflow.ellipsis,
+                                                      maxLines: 1,
             style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w700,
@@ -1000,9 +1009,11 @@ class _GridViewPageState extends State<homepage> {
       } else {
         return Text(
           "${data?[selected].items?[selectedSubCat].items?[index].name}",
+          overflow: TextOverflow.ellipsis,
+                                                      maxLines: 1,
           style: const TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
           ),
         );
       }

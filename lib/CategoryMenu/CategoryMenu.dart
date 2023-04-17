@@ -89,19 +89,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
                                               scale: 3.0),
                                         ),
                                       ),
-                                      Text(
-                                        '${data?[index].name}'.toUpperCase(),
-                                        style: TextStyle(
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height /
-                                                60,
-                                            fontWeight: FontWeight.w700,
-                                            fontFamily: 'Inter',
-                                            color: index == selected
-                                                ? Colors.red[300]
-                                                : Colors.black54),
-                                      )
+                                      categoryLanguage(  index)
                                     ],
                                   ),
                                 ]),
@@ -171,5 +159,262 @@ class _CategoryMenuState extends State<CategoryMenu> {
                   )),
             ],
           );
+  }
+  categoryLanguage( int index) {
+    var Language = context.watch<provider_Language>().Language;
+    if (Language == "EN") {
+      final postModel = Provider.of<provider_api_Manu>(context);
+    var data = postModel.post?.data;
+      return Text(
+                                        '${data?[index].name}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+    } else if (Language == "TH") {
+      final postModel = Provider.of<provider_api_Manu>(context);
+    var data = postModel.post?.data;
+      if (data?[index].nameTh !=
+          null) {
+        if (data?[index].nameTh !=
+            "null") {
+          return Text(
+                                        '${data?[index].nameTh}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+        }
+      } else {
+        return Text(
+                                        '${data?[index].name}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+      }
+    } else if (Language == "JP") {
+      final postModel = Provider.of<provider_api_Manu>(context);
+    var data = postModel.post?.data;
+      if (data?[index].nameJa !=
+          null) {
+        if (data?[index].nameJa !=
+            "null") {
+          return Text(
+                                        '${data?[index].nameJa}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+        }
+      } else {
+        return Text(
+                                        '${data?[index].name}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+      }
+    } else if (Language == "ZH") {
+      final postModel = Provider.of<provider_api_Manu>(context);
+      var data = postModel.post?.data;
+      if (data?[index].nameCn !=
+          null) {
+        if (data?[index].nameCn !=
+            "null") {
+          return Text(
+                                        '${data?[index].nameCn}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+        }
+      } else {
+        return Text(
+                                        '${data?[index].name}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+      }
+    }
+  }
+
+  subcategoryLanguage( int selected,int index) {
+    var Language = context.watch<provider_Language>().Language;
+    if (Language == "EN") {
+      final postModel = Provider.of<provider_api_Manu>(context);
+    var data = postModel.post?.data;
+      return Text(
+                                        '${data?[selected].items?[index].name}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+    } else if (Language == "TH") {
+      final postModel = Provider.of<provider_api_Manu>(context);
+    var data = postModel.post?.data;
+      if (data?[selected].items?[index].nameTh !=
+          null) {
+        if (data?[selected].items?[index].nameTh !=
+            "null") {
+          return Text(
+                                        '${data?[selected].items?[index].nameTh}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+        }
+      } else {
+        return Text(
+                                        '${data?[selected].items?[index].name}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+      }
+    } else if (Language == "JP") {
+      final postModel = Provider.of<provider_api_Manu>(context);
+    var data = postModel.post?.data;
+      if (data?[selected].items?[index].nameJa !=
+          null) {
+        if (data?[selected].items?[index].nameJa !=
+            "null") {
+          return Text(
+                                        '${data?[selected].items?[index].nameJa}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+        }
+      } else {
+        return Text(
+                                        '${data?[selected].items?[index].name}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+      }
+    } else if (Language == "ZH") {
+      final postModel = Provider.of<provider_api_Manu>(context);
+      var data = postModel.post?.data;
+      if (data?[selected].items?[index].nameCn !=
+          null) {
+        if (data?[selected].items?[index].nameCn !=
+            "null") {
+          return Text(
+                                        '${data?[selected].items?[index].nameCn}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+        }
+      } else {
+        return Text(
+                                        '${data?[selected].items?[index].name}'.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Inter',
+                                            color: index == selected
+                                                ? Colors.red[300]
+                                                : Colors.black54),
+                                      );
+      }
+    }
   }
 }

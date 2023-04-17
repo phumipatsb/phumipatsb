@@ -56,8 +56,8 @@ class _layoutWidgetState extends State<layoutWidget> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(8, 3, 8, 3),
                             child: Container(
-                              height: MediaQuery.of(context).size.height * 0.05,
-                              width: MediaQuery.of(context).size.width * 0.11,
+                              height: MediaQuery.of(context).size.height * 0.1,
+                              width: MediaQuery.of(context).size.width * 0.10,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
@@ -77,152 +77,144 @@ class _layoutWidgetState extends State<layoutWidget> {
                             ),
                           ),
                           Container(
+                            width: MediaQuery.of(context).size.width * 0.15,
+                            
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                  child: Container(
-                                    width: 120,
-                                    child: Text(
-                                      "${tasks[index].name}",
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                        fontSize:
-                                            MediaQuery.of(context).size.height /
-                                                70,
-                                        fontFamily: 'Inter',
-                                        fontWeight: FontWeight.w500,
-                                        color: Color.fromARGB(255, 0, 0, 0),
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                    child: Container(
+                                      child: Text(
+                                        "${tasks[index].name}",
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              70,
+                                          fontFamily: 'Inter',
+                                          fontWeight: FontWeight.w500,
+                                          color: Color.fromARGB(255, 0, 0, 0),
 
-                                        /* letterSpacing: 0.0, */
+                                          /* letterSpacing: 0.0, */
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                    width: 120,
-                                    child: LayoutBuilder(builder:
-                                        (BuildContext context,
-                                            BoxConstraints constraints) {
-                                      return tasks[index].addonSelect.length <=
-                                              0
-                                          ? Center()
-                                          : ListView.builder(
-                                              physics:
-                                                  NeverScrollableScrollPhysics(),
-                                              shrinkWrap: true,
-                                              itemCount: tasks[index]
-                                                  .addonSelect
-                                                  .length,
-                                              itemBuilder:
-                                                  (BuildContext context,
-                                                      int index2s) {
-                                                print(tasks[index]
-                                                    .addonSelect[index2s]
-                                                    .subNameAddOn);
-                                                return Column(
-                                                  children: [
-                                                    Container(
-                                                      child: Row(
-                                                        children: [
-                                                          Text(
-                                                            tasks[index]
-                                                                .addonSelect[
-                                                                    index2s]
-                                                                .nameaddon,
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                            maxLines: 1,
-                                                            style:
-                                                                Theme.of(
-                                                                        context)
-                                                                    .textTheme
-                                                                    .subtitle1!
-                                                                    .merge(
-                                                                      TextStyle(
-                                                                        fontSize:
-                                                                            15,
-                                                                        fontWeight:
-                                                                            FontWeight.w400,
-                                                                        color: Colors
-                                                                            .black,
-                                                                      ),
+                                  Container(child: LayoutBuilder(builder:
+                                      (BuildContext context,
+                                          BoxConstraints constraints) {
+                                    return tasks[index].addonSelect.length <= 0
+                                        ? Center()
+                                        : ListView.builder(
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
+                                            shrinkWrap: true,
+                                            itemCount:
+                                                tasks[index].addonSelect.length,
+                                            itemBuilder: (BuildContext context,
+                                                int index2s) {
+                                              print(tasks[index]
+                                                  .addonSelect[index2s]
+                                                  .subNameAddOn);
+                                              return Column(
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Text(
+                                                          tasks[index]
+                                                              .addonSelect[
+                                                                  index2s]
+                                                              .nameaddon,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          maxLines: 1,
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .subtitle1!
+                                                                  .merge(
+                                                                    TextStyle(
+                                                                      fontSize:
+                                                                          15,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: Colors
+                                                                          .black,
                                                                     ),
-                                                          ),
-                                                          Text(','),
-                                                          Text(
-                                                            tasks[index]
-                                                                .addonSelect[
-                                                                    index2s]
-                                                                .subNameAddOn,
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                            maxLines: 1,
-                                                            style:
-                                                                Theme.of(
-                                                                        context)
-                                                                    .textTheme
-                                                                    .subtitle1!
-                                                                    .merge(
-                                                                      TextStyle(
-                                                                        fontWeight:
-                                                                            FontWeight.w400,
-                                                                        color: Colors
-                                                                            .black,
-                                                                      ),
+                                                                  ),
+                                                        ),
+                                                        Text(','),
+                                                        Text(
+                                                          tasks[index]
+                                                              .addonSelect[
+                                                                  index2s]
+                                                              .subNameAddOn,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          maxLines: 1,
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .subtitle1!
+                                                                  .merge(
+                                                                    TextStyle(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: Colors
+                                                                          .black,
                                                                     ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],
-                                                );
-                                              });
-                                    })),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                                  child: Text(
-                                    "${tasks[index].price}" + "-.",
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subtitle1!
-                                        .merge(
-                                          TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            color: Colors.pink[200],
+                                                                  ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              );
+                                            });
+                                  })),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                                    child: Text(
+                                      "${tasks[index].price}" + "-.",
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subtitle1!
+                                          .merge(
+                                            TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.pink[200],
+                                            ),
                                           ),
-                                        ),
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
+                                ]),
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width * 0.16,
-                            height: MediaQuery.of(context).size.height * 0.08,
-                            // color: Colors.amber,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.1,
+                              width: MediaQuery.of(context).size.width * 0.18,
+                              height: MediaQuery.of(context).size.height * 0.14,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.128,
                                     height: MediaQuery.of(context).size.height *
-                                        0.021,
+                                        0.05,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(16),
-                                      color: Colors.white30,
+                                      color: Colors.black12,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -230,37 +222,36 @@ class _layoutWidgetState extends State<layoutWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        Flexible(
-                                          flex: 1,
-                                          fit: FlexFit.tight,
-                                          child: MaterialButton(
-                                            shape: const CircleBorder(),
-                                            color: Color.fromARGB(
-                                                255, 255, 110, 110),
-                                            padding:
-                                                EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                            onPressed: () {
-                                              context
+                                        Container(
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                context
                                                   .read<provider_app>()
                                                   .minusOrder(index);
+                                              });
                                             },
-                                            child: const Icon(
-                                              Icons.remove,
-                                              size: 20,
-                                              color: Colors.white,
-                                            ),
+                                            child: CircleAvatar(
+                                                child: Icon(Icons.remove,
+                                                    color: Colors.white),
+                                                backgroundColor:
+                                                    Colors.pink[300]),
                                           ),
                                         ),
-                                        Flexible(
-                                          flex: 1,
-                                          fit: FlexFit.tight,
-                                          child: Text(
+
+
+                                        Container(
+                                           width: MediaQuery.of(context).size.width *
+                                        0.02,
+                                    
+                                         child: Text(
                                             "   ${tasks[index].amount}",
                                             overflow: TextOverflow.visible,
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                               height: 1.2102272033691406,
-                                              fontSize: 15.0,
+                                              fontSize: MediaQuery.of(context).size.height /
+                                                50,
                                               fontFamily: 'Inter',
                                               fontWeight: FontWeight.w400,
                                               color:
@@ -268,31 +259,27 @@ class _layoutWidgetState extends State<layoutWidget> {
                                             ),
                                           ),
                                         ),
-                                        Flexible(
-                                          flex: 1,
-                                          fit: FlexFit.tight,
-                                          child: MaterialButton(
-                                            shape: const CircleBorder(),
-                                            color: Color.fromARGB(
-                                                255, 255, 110, 110),
-                                            padding:
-                                                EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                            onPressed: () {
-                                              context
+
+
+                                        Container(
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                context
                                                   .read<provider_app>()
                                                   .orderPlus(index);
+                                              });
                                             },
-                                            child: const Icon(
-                                              Icons.add,
-                                              size: 20,
-                                              color: Colors.white,
-                                            ),
+                                            child: CircleAvatar(
+                                                child: Icon(Icons.add,
+                                                    color: Colors.white),
+                                                backgroundColor:
+                                                    Colors.pink[300]),
                                           ),
-                                        ),
+                                        )
                                       ],
                                     ),
                                   ),
-                                ),
                                 Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -310,10 +297,9 @@ class _layoutWidgetState extends State<layoutWidget> {
                                       ),
                                     ),
                                   ),
-                                )
-                              ],
-                            ),
-                          )
+                                )  
+                                ],
+                              )),
                         ],
                       ),
                     ),

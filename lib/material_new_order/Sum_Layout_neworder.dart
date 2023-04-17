@@ -73,7 +73,7 @@ class _testneworder extends State<testneworder> {
             child: Row(
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.45,
+                  width: MediaQuery.of(context).size.width * 0.49,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -81,7 +81,7 @@ class _testneworder extends State<testneworder> {
                         child: Clear_All(),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.5,
+                        width: MediaQuery.of(context).size.width * 0.49,
                         height: MediaQuery.of(context).size.height * 0.17,
                         child: layoutWidget(),
                       )
@@ -101,7 +101,7 @@ class _testneworder extends State<testneworder> {
                   ),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.317,
+                  width: MediaQuery.of(context).size.width * 0.37,
                   child: Column(
                     children: [
                       Padding(

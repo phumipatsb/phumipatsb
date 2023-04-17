@@ -35,7 +35,7 @@ class _sumlayoutState extends State<sumlayout> {
       child: Row(
         children: [
           Container(
-            width: MediaQuery.of(context).size.width * 0.17,
+            width: MediaQuery.of(context).size.width * 0.10,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(0),
               color: HexColor(backgroundColor),
@@ -47,7 +47,7 @@ class _sumlayoutState extends State<sumlayout> {
             color: Colors.white,
           ),
           Container(
-            width: MediaQuery.of(context).size.width * 0.8075,
+            width: MediaQuery.of(context).size.width * 0.899,
             child: seindex == 0
                 ? Container(
                     child: table_api(),
