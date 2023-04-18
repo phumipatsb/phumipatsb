@@ -117,17 +117,17 @@ class _login_pinState extends State<login_pin> {
                                 addpin("${pin[index]}");
 
                                 for (int i = 0;
-                                    i < Model_list.posts!.length;
+                                    i <  Model_list.posts!.staffList!.length;
                                     i++) {
                                   if (pincode ==
-                                      Model_list.posts![i].password) {
+                                       Model_list.posts!.staffList![i].password) {
                                     context
                                         .read<provider_login>()
                                         .updaet_status_login(true);
                                     context
                                         .read<provider_login>()
                                         .updaet_login_name(
-                                            "${Model_list.posts![i].name}");
+                                            "${Model_list.posts!.staffList![i].name}");
 
                                     Navigator.pop(context);
                                   }
@@ -196,16 +196,16 @@ class _login_pinState extends State<login_pin> {
                               print("0");
                               addpin('0');
                               for (int i = 0;
-                                  i < Model_list.posts!.length;
+                                  i < Model_list.posts!.staffList!.length;
                                   i++) {
-                                if (pincode == Model_list.posts![i].password) {
+                                if (pincode == Model_list.posts!.staffList![i].password) {
                                   context
                                       .read<provider_login>()
                                       .updaet_status_login(true);
                                   context
                                       .read<provider_login>()
                                       .updaet_login_name(
-                                          "${Model_list.posts![i].name}");
+                                          "${pincode == Model_list.posts!.staffList![i].name}");
 
                                   Navigator.pop(context);
                                 } else {

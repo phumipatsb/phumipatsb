@@ -196,8 +196,8 @@ class _table_apiState extends State<table_api> {
                                                                                     GridView.builder(
                                                                                         shrinkWrap: true,
                                                                                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                                          crossAxisCount: 5,
-                                                                                          crossAxisSpacing: 12.0,
+                                                                                          crossAxisCount: 4,
+                                                                                          crossAxisSpacing: 5,
                                                                                           mainAxisSpacing: 10,
                                                                                           mainAxisExtent: 100,
                                                                                         ),
@@ -246,7 +246,7 @@ class _table_apiState extends State<table_api> {
                                                                                                                           overflow: TextOverflow.visible,
                                                                                                                           textAlign: TextAlign.left,
                                                                                                                           style: TextStyle(
-                                                                                                                            fontSize: 30,
+                                                                                                                            fontSize: MediaQuery.of(context).size.height / 90,
                                                                                                                             fontFamily: 'Inter',
                                                                                                                             fontWeight: FontWeight.w400,
                                                                                                                             color: Color.fromARGB(255, 0, 0, 0),
@@ -377,7 +377,8 @@ class _table_apiState extends State<table_api> {
                                                                                                 child: Text('${tableListStatus[index].table[index2].name}',
                                                                                                     style: TextStyle(
                                                                                                       color: Colors.black,
-                                                                                                      fontSize: 26,
+                                                                                                     fontSize: MediaQuery.of(context).size.height / 30,
+                                                                                                     fontWeight: FontWeight.w500,
                                                                                                     )),
                                                                                               ),
                                                                                             ),

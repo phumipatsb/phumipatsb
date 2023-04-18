@@ -9,6 +9,7 @@ import 'package:sqflite/utils/utils.dart';
 import 'package:test1/RAW/coloer/hex.dart';
 import 'package:test1/SideBar/leftside.dart';
 import 'package:test1/check_void_Finished%20Bill/Create_Member.dart';
+import 'package:test1/check_void_Finished%20Bill/check_page.dart';
 import 'package:test1/models/compronan.dart';
 import 'package:test1/material_new_order/sumneworder.dart';
 import 'package:test1/table/layout_table.dart';
@@ -37,7 +38,7 @@ class _layout_neworderState extends State<layout_neworder> {
            
             Container(
               
-              width: MediaQuery.of(context).size.width * 0.10,
+              width: MediaQuery.of(context).size.width * 0.12,
               decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(0),
                             color: HexColor(backgroundColor),
@@ -52,11 +53,11 @@ class _layout_neworderState extends State<layout_neworder> {
            
            
             Container(
-               width: MediaQuery.of(context).size.width * 0.885,
+               width: MediaQuery.of(context).size.width * 0.86,
               child: seindex == 0? 
               Container(child: table_api(),)
               : seindex ==1?Container(child: sumneworder(),)
-              : seindex==2?Container(child: Text("3"),)
+              : seindex==2?Container(child: check_page(),)
               : seindex==3?Container(child: Text("4"),)
               : seindex ==4?Container(child: Text("5"),)
               :Container(),

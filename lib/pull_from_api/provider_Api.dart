@@ -47,7 +47,7 @@ class TableStatusProviderApi extends ChangeNotifier {
 }
 
 class ProviderApi_Staff_list extends ChangeNotifier {
-  List<StaffList>? posts;
+  StaffList? posts;
 
   bool loading = false;
 

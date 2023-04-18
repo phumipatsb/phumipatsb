@@ -25,6 +25,7 @@ class _GridViewPageState extends State<homepage> {
   List<Option> AddOption = [];
   TextEditingController textarea = TextEditingController();
   bool st5 = false;
+  
 
   @override
   void initState() {
@@ -34,6 +35,7 @@ class _GridViewPageState extends State<homepage> {
   }
 
   Widget build(BuildContext context) {
+     var seethile = MediaQuery.of(context).size.height;
     final postModel = Provider.of<provider_api_Manu>(context);
     var data = postModel.post?.data;
     var _groupOptionList = postModel.post?.groupOptionList;
@@ -106,7 +108,7 @@ class _GridViewPageState extends State<homepage> {
                                   content: StatefulBuilder(
                                       builder: (context, setState) {
                                     return Container(
-                                      width: MediaQuery.of(context).size.width / 0.9,
+                                      width: MediaQuery.of(context).size.width / 0.5,
                                       height: MediaQuery.of(context).size.height /1.58,
                                       child: Column(
                                         mainAxisAlignment:
@@ -216,7 +218,7 @@ class _GridViewPageState extends State<homepage> {
                                                                             '${postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].price}',
                                                                             style: const TextStyle(
                                                                               fontSize: 25,
-                                                                              fontWeight: FontWeight.w700,
+                                                                              fontWeight: FontWeight.w500,
                                                                             ),
                                                                           ),
                                                                           value: postModel.post!.groupOptionList![data[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].id,
@@ -242,12 +244,14 @@ class _GridViewPageState extends State<homepage> {
                                                                           });
                                                                     })
                                                                 : Container(
-                                                                    
+                                                                    width: MediaQuery.of(context).size.width / 1,
+                                      
                                                                     child: choiceoptions(
                                                                         selected,
                                                                         selectedSubCat,
                                                                         index,
-                                                                        index2),
+                                                                        index2
+                                                                        ,seethile),
                                                                   ))
                                                       ],
                                                     ),
@@ -490,7 +494,7 @@ class _GridViewPageState extends State<homepage> {
                                 
                                 Container(
                                   child: Text(
-                                    '${data?[selected].items?[selectedSubCat].items?[index].price}',
+                                    '${(data?[selected].items?[selectedSubCat].items?[index].price)}',
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 1,
                                     style: Theme.of(context).textTheme.subtitle1!.merge(
@@ -523,12 +527,13 @@ class _GridViewPageState extends State<homepage> {
           
   }
 
-  choiceoptions(int selected, int selectedSubCat, int index, int index3) {
+  choiceoptions(int selected, int selectedSubCat, int index, int index3,var seethile) {
     final postModel = Provider.of<provider_api_Manu>(context);
     var data = postModel.post?.data;
     bool st5 = false;
 
     return Container(
+      
       child: ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -600,7 +605,7 @@ class _GridViewPageState extends State<homepage> {
                   ),
                 ),
                 Container(
-                  width: 425,
+                  width: MediaQuery.of(context).size.width * 0.7,
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -610,7 +615,7 @@ class _GridViewPageState extends State<homepage> {
                           style: const TextStyle(
                               fontSize: 20,
                               fontFamily: 'Inter',
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w400,
                               color: Colors.black)),
                       Text(
                           "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index3].items![index2].price}",
@@ -764,8 +769,8 @@ class _GridViewPageState extends State<homepage> {
         child: Text(
           "${postModel.post!.groupOptionList![data?[selected].items?[selectedSubCat].items?[index].itemGroupOptions]![index2].items![index_sub_cat_addon].choice}",
           style: const TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.w700,
+            fontSize: 25,
+            fontWeight: FontWeight.w500,
           ),
         ),
       );

@@ -46,7 +46,7 @@ class _layoutWidgetState extends State<layoutWidget> {
               itemBuilder: (context, int index) {
                 return Column(children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
+                    padding: const EdgeInsets.fromLTRB(2, 5, 2, 5),
                     child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
@@ -124,6 +124,7 @@ class _layoutWidgetState extends State<layoutWidget> {
                                               return Column(
                                                 children: [
                                                   Container(
+                                                    width: MediaQuery.of(context).size.width * 0.3,
                                                     child: Row(
                                                       children: [
                                                         Text(
@@ -141,7 +142,10 @@ class _layoutWidgetState extends State<layoutWidget> {
                                                                   .merge(
                                                                     TextStyle(
                                                                       fontSize:
-                                                                          15,
+                                                                          MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              70,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w400,
@@ -165,6 +169,11 @@ class _layoutWidgetState extends State<layoutWidget> {
                                                                   .subtitle1!
                                                                   .merge(
                                                                     TextStyle(
+                                                                      fontSize:
+                                                                          MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              70,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w400,
@@ -202,16 +211,16 @@ class _layoutWidgetState extends State<layoutWidget> {
                           ),
                           Container(
                               width: MediaQuery.of(context).size.width * 0.18,
-                              height: MediaQuery.of(context).size.height * 0.14,
+                              height: MediaQuery.of(context).size.height * 0.12,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
                                     width: MediaQuery.of(context).size.width *
-                                        0.128,
+                                        0.15,
                                     height: MediaQuery.of(context).size.height *
-                                        0.05,
+                                        0.035,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(16),
                                       color: Colors.black12,
@@ -219,10 +228,9 @@ class _layoutWidgetState extends State<layoutWidget> {
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
+                                     children: [
+                                      Flexible(
+                                        child: Container(
                                           child: GestureDetector(
                                             onTap: () {
                                               setState(() {
@@ -233,36 +241,36 @@ class _layoutWidgetState extends State<layoutWidget> {
                                             },
                                             child: CircleAvatar(
                                                 child: Icon(Icons.remove,
+                                                size: MediaQuery.of(context).size.height /
+                                                  33,
                                                     color: Colors.white),
                                                 backgroundColor:
                                                     Colors.pink[300]),
                                           ),
-                                        ),
-
-
-                                        Container(
-                                           width: MediaQuery.of(context).size.width *
-                                        0.02,
-                                    
-                                         child: Text(
-                                            "   ${tasks[index].amount}",
-                                            overflow: TextOverflow.visible,
-                                            textAlign: TextAlign.left,
-                                            style: TextStyle(
-                                              height: 1.2102272033691406,
-                                              fontSize: MediaQuery.of(context).size.height /
-                                                50,
-                                              fontFamily: 'Inter',
-                                              fontWeight: FontWeight.w400,
-                                              color:
-                                                  Color.fromARGB(255, 0, 0, 0),
+                                        ),),
+                                        Flexible(
+                                        child:  Padding(
+                                          padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
+                                          child: Text(
+                                              "   ${tasks[index].amount}",
+                                              overflow: TextOverflow.visible,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                height: 1.2102272033691406,
+                                                fontSize: MediaQuery.of(context).size.height /
+                                                  50,
+                                                fontFamily: 'Inter',
+                                                fontWeight: FontWeight.w400,
+                                                color:
+                                                    Color.fromARGB(255, 0, 0, 0),
+                                              ),
                                             ),
-                                          ),
                                         ),
-
-
-                                        Container(
+                                        ),
+                                        Flexible(
+                                        child: Container(
                                           child: GestureDetector(
+                                            
                                             onTap: () {
                                               setState(() {
                                                 context
@@ -271,13 +279,17 @@ class _layoutWidgetState extends State<layoutWidget> {
                                               });
                                             },
                                             child: CircleAvatar(
+                                              
                                                 child: Icon(Icons.add,
+                                                size: MediaQuery.of(context).size.height /
+                                                  33,
                                                     color: Colors.white),
                                                 backgroundColor:
                                                     Colors.pink[300]),
                                           ),
-                                        )
-                                      ],
+                                        ))
+                                     ],
+                                      
                                     ),
                                   ),
                                 Padding(

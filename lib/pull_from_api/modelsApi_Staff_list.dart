@@ -2,44 +2,59 @@
 //
 //     final staffList = staffListFromJson(jsonString);
 
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
-List<StaffList> staffListFromJson(String str) =>
-    List<StaffList>.from(json.decode(str).map((x) => StaffList.fromJson(x)));
+StaffList staffListFromJson(String str) => StaffList.fromJson(json.decode(str));
 
-String staffListToJson(List<StaffList> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String staffListToJson(StaffList data) => json.encode(data.toJson());
 
 class StaffList {
-  StaffList({
-    this.branchId,
-    this.staffId,
-    this.permPrintCheck,
-    this.name,
-    this.permVoid,
-    this.permManageTable,
-    this.permMakeOrder,
-    this.permCashier,
-    this.password,
-    this.id,
-    this.permCloseShift,
-    this.permStock,
-  });
+    StaffList({
+        required this.staffList,
+    });
 
-  String? branchId;
-  String? staffId;
-  bool? permPrintCheck;
-  String? name;
-  bool? permVoid;
-  bool? permManageTable;
-  bool? permMakeOrder;
-  bool? permCashier;
-  String? password;
-  String? id;
-  bool? permCloseShift;
-  bool? permStock;
+    final List<StaffListElement> staffList;
 
-  factory StaffList.fromJson(Map<String, dynamic> json) => StaffList(
+    factory StaffList.fromJson(Map<String, dynamic> json) => StaffList(
+        staffList: List<StaffListElement>.from(json["staff_list"].map((x) => StaffListElement.fromJson(x))),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "staff_list": List<dynamic>.from(staffList.map((x) => x.toJson())),
+    };
+}
+
+class StaffListElement {
+    StaffListElement({
+        required this.branchId,
+        required this.staffId,
+        required this.permPrintCheck,
+        required this.name,
+        required this.permVoid,
+        required this.permManageTable,
+        required this.permMakeOrder,
+        required this.permCashier,
+        required this.password,
+        required this.id,
+        required this.permCloseShift,
+        required this.permStock,
+    });
+
+    final String branchId;
+    final String staffId;
+    final bool permPrintCheck;
+    final String name;
+    final bool permVoid;
+    final bool permManageTable;
+    final bool permMakeOrder;
+    final bool permCashier;
+    final String password;
+    final String id;
+    final bool permCloseShift;
+    final bool permStock;
+
+    factory StaffListElement.fromJson(Map<String, dynamic> json) => StaffListElement(
         branchId: json["branch_id"],
         staffId: json["staff_id"],
         permPrintCheck: json["perm_print_check"],
@@ -52,9 +67,9 @@ class StaffList {
         id: json["id"],
         permCloseShift: json["perm_close_shift"],
         permStock: json["perm_stock"],
-      );
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "branch_id": branchId,
         "staff_id": staffId,
         "perm_print_check": permPrintCheck,
@@ -67,5 +82,5 @@ class StaffList {
         "id": id,
         "perm_close_shift": permCloseShift,
         "perm_stock": permStock,
-      };
+    };
 }

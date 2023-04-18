@@ -43,7 +43,7 @@ class _sumneworder extends State<sumneworder> {
               child: CategoryMenu(),
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 0.0225,
+              height: MediaQuery.of(context).size.height * 0.02,
               color: Colors.white,
             ),
             Container(

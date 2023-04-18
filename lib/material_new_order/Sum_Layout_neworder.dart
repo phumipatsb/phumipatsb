@@ -73,7 +73,7 @@ class _testneworder extends State<testneworder> {
             child: Row(
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.49,
+                  width: MediaQuery.of(context).size.width * 0.48,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -83,13 +83,14 @@ class _testneworder extends State<testneworder> {
                       Container(
                         width: MediaQuery.of(context).size.width * 0.49,
                         height: MediaQuery.of(context).size.height * 0.17,
+                        
                         child: layoutWidget(),
                       )
                     ],
                   ),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.0115,
+                  width: MediaQuery.of(context).size.width * 0.010,
                   child: Container(
                     child: const VerticalDivider(
                       width: 10,
@@ -101,7 +102,7 @@ class _testneworder extends State<testneworder> {
                   ),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.37,
+                  width: MediaQuery.of(context).size.width * 0.349,
                   child: Column(
                     children: [
                       Padding(
@@ -110,6 +111,7 @@ class _testneworder extends State<testneworder> {
                       ),
                       Container(
                         child: const Divider(
+                          
                           height: 10,
                           thickness: 2,
                           indent: 0,
@@ -120,9 +122,10 @@ class _testneworder extends State<testneworder> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.6,
+                          width: MediaQuery.of(context).size.width * 0.3,
                           height: MediaQuery.of(context).size.height * 0.038,
                           child: ElevatedButton(
+                            
                               onPressed: () {
                                 setState(() {
                                   if (login_status == false) {
