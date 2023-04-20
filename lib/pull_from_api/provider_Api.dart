@@ -66,7 +66,7 @@ class bill_list_ProviderApi extends ChangeNotifier {
 
   get_data_bill_list_ProviderApi() async {
     loading = true;
-    post3 = (await fetch_data_bill_list());
+    post3 = (await fetch_data_bill_list1());
     loading = false;
     notifyListeners();
   }

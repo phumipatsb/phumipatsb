@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+
+
 import 'package:test1/pull_from_api/modelsApi_Staff_list.dart';
 import 'package:test1/pull_from_api/modelsApi_bill_list.dart';
 
@@ -54,7 +56,7 @@ Future<StaffList> fetchdatastafflist() async {
 }
 
 
-Future<BillList> fetch_data_bill_list() async {
+Future<BillList> fetch_data_bill_list1() async {
   final response = await http.get(Uri.parse(
       'https://partner1.triggersplus.com/order/open_bill_list/A53C88185CF64E6F85D00F2C75180AE1/1/123/'));
   final tableApi;

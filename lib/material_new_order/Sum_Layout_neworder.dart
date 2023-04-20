@@ -5,6 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 import '../SideBar/login_pin.dart';
 import '../confirm_order/confirm_order.dart';
 import '../models/provider_app.dart';
+import '../post_api/convert_shop.dart';
 import 'neworderwidget.dart';
 import 'displayTable.dart';
 import 'date_month_year.dart';
@@ -145,6 +146,7 @@ class _testneworder extends State<testneworder> {
                                         });
                                   } else {
                                     print("POST DATA API");
+                                    createshop("boss");
                                   }
                                 });
                                 // Navigator.push(
